@@ -1,7 +1,7 @@
 import React from 'react'
-import classes from "./Navbar.module.css"
+import classes from "./NavbarLeft.module.css"
 
-const Navbar = () => {
+const NavbarRight = () => {
     return (
         <nav className={classes.nav}>
             <ul>
@@ -16,4 +16,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default NavbarRight
