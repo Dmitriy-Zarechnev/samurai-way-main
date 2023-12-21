@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from "./NavbarLeft.module.css"
+import classes from "./NavbarRight.module.css"
 
 const NavbarRight = () => {
     return (

@@ -7,7 +7,7 @@
     "H H H"
     "L C R";
     grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 10fr 2fr;
     /*grid-gap: 10px;*/
 }
 
