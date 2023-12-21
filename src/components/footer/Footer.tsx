@@ -4,8 +4,10 @@ import classes from './Footer.module.css'
 
 const Footer = () => {
     return (
-        <footer className={classes.footer}>
-            <img src={logo} alt={'main_logo'}/>
+        <footer className={classes.app_footer}>
+            <div className={classes.footer}>
+                <img src={logo} alt={'main_logo'}/>
+            </div>
         </footer>
     )
 }

@@ -14,10 +14,10 @@ const Profile = () => {
                 <h3>My posts</h3>
                 <div>New post</div>
                 <div className={classes.posts}>
-                    <div className={classes.item}>Post 1</div>
+                    <span className={classes.item}>Post 1</span>
                 </div>
                 <div>
-                    <div className={classes.item}>Post 2</div>
+                    <span className={classes.item}>Post 2</span>
                 </div>
             </div>
         </section>

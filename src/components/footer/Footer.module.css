@@ -1,5 +1,11 @@
+.app_footer{
+    background-color: #687864;
+}
+
 .footer {
     padding: 5px 0;
+    margin: 0 auto;
+    width: 1200px;
 }
 
 .footer img {

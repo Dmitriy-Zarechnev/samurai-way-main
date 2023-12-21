@@ -1,0 +1,11 @@
+.app_main {
+    flex: 1 1 auto;
+    margin: 0 auto;
+    width: 1200px;
+
+    display: grid;
+    grid-template-areas:"L C R";
+    grid-template-rows:  1fr;
+    grid-template-columns: 2fr 10fr 2fr;
+    /*grid-gap: 10px;*/
+}

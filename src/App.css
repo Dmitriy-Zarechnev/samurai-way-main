@@ -1,39 +1,21 @@
 .app-body {
     height: 100vh;
+    background-color: #F7F9FB;
+    box-sizing: border-box;
 }
 
 .app-wrapper {
-    background-color: #F7F9FB;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     min-height: 100%;
 }
 
-.app-header {
-    background-color: #31708E;
-}
-
-.app-main {
-    flex: 1 1 auto;
-    margin: 0 auto;
-    width: 1200px;
-
-    display: grid;
-    grid-template-areas:"L C R";
-    grid-template-rows:  1fr;
-    grid-template-columns: 2fr 10fr 2fr;
-    /*grid-gap: 10px;*/
-}
-
-.app-container {
-    margin: 0 auto;
-    width: 1200px;
-}
 
 
-.app-footer {
-    background-color: #687864;
-}
+
+
+
+
+
 
 

@@ -4,8 +4,10 @@ import classes from './Header.module.css'
 
 const Header = () => {
     return (
-        <header className={classes.header}>
-            <img src={logo} alt={'main_logo'}/>
+        <header className={classes.app_header}>
+            <div className={classes.header}>
+                <img src={logo} alt={'main_logo'}/>
+            </div>
         </header>
     )
 }
