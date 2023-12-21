@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from "./NavbarRight.module.css"
+import classes from './NavbarRight.module.css'
 
 const NavbarRight = () => {
     return (
-        <nav className={classes.nav}>
+        <aside className={classes.nav}>
             <ul>
                 <li className={classes.item}><a href={'#'}>Profile</a></li>
                 <li className={classes.item}><a href={'#'}>Messages</a></li>
@@ -12,7 +12,7 @@ const NavbarRight = () => {
 
                 <li className={classes.item}><a href={'#'}>Settings</a></li>
             </ul>
-        </nav>
+        </aside>
     )
 }
 
