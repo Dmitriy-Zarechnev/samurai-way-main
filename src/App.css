@@ -1,5 +1,9 @@
-.app-wrapper {
+.app-body {
     background-color: #F7F9FB;
+}
+
+
+.app-wrapper {
     margin: 0 auto;
     width: 1200px;
 

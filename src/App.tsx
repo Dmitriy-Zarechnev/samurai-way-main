@@ -7,11 +7,13 @@ import NavbarRight from './components/NavbarRight'
 
 function App() {
     return (
-        <div className={'app-wrapper'}>
-            <Header/>
-            <NavbarLeft/>
-            <Profile/>
-            <NavbarRight/>
+        <div className={'app-body'}>
+            <div className={'app-wrapper'}>
+                <Header/>
+                <NavbarLeft/>
+                <Profile/>
+                <NavbarRight/>
+            </div>
         </div>
     )
 }
