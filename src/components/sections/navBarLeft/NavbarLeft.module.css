@@ -1,5 +1,6 @@
 .nav {
-    grid-area: L;
+    max-width: 200px;
+    width: 100%;
     background-color: #5085A5;
 }
 

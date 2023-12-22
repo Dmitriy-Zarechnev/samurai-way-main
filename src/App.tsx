@@ -3,16 +3,19 @@ import './App.css'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Main from './components/sections/main/Main'
+import {BrowserRouter} from 'react-router-dom'
 
 function App() {
     return (
-        <div className={'app-body'}>
-            <div className={'app-wrapper'}>
-                <Header/>
-                <Main/>
-                <Footer/>
+        <BrowserRouter>
+            <div className={'app-body'}>
+                <div className={'app-wrapper'}>
+                    <Header/>
+                    <Main/>
+                    <Footer/>
+                </div>
             </div>
-        </div>
+        </BrowserRouter>
     )
 }
 

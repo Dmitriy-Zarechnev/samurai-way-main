@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './NavbarRight.module.css'
 
-const NavbarRight = () => {
+const NavbarRight: React.FC = () => {
     return (
         <aside className={classes.nav}>
             <ul>
