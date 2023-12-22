@@ -4,12 +4,13 @@ import classes from './MyPosts.module.css'
 
 const MyPosts = () => {
     return (
-        <section className={classes.my_Posts}>
+        <div className={classes.my_Posts}>
             <h3>My posts</h3>
             <h4>New post</h4>
             <Post/>
             <Post/>
-        </section>
+            <Post/>
+        </div>
     )
 }
 
