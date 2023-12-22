@@ -1,9 +1,10 @@
 .app_main {
-    flex: 1 1 auto;
+    flex-grow: 1;
     margin: 0 auto;
     width: 1200px;
 
-    display: flex;
 
+    display: flex;
+    gap: 20px;
 }
 

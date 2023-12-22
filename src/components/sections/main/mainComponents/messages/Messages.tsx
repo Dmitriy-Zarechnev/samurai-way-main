@@ -4,7 +4,7 @@ import classes from './Messages.module.css'
 const Messages: React.FC = () => {
     return (
         <section className={classes.messages}>
-            <h2>Dialogs</h2>
+            <h2>Messages</h2>
         </section>
     )
 }
