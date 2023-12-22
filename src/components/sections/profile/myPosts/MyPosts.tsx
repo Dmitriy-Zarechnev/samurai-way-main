@@ -7,9 +7,9 @@ const MyPosts = () => {
         <div className={classes.my_Posts}>
             <h3>My posts</h3>
             <h4>New post</h4>
-            <Post message="It is my first post"/>
-            <Post message="It is my second post"/>
-            <Post message="It is my third post"/>
+            <Post message="It is my first post" likesCount={25}/>
+            <Post message="It is my second post" likesCount={40}/>
+            <Post message="It is my third post" likesCount={52}/>
         </div>
     )
 }
