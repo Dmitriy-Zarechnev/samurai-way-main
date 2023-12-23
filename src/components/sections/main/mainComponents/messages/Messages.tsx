@@ -1,19 +1,33 @@
 import React from 'react'
 import classes from './Messages.module.css'
+import {NavLink} from 'react-router-dom'
 
 const Messages: React.FC = () => {
     return (
         <section className={classes.dialogs}>
-            <div className={classes.dialogs_items}>
+            <ul className={classes.dialogs_items}>
                 <h3 className={classes.dialogs_header}>Dialogs</h3>
-                <div className={classes.dialog}> 1</div>
-                <div className={`${classes.dialog} ${classes.active}`}> 2</div>
-                <div className={classes.dialog}> 3</div>
-                <div className={classes.dialog}> 4</div>
-                <div className={classes.dialog}> 5</div>
-                <div className={classes.dialog}> 6</div>
-                <div className={classes.dialog}> 7</div>
-            </div>
+
+                <li className={classes.dialog}>
+                    <NavLink to={'/dialogs/1'}>Bob</NavLink>
+                </li>
+
+                <li className={`${classes.dialog} ${classes.active}`}>
+                    <NavLink to={'/dialogs/2'}>Hulk</NavLink>
+                </li>
+
+                <li className={classes.dialog}>
+                    <NavLink to={'/dialogs/3'}>Sam</NavLink>
+                </li>
+
+                <li className={classes.dialog}>
+                    <NavLink to={'/dialogs/4'}>Bilbo</NavLink>
+                </li>
+
+                <li className={classes.dialog}>
+                    <NavLink to={'/dialogs/5'}>Dworf</NavLink>
+                </li>
+            </ul>
 
             <div className={classes.messages}>
                 <h3 className={classes.messages_header}>Messages</h3>
