@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from './SettingData.module.css'
 
-const SettingsData = () => {
+const SettingsData: React.FC = () => {
     return (
         <div className={classes.item}>
-            HEllo
+            Hello
         </div>
     )
 }
