@@ -1,3 +1,33 @@
-.messages {
+.dialogs {
     background-color: green;
+    display: flex;
+}
+
+.dialogs_items {
+    max-width: 150px;
+    width: 100%;
+}
+
+.dialogs_header {
+
+}
+
+.dialog {
+
+}
+
+.dialogs_items .active {
+    color: blue;
+}
+
+.messages {
+    flex: 1 1 auto;
+}
+
+.messages_header {
+
+}
+
+.message {
+
 }
