@@ -2,21 +2,33 @@ import React from 'react'
 import classes from './Post.module.css'
 import picture from '../../../../../../../assets/images/Cupcake.jpg'
 
-type PostPropsType = {
+export type PostsDataType = {
+    id: number,
     header: string,
     message: string,
     likesCount: number
 }
 
+
+type PostPropsType = {
+    postsData: Array<PostsDataType>
+}
+
 const Post: React.FC<PostPropsType> = (props: PostPropsType) => {
     return (
         <div className={classes.post}>
-            <h4>{props.header}</h4>
-            <img src={picture} alt="picture"/>
-            <span className={classes.item}>{props.message}</span>
-            <div>
-                <span>{props.likesCount} likes</span>
-            </div>
+            {props.postsData.map((el: PostsDataType) => {
+                return (
+                    <div key={el.id}>
+                        <h4>{el.header}</h4>
+                        <img src={picture} alt="picture"/>
+                        <span className={classes.item}>{el.message}</span>
+                        <div>
+                            {el.likesCount} likes
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     )
 }
