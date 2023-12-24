@@ -1,10 +1,22 @@
 import React from 'react'
 import classes from './Message.module.css'
 
+export type MessagesDataType = {
+    id: number,
+    message: string
+}
 
-const Message: React.FC<{ message: string }> = (props: { message: string }) => {
+type MessagePropsType = {
+    message: Array<MessagesDataType>
+}
+
+const Message: React.FC<MessagePropsType> = (props: MessagePropsType) => {
     return (
-        <div className={classes.message}>{props.message}</div>
+        <ul className={classes.messages_list}>
+            {props.message.map((el: MessagesDataType) => {
+                return <li key={el.id} className={classes.message}>{el.message}</li>
+            })}
+        </ul>
     )
 }
 

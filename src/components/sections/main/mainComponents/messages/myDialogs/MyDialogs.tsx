@@ -1,8 +1,9 @@
 import React from 'react'
 import classes from './MyDialogs.module.css'
-import DialogItem from './dialogItem/DialogItem'
+import DialogItem, {DialogsDataType} from './dialogItem/DialogItem'
 
-const dialogsData = [
+
+const dialogsData: Array<DialogsDataType> = [
     {id: 1, name: 'Bob'},
     {id: 2, name: 'Hulk'},
     {id: 3, name: 'Sam'},
@@ -11,17 +12,13 @@ const dialogsData = [
 ]
 
 
-const MyDialogs:React.FC = () => {
+const MyDialogs: React.FC = () => {
     return (
-        <ul className={classes.dialogs_items}>
+        <div className={classes.dialogs_items}>
             <h3 className={classes.dialogs_header}>Dialogs</h3>
 
-            <DialogItem name={'Bob'} id={'1'}/>
-            <DialogItem name={'Hulk'} id={'2'}/>
-            <DialogItem name={'Sam'} id={'3'}/>
-            <DialogItem name={'Bilbo'} id={'4'}/>
-            <DialogItem name={'Dworf'} id={'5'}/>
-        </ul>
+            <DialogItem dialogsData={dialogsData}/>
+        </div>
     )
 }
 

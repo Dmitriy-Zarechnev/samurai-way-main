@@ -1,3 +1,7 @@
+.dialog_list {
+
+}
+
 .dialog {
     list-style: none;
     text-decoration: none;
@@ -5,7 +9,7 @@
 
 .dialog a {
     text-decoration: none;
-    color:pink;
+    color: pink;
 }
 
 .dialogs_items .active {

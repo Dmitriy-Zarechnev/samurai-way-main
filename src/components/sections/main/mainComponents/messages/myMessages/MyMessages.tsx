@@ -1,8 +1,8 @@
 import React from 'react'
 import classes from './MyMessages.module.css'
-import Message from './message/Message'
+import Message, {MessagesDataType} from './message/Message'
 
-const messagesData = [
+const messagesData:Array<MessagesDataType> = [
     {id: 1, message: 'hello'},
     {id: 2, message: 'hi'},
     {id: 3, message: 'qwerty'},
@@ -15,12 +15,7 @@ const MyMessages: React.FC = () => {
     return (
         <div className={classes.messages}>
             <h3 className={classes.messages_header}>Messages</h3>
-
-            <Message message={'hello'}/>
-            <Message message={'hi'}/>
-            <Message message={'qwerty'}/>
-            <Message message={'food'}/>
-            <Message message={'drink'}/>
+            <Message message={messagesData}/>
         </div>
     )
 }
