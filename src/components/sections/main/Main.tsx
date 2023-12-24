@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarLeft from '../navBarLeft/NavbarLeft'
+import NavbarLeft from './navBarLeft/NavbarLeft'
 import classes from './Main.module.css'
 import MainComponents from './mainComponents/MainComponents'
 

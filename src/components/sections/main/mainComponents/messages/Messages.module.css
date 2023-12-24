@@ -1,21 +1,7 @@
 .dialogs {
     background-color: green;
     display: flex;
-
 }
 
-.dialogs_items {
-    max-width: 150px;
-    width: 100%;
-}
 
-.dialogs_header {
-}
-
-.messages {
-    flex: 1 1 auto;
-}
-
-.messages_header {
-}
 
