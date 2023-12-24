@@ -2,7 +2,12 @@ import React from 'react'
 import classes from './Post.module.css'
 import picture from '../../../../../../../assets/images/Cupcake.jpg'
 
-const Post: React.FC<{ message: string, likesCount: number }> = (props: { message: string, likesCount: number }) => {
+type PostPropsType = {
+    message: string,
+    likesCount: number
+}
+
+const Post: React.FC<PostPropsType> = (props: PostPropsType) => {
     return (
         <div className={classes.post}>
             <img src={picture} alt="picture"/>

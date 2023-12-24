@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../../assets/images/logo.svg'
 import classes from './Footer.module.css'
 
-const Footer = () => {
+const Footer:React.FC = () => {
     return (
         <footer className={classes.app_footer}>
             <div className={classes.footer}>
