@@ -1,0 +1,13 @@
+.dialog {
+    list-style: none;
+    text-decoration: none;
+}
+
+.dialog a {
+    text-decoration: none;
+    color:pink;
+}
+
+.dialogs_items .active {
+    color: blue;
+}

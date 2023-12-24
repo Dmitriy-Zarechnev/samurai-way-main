@@ -1,11 +1,7 @@
 import React from 'react'
 import classes from './Messages.module.css'
-import {NavLink} from 'react-router-dom'
-
-type DialogItemPropsType = {
-    name: string,
-    id: string
-}
+import Message from './message/Message'
+import DialogItem from './dialogItem/DialogItem'
 
 
 const Messages: React.FC = () => {
@@ -31,21 +27,6 @@ const Messages: React.FC = () => {
                 <Message message={'drink'}/>
             </div>
         </section>
-    )
-}
-
-
-const DialogItem: React.FC<DialogItemPropsType> = (props: DialogItemPropsType) => {
-    return (
-        <li className={classes.dialog}>
-            <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
-        </li>
-    )
-}
-
-const Message: React.FC<{ message: string }> = (props: { message: string }) => {
-    return (
-        <div className={classes.message}>{props.message}</div>
     )
 }
 

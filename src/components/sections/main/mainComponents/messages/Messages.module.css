@@ -12,20 +12,6 @@
 .dialogs_header {
 }
 
-.dialog {
-    list-style: none;
-    text-decoration: none;
-}
-
-.dialog a {
-    text-decoration: none;
-    color:pink;
-}
-
-.dialogs_items .active {
-    color: blue;
-}
-
 .messages {
     flex: 1 1 auto;
 }
@@ -33,5 +19,3 @@
 .messages_header {
 }
 
-.message {
-}
