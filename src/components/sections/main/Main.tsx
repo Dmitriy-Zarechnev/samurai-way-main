@@ -1,13 +1,13 @@
 import React from 'react'
 import NavbarLeft from './navBarLeft/NavbarLeft'
 import classes from './Main.module.css'
-import MainComponents from './mainComponents/MainComponents'
+import MainComponents, {MessagesPropsType} from './mainComponents/MainComponents'
 
-const Main: React.FC = () => {
+const Main: React.FC<MessagesPropsType> = (props: MessagesPropsType) => {
     return (
         <main className={classes.app_main}>
             <NavbarLeft/>
-            <MainComponents/>
+            <MainComponents postsData={props.postsData} dialogsData={props.dialogsData} messagesData={props.messagesData}/>
         </main>
     )
 }

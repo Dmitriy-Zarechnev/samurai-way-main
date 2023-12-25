@@ -9,7 +9,6 @@ export type PostsDataType = {
     likesCount: number
 }
 
-
 export type PostPropsType = {
     postsData: Array<PostsDataType>
 }
