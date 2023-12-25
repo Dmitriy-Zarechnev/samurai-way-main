@@ -7,7 +7,7 @@ export type DialogsDataType = {
     name: string
 }
 
-type DialogItemPropsType = {
+export type DialogItemPropsType = {
     dialogsData: Array<DialogsDataType>
 }
 

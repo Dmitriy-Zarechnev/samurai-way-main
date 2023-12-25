@@ -6,14 +6,14 @@ export type MessagesDataType = {
     message: string
 }
 
-type MessagePropsType = {
-    message: Array<MessagesDataType>
+export type MessagePropsType = {
+    messagesData: Array<MessagesDataType>
 }
 
 const Message: React.FC<MessagePropsType> = (props: MessagePropsType) => {
     return (
         <ul className={classes.messages_list}>
-            {props.message.map((el: MessagesDataType) => {
+            {props.messagesData.map((el: MessagesDataType) => {
                 return <li key={el.id} className={classes.message}>{el.message}</li>
             })}
         </ul>

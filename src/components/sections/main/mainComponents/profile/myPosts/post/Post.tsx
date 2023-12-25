@@ -10,7 +10,7 @@ export type PostsDataType = {
 }
 
 
-type PostPropsType = {
+export type PostPropsType = {
     postsData: Array<PostsDataType>
 }
 
