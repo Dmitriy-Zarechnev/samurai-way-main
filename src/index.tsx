@@ -6,7 +6,6 @@ import {PostsDataType} from './components/sections/main/mainComponents/profile/m
 import {DialogsDataType} from './components/sections/main/mainComponents/messages/myDialogs/dialogItem/DialogItem'
 import {MessagesDataType} from './components/sections/main/mainComponents/messages/myMessages/message/Message'
 
-
 //  Данные для Profile
 const postsData: Array<PostsDataType> = [
     {id: 1, header: 'Begin', message: 'It is my first post', likesCount: 25},
