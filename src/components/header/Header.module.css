@@ -1,14 +1,12 @@
 .app_header {
     background-color: #31708E;
+    grid-area: H;
+
+    padding: 10px 10px;
 }
 
-.header {
-    padding: 10px 0;
-    margin: 0 auto;
-    width: 1200px;
+.app_header img {
+    width: 80px;
+    height: 80px;
 }
 
-.header img {
-    width: 100px;
-    height: 100px;
-}

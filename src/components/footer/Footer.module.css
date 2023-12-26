@@ -1,14 +1,14 @@
-.app_footer{
+.app_footer {
     background-color: #687864;
+    grid-area: F;
+    padding: 5px 10px;
 }
 
-.footer {
-    padding: 5px 0;
-    margin: 0 auto;
-    width: 1200px;
+.app_footer img {
+    width: 40px;
+    height: 40px;
 }
 
-.footer img {
-    width: 70px;
-    height: 70px;
-}
+
+
+

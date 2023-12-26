@@ -1,8 +1,5 @@
 .app_main {
-    flex-grow: 1;
-    margin: 0 auto;
-    width: 1200px;
+    grid-area: M;
 
-    display: flex;
 }
 

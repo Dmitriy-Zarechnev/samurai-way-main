@@ -5,7 +5,7 @@ import ProfileInfo from './profileInfo/ProfileInfo'
 import {PostPropsType} from './myPosts/post/Post'
 
 
-const Profile: React.FC<PostPropsType> = (props:PostPropsType ) => {
+const Profile: React.FC<PostPropsType> = (props: PostPropsType) => {
     return (
         <section className={classes.content}>
             <ProfileInfo/>

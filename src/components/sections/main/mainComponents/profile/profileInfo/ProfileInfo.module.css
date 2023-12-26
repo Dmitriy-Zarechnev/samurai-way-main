@@ -1,8 +1,13 @@
+.prof {
+    max-height: 250px;
+    overflow: auto;
+}
+
 .img {
-    height: 200px;
+    height: 150px;
     object-fit: cover;
 }
 
-.text{
+.text {
     padding: 10px;
 }

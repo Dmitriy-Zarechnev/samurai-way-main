@@ -1,3 +1,4 @@
 .content {
-    flex-grow: 1;
+    grid-area: M;
+    overflow: hidden;
 }
