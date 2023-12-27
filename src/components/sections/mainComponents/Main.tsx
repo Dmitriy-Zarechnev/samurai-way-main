@@ -14,13 +14,13 @@ export type MessagesPropsType = {} & MessagePropsType & DialogItemPropsType & Po
 
 const Main: React.FC<MessagesPropsType> = (props: MessagesPropsType) => {
     return (
-        <section className={classes.content}>
+        <div className={classes.content}>
             <Route path="/profile" render={() => <Profile postsData={props.postsData}/>}/>
             <Route path="/messages" render={() => <Messages dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
             <Route path="/settings" render={() => <Settings/>}/>
-        </section>
+        </div>
     )
 }
 
