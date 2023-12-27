@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {PostsDataType} from './components/sections/main/mainComponents/profile/myPosts/post/Post'
-import {DialogsDataType} from './components/sections/main/mainComponents/messages/myDialogs/dialogItem/DialogItem'
-import {MessagesDataType} from './components/sections/main/mainComponents/messages/myMessages/message/Message'
+import {PostsDataType} from './components/sections/mainComponents/profile/myPosts/post/Post'
+import {DialogsDataType} from './components/sections/mainComponents/messages/myDialogs/dialogItem/DialogItem'
+import {MessagesDataType} from './components/sections/mainComponents/messages/myMessages/message/Message'
 
 //  Данные для Profile
 const postsData: Array<PostsDataType> = [
