@@ -1,6 +1,10 @@
 .messages {
     flex: 1 1 auto;
+    padding: 0 10px;
 }
 
 .messages_header {
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 5px;
 }

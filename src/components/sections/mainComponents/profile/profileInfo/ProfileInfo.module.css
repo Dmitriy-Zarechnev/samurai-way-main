@@ -1,6 +1,7 @@
 .prof {
-    max-height: 250px;
+    height: 200px;
     overflow: auto;
+    margin-bottom: 10px;
 }
 
 .img {
@@ -9,5 +10,5 @@
 }
 
 .text {
-    padding: 10px;
+
 }

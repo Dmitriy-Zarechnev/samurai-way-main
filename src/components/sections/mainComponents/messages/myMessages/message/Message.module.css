@@ -1,5 +1,7 @@
-.messages_list{
+.messages_list {
     list-style: none;
+    overflow: auto;
+    height: calc(100% - 35px);
 }
 
 .message {

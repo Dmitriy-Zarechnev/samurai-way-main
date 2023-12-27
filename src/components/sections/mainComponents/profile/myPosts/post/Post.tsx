@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from './Post.module.css'
-import picture from '../../../../../../assets/images/Cupcake.jpg'
 
 export type PostsDataType = {
     id: number,
     header: string,
+    src: string,
     message: string,
     likesCount: number
 }
@@ -20,7 +20,7 @@ const Post: React.FC<PostPropsType> = (props: PostPropsType) => {
                 return (
                     <div key={el.id}>
                         <h4>{el.header}</h4>
-                        <img src={picture} alt="picture"/>
+                        <img src={el.src} alt="picture"/>
                         <span className={classes.item}>{el.message}</span>
                         <div>
                             {el.likesCount} likes

@@ -1,7 +1,5 @@
 .my_Posts {
-    padding: 10px;
     overflow: auto;
-    /*height: 500px;*/
-    height: calc(100% - 250px);
+    height: calc(100% - 210px);
 }
 

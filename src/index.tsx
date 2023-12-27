@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import img1 from './assets/images/Cupcake.jpg'
 import {PostsDataType} from './components/sections/mainComponents/profile/myPosts/post/Post'
 import {DialogsDataType} from './components/sections/mainComponents/messages/myDialogs/dialogItem/DialogItem'
 import {MessagesDataType} from './components/sections/mainComponents/messages/myMessages/message/Message'
 
 //  Данные для Profile
 const postsData: Array<PostsDataType> = [
-    {id: 1, header: 'Begin', message: 'It is my first post', likesCount: 25},
-    {id: 2, header: 'Process', message: 'It is my second post', likesCount: 40},
-    {id: 3, header: 'End', message: 'It is my third post', likesCount: 52}
+    {id: 1, header: 'Begin', src: img1, message: 'It is my first post', likesCount: 25},
+    {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
+    {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
 ]
 
 // Данные для Message
@@ -22,7 +23,7 @@ const dialogsData: Array<DialogsDataType> = [
     {id: 5, name: 'Dworf'}
 ]
 
-const messagesData:Array<MessagesDataType> = [
+const messagesData: Array<MessagesDataType> = [
     {id: 1, message: 'hello'},
     {id: 2, message: 'hi'},
     {id: 3, message: 'qwerty'},
@@ -36,5 +37,5 @@ ReactDOM.render(
          dialogsData={dialogsData}
          messagesData={messagesData}
     />,
-  document.getElementById('root')
-);
+    document.getElementById('root')
+)

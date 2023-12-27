@@ -1,5 +1,6 @@
 .dialog_list {
-
+    overflow: auto;
+    height: calc(100% - 35px);
 }
 
 .dialog {
