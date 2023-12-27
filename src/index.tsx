@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import img1 from './assets/images/Cupcake.jpg'
-import {PostsDataType} from './components/sections/mainComponents/profile/myPosts/post/Post'
-import {DialogsDataType} from './components/sections/mainComponents/messages/myDialogs/dialogItem/DialogItem'
-import {MessagesDataType} from './components/sections/mainComponents/messages/myMessages/message/Message'
+import {PostsDataType} from './components/sections/main/profile/myPosts/post/Post'
+import {DialogsDataType} from './components/sections/main/messages/myDialogs/dialogItem/DialogItem'
+import {MessagesDataType} from './components/sections/main/messages/myMessages/message/Message'
+
 
 //  Данные для Profile
 const postsData: Array<PostsDataType> = [

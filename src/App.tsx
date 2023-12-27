@@ -3,8 +3,8 @@ import './App.css'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
-import Main, {MessagesPropsType} from './components/sections/mainComponents/Main'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
+import Main, {MessagesPropsType} from './components/sections/main/Main'
 
 
 function App(props: MessagesPropsType) {
