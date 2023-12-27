@@ -12,8 +12,10 @@ function App(props: MessagesPropsType) {
         <BrowserRouter>
             <div className={'app-body'}>
                 <Header/>
+
                 <NavbarLeft/>
                 <Main postsData={props.postsData} dialogsData={props.dialogsData} messagesData={props.messagesData}/>
+
                 <Footer/>
             </div>
         </BrowserRouter>
