@@ -5,17 +5,37 @@
 }
 
 .my_posts__header {
-
+text-align: center;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 5px;
 }
 
 .my_posts__new_post {
 
 }
 
-.my_posts__textarea {
-    display: block;
+.my_posts__input_label{
+    cursor: pointer;
 }
 
-.classes.my_posts__button {
+.my_posts__input{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.my_posts__textarea {
     display: block;
+    resize: none;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.my_posts__button {
+
+    display: block;
+    text-transform: capitalize;
 }
