@@ -21,15 +21,6 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsDa
         };
 
 
-
-    // let newPostEl = useRef<HTMLTextAreaElement>(null)
-    // let newPostElHead = useRef<HTMLTextAreaElement>(null)
-    // const addNewPost = () => {
-    //     if (newPostEl.current !== null) {
-    //         alert(`${newPostElHead.current.value} ${newPostEl.current.value}`)
-    //     }
-    // }
-
     return (
         <div className={classes.my_posts}>
             <h3 className={classes.my_posts__header}>My posts</h3>
