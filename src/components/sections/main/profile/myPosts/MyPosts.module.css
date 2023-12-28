@@ -1,5 +1,8 @@
-.my_Posts {
+.my_posts {
     overflow: auto;
     height: calc(100% - 210px);
 }
 
+.my_posts__header{
+
+}

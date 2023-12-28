@@ -1,9 +1,9 @@
-.dialogs_items {
+.my_dialogs {
     max-width: 150px;
     width: 100%;
 }
 
-.dialogs_header {
+.my_dialogs__header {
     font-size: 25px;
     line-height: 1.2;
     margin-bottom: 5px;

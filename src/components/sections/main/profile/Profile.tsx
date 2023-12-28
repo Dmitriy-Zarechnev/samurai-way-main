@@ -7,7 +7,7 @@ import {ProfilePagePropsType} from '../../../../redux/state'
 
 const Profile: React.FC<{ state: ProfilePagePropsType }> = (props: { state: ProfilePagePropsType }) => {
     return (
-        <section className={classes.content}>
+        <section className={classes.app_profile}>
             <ProfileInfo/>
             <MyPosts postsData={props.state.postsData}/>
         </section>

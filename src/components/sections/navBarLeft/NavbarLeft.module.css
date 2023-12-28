@@ -1,20 +1,18 @@
-.nav {
+.navbar_Left {
     background-color: #5085A5;
     padding: 20px;
     grid-area: N;
 }
 
-.item {
+.navbar_Left__item {
     list-style: none;
-    color: red;
-    text-decoration: none;
 }
 
-.item a {
+.navbar_Left__item a {
     color: white;
     text-decoration: none;
 }
 
-.item a.active {
+.navbar_Left__item a.active {
     color: green
 }

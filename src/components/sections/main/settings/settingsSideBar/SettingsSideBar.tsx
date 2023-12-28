@@ -3,7 +3,7 @@ import classes from './SettingSideBar.module.css'
 
 const SettingsSideBar:React.FC = () => {
     return (
-        <div className={classes.item}>
+        <div className={classes.settings_sidebar}>
             Hello
         </div>
     )

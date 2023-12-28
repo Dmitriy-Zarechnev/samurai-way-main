@@ -1,16 +1,15 @@
-.prof {
+.profile_info {
     height: 200px;
     overflow: auto;
     margin-bottom: 10px;
 }
 
-.img {
+.profile_info__img {
     height: 150px;
     object-fit: cover;
     display: block;
     margin: 0 auto;
 }
 
-.text {
-
+.profile_info__text {
 }

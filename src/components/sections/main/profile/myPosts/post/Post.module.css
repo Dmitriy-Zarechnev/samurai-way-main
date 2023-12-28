@@ -1,5 +1,8 @@
 .post {
 }
+.post__item{
+
+}
 
 .post img {
     width: 150px;
@@ -7,6 +10,6 @@
     object-fit: cover;
 }
 
-.item {
+.post__item_message {
     color: #e81212;
 }

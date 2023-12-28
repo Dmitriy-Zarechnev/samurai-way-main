@@ -9,10 +9,10 @@ const Post: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsData:
         <div className={classes.post}>
             {props.postsData.map((el: PostsDataType) => {
                 return (
-                    <div key={el.id}>
+                    <div className={classes.post__item} key={el.id}>
                         <h4>{el.header}</h4>
                         <img src={el.src} alt="picture"/>
-                        <span className={classes.item}>{el.message}</span>
+                        <span className={classes.post__item_message}>{el.message}</span>
                         <div>
                             {el.likesCount} likes
                         </div>

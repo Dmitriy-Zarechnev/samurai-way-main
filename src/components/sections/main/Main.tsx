@@ -11,7 +11,7 @@ import {StateDataType} from '../../../redux/state'
 
 const Main: React.FC<{ state: StateDataType }> = (props: { state: StateDataType }) => {
     return (
-        <div className={classes.content}>
+        <div className={classes.app_main}>
             <Route path="/profile" render={() =>
                 <Profile state={props.state.profilePage}
                 />}/>

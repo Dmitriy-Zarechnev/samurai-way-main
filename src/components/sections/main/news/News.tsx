@@ -6,7 +6,7 @@ import NewsSideBar from './newsSideBar/NewsSideBar'
 const News: React.FC = () => {
     return (
         <section className={classes.news}>
-            <h2 className={classes.header}>News</h2>
+            <h2 className={classes.news__header}>News</h2>
             <NewsData/>
             <NewsSideBar/>
         </section>

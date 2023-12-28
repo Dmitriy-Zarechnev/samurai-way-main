@@ -6,8 +6,8 @@ import {DialogsDataType} from '../../../../../redux/state'
 
 const MyDialogs: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props: { dialogsData: Array<DialogsDataType> } ) => {
     return (
-        <div className={classes.dialogs_items}>
-            <h3 className={classes.dialogs_header}>Dialogs</h3>
+        <div className={classes.my_dialogs}>
+            <h3 className={classes.my_dialogs__header}>Dialogs</h3>
 
             <DialogItem dialogsData={props.dialogsData}/>
         </div>

@@ -1,18 +1,13 @@
-.dialog_list {
+.dialog_items {
     overflow: auto;
     height: calc(100% - 35px);
 }
 
-.dialog {
-    list-style: none;
-    text-decoration: none;
-}
-
-.dialog a {
+.dialog_items a {
     text-decoration: none;
     color: pink;
 }
 
-.dialogs_items .active {
+.dialog_items__item .active {
     color: blue;
 }

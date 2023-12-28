@@ -3,7 +3,7 @@ import classes from './SettingData.module.css'
 
 const SettingsData: React.FC = () => {
     return (
-        <div className={classes.item}>
+        <div className={classes.settings_data}>
             Hello
         </div>
     )

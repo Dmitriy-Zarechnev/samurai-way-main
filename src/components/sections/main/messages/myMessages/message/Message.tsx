@@ -5,9 +5,9 @@ import {MessagesDataType} from '../../../../../../redux/state'
 
 const Message: React.FC<{ messagesData: Array<MessagesDataType> }> = (props: { messagesData: Array<MessagesDataType>}) => {
     return (
-        <ul className={classes.messages_list}>
+        <ul className={classes.message_list}>
             {props.messagesData.map((el: MessagesDataType) => {
-                return <li key={el.id} className={classes.message}>{el.message}</li>
+                return <li key={el.id} className={classes.message_list__item}>{el.message}</li>
             })}
         </ul>
     )

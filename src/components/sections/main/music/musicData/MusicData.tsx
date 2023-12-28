@@ -3,7 +3,7 @@ import classes from './MusicData.module.css'
 
 const MusicData:React.FC = () => {
     return (
-        <div className={classes.item}>
+        <div className={classes.music_data}>
             Why
         </div>
     )

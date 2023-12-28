@@ -9,6 +9,6 @@
             'SD SSB';
 }
 
-.header {
+.settings__header {
     grid-area: SH;
 }

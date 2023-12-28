@@ -3,7 +3,7 @@ import classes from './NewsSideBar.module.css'
 
 const NewsSideBar:React.FC = () => {
     return (
-        <div className={classes.item}>
+        <div className={classes.news_sidebar}>
             Where
         </div>
     )

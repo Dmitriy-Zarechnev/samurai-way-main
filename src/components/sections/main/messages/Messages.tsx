@@ -7,7 +7,7 @@ import {MessagesPagePropsType} from '../../../../redux/state'
 
 const Messages: React.FC<{state: MessagesPagePropsType}> = (props: {state: MessagesPagePropsType}) => {
     return (
-        <section className={classes.dialogs}>
+        <section className={classes.messages}>
             <MyDialogs dialogsData={props.state.dialogsData}/>
             <MyMessages messagesData={props.state.messagesData}/>
         </section>
