@@ -2,6 +2,7 @@
     height: 200px;
     overflow: auto;
     margin-bottom: 10px;
+    grid-area: PI;
 }
 
 .profile_info__img {

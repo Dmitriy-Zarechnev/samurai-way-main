@@ -1,0 +1,8 @@
+.friends_sidebar{
+    background-color: yellow;
+    grid-area: FSB;
+}
+
+.friends_sidebar__header{
+    color: blueviolet;
+}

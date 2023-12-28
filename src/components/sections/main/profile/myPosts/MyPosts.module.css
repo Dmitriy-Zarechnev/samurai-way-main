@@ -1,6 +1,7 @@
 .my_posts {
     overflow: auto;
     height: calc(100% - 210px);
+    grid-area: MP;
 }
 
 .my_posts__header{
