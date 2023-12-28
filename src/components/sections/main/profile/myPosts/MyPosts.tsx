@@ -7,13 +7,28 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsDa
 
 
     // Связали textarea и button
-    let newPostEl = useRef<HTMLTextAreaElement>(null)
 
-    const addNewPost = () => {
-        if (newPostEl.current !== null) {
-            alert(newPostEl.current.value)
-        }
-    }
+        const inputRefs = {
+            newPostElHead: useRef<HTMLInputElement>(null),
+            newPostEl: useRef<HTMLTextAreaElement>(null),
+        };
+
+        const addNewPost = () => {
+            const headerValue = inputRefs.newPostElHead.current?.value || '';
+            const postValue = inputRefs.newPostEl.current?.value || '';
+
+            alert(`${headerValue} ${postValue}`);
+        };
+
+
+
+    // let newPostEl = useRef<HTMLTextAreaElement>(null)
+    // let newPostElHead = useRef<HTMLTextAreaElement>(null)
+    // const addNewPost = () => {
+    //     if (newPostEl.current !== null) {
+    //         alert(`${newPostElHead.current.value} ${newPostEl.current.value}`)
+    //     }
+    // }
 
     return (
         <div className={classes.my_posts}>
@@ -21,9 +36,9 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsDa
 
             <div className={classes.my_posts__new_post}>
                 <label htmlFor="headerAddPost" className={classes.my_posts__input_label}>Header</label>
-                <input id={'headerAddPost'} className={classes.my_posts__input} type="text"/>
+                <input ref={inputRefs.newPostElHead} id={'headerAddPost'} className={classes.my_posts__input} type="text"/>
 
-                <textarea ref={newPostEl} className={classes.my_posts__textarea}></textarea>
+                <textarea ref={inputRefs.newPostEl} className={classes.my_posts__textarea}></textarea>
 
                 <button
                     onClick={addNewPost} className={classes.my_posts__button}>

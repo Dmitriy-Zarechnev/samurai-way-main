@@ -5,10 +5,10 @@
 }
 
 .my_posts__header {
-text-align: center;
+    text-align: center;
     font-size: 25px;
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 5px;
 }
@@ -17,11 +17,17 @@ text-align: center;
 
 }
 
-.my_posts__input_label{
+.my_posts__input_label {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: lawngreen;
+
     cursor: pointer;
 }
 
-.my_posts__input{
+.my_posts__input {
     width: 100%;
     margin-bottom: 5px;
 }
