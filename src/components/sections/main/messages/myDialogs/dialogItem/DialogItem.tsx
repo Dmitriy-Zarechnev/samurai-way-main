@@ -1,17 +1,10 @@
 import React from 'react'
 import classes from './DialogItem.module.css'
 import {NavLink} from 'react-router-dom'
+import {DialogsDataType} from '../../../../../../redux/state'
 
-export type DialogsDataType = {
-    id: number,
-    name: string
-}
 
-export type DialogItemPropsType = {
-    dialogsData: Array<DialogsDataType>
-}
-
-const DialogItem: React.FC<DialogItemPropsType> = (props: DialogItemPropsType) => {
+const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props: { dialogsData: Array<DialogsDataType> }) => {
     return (
         <ul className={classes.dialog_list}>
             {props.dialogsData.map((el: DialogsDataType) => {

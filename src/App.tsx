@@ -4,16 +4,17 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
-import Main, {MessagesPropsType} from './components/sections/main/Main'
+import Main from './components/sections/main/Main'
+import {StateDataType} from './redux/state'
 
 
-function App(props: MessagesPropsType) {
+function App(props: {state:StateDataType}) {
     return (
         <BrowserRouter>
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>
-                <Main postsData={props.postsData} dialogsData={props.dialogsData} messagesData={props.messagesData}/>
+                <Main state={props.state} />
                 <Footer/>
             </div>
         </BrowserRouter>

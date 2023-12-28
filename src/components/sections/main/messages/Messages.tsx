@@ -2,16 +2,14 @@ import React from 'react'
 import classes from './Messages.module.css'
 import MyDialogs from './myDialogs/MyDialogs'
 import MyMessages from './myMessages/MyMessages'
-import {DialogItemPropsType} from './myDialogs/dialogItem/DialogItem'
-import {MessagePropsType} from './myMessages/message/Message'
+import {MessagesPagePropsType} from '../../../../redux/state'
 
-export type MessagesPropsType = {} & MessagePropsType & DialogItemPropsType
 
-const Messages: React.FC<MessagesPropsType> = (props: MessagesPropsType) => {
+const Messages: React.FC<{state: MessagesPagePropsType}> = (props: {state: MessagesPagePropsType}) => {
     return (
         <section className={classes.dialogs}>
-            <MyDialogs dialogsData={props.dialogsData}/>
-            <MyMessages messagesData={props.messagesData}/>
+            <MyDialogs dialogsData={props.state.dialogsData}/>
+            <MyMessages messagesData={props.state.messagesData}/>
         </section>
     )
 }

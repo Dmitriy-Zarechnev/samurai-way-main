@@ -1,16 +1,9 @@
 import React from 'react'
 import classes from './Message.module.css'
+import {MessagesDataType} from '../../../../../../redux/state'
 
-export type MessagesDataType = {
-    id: number,
-    message: string
-}
 
-export type MessagePropsType = {
-    messagesData: Array<MessagesDataType>
-}
-
-const Message: React.FC<MessagePropsType> = (props: MessagePropsType) => {
+const Message: React.FC<{ messagesData: Array<MessagesDataType> }> = (props: { messagesData: Array<MessagesDataType>}) => {
     return (
         <ul className={classes.messages_list}>
             {props.messagesData.map((el: MessagesDataType) => {

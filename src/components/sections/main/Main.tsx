@@ -6,17 +6,20 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {DialogItemPropsType} from './messages/myDialogs/dialogItem/DialogItem'
-import {MessagePropsType} from './messages/myMessages/message/Message'
-import {PostPropsType} from './profile/myPosts/post/Post'
+import {StateDataType} from '../../../redux/state'
 
-export type MessagesPropsType = {} & MessagePropsType & DialogItemPropsType & PostPropsType
 
-const Main: React.FC<MessagesPropsType> = (props: MessagesPropsType) => {
+const Main: React.FC<{ state: StateDataType }> = (props: { state: StateDataType }) => {
     return (
         <div className={classes.content}>
-            <Route path="/profile" render={() => <Profile postsData={props.postsData}/>}/>
-            <Route path="/messages" render={() => <Messages dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
+            <Route path="/profile" render={() =>
+                <Profile state={props.state.profilePage}
+                />}/>
+
+            <Route path="/messages" render={() =>
+                <Messages state={props.state.messagesPage}
+                />}/>
+
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
             <Route path="/settings" render={() => <Settings/>}/>

@@ -2,14 +2,14 @@ import React from 'react'
 import classes from './Profile.module.css'
 import MyPosts from './myPosts/MyPosts'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import {PostPropsType} from './myPosts/post/Post'
+import {ProfilePagePropsType} from '../../../../redux/state'
 
 
-const Profile: React.FC<PostPropsType> = (props: PostPropsType) => {
+const Profile: React.FC<{ state: ProfilePagePropsType }> = (props: { state: ProfilePagePropsType }) => {
     return (
         <section className={classes.content}>
             <ProfileInfo/>
-            <MyPosts postsData={props.postsData}/>
+            <MyPosts postsData={props.state.postsData}/>
         </section>
     )
 }

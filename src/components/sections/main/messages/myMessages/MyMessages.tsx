@@ -1,8 +1,10 @@
 import React from 'react'
 import classes from './MyMessages.module.css'
-import Message, {MessagePropsType} from './message/Message'
+import Message from './message/Message'
+import {MessagesDataType} from '../../../../../redux/state'
 
-const MyMessages: React.FC<MessagePropsType> = (props: MessagePropsType) => {
+
+const MyMessages: React.FC<{messagesData: Array<MessagesDataType>}> = (props:{messagesData: Array<MessagesDataType>}) => {
     return (
         <div className={classes.messages}>
             <h3 className={classes.messages_header}>Messages</h3>

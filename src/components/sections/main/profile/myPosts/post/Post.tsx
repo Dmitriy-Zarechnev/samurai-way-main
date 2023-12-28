@@ -1,19 +1,10 @@
 import React from 'react'
 import classes from './Post.module.css'
+import {PostsDataType} from '../../../../../../redux/state'
 
-export type PostsDataType = {
-    id: number,
-    header: string,
-    src: string,
-    message: string,
-    likesCount: number
-}
 
-export type PostPropsType = {
-    postsData: Array<PostsDataType>
-}
 
-const Post: React.FC<PostPropsType> = (props: PostPropsType) => {
+const Post: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsData: Array<PostsDataType> }) => {
     return (
         <div className={classes.post}>
             {props.postsData.map((el: PostsDataType) => {
