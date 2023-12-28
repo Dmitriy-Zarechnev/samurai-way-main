@@ -3,6 +3,7 @@
     overflow: auto;
     margin-bottom: 10px;
     grid-area: PI;
+    padding: 0 5px 0 2px;
 }
 
 .profile_info__img {

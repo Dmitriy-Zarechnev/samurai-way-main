@@ -1,9 +1,21 @@
 .my_posts {
     overflow: auto;
     grid-area: MP;
-    padding: 0 5px 0 0;
+    padding: 0 5px 0 2px;
 }
 
 .my_posts__header {
 
+}
+
+.my_posts__new_post {
+
+}
+
+.my_posts__textarea {
+    display: block;
+}
+
+.classes.my_posts__button {
+    display: block;
 }

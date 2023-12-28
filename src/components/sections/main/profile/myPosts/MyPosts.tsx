@@ -7,6 +7,10 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsDa
     return (
         <div className={classes.my_posts}>
             <h3 className={classes.my_posts__header}>My posts</h3>
+            <div className={classes.my_posts__new_post}>
+                <textarea className={classes.my_posts__textarea}></textarea>
+                <button className={classes.my_posts__button}>Add new post</button>
+            </div>
             <Post postsData={props.postsData}/>
         </div>
     )

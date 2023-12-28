@@ -37,7 +37,9 @@
 *::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track:horizontal {
     background-color: #F7F9FB;
+
 }
+
 
 *::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb:horizontal {
@@ -45,6 +47,7 @@
     border: 3px solid #F7F9FB;
     border-radius: 5px;
 }
+
 
 *::-webkit-scrollbar-thumb:hover,
 *::-webkit-scrollbar-thumb:horizontal:hover {
