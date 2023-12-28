@@ -1,0 +1,41 @@
+.friends_sidebar {
+    background-color: yellow;
+    grid-area: FSB;
+    padding: 0 5px 0 5px;
+    overflow: auto;
+}
+
+.friends_sidebar__header {
+    color: blueviolet;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.friends_sidebar__friend{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.friends_sidebar__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+
+    border: 2px solid  #0842f5 ;
+
+    border-radius: 50%;
+}
+
+.friends_sidebar__name {
+    font-size: 18px;
+    line-height: 1.2;
+    color: brown;
+    text-transform: capitalize;
+}

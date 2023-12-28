@@ -1,9 +1,9 @@
 .my_posts {
     overflow: auto;
-    height: calc(100% - 210px);
     grid-area: MP;
+    padding: 0 5px 0 0;
 }
 
-.my_posts__header{
+.my_posts__header {
 
 }

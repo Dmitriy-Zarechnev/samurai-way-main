@@ -19,6 +19,20 @@ export type PostsDataType = {
     likesCount: number
 }
 
+// Типизация для FriendsList
+export type FriendsListPropsType = {
+    FriendsList: Array<FriendsListDataType>
+}
+
+export type FriendsListDataType = {
+    id: number,
+    src: string,
+    name: string,
+    alt: string
+}
+
+
+
 // Типизация для MessagePage
 export type MessagesPagePropsType = {
     dialogsData: Array<DialogsDataType>,
@@ -34,6 +48,9 @@ export type DialogsDataType = {
     id: number,
     name: string
 }
+
+
+
 
 // Объект с общими данными
 let state = {

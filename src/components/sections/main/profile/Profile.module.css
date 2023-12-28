@@ -2,7 +2,12 @@
     padding: 10px 0 10px 10px;
     height: 100%;
 
-
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    grid-template-rows: 200px 1fr;
+    grid-template-areas:
+            'PI PI'
+            "MP FSB";
 }
 
 
