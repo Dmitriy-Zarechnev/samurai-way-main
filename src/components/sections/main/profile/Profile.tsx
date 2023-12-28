@@ -11,7 +11,7 @@ const Profile: React.FC<{ state: ProfilePagePropsType }> = (props: { state: Prof
         <section className={classes.app_profile}>
             <ProfileInfo/>
             <MyPosts postsData={props.state.postsData}/>
-            <FriendsSideBar/>
+            <FriendsSideBar friendsList={props.state.friendsList}/>
         </section>
     )
 }
