@@ -27,9 +27,9 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsDa
 
             <div className={classes.my_posts__new_post}>
                 <label htmlFor="headerAddPost" className={classes.my_posts__input_label}>Header</label>
-                <input ref={inputRefs.newPostElHead} id={'headerAddPost'} className={classes.my_posts__input} type="text"/>
+                <input ref={inputRefs.newPostElHead} id={'headerAddPost'} className={classes.my_posts__input} type="text" placeholder={'Post\'s Header ...'}/>
 
-                <textarea ref={inputRefs.newPostEl} className={classes.my_posts__textarea}></textarea>
+                <textarea ref={inputRefs.newPostEl} className={classes.my_posts__textarea} placeholder={'Your Post begins here ...'}></textarea>
 
                 <button
                     onClick={addNewPost} className={classes.my_posts__button}>
