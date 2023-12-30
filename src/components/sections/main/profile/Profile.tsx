@@ -6,7 +6,7 @@ import {ProfilePagePropsType} from '../../../../redux/state'
 import FriendsSideBar from './friendsSideBar/FriendsSideBar'
 
 
-const Profile: React.FC<{ state: ProfilePagePropsType }> = (props: { state: ProfilePagePropsType }) => {
+const Profile: React.FC<{ state: ProfilePagePropsType }> = (props) => {
     return (
         <section className={classes.app_profile}>
             <ProfileInfo/>

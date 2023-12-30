@@ -7,7 +7,7 @@ import itachiFriend from '../assets/images/webp/Itachi.webp'
 
 
 // Типизация для State
-export type StateDataType = {
+export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
     messagesPage: MessagesPagePropsType
 }
@@ -54,7 +54,7 @@ export type DialogsDataType = {
 
 
 // Объект с общими данными
-let state = {
+let state:RootStateDataType = {
     //  Данные для ProfilePage
     profilePage: {
         postsData: [

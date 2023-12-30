@@ -4,7 +4,7 @@ import Message from './message/Message'
 import {MessagesDataType} from '../../../../../redux/state'
 
 
-const MyMessages: React.FC<{messagesData: Array<MessagesDataType>}> = (props:{messagesData: Array<MessagesDataType>}) => {
+const MyMessages: React.FC<{messagesData: Array<MessagesDataType>}> = (props) => {
     return (
         <div className={classes.my_messages}>
             <h3 className={classes.my_messages__header}>Messages</h3>

@@ -3,22 +3,21 @@ import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {PostsDataType} from '../../../../../redux/state'
 
-const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props: { postsData: Array<PostsDataType> }) => {
-
+const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
 
     // Связали textarea и button
 
-        const inputRefs = {
-            newPostElHead: useRef<HTMLInputElement>(null),
-            newPostEl: useRef<HTMLTextAreaElement>(null),
-        };
+    const inputRefs = {
+        newPostElHead: useRef<HTMLInputElement>(null),
+        newPostEl: useRef<HTMLTextAreaElement>(null)
+    }
 
-        const addNewPost = () => {
-            const headerValue = inputRefs.newPostElHead.current?.value || '';
-            const postValue = inputRefs.newPostEl.current?.value || '';
+    const addNewPost = () => {
+        const headerValue = inputRefs.newPostElHead.current?.value || ''
+        const postValue = inputRefs.newPostEl.current?.value || ''
 
-            alert(`${headerValue} ${postValue}`);
-        };
+        alert(`${headerValue} ${postValue}`)
+    }
 
 
     return (

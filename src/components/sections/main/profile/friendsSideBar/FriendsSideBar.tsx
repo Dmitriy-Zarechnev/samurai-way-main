@@ -3,7 +3,7 @@ import classes from './FriendsSideBar.module.css'
 import {FriendsListDataType} from '../../../../../redux/state'
 
 
-const FriendsSideBar: React.FC<{friendsList: Array<FriendsListDataType>}> = ( props:{friendsList: Array<FriendsListDataType>}) => {
+const FriendsSideBar: React.FC<{friendsList: Array<FriendsListDataType>}> = ( props) => {
     return (
         <div className={classes.friends_sidebar}>
             <h3 className={classes.friends_sidebar__header}>My Friends</h3>

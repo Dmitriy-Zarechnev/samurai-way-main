@@ -5,10 +5,10 @@ import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
-import {StateDataType} from './redux/state'
+import {RootStateDataType} from './redux/state'
 
 
-function App(props: {state:StateDataType}) {
+function App(props: {state:RootStateDataType}) {
     return (
         <BrowserRouter>
             <div className={'app-body'}>
