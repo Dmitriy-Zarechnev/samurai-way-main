@@ -54,7 +54,7 @@ export type DialogsDataType = {
 
 
 // Объект с общими данными
-let state:RootStateDataType = {
+let state: RootStateDataType = {
     //  Данные для ProfilePage
     profilePage: {
         postsData: [

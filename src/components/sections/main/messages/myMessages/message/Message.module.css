@@ -1,7 +1,8 @@
 .message_list {
     list-style: none;
     overflow: auto;
-    height: calc(100% - 35px);
+    height: calc(100% - 30px - 160px);
+   margin-bottom: 5px;
 }
 
 .message_list__item {

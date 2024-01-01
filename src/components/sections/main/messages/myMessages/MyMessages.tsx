@@ -1,14 +1,36 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
 import {MessagesDataType} from '../../../../../redux/state'
 
 
-const MyMessages: React.FC<{messagesData: Array<MessagesDataType>}> = (props) => {
+const MyMessages: React.FC<{ messagesData: Array<MessagesDataType> }> = (props) => {
+
+    // Связали textarea и button
+    const newMessEl = useRef<HTMLTextAreaElement>(null)
+
+    // Функция срабатывающая при клике
+    const addNewMess = () => {
+        const textareaValue = newMessEl.current?.value || ''
+        alert(` ${textareaValue}`)
+    }
+
+
     return (
         <div className={classes.my_messages}>
             <h3 className={classes.my_messages__header}>Messages</h3>
             <Message messagesData={props.messagesData}/>
+            <div className={classes.my_messages__new_message}>
+
+                <textarea ref={newMessEl}
+                          className={classes.my_messages__textarea} placeholder={'Your message begins here ...'}>
+                </textarea>
+
+                <button onClick={addNewMess}
+                        className={classes.my_messages__button}>
+                    Add new message
+                </button>
+            </div>
         </div>
     )
 }

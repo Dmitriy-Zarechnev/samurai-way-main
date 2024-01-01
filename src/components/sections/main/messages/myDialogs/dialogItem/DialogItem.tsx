@@ -10,12 +10,15 @@ const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props) =>
             {props.dialogsData.map((el: DialogsDataType) => {
                 return (
                     <li key={el.id} className={classes.dialog_items__item}>
-                        <NavLink to={`/dialogs/${el.id}`} className={classes.dialog_items__link}>
+
+                        <NavLink to={`/messages/${el.id}`}
+                                 className={classes.dialog_items__link}>
                             <img className={classes.dialog_items__img}
                                  src={el.src}
                                  alt={el.alt}/>
                         </NavLink>
-                        <NavLink to={`/dialogs/${el.id}`}>
+
+                        <NavLink to={`/messages/${el.id}`}>
                             {el.name}
                         </NavLink>
                     </li>

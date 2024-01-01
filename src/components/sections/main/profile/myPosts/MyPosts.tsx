@@ -11,7 +11,8 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
         newPostEl: useRef<HTMLTextAreaElement>(null)
     }
 
-    const addNewPost = () => {
+    // Функция срабатывающая при клике
+        const addNewPost = () => {
         const headerValue = inputRefs.newPostElHead.current?.value || ''
         const postValue = inputRefs.newPostEl.current?.value || ''
 
