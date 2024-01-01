@@ -79,4 +79,17 @@ button:active {
     transform: scale(0.96);
 }
 
+a {
+    padding-bottom: 5px;
+    background: linear-gradient(black, red) 0 75% /0 2px no-repeat;
+    transition: .5s;
+    background-size: 0 3px;
+}
 
+a:hover {
+    background-size: 100% 3px;
+}
+
+/*a img {*/
+/*    */
+/*}*/
