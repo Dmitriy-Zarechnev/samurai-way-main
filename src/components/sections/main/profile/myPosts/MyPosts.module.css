@@ -14,7 +14,7 @@
 }
 
 .my_posts__new_post {
-
+    margin-bottom: 10px;
 }
 
 .my_posts__input_label {
@@ -22,26 +22,51 @@
     line-height: 1.2;
     font-weight: 600;
     text-transform: capitalize;
-    color: lawngreen;
+    color: black;
 
     cursor: pointer;
 }
 
+
 .my_posts__input {
+    padding: 5px;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.my_posts__input::placeholder {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: grey;
+    text-transform: capitalize;
 }
 
 .my_posts__textarea {
-    display: block;
     resize: none;
     height: 100px;
     width: 100%;
-    margin-bottom: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.my_posts__textarea::placeholder {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: grey;
+    text-transform: capitalize;
 }
 
 .my_posts__button {
-
     display: block;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: green;
     text-transform: capitalize;
+
+    background-color: black;
+    padding: 5px;
+    margin: 0 0 0 auto;
 }
