@@ -9,7 +9,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+}
+
+.dialog_items__link {
+    background: none;
+    padding-bottom: 0;
 }
 
 .dialog_items__img {
@@ -20,15 +24,12 @@
     border: 2px solid #0842f5;
     border-radius: 50%;
     cursor: pointer;
-
 }
 
 .dialog_items__item a {
-    text-decoration: none;
     font-size: 14px;
     line-height: 1.2;
     font-weight: 700;
     color: brown;
     text-transform: capitalize;
-
 }

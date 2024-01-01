@@ -8,11 +8,18 @@
     list-style: none;
 }
 
+.navbar_Left__item:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+
 .navbar_Left__item a {
     color: white;
     text-decoration: none;
 }
 
 .navbar_Left__item a.active {
+    background-size: 100% 3px;
     color: green
+
 }

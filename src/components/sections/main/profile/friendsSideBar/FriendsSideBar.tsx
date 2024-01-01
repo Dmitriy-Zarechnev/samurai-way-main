@@ -1,21 +1,36 @@
 import React from 'react'
 import classes from './FriendsSideBar.module.css'
 import {FriendsListDataType} from '../../../../../redux/state'
+import {NavLink} from 'react-router-dom'
 
 
-const FriendsSideBar: React.FC<{friendsList: Array<FriendsListDataType>}> = ( props) => {
+const FriendsSideBar: React.FC<{ friendsList: Array<FriendsListDataType> }> = (props) => {
     return (
-        <div className={classes.friends_sidebar}>
+        <ul className={classes.friends_sidebar}>
             <h3 className={classes.friends_sidebar__header}>My Friends</h3>
             {props.friendsList.map((el: FriendsListDataType) => {
                 return (
-                    <div className={classes.friends_sidebar__friend} key={el.id}>
-                        <img src={el.src} alt={el.alt} className={classes.friends_sidebar__img}/>
-                        <span className={classes.friends_sidebar__name}>{el.name}</span>
-                    </div>
+                    <li className={classes.friends_sidebar__friend}
+                        key={el.id}>
+
+                        <NavLink
+                            to={`/profile/${el.id}`}
+                            className={classes.friends_sidebar__link}>
+                            <img src={el.src}
+                                 alt={el.alt}
+                                 className={classes.friends_sidebar__img}/>
+                        </NavLink>
+
+                        <NavLink
+                            to={`/profile/${el.id}`}
+                            className={classes.friends_sidebar__name}>
+                            {el.name}
+                        </NavLink>
+
+                    </li>
                 )
             })}
-        </div>
+        </ul>
     )
 }
 

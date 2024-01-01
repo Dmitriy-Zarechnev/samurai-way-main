@@ -18,21 +18,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+}
+
+.friends_sidebar__link {
+    background: none;
+    padding-bottom: 0;
 }
 
 .friends_sidebar__img {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     border: 2px solid #0842f5;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .friends_sidebar__name {
     font-size: 18px;
     line-height: 1.2;
+    font-weight: 700;
     color: brown;
     text-transform: capitalize;
 }

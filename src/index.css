@@ -11,7 +11,7 @@
     }
 }
 
-/* Стили при выделении */
+/* Стили при выделении текста */
 *::selection {
     color: blueviolet;
     background-color: yellow;
@@ -55,13 +55,7 @@
     background-color: red;
 }
 
-
 body {
-    margin: 0;
-    padding: 0;
-
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
     background-color: #F7F9FB;
     overflow: hidden;
 }
@@ -71,15 +65,19 @@ button {
     transition: all .2s ease;
 }
 
+/* Стили для hover эффекта кнопки */
 button:hover {
     box-shadow: 0 0 0 2px #F7F9FB, 0 0 4px 4px red;
 }
 
+/* Стили при клике на кнопки */
 button:active {
     transform: scale(0.96);
 }
 
+/* Стили для hover эффекта ссылок */
 a {
+    text-decoration: none;
     padding-bottom: 5px;
     background: linear-gradient(black, red) 0 75% /0 2px no-repeat;
     transition: .5s;
@@ -90,6 +88,4 @@ a:hover {
     background-size: 100% 3px;
 }
 
-/*a img {*/
-/*    */
-/*}*/
+
