@@ -19,11 +19,15 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
 
         // Очищаем значения полей ввода
         if (inputRefs.newPostElHead.current) {
-            inputRefs.newPostElHead.current.value = '';
+            inputRefs.newPostElHead.current.value = ''
         }
         if (inputRefs.newPostEl.current) {
-            inputRefs.newPostEl.current.value = '';
+            inputRefs.newPostEl.current.value = ''
         }
+    }
+
+    let onPostChange = () => {
+
     }
 
 
@@ -41,8 +45,9 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
                        placeholder={'Write your post\'s Header ...'}/>
 
                 <textarea ref={inputRefs.newPostEl}
-                          className={classes.my_posts__textarea} placeholder={'Your Post begins here ...'}>
-                </textarea>
+                          onChange={onPostChange}
+                          className={classes.my_posts__textarea}
+                          placeholder={'Your Post begins here ...'}/>
 
                 <button
                     onClick={addNewPost}
