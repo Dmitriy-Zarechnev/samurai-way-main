@@ -21,9 +21,10 @@ const MyPosts: React.FC<{
         props.addPost()
     }
 
+    // Функция срабатывающая при изменении
     let onPostChange = () => {
-        let headerValue:string = inputRefs.newPostElHead.current?.value || ''
-        let postValue:string = inputRefs.newPostEl.current?.value || ''
+        let headerValue: string = inputRefs.newPostElHead.current?.value || ''
+        let postValue: string = inputRefs.newPostEl.current?.value || ''
         props.updateNewPostText(headerValue, postValue)
     }
 

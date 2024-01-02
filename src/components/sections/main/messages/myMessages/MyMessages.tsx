@@ -6,7 +6,9 @@ import {MessagesDataType} from '../../../../../redux/state'
 
 const MyMessages: React.FC<{
     messagesData: Array<MessagesDataType>,
-    sendMessg: (textMessage: string) => void
+    sendMessg: () => void,
+    newMessg: string,
+    updateNewSendMessg: (message: string) => void
 }> = (props) => {
 
     // Связали textarea и button
@@ -14,16 +16,15 @@ const MyMessages: React.FC<{
 
     // Функция срабатывающая при клике
     const addNewMess = () => {
-        const textareaValue = newMessEl.current?.value || ''
-
-        props.sendMessg(textareaValue)
-
-        // Очищаем значения поля ввода
-        if (newMessEl.current) {
-            newMessEl.current.value = ''
-        }
+        props.sendMessg()
     }
 
+// Функция срабатывающая при изменении
+    let onMessgChange = () => {
+        let textareaValue = newMessEl.current?.value || ''
+
+        props.updateNewSendMessg(textareaValue)
+    }
 
     return (
         <div className={classes.my_messages}>
@@ -32,7 +33,10 @@ const MyMessages: React.FC<{
             <div className={classes.my_messages__new_message}>
 
                 <textarea ref={newMessEl}
-                          className={classes.my_messages__textarea} placeholder={'Your message begins here ...'}>
+                          onChange={onMessgChange}
+                          value={props.newMessg}
+                          className={classes.my_messages__textarea}
+                          placeholder={'Your message begins here ...'}>
                 </textarea>
 
                 <button onClick={addNewMess}

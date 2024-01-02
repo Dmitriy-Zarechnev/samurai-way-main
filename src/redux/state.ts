@@ -19,8 +19,8 @@ export type SummaryStatePropsType = {
     state: RootStateDataType,
     addPost: () => void,
     updateNewPostText: (newHeaderText: string, newText: string) => void,
-    sendMessg: (textMessage: string) => void,
-
+    sendMessg: () => void,
+    updateNewSendMessg: (message: string) => void
 }
 
 
@@ -50,7 +50,8 @@ export type FriendsListDataType = {
 // Типизация для MessagePage
 export type MessagesPagePropsType = {
     dialogsData: Array<DialogsDataType>,
-    messagesData: Array<MessagesDataType>
+    messagesData: Array<MessagesDataType>,
+    newMessg: string,
 }
 
 export type MessagesDataType = {
@@ -151,7 +152,8 @@ let state: RootStateDataType = {
                 {id: 3, message: 'qwerty'},
                 {id: 4, message: 'food'},
                 {id: 5, message: 'drink'}
-            ]
+            ],
+        newMessg: ''
     }
 }
 
@@ -168,7 +170,7 @@ export let addPost = () => {
     state.profilePage.postsData.unshift(newPost)
     state.profilePage.newPost[0] = ''
     state.profilePage.newPost[1] = ''
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
 
@@ -176,19 +178,25 @@ export let updateNewPostText = (newHeaderText: string, newText: string) => {
     state.profilePage.newPost[0] = newHeaderText
     state.profilePage.newPost[1] = newText
 
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
 
 // Функции для отправки сообщений
-export let sendMessg = (textMessage: string) => {
+export let sendMessg = () => {
     let newMessg: MessagesDataType = {
         id: 6,
-        message: textMessage
+        message: state.messagesPage.newMessg
     }
 
     state.messagesPage.messagesData.push(newMessg)
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
+    state.messagesPage.newMessg = ''
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
+}
+
+export let updateNewSendMessg = (message: string) => {
+    state.messagesPage.newMessg = message
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
 

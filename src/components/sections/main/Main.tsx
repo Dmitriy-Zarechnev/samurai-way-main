@@ -6,7 +6,7 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {SummaryStatePropsType, updateNewPostText} from '../../../redux/state'
+import {SummaryStatePropsType} from '../../../redux/state'
 
 
 const Main: React.FC<SummaryStatePropsType> = (props) => {
@@ -23,6 +23,8 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
             <Route path="/messages" render={() =>
                 <Messages state={props.state.messagesPage}
                           sendMessg={props.sendMessg}
+                          updateNewSendMessg={props.updateNewSendMessg}
+                          newMessg={props.state.messagesPage.newMessg}
                 />}/>
 
             <Route path="/news" render={() => <News/>}/>

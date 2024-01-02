@@ -5,11 +5,20 @@ import MyMessages from './myMessages/MyMessages'
 import {MessagesPagePropsType} from '../../../../redux/state'
 
 
-const Messages: React.FC<{state: MessagesPagePropsType, sendMessg:(textMessage: string) => void}> = (props) => {
+const Messages: React.FC<{
+    state: MessagesPagePropsType,
+    sendMessg: () => void,
+    newMessg: string,
+    updateNewSendMessg: (message: string) => void
+}> = (props) => {
     return (
         <section className={classes.messages}>
             <MyDialogs dialogsData={props.state.dialogsData}/>
-            <MyMessages messagesData={props.state.messagesData} sendMessg={props.sendMessg}/>
+            <MyMessages messagesData={props.state.messagesData}
+                        sendMessg={props.sendMessg}
+                        newMessg={props.newMessg}
+                        updateNewSendMessg={props.updateNewSendMessg}
+            />
         </section>
     )
 }

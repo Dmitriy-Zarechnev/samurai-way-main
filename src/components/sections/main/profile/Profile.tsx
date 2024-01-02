@@ -15,7 +15,10 @@ const Profile: React.FC<{
     return (
         <section className={classes.app_profile}>
             <ProfileInfo/>
-            <MyPosts postsData={props.state.postsData} addPost={props.addPost} updateNewPostText={props.updateNewPostText} newPost={props.newPost}/>
+            <MyPosts postsData={props.state.postsData}
+                     addPost={props.addPost}
+                     updateNewPostText={props.updateNewPostText}
+                     newPost={props.newPost}/>
             <FriendsSideBar friendsList={props.state.friendsList}/>
         </section>
     )
