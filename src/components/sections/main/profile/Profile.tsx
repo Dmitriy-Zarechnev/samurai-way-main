@@ -2,11 +2,11 @@ import React from 'react'
 import classes from './Profile.module.css'
 import MyPosts from './myPosts/MyPosts'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import {AddPostFuncPropsType, ProfilePagePropsType} from '../../../../redux/state'
+import {ProfilePagePropsType} from '../../../../redux/state'
 import FriendsSideBar from './friendsSideBar/FriendsSideBar'
 
 
-const Profile: React.FC<{ state: ProfilePagePropsType, addPost:AddPostFuncPropsType }> = (props) => {
+const Profile: React.FC<{ state: ProfilePagePropsType, addPost: (postHeader: string, postMessage: string) => void }> = (props) => {
     return (
         <section className={classes.app_profile}>
             <ProfileInfo/>

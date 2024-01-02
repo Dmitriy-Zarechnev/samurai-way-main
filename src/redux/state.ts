@@ -16,15 +16,15 @@ export type RootStateDataType = {
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
-    addPost: AddPostFuncPropsType
+    addPost: (postHeader: string, postMessage: string) => void
 }
 
 
 // ТИпизация для функции добавления поста
 
-export type AddPostFuncPropsType = {
-    addPost: (postHeader: string, postMessage: string) => void
-}
+// export type AddPostFuncPropsType = {
+//     addPost: (postHeader: string, postMessage: string) => void
+// }
 
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {

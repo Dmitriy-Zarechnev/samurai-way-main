@@ -1,9 +1,9 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {AddPostFuncPropsType, PostsDataType} from '../../../../../redux/state'
+import {PostsDataType} from '../../../../../redux/state'
 
-const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: AddPostFuncPropsType }> = (props) => {
+const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader: string, postMessage: string) => void }> = (props) => {
 
     // Связали textarea, input и button
     const inputRefs = {
@@ -16,7 +16,7 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: AddPostFuncP
         const headerValue = inputRefs.newPostElHead.current?.value || ''
         const postValue = inputRefs.newPostEl.current?.value || ''
 
-        props.addPost.addPost(headerValue, postValue)
+        props.addPost(headerValue, postValue)
         // alert(`${headerValue} ${postValue}`)
     }
 
