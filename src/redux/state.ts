@@ -98,7 +98,7 @@ export type DialogsDataType = {
 }
 
 
-// Объект с общими данными
+//  ---- Объект с общими данными ------
 let state: RootStateDataType = {
     //  Данные для ProfilePage
     profilePage: {
@@ -187,6 +187,8 @@ let state: RootStateDataType = {
         newMessg: ''
     }
 }
+
+
 
 // Функции для добавления поста в postsData
 export let addPost = () => {
