@@ -6,7 +6,7 @@ import {PostsDataType} from '../../../../../redux/state'
 const MyPosts: React.FC<{
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
-    addPost: (postHeader: string, postMessage: string) => void,
+    addPost: () => void,
     updateNewPostText: (newHeaderText: string, newText: string) => void,
 }> = (props) => {
 
@@ -18,22 +18,12 @@ const MyPosts: React.FC<{
 
     // Функция срабатывающая при клике
     const addNewPost = () => {
-        let headerValue = inputRefs.newPostElHead.current?.value || ''
-        let postValue = inputRefs.newPostEl.current?.value || ''
-        props.addPost(headerValue, postValue)
-
-        // Очищаем значения полей ввода
-        if (inputRefs.newPostElHead.current) {
-            inputRefs.newPostElHead.current.value = ''
-        }
-        if (inputRefs.newPostEl.current) {
-            inputRefs.newPostEl.current.value = ''
-        }
+        props.addPost()
     }
 
     let onPostChange = () => {
-        let headerValue = inputRefs.newPostElHead.current?.value || ''
-        let postValue = inputRefs.newPostEl.current?.value || ''
+        let headerValue:string = inputRefs.newPostElHead.current?.value || ''
+        let postValue:string = inputRefs.newPostEl.current?.value || ''
         props.updateNewPostText(headerValue, postValue)
     }
 

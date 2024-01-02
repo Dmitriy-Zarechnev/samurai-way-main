@@ -17,7 +17,7 @@ export type RootStateDataType = {
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
-    addPost: (postHeader: string, postMessage: string) => void,
+    addPost: () => void,
     updateNewPostText: (newHeaderText: string, newText: string) => void,
     sendMessg: (textMessage: string) => void,
 
@@ -155,8 +155,8 @@ let state: RootStateDataType = {
     }
 }
 
-// Функция для добавления поста в postsData
-export let addPost = (postHeader: string, postMessage: string) => {
+// Функции для добавления поста в postsData
+export let addPost = () => {
     let newPost: PostsDataType = {
         id: 4,
         header: state.profilePage.newPost[0],
@@ -166,7 +166,9 @@ export let addPost = (postHeader: string, postMessage: string) => {
     }
 
     state.profilePage.postsData.unshift(newPost)
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
+    state.profilePage.newPost[0] = ''
+    state.profilePage.newPost[1] = ''
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
 }
 
 
@@ -174,11 +176,11 @@ export let updateNewPostText = (newHeaderText: string, newText: string) => {
     state.profilePage.newPost[0] = newHeaderText
     state.profilePage.newPost[1] = newText
 
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
 }
 
 
-// Функция для отправки сообщений
+// Функции для отправки сообщений
 export let sendMessg = (textMessage: string) => {
     let newMessg: MessagesDataType = {
         id: 6,
@@ -186,7 +188,7 @@ export let sendMessg = (textMessage: string) => {
     }
 
     state.messagesPage.messagesData.push(newMessg)
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg)
 }
 
 
