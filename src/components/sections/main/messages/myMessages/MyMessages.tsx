@@ -15,7 +15,13 @@ const MyMessages: React.FC<{
     // Функция срабатывающая при клике
     const addNewMess = () => {
         const textareaValue = newMessEl.current?.value || ''
+
         props.sendMessg(textareaValue)
+
+        // Очищаем значения поля ввода
+        if (newMessEl.current) {
+            newMessEl.current.value = ''
+        }
     }
 
 
