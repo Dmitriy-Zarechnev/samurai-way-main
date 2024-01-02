@@ -3,7 +3,12 @@ import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {PostsDataType} from '../../../../../redux/state'
 
-const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader: string, postMessage: string) => void }> = (props) => {
+const MyPosts: React.FC<{
+    postsData: Array<PostsDataType>,
+    newPost: Array<string>,
+    addPost: (postHeader: string, postMessage: string) => void,
+    updateNewPostText: (newHeaderText: string, newText: string) => void,
+}> = (props) => {
 
     // Связали textarea, input и button
     const inputRefs = {
@@ -27,7 +32,9 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
     }
 
     let onPostChange = () => {
-
+        let headerValue = inputRefs.newPostElHead.current?.value || ''
+        let postValue = inputRefs.newPostEl.current?.value || ''
+        props.updateNewPostText(headerValue, postValue)
     }
 
 
@@ -40,12 +47,15 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
                 <label htmlFor="headerAddPost" className={classes.my_posts__input_label}>Post's Header</label>
                 <input ref={inputRefs.newPostElHead}
                        id={'headerAddPost'}
+                       onChange={onPostChange}
+                       value={props.newPost[0]}
                        className={classes.my_posts__input}
                        type="text"
                        placeholder={'Write your post\'s Header ...'}/>
 
                 <textarea ref={inputRefs.newPostEl}
                           onChange={onPostChange}
+                          value={props.newPost[1]}
                           className={classes.my_posts__textarea}
                           placeholder={'Your Post begins here ...'}/>
 

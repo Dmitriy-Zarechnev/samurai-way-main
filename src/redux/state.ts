@@ -18,15 +18,17 @@ export type RootStateDataType = {
 export type SummaryStatePropsType = {
     state: RootStateDataType,
     addPost: (postHeader: string, postMessage: string) => void,
-    sendMessg: (textMessage: string) => void
+    updateNewPostText: (newHeaderText: string, newText: string) => void,
+    sendMessg: (textMessage: string) => void,
+
 }
 
 
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
+    newPost: Array<string>,
     friendsList: Array<FriendsListDataType>,
-
 }
 
 export type PostsDataType = {
@@ -73,6 +75,7 @@ let state: RootStateDataType = {
             {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
             {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
         ],
+        newPost: ['', ''],
         friendsList: [
             {
                 id: 1,
@@ -107,7 +110,7 @@ let state: RootStateDataType = {
         ]
     },
 
-    // Данные для MessagePage
+// Данные для MessagePage
     messagesPage: {
         dialogsData: [
             {
@@ -141,13 +144,14 @@ let state: RootStateDataType = {
                 alt: 'itachi Avatar'
             }
         ],
-        messagesData: [
-            {id: 1, message: 'hello'},
-            {id: 2, message: 'hi'},
-            {id: 3, message: 'qwerty'},
-            {id: 4, message: 'food'},
-            {id: 5, message: 'drink'}
-        ]
+        messagesData:
+            [
+                {id: 1, message: 'hello'},
+                {id: 2, message: 'hi'},
+                {id: 3, message: 'qwerty'},
+                {id: 4, message: 'food'},
+                {id: 5, message: 'drink'}
+            ]
     }
 }
 
@@ -155,14 +159,22 @@ let state: RootStateDataType = {
 export let addPost = (postHeader: string, postMessage: string) => {
     let newPost: PostsDataType = {
         id: 4,
-        header: postHeader,
+        header: state.profilePage.newPost[0],
         src: img1,
-        message: postMessage,
+        message: state.profilePage.newPost[1],
         likesCount: 0
     }
 
     state.profilePage.postsData.unshift(newPost)
-    rerenderEntireTree(state, addPost, sendMessg)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
+}
+
+
+export let updateNewPostText = (newHeaderText: string, newText: string) => {
+    state.profilePage.newPost[0] = newHeaderText
+    state.profilePage.newPost[1] = newText
+
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
 }
 
 
@@ -174,7 +186,7 @@ export let sendMessg = (textMessage: string) => {
     }
 
     state.messagesPage.messagesData.push(newMessg)
-    rerenderEntireTree(state, addPost, sendMessg)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessg )
 }
 
 

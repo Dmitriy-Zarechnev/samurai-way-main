@@ -15,7 +15,7 @@ function App(props: SummaryStatePropsType) {
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>
-                <Main state={props.state} addPost={props.addPost} sendMessg={props.sendMessg}/>
+                <Main state={props.state} addPost={props.addPost} sendMessg={props.sendMessg} updateNewPostText={props.updateNewPostText}/>
                 <Footer/>
             </div>
         </BrowserRouter>
