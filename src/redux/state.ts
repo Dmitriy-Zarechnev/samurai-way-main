@@ -4,6 +4,7 @@ import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
+import {rerenderEntireTree} from '../render'
 
 
 // Типизация для State
@@ -160,7 +161,8 @@ export let addPost = (postHeader: string, postMessage: string) => {
         likesCount: 0
     }
 
-    state.profilePage.postsData.push(newPost)
+    state.profilePage.postsData.unshift(newPost)
+    rerenderEntireTree(state, addPost, sendMessg)
 }
 
 
@@ -172,6 +174,7 @@ export let sendMessg = (textMessage: string) => {
     }
 
     state.messagesPage.messagesData.push(newMessg)
+    rerenderEntireTree(state, addPost, sendMessg)
 }
 
 

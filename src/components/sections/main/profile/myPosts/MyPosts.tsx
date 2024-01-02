@@ -13,9 +13,17 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
 
     // Функция срабатывающая при клике
     const addNewPost = () => {
-        const headerValue = inputRefs.newPostElHead.current?.value || ''
-        const postValue = inputRefs.newPostEl.current?.value || ''
+        let headerValue = inputRefs.newPostElHead.current?.value || ''
+        let postValue = inputRefs.newPostEl.current?.value || ''
         props.addPost(headerValue, postValue)
+
+        // Очищаем значения полей ввода
+        if (inputRefs.newPostElHead.current) {
+            inputRefs.newPostElHead.current.value = '';
+        }
+        if (inputRefs.newPostEl.current) {
+            inputRefs.newPostEl.current.value = '';
+        }
     }
 
 

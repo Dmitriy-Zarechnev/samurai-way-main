@@ -1,12 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
+import {rerenderEntireTree} from './render'
 import state, {addPost, sendMessg} from './redux/state'
 
 
-ReactDOM.render(
+rerenderEntireTree(state, addPost, sendMessg)
 
-    <App state={state} addPost={addPost} sendMessg={sendMessg}/>,
-    document.getElementById('root')
-)
