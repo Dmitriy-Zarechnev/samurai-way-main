@@ -11,10 +11,11 @@ import {SummaryStatePropsType} from './redux/state'
 function App(props: SummaryStatePropsType) {
     return (
         <BrowserRouter>
+
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>
-                <Main state={props.state} addPost={props.addPost}/>
+                <Main state={props.state} addPost={props.addPost} sendMessg={props.sendMessg}/>
                 <Footer/>
             </div>
         </BrowserRouter>

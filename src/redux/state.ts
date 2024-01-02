@@ -16,7 +16,8 @@ export type RootStateDataType = {
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
-    addPost: (postHeader: string, postMessage: string) => void
+    addPost: (postHeader: string, postMessage: string) => void,
+    sendMessg: (textMessage: string) => void
 }
 
 
@@ -151,7 +152,6 @@ let state: RootStateDataType = {
 
 // Функция для добавления поста в postsData
 export let addPost = (postHeader: string, postMessage: string) => {
-
     let newPost: PostsDataType = {
         id: 4,
         header: postHeader,
@@ -162,5 +162,17 @@ export let addPost = (postHeader: string, postMessage: string) => {
 
     state.profilePage.postsData.push(newPost)
 }
+
+
+// Функция для отправки сообщений
+export let sendMessg = (textMessage: string) => {
+    let newMessg: MessagesDataType = {
+        id: 6,
+        message: textMessage
+    }
+
+    state.messagesPage.messagesData.push(newMessg)
+}
+
 
 export default state

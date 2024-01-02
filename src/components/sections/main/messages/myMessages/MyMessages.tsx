@@ -4,7 +4,10 @@ import Message from './message/Message'
 import {MessagesDataType} from '../../../../../redux/state'
 
 
-const MyMessages: React.FC<{ messagesData: Array<MessagesDataType> }> = (props) => {
+const MyMessages: React.FC<{
+    messagesData: Array<MessagesDataType>,
+    sendMessg: (textMessage: string) => void
+}> = (props) => {
 
     // Связали textarea и button
     const newMessEl = useRef<HTMLTextAreaElement>(null)
@@ -12,7 +15,7 @@ const MyMessages: React.FC<{ messagesData: Array<MessagesDataType> }> = (props) 
     // Функция срабатывающая при клике
     const addNewMess = () => {
         const textareaValue = newMessEl.current?.value || ''
-        alert(` ${textareaValue}`)
+        props.sendMessg(textareaValue)
     }
 
 

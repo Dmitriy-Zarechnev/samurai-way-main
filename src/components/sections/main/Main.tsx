@@ -12,6 +12,7 @@ import { SummaryStatePropsType} from '../../../redux/state'
 const Main: React.FC<SummaryStatePropsType> = (props) => {
     return (
         <div className={classes.app_main}>
+
             <Route path="/profile" render={() =>
                 <Profile state={props.state.profilePage}
                          addPost={props.addPost}
@@ -19,6 +20,7 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
 
             <Route path="/messages" render={() =>
                 <Messages state={props.state.messagesPage}
+                          sendMessg={props.sendMessg}
                 />}/>
 
             <Route path="/news" render={() => <News/>}/>
