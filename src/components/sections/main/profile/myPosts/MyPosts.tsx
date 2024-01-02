@@ -15,7 +15,7 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: (postHeader:
     const addNewPost = () => {
         const headerValue = inputRefs.newPostElHead.current?.value || ''
         const postValue = inputRefs.newPostEl.current?.value || ''
-
+        debugger
         props.addPost(headerValue, postValue)
         // alert(`${headerValue} ${postValue}`)
     }

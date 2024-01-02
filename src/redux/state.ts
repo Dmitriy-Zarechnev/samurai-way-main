@@ -20,12 +20,6 @@ export type SummaryStatePropsType = {
 }
 
 
-// ТИпизация для функции добавления поста
-
-// export type AddPostFuncPropsType = {
-//     addPost: (postHeader: string, postMessage: string) => void
-// }
-
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
@@ -156,7 +150,7 @@ let state: RootStateDataType = {
 }
 
 // Функция для добавления поста в postsData
-export let addPost = (postHeader:string, postMessage:string) => {
+export let addPost = (postHeader: string, postMessage: string) => {
 
     let newPost: PostsDataType = {
         id: 4,
