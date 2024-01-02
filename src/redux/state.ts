@@ -24,6 +24,21 @@ export type SummaryStatePropsType = {
 }
 
 
+// Типизация для ProfilePage с функциями
+export type ProfilePageWithFuncPropsType = {
+    state: ProfilePagePropsType,
+    addPost: () => void,
+    updateNewPostText: (newHeaderText: string, newText: string) => void,
+}
+
+// Типизация для ProfilePage с функциями без friendsList
+export type ProfilePageWithoutFriendPropsType = {
+    postsData: Array<PostsDataType>,
+    newPost: Array<string>,
+    addPost: () => void,
+    updateNewPostText: (newHeaderText: string, newText: string) => void,
+}
+
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
@@ -46,6 +61,22 @@ export type FriendsListDataType = {
     alt: string
 }
 
+
+// Типизация для MessagePage с функциями
+export type MessagesPageWithFuncPropsType = {
+    state: MessagesPagePropsType,
+    sendMessg: () => void,
+    updateNewSendMessg: (message: string) => void
+}
+
+// Типизация для MessagePage с функциями без dialogsData
+
+export type MessagesPageWithoutDialogsPropsType = {
+    messagesData: Array<MessagesDataType>,
+    sendMessg: () => void,
+    newMessg: string,
+    updateNewSendMessg: (message: string) => void
+}
 
 // Типизация для MessagePage
 export type MessagesPagePropsType = {
@@ -196,6 +227,7 @@ export let sendMessg = () => {
 
 export let updateNewSendMessg = (message: string) => {
     state.messagesPage.newMessg = message
+
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 

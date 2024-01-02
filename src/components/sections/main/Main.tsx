@@ -15,7 +15,6 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
 
             <Route path="/profile" render={() =>
                 <Profile state={props.state.profilePage}
-                         newPost={props.state.profilePage.newPost}
                          addPost={props.addPost}
                          updateNewPostText={props.updateNewPostText}
                 />}/>
@@ -24,7 +23,6 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
                 <Messages state={props.state.messagesPage}
                           sendMessg={props.sendMessg}
                           updateNewSendMessg={props.updateNewSendMessg}
-                          newMessg={props.state.messagesPage.newMessg}
                 />}/>
 
             <Route path="/news" render={() => <News/>}/>

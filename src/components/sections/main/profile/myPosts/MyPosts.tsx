@@ -1,14 +1,9 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {PostsDataType} from '../../../../../redux/state'
+import { ProfilePageWithoutFriendPropsType} from '../../../../../redux/state'
 
-const MyPosts: React.FC<{
-    postsData: Array<PostsDataType>,
-    newPost: Array<string>,
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string) => void,
-}> = (props) => {
+const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
     // Связали textarea, input и button
     const inputRefs = {

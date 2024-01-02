@@ -1,15 +1,10 @@
 import React, {useRef} from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
-import {MessagesDataType} from '../../../../../redux/state'
+import { MessagesPageWithoutDialogsPropsType} from '../../../../../redux/state'
 
 
-const MyMessages: React.FC<{
-    messagesData: Array<MessagesDataType>,
-    sendMessg: () => void,
-    newMessg: string,
-    updateNewSendMessg: (message: string) => void
-}> = (props) => {
+const MyMessages: React.FC<MessagesPageWithoutDialogsPropsType> = (props) => {
 
     // Связали textarea и button
     const newMessEl = useRef<HTMLTextAreaElement>(null)
