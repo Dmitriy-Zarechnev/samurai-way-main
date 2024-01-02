@@ -1,9 +1,9 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {PostsDataType} from '../../../../../redux/state'
+import {AddPostFuncPropsType, PostsDataType} from '../../../../../redux/state'
 
-const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
+const MyPosts: React.FC<{ postsData: Array<PostsDataType>, addPost: AddPostFuncPropsType }> = (props) => {
 
     // Связали textarea, input и button
     const inputRefs = {
@@ -12,11 +12,12 @@ const MyPosts: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
     }
 
     // Функция срабатывающая при клике
-        const addNewPost = () => {
+    const addNewPost = () => {
         const headerValue = inputRefs.newPostElHead.current?.value || ''
         const postValue = inputRefs.newPostEl.current?.value || ''
 
-        alert(`${headerValue} ${postValue}`)
+        props.addPost.addPost(headerValue, postValue)
+        // alert(`${headerValue} ${postValue}`)
     }
 
 

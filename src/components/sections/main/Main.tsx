@@ -6,14 +6,15 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {RootStateDataType} from '../../../redux/state'
+import { SummaryStatePropsType} from '../../../redux/state'
 
 
-const Main: React.FC<{ state: RootStateDataType }> = (props) => {
+const Main: React.FC<SummaryStatePropsType> = (props) => {
     return (
         <div className={classes.app_main}>
             <Route path="/profile" render={() =>
                 <Profile state={props.state.profilePage}
+                         addPost={props.addPost}
                 />}/>
 
             <Route path="/messages" render={() =>

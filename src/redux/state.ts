@@ -12,16 +12,31 @@ export type RootStateDataType = {
     messagesPage: MessagesPagePropsType
 }
 
+
+// Типизация для общих пропсов вместе с функциями
+export type SummaryStatePropsType = {
+    state: RootStateDataType,
+    addPost: AddPostFuncPropsType
+}
+
+
+// ТИпизация для функции добавления поста
+
+export type AddPostFuncPropsType = {
+    addPost: (postHeader: string, postMessage: string) => void
+}
+
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
-    friendsList: Array<FriendsListDataType>
+    friendsList: Array<FriendsListDataType>,
+
 }
 
 export type PostsDataType = {
     id: number,
     header: string,
-    src: string,
+    src?: string,
     message: string,
     likesCount: number
 }
@@ -138,6 +153,20 @@ let state: RootStateDataType = {
             {id: 5, message: 'drink'}
         ]
     }
+}
+
+// Функция для добавления поста в postsData
+export let addPost = (postHeader:string, postMessage:string) => {
+
+    let newPost: PostsDataType = {
+        id: 4,
+        header: postHeader,
+        src: img1,
+        message: postMessage,
+        likesCount: 0
+    }
+
+    state.profilePage.postsData.push(newPost)
 }
 
 export default state

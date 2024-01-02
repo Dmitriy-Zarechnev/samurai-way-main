@@ -28,7 +28,7 @@ const MyMessages: React.FC<{ messagesData: Array<MessagesDataType> }> = (props) 
 
                 <button onClick={addNewMess}
                         className={classes.my_messages__button}>
-                    Add new message
+                    Send new message
                 </button>
             </div>
         </div>
