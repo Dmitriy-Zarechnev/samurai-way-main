@@ -75,7 +75,7 @@
     padding: 10px 20px;
     font-size: 16px;
 
-    border-radius: 5px;
+    border: 2px solid blueviolet;
     text-transform: capitalize;
     cursor: pointer;
     display: inline-block;
@@ -101,4 +101,5 @@
     background-color: #4CAF50;
     padding: 10px 20px;
     margin: 0 0 0 auto;
+    border: 2px solid blueviolet;
 }
