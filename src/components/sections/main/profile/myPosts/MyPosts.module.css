@@ -11,6 +11,7 @@
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 5px;
+
 }
 
 .my_posts__new_post {
@@ -68,15 +69,36 @@
     text-transform: capitalize;
 }
 
+.my_posts__btn_Input {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.my_posts__fileInput {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+
 .my_posts__button {
     display: block;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 500;
-    color: green;
+    color: white;
     text-transform: capitalize;
 
-    background-color: black;
-    padding: 5px;
+    background-color: #4CAF50;
+    padding: 10px 20px;
     margin: 0 0 0 auto;
 }

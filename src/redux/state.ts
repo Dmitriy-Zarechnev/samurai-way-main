@@ -103,7 +103,8 @@ let state: RootStateDataType = {
     //  Данные для ProfilePage
     profilePage: {
         postsData: [
-            {id: 1, header: 'Begin', src: img1, message: 'It is my first post', likesCount: 25},
+            {id: 1, header: 'Begin', src: img1, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid consequuntur corporis cupiditate debitis dignissimos earum eius error ex iusto maxime minima nihil nostrum numquam odio possimus quae quidem quos, rerum saepe sint soluta tempore tenetur veniam voluptates! Enim inventore sequi totam. Corporis ea ipsum iure officiis quo, ut velit?',
+                likesCount: 25},
             {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
             {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
         ],

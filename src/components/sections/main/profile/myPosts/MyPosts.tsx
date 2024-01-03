@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import { ProfilePageWithoutFriendPropsType} from '../../../../../redux/state'
+import {ProfilePageWithoutFriendPropsType} from '../../../../../redux/state'
 
 const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
@@ -44,6 +44,14 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                           value={props.newPost[1]}
                           className={classes.my_posts__textarea}
                           placeholder={'Your Post begins here ...'}/>
+
+                <label htmlFor="image" className= {classes.my_posts__btn_Input}>Выберите изображение</label>
+                <input type="file"
+                       id={'image'}
+                       name="image"
+                       accept="image/*"
+                       className={classes.my_posts__fileInput}
+                />
 
                 <button
                     onClick={addNewPost}
