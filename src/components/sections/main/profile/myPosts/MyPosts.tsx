@@ -45,7 +45,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                           className={classes.my_posts__textarea}
                           placeholder={'Your Post begins here ...'}/>
 
-                <label htmlFor="image" className= {classes.my_posts__btn_Input}>Выберите изображение</label>
+                <label htmlFor="image" className= {classes.my_posts__btn_Input}>Your image</label>
                 <input type="file"
                        id={'image'}
                        name="image"
