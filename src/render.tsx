@@ -6,7 +6,7 @@ import {RootStateDataType} from './redux/state'
 
 export let rerenderEntireTree = (state: RootStateDataType,
                                  addPost: () => void,
-                                 updateNewPostText: (newHeaderText: string, newText: string) => void,
+                                 updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
                                  sendMessg: () => void,
                                  updateNewSendMessg: (message: string) => void
 ) => {

@@ -23,7 +23,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
         let postValue: string = inputRefs.newPostEl.current?.value || ''
         let imgValue: string = inputRefs.newPostElImg.current?.value || ''
 
-        props.updateNewPostText(headerValue, postValue,imgValue)
+        props.updateNewPostText(headerValue, postValue, imgValue)
     }
 
 
