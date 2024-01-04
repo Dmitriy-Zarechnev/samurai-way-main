@@ -8,6 +8,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
     // Связали textarea, input и button
     const inputRefs = {
         newPostElHead: useRef<HTMLInputElement>(null),
+        newPostElImg: useRef<HTMLInputElement>(null),
         newPostEl: useRef<HTMLTextAreaElement>(null)
     }
 
@@ -20,7 +21,9 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
     let onPostChange = () => {
         let headerValue: string = inputRefs.newPostElHead.current?.value || ''
         let postValue: string = inputRefs.newPostEl.current?.value || ''
-        props.updateNewPostText(headerValue, postValue)
+        let imgValue: string = inputRefs.newPostElImg.current?.value || ''
+
+        props.updateNewPostText(headerValue, postValue,imgValue)
     }
 
 
@@ -43,10 +46,12 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                           onChange={onPostChange}
                           value={props.newPost[1]}
                           className={classes.my_posts__textarea}
-                          placeholder={'Your Post begins here ...'}/>
+                          placeholder={'Your Post begins here ...'}
+                />
 
-                <label htmlFor="image" className= {classes.my_posts__btn_Input}>Your image</label>
-                <input type="file"
+                <label htmlFor="image" className={classes.my_posts__btn_Input}>Your image</label>
+                <input ref={inputRefs.newPostElImg}
+                       type="file"
                        id={'image'}
                        name="image"
                        accept="image/*"

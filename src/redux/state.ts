@@ -18,7 +18,7 @@ export type RootStateDataType = {
 export type SummaryStatePropsType = {
     state: RootStateDataType,
     addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string) => void,
+    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
     sendMessg: () => void,
     updateNewSendMessg: (message: string) => void
 }
@@ -28,7 +28,7 @@ export type SummaryStatePropsType = {
 export type ProfilePageWithFuncPropsType = {
     state: ProfilePagePropsType,
     addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string) => void,
+    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
 }
 
 // Типизация для ProfilePage с функциями без friendsList
@@ -36,7 +36,7 @@ export type ProfilePageWithoutFriendPropsType = {
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
     addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string) => void,
+    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
 }
 
 // Типизация для ProfilePage
@@ -103,12 +103,17 @@ let state: RootStateDataType = {
     //  Данные для ProfilePage
     profilePage: {
         postsData: [
-            {id: 1, header: 'Begin', src: img1, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid consequuntur corporis cupiditate debitis dignissimos earum eius error ex iusto maxime minima nihil nostrum numquam odio possimus quae quidem quos, rerum saepe sint soluta tempore tenetur veniam voluptates! Enim inventore sequi totam. Corporis ea ipsum iure officiis quo, ut velit?',
-                likesCount: 25},
+            {
+                id: 1,
+                header: 'Begin',
+                src: img1,
+                message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid consequuntur corporis cupiditate debitis dignissimos earum eius error ex iusto maxime minima nihil nostrum numquam odio possimus quae quidem quos, rerum saepe sint soluta tempore tenetur veniam voluptates! Enim inventore sequi totam. Corporis ea ipsum iure officiis quo, ut velit?',
+                likesCount: 25
+            },
             {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
             {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
         ],
-        newPost: ['', ''],
+        newPost: ['', '', ''],
         friendsList: [
             {
                 id: 1,
@@ -190,13 +195,12 @@ let state: RootStateDataType = {
 }
 
 
-
 // Функции для добавления поста в postsData
 export let addPost = () => {
     let newPost: PostsDataType = {
         id: 4,
         header: state.profilePage.newPost[0],
-        src: img1,
+        src: state.profilePage.newPost[2],
         message: state.profilePage.newPost[1],
         likesCount: 0
     }
@@ -204,13 +208,15 @@ export let addPost = () => {
     state.profilePage.postsData.unshift(newPost)
     state.profilePage.newPost[0] = ''
     state.profilePage.newPost[1] = ''
+    state.profilePage.newPost[2] = ''
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
 
-export let updateNewPostText = (newHeaderText: string, newText: string) => {
+export let updateNewPostText = (newHeaderText: string, newText: string, newImg: string) => {
     state.profilePage.newPost[0] = newHeaderText
     state.profilePage.newPost[1] = newText
+    state.profilePage.newPost[2] = newImg
 
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
