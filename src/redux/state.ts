@@ -20,7 +20,6 @@ export type StoreType = {
     subscribe: (observer: any) => void
 }
 
-
 // Типизация для State
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
@@ -208,8 +207,8 @@ let store: StoreType = {
     getState() {
         return this._state
     },
-    _callSubscriber(state: RootStateDataType
-    ) {
+
+    _callSubscriber() {
         console.log('State was changed')
     },
 
@@ -260,7 +259,6 @@ let store: StoreType = {
     subscribe(observer: any) {
         this._callSubscriber = observer
     }
-
 }
 
 export default store
