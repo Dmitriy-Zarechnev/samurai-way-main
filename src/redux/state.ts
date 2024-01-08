@@ -199,7 +199,6 @@ let state: RootStateDataType = {
 export let addPost = () => {
 
     let newPost: PostsDataType = {
-
         id: 4,
         header: state.profilePage.newPost[0],
         src: state.profilePage.newPost[2],
