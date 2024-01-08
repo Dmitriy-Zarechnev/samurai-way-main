@@ -4,7 +4,6 @@ import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
-import {rerenderEntireTree} from '../render'
 
 
 // Типизация для State
@@ -97,6 +96,14 @@ export type DialogsDataType = {
     alt: string
 }
 
+
+let rerenderEntireTree = (state: RootStateDataType,
+                          addPost: () => void,
+                          updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
+                          sendMessg: () => void,
+                          updateNewSendMessg: (message: string) => void) => {
+    console.log('State was changed')
+}
 
 //  ---- Объект с общими данными ------
 let state: RootStateDataType = {
@@ -210,6 +217,8 @@ export let addPost = () => {
     state.profilePage.newPost[0] = ''
     state.profilePage.newPost[1] = ''
     state.profilePage.newPost[2] = ''
+
+
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
@@ -218,6 +227,7 @@ export let updateNewPostText = (newHeaderText: string, newText: string, newImg: 
     state.profilePage.newPost[0] = newHeaderText
     state.profilePage.newPost[1] = newText
     state.profilePage.newPost[2] = newImg
+
 
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
@@ -232,13 +242,20 @@ export let sendMessg = () => {
 
     state.messagesPage.messagesData.push(newMessg)
     state.messagesPage.newMessg = ''
+
+
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
 }
 
 export let updateNewSendMessg = (message: string) => {
     state.messagesPage.newMessg = message
 
+
     rerenderEntireTree(state, addPost, updateNewPostText, sendMessg, updateNewSendMessg)
+}
+
+export const subscribe = (observer: any) => {
+    rerenderEntireTree = observer
 }
 
 
