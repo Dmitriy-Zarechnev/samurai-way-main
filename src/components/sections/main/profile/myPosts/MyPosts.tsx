@@ -52,7 +52,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                 <label htmlFor="image" className={classes.my_posts__btn_Input}>Your image</label>
                 <input ref={inputRefs.newPostElImg}
                        type="file"
-                       id='image'
+                       id="image"
                        name="image"
                        accept="image/*"
                        className={classes.my_posts__fileInput}

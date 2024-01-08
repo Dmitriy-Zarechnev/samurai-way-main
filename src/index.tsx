@@ -4,23 +4,19 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 
-let rerenderEntireTree = (state: RootStateDataType,
-                          addPost: () => void,
-                          updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
-                          sendMessg: () => void,
-                          updateNewSendMessg: (message: string) => void) => {
+let rerenderEntireTree = (state: RootStateDataType) => {
+
     ReactDOM.render(
-        <App state={store.getState()}
-             addPost={store.addPost}
-             updateNewPostText={store.updateNewPostText}
-             sendMessg={store.sendMessg}
-             updateNewSendMessg={store.updateNewSendMessg}/>,
+        <App state={state}
+             addPost={store.addPost.bind(store)}
+             updateNewPostText={store.updateNewPostText.bind(store)}
+             sendMessg={store.sendMessg.bind(store)}
+             updateNewSendMessg={store.updateNewSendMessg.bind(store)}/>,
         document.getElementById('root')
     )
 }
 
-
-rerenderEntireTree(store.getState(), store.addPost, store.updateNewPostText, store.sendMessg, store.updateNewSendMessg)
+rerenderEntireTree(store.getState())
 
 store.subscribe(rerenderEntireTree)
 
