@@ -5,7 +5,6 @@ import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 
-
 // Типизация для State
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
