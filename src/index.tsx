@@ -6,6 +6,8 @@ import App from './App'
 
 let rerenderEntireTree = (state: RootStateDataType) => {
 
+
+
     ReactDOM.render(
         <App state={state}
              addPost={store.addPost.bind(store)}
