@@ -5,15 +5,10 @@ import App from './App'
 
 
 let rerenderEntireTree = (state: RootStateDataType) => {
-
-
-
     ReactDOM.render(
         <App state={state}
-             addPost={store.addPost.bind(store)}
-             updateNewPostText={store.updateNewPostText.bind(store)}
-             sendMessg={store.sendMessg.bind(store)}
-             updateNewSendMessg={store.updateNewSendMessg.bind(store)}/>,
+             dispatch={store.dispatch.bind(store)}
+        />,
         document.getElementById('root')
     )
 }

@@ -15,11 +15,10 @@ function App(props: SummaryStatePropsType) {
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>
-                <Main state={props.state}
-                      addPost={props.addPost}
-                      updateNewPostText={props.updateNewPostText}
-                      sendMessg={props.sendMessg}
-                      updateNewSendMessg={props.updateNewSendMessg} />
+                <Main
+                    state={props.state}
+                    dispatch={props.dispatch}
+                />
                 <Footer/>
             </div>
         </BrowserRouter>

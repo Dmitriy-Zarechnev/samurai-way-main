@@ -9,15 +9,21 @@ import itachiFriend from '../assets/images/webp/Itachi.webp'
 // Типизация для Store
 export type StoreType = {
     _state: RootStateDataType,
-    getState: () => RootStateDataType,
     _callSubscriber: (state: RootStateDataType) => void,
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
 
-    sendMessg: () => void,
-    updateNewSendMessg: (message: string) => void,
+    getState: () => RootStateDataType,
+    subscribe: (observer: any) => void,
+    /*
+        addPost: () => void,
+        updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
 
-    subscribe: (observer: any) => void
+        sendMessg: () => void,
+        updateNewSendMessg: (message: string) => void,
+
+     */
+
+    dispatch: (action: ActionType) => void,
+
 }
 
 // Типизация для State
@@ -26,28 +32,61 @@ export type RootStateDataType = {
     messagesPage: MessagesPagePropsType
 }
 
+
+// Типизация для dispatch
+
+export type DispatchType = {
+    addPost: () => void,
+    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
+
+    sendMessg: () => void,
+    updateNewSendMessg: (message: string) => void,
+}
+
+// Типизация для action
+
+export type ActionType = {
+    type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
+    newHeaderText?: string,
+    newText?: string,
+    newImg?: string,
+    message?: string,
+}
+
+
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
+    /*
     addPost: () => void,
     updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
     sendMessg: () => void,
     updateNewSendMessg: (message: string) => void
+
+     */
+    dispatch: (action: ActionType) => void,
+
 }
 
 // Типизация для ProfilePage с функциями
 export type ProfilePageWithFuncPropsType = {
     state: ProfilePagePropsType,
+    /*
     addPost: () => void,
     updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void
+    */
+    dispatch: (action: ActionType) => void,
+
 }
 
 // Типизация для ProfilePage с функциями без friendsList
 export type ProfilePageWithoutFriendPropsType = {
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
+    dispatch: (action: ActionType) => void,
+    /*
     addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void
+    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void*/
 }
 
 // Типизация для ProfilePage
@@ -76,16 +115,25 @@ export type FriendsListDataType = {
 // Типизация для MessagePage с функциями
 export type MessagesPageWithFuncPropsType = {
     state: MessagesPagePropsType,
+    dispatch: (action: ActionType) => void,
+    /*
     sendMessg: () => void,
     updateNewSendMessg: (message: string) => void
+
+     */
 }
 
 // Типизация для MessagePage с функциями без dialogsData
 export type MessagesPageWithoutDialogsPropsType = {
     messagesData: Array<MessagesDataType>,
-    sendMessg: () => void,
     newMessg: string,
+    dispatch: (action: ActionType) => void,
+    /*
+    sendMessg: () => void,
+
     updateNewSendMessg: (message: string) => void
+
+     */
 }
 
 // Типизация для MessagePage
@@ -204,17 +252,22 @@ let store: StoreType = {
             newMessg: ''
         }
     },
-    getState() {
-        return this._state
-    },
 
     _callSubscriber() {
         console.log('State was changed')
     },
 
+    getState() {
+        return this._state
+    },
+    subscribe(observer: any) {
+        this._callSubscriber = observer
+    },
+
+    /*
     addPost() {
         let newPost: PostsDataType = {
-            id: 4,
+            id: 5,
             header: this._state.profilePage.newPost[0],
             src: this._state.profilePage.newPost[2],
             message: this._state.profilePage.newPost[1],
@@ -227,7 +280,6 @@ let store: StoreType = {
         this._state.profilePage.newPost[2] = ''
         this._callSubscriber(this._state)
     },
-
     updateNewPostText(newHeaderText: string, newText: string, newImg: string) {
         this._state.profilePage.newPost[0] = newHeaderText
         this._state.profilePage.newPost[1] = newText
@@ -246,19 +298,57 @@ let store: StoreType = {
         this._state.messagesPage.messagesData.push(newMessg)
         this._state.messagesPage.newMessg = ''
 
-
         this._callSubscriber(this._state)
     },
-
     updateNewSendMessg(message: string) {
         this._state.messagesPage.newMessg = message
 
         this._callSubscriber(this._state)
     },
+         */
 
-    subscribe(observer: any) {
-        this._callSubscriber = observer
+    dispatch(action: ActionType) {
+
+        if (action.type === 'ADD-POST') {
+            let newPost: PostsDataType = {
+                id: 5,
+                header: this._state.profilePage.newPost[0],
+                src: this._state.profilePage.newPost[2],
+                message: this._state.profilePage.newPost[1],
+                likesCount: 0
+            }
+
+            this._state.profilePage.postsData.unshift(newPost)
+            this._state.profilePage.newPost[0] = ''
+            this._state.profilePage.newPost[1] = ''
+            this._state.profilePage.newPost[2] = ''
+            this._callSubscriber(this._state)
+
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPost[0] = action.newHeaderText
+            this._state.profilePage.newPost[1] = action.newText
+            this._state.profilePage.newPost[2] = action.newImg
+
+            this._callSubscriber(this._state)
+        } else if (action.type === 'SEND-NEW-MESSAGE') {
+            let newMessg: MessagesDataType = {
+                id: 6,
+                message: this._state.messagesPage.newMessg
+            }
+
+            this._state.messagesPage.messagesData.push(newMessg)
+            this._state.messagesPage.newMessg = ''
+
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-SEND-MESSAGE') {
+            this._state.messagesPage.newMessg = action.message
+
+            this._callSubscriber(this._state)
+        }
+
+
     }
+
 }
 
 export default store

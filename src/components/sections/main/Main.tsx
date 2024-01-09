@@ -15,14 +15,12 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
 
             <Route path="/profile" render={() =>
                 <Profile state={props.state.profilePage}
-                         addPost={props.addPost}
-                         updateNewPostText={props.updateNewPostText}
+                         dispatch={props.dispatch}
                 />}/>
 
             <Route path="/messages" render={() =>
                 <Messages state={props.state.messagesPage}
-                          sendMessg={props.sendMessg}
-                          updateNewSendMessg={props.updateNewSendMessg}
+                          dispatch={props.dispatch}
                 />}/>
 
             <Route path="/news" render={() => <News/>}/>

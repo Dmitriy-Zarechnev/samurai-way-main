@@ -14,7 +14,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
     // Функция срабатывающая при клике
     const addNewPost = () => {
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'})
     }
 
     // Функция срабатывающая при изменении
@@ -23,7 +23,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
         let postValue: string = inputRefs.newPostEl.current?.value || ''
         let imgValue: string = inputRefs.newPostElImg.current?.value || ''
 
-        props.updateNewPostText(headerValue, postValue, imgValue)
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newHeaderText: headerValue, newText: postValue, newImg: imgValue})
     }
 
 
@@ -52,6 +52,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                 <label htmlFor="image" className={classes.my_posts__btn_Input}>Your image</label>
                 <input ref={inputRefs.newPostElImg}
                        type="file"
+                       onChange={onPostChange}
                        id="image"
                        name="image"
                        accept="image/*"
