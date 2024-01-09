@@ -325,9 +325,15 @@ let store: StoreType = {
             this._callSubscriber(this._state)
 
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPost[0] = action.newHeaderText
-            this._state.profilePage.newPost[1] = action.newText
-            this._state.profilePage.newPost[2] = action.newImg
+            if (action.newHeaderText != null) {
+                this._state.profilePage.newPost[0] = action.newHeaderText
+            }
+            if (action.newText != null) {
+                this._state.profilePage.newPost[1] = action.newText
+            }
+            if (action.newImg != null) {
+                this._state.profilePage.newPost[2] = action.newImg
+            }
 
             this._callSubscriber(this._state)
         } else if (action.type === 'SEND-NEW-MESSAGE') {
@@ -341,7 +347,9 @@ let store: StoreType = {
 
             this._callSubscriber(this._state)
         } else if (action.type === 'UPDATE-NEW-SEND-MESSAGE') {
-            this._state.messagesPage.newMessg = action.message
+            if (action.message != null) {
+                this._state.messagesPage.newMessg = action.message
+            }
 
             this._callSubscriber(this._state)
         }
