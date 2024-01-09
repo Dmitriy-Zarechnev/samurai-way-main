@@ -32,19 +32,7 @@ export type RootStateDataType = {
     messagesPage: MessagesPagePropsType
 }
 
-
-// Типизация для dispatch
-
-export type DispatchType = {
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
-
-    sendMessg: () => void,
-    updateNewSendMessg: (message: string) => void,
-}
-
 // Типизация для action
-
 export type ActionType = {
     type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
@@ -57,24 +45,12 @@ export type ActionType = {
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
-    /*
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
-    sendMessg: () => void,
-    updateNewSendMessg: (message: string) => void
-
-     */
     dispatch: (action: ActionType) => void,
-
 }
 
 // Типизация для ProfilePage с функциями
 export type ProfilePageWithFuncPropsType = {
     state: ProfilePagePropsType,
-    /*
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void
-    */
     dispatch: (action: ActionType) => void,
 
 }
@@ -84,9 +60,7 @@ export type ProfilePageWithoutFriendPropsType = {
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
     dispatch: (action: ActionType) => void,
-    /*
-    addPost: () => void,
-    updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void*/
+
 }
 
 // Типизация для ProfilePage
@@ -116,11 +90,6 @@ export type FriendsListDataType = {
 export type MessagesPageWithFuncPropsType = {
     state: MessagesPagePropsType,
     dispatch: (action: ActionType) => void,
-    /*
-    sendMessg: () => void,
-    updateNewSendMessg: (message: string) => void
-
-     */
 }
 
 // Типизация для MessagePage с функциями без dialogsData
@@ -128,12 +97,6 @@ export type MessagesPageWithoutDialogsPropsType = {
     messagesData: Array<MessagesDataType>,
     newMessg: string,
     dispatch: (action: ActionType) => void,
-    /*
-    sendMessg: () => void,
-
-    updateNewSendMessg: (message: string) => void
-
-     */
 }
 
 // Типизация для MessagePage
@@ -264,48 +227,6 @@ let store: StoreType = {
         this._callSubscriber = observer
     },
 
-    /*
-    addPost() {
-        let newPost: PostsDataType = {
-            id: 5,
-            header: this._state.profilePage.newPost[0],
-            src: this._state.profilePage.newPost[2],
-            message: this._state.profilePage.newPost[1],
-            likesCount: 0
-        }
-
-        this._state.profilePage.postsData.unshift(newPost)
-        this._state.profilePage.newPost[0] = ''
-        this._state.profilePage.newPost[1] = ''
-        this._state.profilePage.newPost[2] = ''
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText(newHeaderText: string, newText: string, newImg: string) {
-        this._state.profilePage.newPost[0] = newHeaderText
-        this._state.profilePage.newPost[1] = newText
-        this._state.profilePage.newPost[2] = newImg
-
-
-        this._callSubscriber(this._state)
-    },
-
-    sendMessg() {
-        let newMessg: MessagesDataType = {
-            id: 6,
-            message: this._state.messagesPage.newMessg
-        }
-
-        this._state.messagesPage.messagesData.push(newMessg)
-        this._state.messagesPage.newMessg = ''
-
-        this._callSubscriber(this._state)
-    },
-    updateNewSendMessg(message: string) {
-        this._state.messagesPage.newMessg = message
-
-        this._callSubscriber(this._state)
-    },
-         */
 
     dispatch(action: ActionType) {
 
