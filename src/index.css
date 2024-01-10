@@ -38,7 +38,6 @@
 *::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track:horizontal {
     background-color: #F7F9FB;
-
 }
 
 
@@ -79,7 +78,7 @@ button:active {
 a {
     text-decoration: none;
     padding-bottom: 5px;
-    background: linear-gradient(black, red) 0 75% /0 2px no-repeat;
+    background: linear-gradient(black, red) 0 75% / 0 2px no-repeat;
     transition: .5s;
     background-size: 0 3px;
 }
