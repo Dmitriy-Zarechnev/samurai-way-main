@@ -69,40 +69,6 @@
     text-transform: capitalize;
 }
 
-.my_posts__btn_Input {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: 400;
-    padding: 10px 10px;
-    font-size: 16px;
-
-    border: 2px solid blueviolet;
-    text-transform: capitalize;
-    cursor: pointer;
-    display: inline-block;
-    transition: all .5s ease;
-}
-
-.my_posts__btn_Input:hover {
-    background-color:white;
-    color: #4CAF50;
-
-}
-
-.my_posts__btn_Input:active {
-    transform: scale(0.96);
-}
-
-
-.my_posts__fileInput {
-    position: absolute;
-    font-size: 100px;
-    opacity: 0;
-    top: 0;
-    left: 0;
-}
-
-
 .my_posts__button {
     display: block;
     font-size: 18px;

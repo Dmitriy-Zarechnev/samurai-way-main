@@ -19,11 +19,10 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
     // Функция срабатывающая при изменении
     let onPostChange = () => {
-        let headerValue: string = inputRefs.newPostElHead.current?.value || ''
-        let postValue: string = inputRefs.newPostEl.current?.value || ''
-        let imgValue: string = inputRefs.newPostElImg.current?.value || ''
+        let headerValue = inputRefs.newPostElHead.current?.value || ''
+        let postValue = inputRefs.newPostEl.current?.value || ''
 
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newHeaderText: headerValue, newText: postValue, newImg: imgValue})
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newHeaderText: headerValue, newText: postValue})
     }
 
 
@@ -47,16 +46,6 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                           value={props.newPost[1]}
                           className={classes.my_posts__textarea}
                           placeholder={'Your Post begins here ...'}
-                />
-
-                <label htmlFor="image" className={classes.my_posts__btn_Input}>Your image</label>
-                <input ref={inputRefs.newPostElImg}
-                       type="file"
-                       onChange={onPostChange}
-                       id="image"
-                       name="image"
-                       accept="image/*"
-                       className={classes.my_posts__fileInput}
                 />
 
                 <button

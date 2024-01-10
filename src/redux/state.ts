@@ -1,4 +1,5 @@
 import img1 from '../assets/images/Cupcake.jpg'
+import img2 from '../assets/images/winter.jpg'
 import cammyFriend from '../assets/images/webp/Cammy.webp'
 import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'
@@ -13,14 +14,6 @@ export type StoreType = {
 
     getState: () => RootStateDataType,
     subscribe: (observer: any) => void,
-    /*
-        addPost: () => void,
-        updateNewPostText: (newHeaderText: string, newText: string, newImg: string) => void,
-
-        sendMessg: () => void,
-        updateNewSendMessg: (message: string) => void,
-
-     */
 
     dispatch: (action: ActionType) => void,
 
@@ -37,7 +30,6 @@ export type ActionType = {
     type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
     newText?: string,
-    newImg?: string,
     message?: string,
 }
 
@@ -73,7 +65,7 @@ export type ProfilePagePropsType = {
 export type PostsDataType = {
     id: number,
     header: string,
-    src?: string,
+    src: string,
     message: string,
     likesCount: number
 }
@@ -135,7 +127,7 @@ let store: StoreType = {
                 {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
                 {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
             ],
-            newPost: ['', '', ''],
+            newPost: ['', ''],
             friendsList: [
                 {
                     id: 1,
@@ -234,7 +226,7 @@ let store: StoreType = {
             let newPost: PostsDataType = {
                 id: 5,
                 header: this._state.profilePage.newPost[0],
-                src: this._state.profilePage.newPost[2],
+                src: img2,
                 message: this._state.profilePage.newPost[1],
                 likesCount: 0
             }
@@ -242,21 +234,21 @@ let store: StoreType = {
             this._state.profilePage.postsData.unshift(newPost)
             this._state.profilePage.newPost[0] = ''
             this._state.profilePage.newPost[1] = ''
-            this._state.profilePage.newPost[2] = ''
+
             this._callSubscriber(this._state)
 
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+
             if (action.newHeaderText != null) {
                 this._state.profilePage.newPost[0] = action.newHeaderText
             }
+
             if (action.newText != null) {
                 this._state.profilePage.newPost[1] = action.newText
             }
-            if (action.newImg != null) {
-                this._state.profilePage.newPost[2] = action.newImg
-            }
 
             this._callSubscriber(this._state)
+
         } else if (action.type === 'SEND-NEW-MESSAGE') {
             let newMessg: MessagesDataType = {
                 id: 6,
@@ -268,6 +260,7 @@ let store: StoreType = {
 
             this._callSubscriber(this._state)
         } else if (action.type === 'UPDATE-NEW-SEND-MESSAGE') {
+
             if (action.message != null) {
                 this._state.messagesPage.newMessg = action.message
             }
