@@ -35,6 +35,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
                 <label htmlFor="headerAddPost" className={classes.my_posts__input_label}>Post's Header</label>
                 <input ref={inputRefs.newPostElHead}
+
                        id={'headerAddPost'}
                        onChange={onPostChange}
                        value={props.newPost[0]}
