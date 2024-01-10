@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
-import {MessagesPageWithoutDialogsPropsType} from '../../../../../redux/state'
+import {ActionType, MessagesPageWithoutDialogsPropsType, sendNewMessageActionCreator, updateNewSendMessageActionCreator} from '../../../../../redux/state'
 
 
 const MyMessages: React.FC<MessagesPageWithoutDialogsPropsType> = (props) => {
@@ -11,14 +11,14 @@ const MyMessages: React.FC<MessagesPageWithoutDialogsPropsType> = (props) => {
 
     // Функция срабатывающая при клике
     const addNewMess = () => {
-        props.dispatch({type: 'SEND-NEW-MESSAGE' })
+        props.dispatch(sendNewMessageActionCreator() as ActionType)
     }
 
 // Функция срабатывающая при изменении
     let onMessgChange = () => {
         let textareaValue = newMessEl.current?.value || ''
 
-        props.dispatch({type:'UPDATE-NEW-SEND-MESSAGE', message:textareaValue})
+        props.dispatch(updateNewSendMessageActionCreator(textareaValue) as ActionType)
     }
 
     return (

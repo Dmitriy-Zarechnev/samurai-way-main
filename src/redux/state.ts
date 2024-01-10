@@ -108,6 +108,12 @@ export type DialogsDataType = {
     alt: string
 }
 
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
+const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
+
 
 // Store содержит все данные и методы
 let store: StoreType = {
@@ -198,15 +204,22 @@ let store: StoreType = {
                     src: itachiFriend,
                     name: 'itachi',
                     alt: 'itachi Avatar'
+                },
+                {
+                    id: 6,
+                    src: nineS,
+                    name: '9S',
+                    alt: '9S Avatar'
                 }
             ],
             messagesData:
                 [
-                    {id: 1, message: 'hello'},
-                    {id: 2, message: 'hi'},
-                    {id: 3, message: 'qwerty'},
-                    {id: 4, message: 'food'},
-                    {id: 5, message: 'drink'}
+                    {id: 1, message: 'hello there'},
+                    {id: 2, message: 'hi are you?'},
+                    {id: 3, message: 'We far from the shallow, now'},
+                    {id: 4, message: 'Are you happy in this world?'},
+                    {id: 5, message: 'Tell me something , boy'},
+                    {id: 6, message: 'I would rather not say'}
                 ],
             newMessg: ''
         }
@@ -223,10 +236,9 @@ let store: StoreType = {
         this._callSubscriber = observer
     },
 
-
     dispatch(action: ActionType) {
 
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost: PostsDataType = {
                 id: 5,
                 header: this._state.profilePage.newPost[0],
@@ -241,7 +253,7 @@ let store: StoreType = {
 
             this._callSubscriber(this._state)
 
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
 
             if (action.newHeaderText != null) {
                 this._state.profilePage.newPost[0] = action.newHeaderText
@@ -253,9 +265,9 @@ let store: StoreType = {
 
             this._callSubscriber(this._state)
 
-        } else if (action.type === 'SEND-NEW-MESSAGE') {
+        } else if (action.type === SEND_NEW_MESSAGE) {
             let newMessg: MessagesDataType = {
-                id: 6,
+                id: 7,
                 message: this._state.messagesPage.newMessg
             }
 
@@ -263,7 +275,7 @@ let store: StoreType = {
             this._state.messagesPage.newMessg = ''
 
             this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-SEND-MESSAGE') {
+        } else if (action.type === UPDATE_NEW_SEND_MESSAGE) {
 
             if (action.message != null) {
                 this._state.messagesPage.newMessg = action.message
@@ -271,10 +283,27 @@ let store: StoreType = {
 
             this._callSubscriber(this._state)
         }
-
-
     }
-
 }
+
+
+export const addPostActionCreator = () => ({
+    type: ADD_POST
+})
+
+export const updateNewPostTextActionCreator = (headerValue: string, postValue: string) => ({
+    type: UPDATE_NEW_POST_TEXT,
+    newHeaderText: headerValue,
+    newText: postValue
+})
+
+export const sendNewMessageActionCreator = () => ({
+    type: SEND_NEW_MESSAGE
+})
+
+export const updateNewSendMessageActionCreator = (textareaValue: string) => ({
+    type: UPDATE_NEW_SEND_MESSAGE,
+    message: textareaValue
+})
 
 export default store

@@ -18,6 +18,7 @@
     line-height: 1.2;
     font-weight: 400;
     color: black;
+    background-color: white;
 
     resize: none;
     height: 100px;
@@ -30,7 +31,7 @@
     font-size: 14px;
     line-height: 1.2;
     font-weight: 400;
-    color: grey;
+    color: #3B4D3A;
     text-transform: capitalize;
 }
 
@@ -40,10 +41,10 @@
     font-size: 18px;
     line-height: 1.2;
     font-weight: 500;
-    color: green;
+    color: #E4ECFC;
     text-transform: capitalize;
 
-    background-color: black;
-    padding: 5px;
+    background-color: #A68B5C;
+    padding: 5px 10px;
     margin: 0 0 0 auto;
 }
