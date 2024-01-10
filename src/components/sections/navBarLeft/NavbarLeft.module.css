@@ -1,5 +1,5 @@
 .navbar_Left {
-    background-color: #5085A5;
+    background-color: #E4ECFC;
     padding: 20px;
     grid-area: N;
 }
@@ -14,12 +14,16 @@
 
 
 .navbar_Left__item a {
-    color: white;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: black;
     text-decoration: none;
 }
 
 .navbar_Left__item a.active {
     background-size: 100% 3px;
-    color: green
+    color: #B49463;
+    font-weight: 700;
 
 }

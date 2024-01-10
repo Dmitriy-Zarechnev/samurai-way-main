@@ -13,19 +13,19 @@
 
 /* Стили при выделении текста */
 *::selection {
-    color: blueviolet;
-    background-color: yellow;
+    color: #E4ECFC;
+    background-color: #052718;
 }
 
 /* Рамка при фокусе */
 *:focus-visible {
-    outline: 2px solid red;
+    outline: 2px solid #052718;
 }
 
 /* Стили для скролла FireFox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: black #F7F9FB;
+    scrollbar-color: #052718 #E4ECFC;
 }
 
 /* Стили для скролла Chrome */
@@ -37,25 +37,25 @@
 
 *::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track:horizontal {
-    background-color: #F7F9FB;
+    background-color: #E4ECFC;
 }
 
 
 *::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb:horizontal {
-    background-color: black;
-    border: 3px solid #F7F9FB;
+    background-color: #052718;
+    border: 3px solid #E4ECFC;
     border-radius: 5px;
 }
 
 
 *::-webkit-scrollbar-thumb:hover,
 *::-webkit-scrollbar-thumb:horizontal:hover {
-    background-color: red;
+    background-color: #B49463;
 }
 
 body {
-    background-color: #F7F9FB;
+    background-color: #E4ECFC;
     overflow: hidden;
 }
 
@@ -66,7 +66,7 @@ button {
 
 /* Стили для hover эффекта кнопки */
 button:hover {
-    box-shadow: 0 0 0 2px #F7F9FB, 0 0 4px 4px red;
+    box-shadow: 0 0 0 2px #E4ECFC, 0 0 4px 4px #052718;
 }
 
 /* Стили при клике на кнопки */
@@ -78,7 +78,7 @@ button:active {
 a {
     text-decoration: none;
     padding-bottom: 5px;
-    background: linear-gradient(black, red) 0 75% / 0 2px no-repeat;
+    background: linear-gradient(#052718, #052718) 0 75% / 0 2px no-repeat;
     transition: .5s;
     background-size: 0 3px;
 }

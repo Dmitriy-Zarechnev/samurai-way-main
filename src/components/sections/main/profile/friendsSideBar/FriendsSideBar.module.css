@@ -5,7 +5,7 @@
 }
 
 .friends_sidebar__header {
-    color: blueviolet;
+    color: black;
     font-size: 25px;
     line-height: 1.2;
     margin-bottom: 5px;
@@ -37,6 +37,6 @@
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
-    color: brown;
+    color: #B49463;
     text-transform: capitalize;
 }
