@@ -10,10 +10,10 @@ const Profile: React.FC<ProfilePageWithFuncPropsType> = (props) => {
     return (
         <section className={classes.app_profile}>
             <ProfileInfo/>
-            <MyPosts postsData={props.state.postsData}
+            <MyPosts postsData={props.profilePageData.postsData}
                      dispatch={props.dispatch}
-                     newPost={props.state.newPost}/>
-            <FriendsSideBar friendsList={props.state.friendsList}/>
+                     newPost={props.profilePageData.newPost}/>
+            <FriendsSideBar friendsList={props.profilePageData.friendsList}/>
         </section>
     )
 }

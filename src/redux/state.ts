@@ -16,7 +16,6 @@ export type StoreType = {
     subscribe: (observer: any) => void,
 
     dispatch: (action: ActionType) => void,
-
 }
 
 // Типизация для State
@@ -42,9 +41,8 @@ export type SummaryStatePropsType = {
 
 // Типизация для ProfilePage с функциями
 export type ProfilePageWithFuncPropsType = {
-    state: ProfilePagePropsType,
+    profilePageData: ProfilePagePropsType,
     dispatch: (action: ActionType) => void,
-
 }
 
 // Типизация для ProfilePage с функциями без friendsList
@@ -52,7 +50,6 @@ export type ProfilePageWithoutFriendPropsType = {
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
     dispatch: (action: ActionType) => void,
-
 }
 
 // Типизация для ProfilePage

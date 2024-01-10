@@ -14,7 +14,7 @@ const Main: React.FC<SummaryStatePropsType> = (props) => {
         <div className={classes.app_main}>
 
             <Route path="/profile" render={() =>
-                <Profile state={props.state.profilePage}
+                <Profile profilePageData={props.state.profilePage}
                          dispatch={props.dispatch}
                 />}/>
 
