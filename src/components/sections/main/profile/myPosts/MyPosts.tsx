@@ -27,6 +27,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
     }
 
 
+
     return (
         <div className={classes.my_posts}>
             <h3 className={classes.my_posts__header}>My posts</h3>
