@@ -21,7 +21,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
         <div className={classes.new_message}>
 
                 <textarea onChange={onChangeNewMessHandler}
-                          value={props.newMessg}
+                          defaultValue={props.newMessg}
                           className={classes.new_message__textarea}
                           placeholder={'Your message begins here ...'}>
                 </textarea>
