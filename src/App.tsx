@@ -10,7 +10,6 @@ import {SummaryStatePropsType} from './redux/state'
 function App(props: SummaryStatePropsType) {
     return (
         <BrowserRouter>
-
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>

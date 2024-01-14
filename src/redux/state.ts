@@ -7,7 +7,6 @@ import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
 
-
 // Типизация для Store
 export type StoreType = {
     _state: RootStateDataType,
