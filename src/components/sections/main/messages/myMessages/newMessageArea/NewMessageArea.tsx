@@ -5,12 +5,10 @@ import {ActionType, NewMessageAreaPropsType, sendNewMessageCreator, updateNewSen
 
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 
-    // Функция срабатывающая при клике
     const onClickAddNewMessHandler = () => {
         props.dispatch(sendNewMessageCreator() as ActionType)
     }
 
-    // Функция срабатывающая при изменении
     let onChangeNewMessHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let textareaValue = e.currentTarget.value
 
@@ -20,11 +18,11 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
     return (
         <div className={classes.new_message}>
 
-                <textarea onChange={onChangeNewMessHandler}
-                          defaultValue={props.newMessg}
-                          className={classes.new_message__textarea}
-                          placeholder={'Your message begins here ...'}>
-                </textarea>
+            <textarea onChange={onChangeNewMessHandler}
+                      defaultValue={props.newMessg}
+                      className={classes.new_message__textarea}
+                      placeholder={'Your message begins here ...'}>
+            </textarea>
 
             <button onClick={onClickAddNewMessHandler}
                     className={classes.new_message__button}>
