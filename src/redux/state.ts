@@ -87,6 +87,13 @@ export type MessagesPageWithoutDialogsPropsType = {
     dispatch: (action: ActionType) => void,
 }
 
+// Типизация для NewMessageArea
+export type NewMessageAreaPropsType = {
+    newMessg: string,
+    dispatch: (action: ActionType) => void,
+}
+
+
 // Типизация для MessagePage
 export type MessagesPagePropsType = {
     dialogsData: Array<DialogsDataType>,

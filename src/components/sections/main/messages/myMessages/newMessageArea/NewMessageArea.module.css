@@ -1,0 +1,39 @@
+.new_message {
+    margin-bottom: 10px;
+}
+
+.new_message__textarea {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+
+    resize: none;
+    height: 80px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.new_message__textarea::placeholder {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #3B4D3A;
+    text-transform: capitalize;
+}
+
+
+.new_message__button {
+    display: block;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #E4ECFC;
+    text-transform: capitalize;
+
+    background-color: #A68B5C;
+    padding: 5px 10px;
+    margin: 0 0 0 auto;
+}
