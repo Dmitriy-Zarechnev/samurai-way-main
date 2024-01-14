@@ -1,7 +1,8 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {ActionType, addPostCreator, ProfilePageWithoutFriendPropsType, updateNewPostTextCreator} from '../../../../../redux/state'
+import {ActionType, ProfilePageWithoutFriendPropsType} from '../../../../../redux/state'
+import {addPostCreator, updateNewPostTextCreator} from '../../../../../redux/profile-reducer'
 
 
 const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {

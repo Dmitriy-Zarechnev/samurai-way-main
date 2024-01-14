@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react'
 import classes from './NewMessageArea.module.css'
-import {ActionType, NewMessageAreaPropsType, sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../../redux/state'
+import {ActionType, NewMessageAreaPropsType} from '../../../../../../redux/state'
+import {sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../../redux/messages-reducer'
 
 
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
@@ -19,7 +20,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
         <div className={classes.new_message}>
 
             <textarea onChange={onChangeNewMessHandler}
-                      defaultValue={props.newMessg}
+                      value={props.newMessg}
                       className={classes.new_message__textarea}
                       placeholder={'Your message begins here ...'}>
             </textarea>

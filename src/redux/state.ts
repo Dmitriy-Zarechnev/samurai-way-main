@@ -6,6 +6,8 @@ import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
+import {profileReducer} from './profile-reducer'
+import {messagesReducer} from './messages-reducer'
 
 // Типизация для Store
 export type StoreType = {
@@ -112,12 +114,6 @@ export type DialogsDataType = {
     name: string,
     alt: string
 }
-
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
-const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
 
 
 // Store содержит все данные и методы
@@ -242,74 +238,11 @@ let store: StoreType = {
     },
 
     dispatch(action: ActionType) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
 
-        if (action.type === ADD_POST) {
-            let newPost: PostsDataType = {
-                id: 5,
-                header: this._state.profilePage.newPost[0],
-                src: img2,
-                message: this._state.profilePage.newPost[1],
-                likesCount: 0
-            }
-
-            this._state.profilePage.postsData.unshift(newPost)
-            this._state.profilePage.newPost[0] = ''
-            this._state.profilePage.newPost[1] = ''
-
-            this._callSubscriber(this._state)
-
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-
-            if (action.newHeaderText) {
-                this._state.profilePage.newPost[0] = action.newHeaderText
-            }
-
-            if (action.newText) {
-                this._state.profilePage.newPost[1] = action.newText
-            }
-
-            this._callSubscriber(this._state)
-
-        } else if (action.type === SEND_NEW_MESSAGE) {
-            let newMessg: MessagesDataType = {
-                id: 7,
-                message: this._state.messagesPage.newMessg
-            }
-
-            this._state.messagesPage.messagesData.push(newMessg)
-            this._state.messagesPage.newMessg = ''
-
-            this._callSubscriber(this._state)
-
-        } else if (action.type === UPDATE_NEW_SEND_MESSAGE) {
-
-            if (action.message) {
-                this._state.messagesPage.newMessg = action.message
-            }
-
-            this._callSubscriber(this._state)
-        }
+        this._callSubscriber(this._state)
     }
 }
-
-
-export const addPostCreator = () => ({
-    type: ADD_POST
-})
-
-export const updateNewPostTextCreator = (headerValue: string, postValue: string) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newHeaderText: headerValue,
-    newText: postValue
-})
-
-export const sendNewMessageCreator = () => ({
-    type: SEND_NEW_MESSAGE
-})
-
-export const updateNewSendMessageCreator = (textareaValue: string) => ({
-    type: UPDATE_NEW_SEND_MESSAGE,
-    message: textareaValue
-})
 
 export default store
