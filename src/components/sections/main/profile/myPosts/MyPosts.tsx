@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {ActionType, addPostActionCreator, ProfilePageWithoutFriendPropsType, updateNewPostTextActionCreator} from '../../../../../redux/state'
+import {ActionType, addPostCreator, ProfilePageWithoutFriendPropsType, updateNewPostTextCreator} from '../../../../../redux/state'
 
 
 const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
@@ -15,7 +15,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
 
     // Функция срабатывающая при клике
     const addNewPost = () => {
-        props.dispatch(addPostActionCreator() as ActionType)
+        props.dispatch(addPostCreator() as ActionType)
     }
 
     // Функция срабатывающая при изменении
@@ -23,9 +23,8 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
         let headerValue = inputRefs.newPostElHead.current?.value || ''
         let postValue = inputRefs.newPostEl.current?.value || ''
 
-        props.dispatch(updateNewPostTextActionCreator(headerValue, postValue) as ActionType)
+        props.dispatch(updateNewPostTextCreator(headerValue, postValue) as ActionType)
     }
-
 
 
     return (

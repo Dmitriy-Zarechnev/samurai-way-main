@@ -13,7 +13,8 @@ const Profile: React.FC<ProfilePageWithFuncPropsType> = (props) => {
             <MyPosts postsData={props.profilePageData.postsData}
                      dispatch={props.dispatch}
                      newPost={props.profilePageData.newPost}/>
-            <FriendsSideBar friendsList={props.profilePageData.friendsList}/>
+            <FriendsSideBar
+                    friendsList={props.profilePageData.friendsList}/>
         </section>
     )
 }

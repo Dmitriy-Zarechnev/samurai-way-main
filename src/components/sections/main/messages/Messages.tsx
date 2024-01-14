@@ -9,6 +9,7 @@ const Messages: React.FC<MessagesPageWithFuncPropsType> = (props) => {
     return (
         <section className={classes.messages}>
             <MyDialogs dialogsData={props.state.dialogsData}/>
+
             <MyMessages messagesData={props.state.messagesData}
                         newMessg={props.state.newMessg}
                         dispatch={props.dispatch}

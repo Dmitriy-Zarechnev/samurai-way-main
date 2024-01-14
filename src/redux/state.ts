@@ -170,7 +170,7 @@ let store: StoreType = {
             ]
         },
 
-// Данные для MessagePage
+        // Данные для MessagePage
         messagesPage: {
             dialogsData: [
                 {
@@ -253,11 +253,11 @@ let store: StoreType = {
 
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
 
-            if (action.newHeaderText != null) {
+            if (action.newHeaderText) {
                 this._state.profilePage.newPost[0] = action.newHeaderText
             }
 
-            if (action.newText != null) {
+            if (action.newText) {
                 this._state.profilePage.newPost[1] = action.newText
             }
 
@@ -273,9 +273,10 @@ let store: StoreType = {
             this._state.messagesPage.newMessg = ''
 
             this._callSubscriber(this._state)
+
         } else if (action.type === UPDATE_NEW_SEND_MESSAGE) {
 
-            if (action.message != null) {
+            if (action.message) {
                 this._state.messagesPage.newMessg = action.message
             }
 
@@ -285,21 +286,21 @@ let store: StoreType = {
 }
 
 
-export const addPostActionCreator = () => ({
+export const addPostCreator = () => ({
     type: ADD_POST
 })
 
-export const updateNewPostTextActionCreator = (headerValue: string, postValue: string) => ({
+export const updateNewPostTextCreator = (headerValue: string, postValue: string) => ({
     type: UPDATE_NEW_POST_TEXT,
     newHeaderText: headerValue,
     newText: postValue
 })
 
-export const sendNewMessageActionCreator = () => ({
+export const sendNewMessageCreator = () => ({
     type: SEND_NEW_MESSAGE
 })
 
-export const updateNewSendMessageActionCreator = (textareaValue: string) => ({
+export const updateNewSendMessageCreator = (textareaValue: string) => ({
     type: UPDATE_NEW_SEND_MESSAGE,
     message: textareaValue
 })

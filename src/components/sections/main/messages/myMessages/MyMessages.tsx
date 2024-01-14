@@ -1,24 +1,21 @@
-import React, {useRef} from 'react'
+import React, {ChangeEvent} from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
-import {ActionType, MessagesPageWithoutDialogsPropsType, sendNewMessageActionCreator, updateNewSendMessageActionCreator} from '../../../../../redux/state'
+import {ActionType, MessagesPageWithoutDialogsPropsType, sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../redux/state'
 
 
 const MyMessages: React.FC<MessagesPageWithoutDialogsPropsType> = (props) => {
 
-    // Связали textarea и button
-    const newMessEl = useRef<HTMLTextAreaElement>(null)
-
     // Функция срабатывающая при клике
-    const addNewMess = () => {
-        props.dispatch(sendNewMessageActionCreator() as ActionType)
+    const onClickAddNewMessHandler = () => {
+        props.dispatch(sendNewMessageCreator() as ActionType)
     }
 
-// Функция срабатывающая при изменении
-    let onMessgChange = () => {
-        let textareaValue = newMessEl.current?.value || ''
+    // Функция срабатывающая при изменении
+    let onChangeNewMessHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let textareaValue = e.currentTarget.value
 
-        props.dispatch(updateNewSendMessageActionCreator(textareaValue) as ActionType)
+        props.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
     }
 
     return (
@@ -27,14 +24,13 @@ const MyMessages: React.FC<MessagesPageWithoutDialogsPropsType> = (props) => {
             <Message messagesData={props.messagesData}/>
             <div className={classes.my_messages__new_message}>
 
-                <textarea ref={newMessEl}
-                          onChange={onMessgChange}
+                <textarea onChange={onChangeNewMessHandler}
                           value={props.newMessg}
                           className={classes.my_messages__textarea}
                           placeholder={'Your message begins here ...'}>
                 </textarea>
 
-                <button onClick={addNewMess}
+                <button onClick={onClickAddNewMessHandler}
                         className={classes.my_messages__button}>
                     Send new message
                 </button>
