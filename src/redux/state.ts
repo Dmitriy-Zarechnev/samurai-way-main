@@ -33,7 +33,6 @@ export type ActionType = {
     message?: string,
 }
 
-
 // Типизация для общих пропсов вместе с функциями
 export type SummaryStatePropsType = {
     state: RootStateDataType,
