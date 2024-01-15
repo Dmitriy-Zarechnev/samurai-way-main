@@ -39,8 +39,12 @@ export const addPostCreator = () => ({
     type: ADD_POST
 })
 
-export const updateNewPostTextCreator = (headerValue: string, postValue: string) => ({
+export const updateNewPostInputCreator = (headerValue: string) => ({
     type: UPDATE_NEW_POST_TEXT,
-    newHeaderText: headerValue,
+    newHeaderText: headerValue
+})
+
+export const updateNewPostTextAreaCreator = (postValue: string) => ({
+    type: UPDATE_NEW_POST_TEXT,
     newText: postValue
 })

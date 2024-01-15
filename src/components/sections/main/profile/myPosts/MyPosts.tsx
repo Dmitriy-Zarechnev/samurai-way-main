@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {ActionType, ProfilePageWithoutFriendPropsType} from '../../../../../redux/state'
-import {addPostCreator, updateNewPostTextCreator} from '../../../../../redux/profile-reducer'
+import {addPostCreator, updateNewPostInputCreator, updateNewPostTextAreaCreator} from '../../../../../redux/profile-reducer'
 
 
 const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
@@ -11,19 +11,16 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
         props.dispatch(addPostCreator() as ActionType)
     }
 
-
-    let postValue: string
-    let headerValue: string
     const onChangePostInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        headerValue = e.currentTarget.value
+        let headerValue = e.currentTarget.value
 
-        props.dispatch(updateNewPostTextCreator(headerValue, postValue) as ActionType)
+        props.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
     }
 
     const onChangePostTextAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        postValue = e.currentTarget.value
+        let postValue = e.currentTarget.value
 
-        props.dispatch(updateNewPostTextCreator(headerValue, postValue) as ActionType)
+        props.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
     }
 
 
