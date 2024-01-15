@@ -7,8 +7,10 @@ import store from './redux/redux-store'
 
 let rerenderEntireTree = (state: RootStateDataType) => {
     ReactDOM.render(
-        <App state={state}
-             dispatch={store.dispatch.bind(store)}
+        <App
+            store={store}
+            state={state}
+            // dispatch={store.dispatch.bind(store)}
         />,
         document.getElementById('root')
     )
@@ -16,6 +18,7 @@ let rerenderEntireTree = (state: RootStateDataType) => {
 
 rerenderEntireTree(store.getState())
 
-store.subscribe(()=>{
-    rerenderEntireTree(store.getState())})
+store.subscribe(() => {
+    rerenderEntireTree(store.getState())
+})
 

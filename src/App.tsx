@@ -5,17 +5,16 @@ import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
-import {SummaryStatePropsType} from './redux/store'
+import { StoreType} from './redux/store'
 
-function App(props: SummaryStatePropsType) {
+function App(props: { store: StoreType }) {
     return (
         <BrowserRouter>
             <div className={'app-body'}>
                 <Header/>
                 <NavbarLeft/>
                 <Main
-                    state={props.state}
-                    dispatch={props.dispatch}
+                    store={props.store}
                 />
                 <Footer/>
             </div>
