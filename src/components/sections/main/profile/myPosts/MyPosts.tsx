@@ -35,6 +35,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                     onChange={onChangePostInputHandler}
                     value={props.newPost[0]}
                     className={classes.my_posts__input}
+                    id={'headerAddPost'}
                     type="text"
                     placeholder={'Write your post\'s Header ...'}/>
 
