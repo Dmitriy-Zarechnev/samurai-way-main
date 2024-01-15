@@ -33,22 +33,8 @@ export type ActionType = {
     message?: string,
 }
 
-// Типизация для общих пропсов вместе с функциями
-export type SummaryStatePropsType = {
-    state: RootStateDataType,
-    dispatch: (action: ActionType) => void,
-}
-
-// Типизация для ProfilePage с функциями
-export type ProfilePageWithFuncPropsType = {
-    profilePageData: ProfilePagePropsType,
-    dispatch: (action: ActionType) => void,
-}
-
-// Типизация для ProfilePage с функциями без friendsList
-export type ProfilePageWithoutFriendPropsType = {
-   store: StoreType
-}
+// Типизация для observer
+type ObserverType = (state: RootStateDataType) => void
 
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
@@ -72,26 +58,14 @@ export type FriendsListDataType = {
     alt: string
 }
 
-
-// Типизация для MessagePage с функциями
-export type MessagesPageWithFuncPropsType = {
-    state: MessagesPagePropsType,
-    dispatch: (action: ActionType) => void,
+// Типизация для страницы постов
+export type MyPostsPropsType = {
+    posts: Array<PostsDataType>,
+    newPost: Array<string>,
+    updateNewPostTextArea: (postValue: string) => void
+    updateNewPostInput: (headerValue: string) => void
+    addPost: () => void
 }
-
-// Типизация для MessagePage с функциями без dialogsData
-export type MessagesPageWithoutDialogsPropsType = {
-    messagesData: Array<MessagesDataType>,
-    newMessg: string,
-    dispatch: (action: ActionType) => void,
-}
-
-// Типизация для NewMessageArea
-export type NewMessageAreaPropsType = {
-    newMessg: string,
-    dispatch: (action: ActionType) => void,
-}
-
 
 // Типизация для MessagePage
 export type MessagesPagePropsType = {
@@ -112,8 +86,6 @@ export type DialogsDataType = {
     alt: string
 }
 
-// Типизация для observer
-type ObserverType = (state: RootStateDataType) => void
 
 // Store содержит все данные и методы
 let store: StoreType = {

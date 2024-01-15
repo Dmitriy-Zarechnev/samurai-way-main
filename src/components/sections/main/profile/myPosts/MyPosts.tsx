@@ -1,16 +1,7 @@
 import React, {ChangeEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {PostsDataType} from '../../../../../redux/store'
-
-
-type MyPostsPropsType = {
-    posts: Array<PostsDataType>,
-    newPost: Array<string>,
-    updateNewPostTextArea: (postValue: string) => void
-    updateNewPostInput: (headerValue: string) => void
-    addPost: () => void
-}
+import {MyPostsPropsType} from '../../../../../redux/store'
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
