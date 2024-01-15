@@ -1,5 +1,4 @@
 import img1 from '../assets/images/Cupcake.jpg'
-import img2 from '../assets/images/winter.jpg'
 import cammyFriend from '../assets/images/webp/Cammy.webp'
 import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'
@@ -115,6 +114,8 @@ export type DialogsDataType = {
     alt: string
 }
 
+// Типизация для observer
+type ObserverType = (state: RootStateDataType) => void
 
 // Store содержит все данные и методы
 let store: StoreType = {
@@ -233,7 +234,7 @@ let store: StoreType = {
     getState() {
         return this._state
     },
-    subscribe(observer: any) {
+    subscribe(observer: ObserverType) {
         this._callSubscriber = observer
     },
 
