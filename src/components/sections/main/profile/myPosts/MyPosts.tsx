@@ -29,7 +29,6 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
         props.updateNewPostTextArea(postValue)
     }
 
-
     return (
         <div className={classes.my_posts}>
             <h3 className={classes.my_posts__header}>My posts</h3>

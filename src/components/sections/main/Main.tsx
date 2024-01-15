@@ -6,21 +6,19 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {SummaryStatePropsType} from '../../../redux/store'
+import {StoreType} from '../../../redux/store'
 
 
-const Main: React.FC<SummaryStatePropsType> = (props) => {
+const Main: React.FC<{ store: StoreType }> = ({store}) => {
     return (
         <div className={classes.app_main}>
 
             <Route path="/profile" render={() =>
-                <Profile profilePageData={props.state.profilePage}
-                         dispatch={props.dispatch}
+                <Profile store={store}
                 />}/>
 
             <Route path="/messages" render={() =>
-                <Messages state={props.state.messagesPage}
-                          dispatch={props.dispatch}
+                <Messages store={store}
                 />}/>
 
             <Route path="/news" render={() => <News/>}/>

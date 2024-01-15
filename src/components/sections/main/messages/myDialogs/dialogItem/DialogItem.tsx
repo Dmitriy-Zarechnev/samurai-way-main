@@ -4,10 +4,10 @@ import {NavLink} from 'react-router-dom'
 import {DialogsDataType} from '../../../../../../redux/store'
 
 
-const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props) => {
+const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = ({dialogsData}) => {
     return (
         <ul className={classes.dialog_items}>
-            {props.dialogsData.map((el: DialogsDataType) => {
+            {dialogsData.map((el: DialogsDataType) => {
                 return (
                     <li key={el.id} className={classes.dialog_items__item}>
 

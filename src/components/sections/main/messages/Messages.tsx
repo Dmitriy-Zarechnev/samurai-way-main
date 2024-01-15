@@ -1,19 +1,15 @@
 import React from 'react'
 import classes from './Messages.module.css'
-import MyDialogs from './myDialogs/MyDialogs'
-import MyMessages from './myMessages/MyMessages'
-import {MessagesPageWithFuncPropsType} from '../../../../redux/store'
+import {StoreType} from '../../../../redux/store'
+import MyDialogsContainer from './myDialogs/MyDialogsContainer'
+import MyMessagesContainer from './myMessages/MyMessagesContainer'
 
 
-const Messages: React.FC<MessagesPageWithFuncPropsType> = (props) => {
+const Messages: React.FC<{ store: StoreType }> = ({store}) => {
     return (
         <section className={classes.messages}>
-            <MyDialogs dialogsData={props.state.dialogsData}/>
-
-            <MyMessages messagesData={props.state.messagesData}
-                        newMessg={props.state.newMessg}
-                        dispatch={props.dispatch}
-            />
+            <MyDialogsContainer store={store}/>
+            <MyMessagesContainer store={store}/>
         </section>
     )
 }

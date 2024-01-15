@@ -1,19 +1,22 @@
 import React, {ChangeEvent} from 'react'
 import classes from './NewMessageArea.module.css'
-import {ActionType, NewMessageAreaPropsType} from '../../../../../../redux/store'
-import {sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../../redux/messages-reducer'
 
+
+type NewMessageAreaPropsType = {
+    newMessg: string,
+    updateNewMessage: (textareaValue: string) => void,
+    sendNewMessage: () => void
+}
 
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 
     const onClickAddNewMessHandler = () => {
-        props.dispatch(sendNewMessageCreator() as ActionType)
+        props.sendNewMessage()
     }
 
     let onChangeNewMessHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let textareaValue = e.currentTarget.value
-
-        props.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
+        props.updateNewMessage(textareaValue)
     }
 
     return (
@@ -22,8 +25,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
             <textarea onChange={onChangeNewMessHandler}
                       value={props.newMessg}
                       className={classes.new_message__textarea}
-                      placeholder={'Your message begins here ...'}>
-            </textarea>
+                      placeholder={'Your message begins here ...'}/>
 
             <button onClick={onClickAddNewMessHandler}
                     className={classes.new_message__button}>

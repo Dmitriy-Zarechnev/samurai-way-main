@@ -1,20 +1,17 @@
 import React from 'react'
 import classes from './Profile.module.css'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import {ProfilePageWithFuncPropsType} from '../../../../redux/store'
-import FriendsSideBar from './friendsSideBar/FriendsSideBar'
+import {StoreType} from '../../../../redux/store'
 import MyPostsContainer from './myPosts/MyPostsContainer'
+import FriendsSideBarContainer from './friendsSideBar/FriendsSideBarContainer'
 
 
-const Profile: React.FC<ProfilePageWithFuncPropsType> = (props) => {
+const Profile: React.FC<{ store: StoreType }> = ({store}) => {
     return (
         <section className={classes.app_profile}>
             <ProfileInfo/>
-            <MyPostsContainer postsData={props.profilePageData.postsData}
-                              dispatch={props.dispatch}
-                              newPost={props.profilePageData.newPost}/>
-            <FriendsSideBar
-                friendsList={props.profilePageData.friendsList}/>
+            <MyPostsContainer store={store}/>
+            <FriendsSideBarContainer store={store}/>
         </section>
     )
 }

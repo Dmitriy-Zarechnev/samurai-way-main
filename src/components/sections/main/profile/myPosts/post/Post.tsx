@@ -3,10 +3,10 @@ import classes from './Post.module.css'
 import {PostsDataType} from '../../../../../../redux/store'
 
 
-const Post: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
+const Post: React.FC<{ postsData: Array<PostsDataType> }> = ({postsData}) => {
     return (
         <div className={classes.post}>
-            {props.postsData.map((el: PostsDataType) => {
+            {postsData.map((el: PostsDataType) => {
                 return (
                     <div className={classes.post__item} key={el.id}>
                         <h4 className={classes.post__item_header}>{el.header}</h4>
@@ -15,7 +15,6 @@ const Post: React.FC<{ postsData: Array<PostsDataType> }> = (props) => {
                         <span className={classes.post__item_likes}>
                             {el.likesCount} likes
                         </span>
-
                     </div>
                 )
             })}

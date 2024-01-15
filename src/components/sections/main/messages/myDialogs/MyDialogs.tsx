@@ -4,12 +4,12 @@ import DialogItem from './dialogItem/DialogItem'
 import {DialogsDataType} from '../../../../../redux/store'
 
 
-const MyDialogs: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props ) => {
+const MyDialogs: React.FC<{ dialogsData: Array<DialogsDataType> }> = ({dialogsData} ) => {
     return (
         <div className={classes.my_dialogs}>
             <h3 className={classes.my_dialogs__header}>Dialogs</h3>
 
-            <DialogItem dialogsData={props.dialogsData}/>
+            <DialogItem dialogsData={dialogsData}/>
         </div>
     )
 }

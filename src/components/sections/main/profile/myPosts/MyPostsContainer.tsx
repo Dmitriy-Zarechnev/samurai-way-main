@@ -1,27 +1,29 @@
 import React from 'react'
-import {ActionType, ProfilePageWithoutFriendPropsType} from '../../../../../redux/store'
+import {ActionType, RootStateDataType, StoreType} from '../../../../../redux/store'
 import {addPostCreator, updateNewPostInputCreator, updateNewPostTextAreaCreator} from '../../../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 
 
-const MyPostsContainer: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
+const MyPostsContainer: React.FC<{ store: StoreType }> = ({store}) => {
+
+    let state: RootStateDataType = store.getState()
 
     const onClickAddNewPost = () => {
-        props.dispatch(addPostCreator() as ActionType)
+        store.dispatch(addPostCreator() as ActionType)
     }
 
     const onChangePostInput = (headerValue: string) => {
-        props.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
+        store.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
     }
 
     const onChangePostTextArea = (postValue: string) => {
-        props.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
+        store.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
     }
 
     return (
         <MyPosts
-            posts={props.postsData}
-            newPost={props.newPost}
+            posts={state.profilePage.postsData}
+            newPost={state.profilePage.newPost}
             updateNewPostTextArea={onChangePostTextArea}
             updateNewPostInput={onChangePostInput}
             addPost={onClickAddNewPost}/>

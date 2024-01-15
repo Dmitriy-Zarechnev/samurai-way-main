@@ -47,9 +47,7 @@ export type ProfilePageWithFuncPropsType = {
 
 // Типизация для ProfilePage с функциями без friendsList
 export type ProfilePageWithoutFriendPropsType = {
-    postsData: Array<PostsDataType>,
-    newPost: Array<string>,
-    dispatch: (action: ActionType) => void,
+   store: StoreType
 }
 
 // Типизация для ProfilePage
