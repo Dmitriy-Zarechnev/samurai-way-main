@@ -1,26 +1,32 @@
 import React, {ChangeEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {ActionType, ProfilePageWithoutFriendPropsType} from '../../../../../redux/store'
-import {addPostCreator, updateNewPostInputCreator, updateNewPostTextAreaCreator} from '../../../../../redux/profile-reducer'
+import {PostsDataType} from '../../../../../redux/store'
 
 
-const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
+type MyPostsPropsType = {
+    posts: Array<PostsDataType>,
+    newPost: Array<string>,
+    updateNewPostTextArea: (postValue: string) => void
+    updateNewPostInput: (headerValue: string) => void
+    addPost: () => void
+}
+
+
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
     const onClickAddNewPostHandler = () => {
-        props.dispatch(addPostCreator() as ActionType)
+        props.addPost()
     }
 
     const onChangePostInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let headerValue = e.currentTarget.value
-
-        props.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
+        props.updateNewPostInput(headerValue)
     }
 
     const onChangePostTextAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let postValue = e.currentTarget.value
-
-        props.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
+        props.updateNewPostTextArea(postValue)
     }
 
 
@@ -53,7 +59,7 @@ const MyPosts: React.FC<ProfilePageWithoutFriendPropsType> = (props) => {
                 </button>
             </div>
 
-            <Post postsData={props.postsData}/>
+            <Post postsData={props.posts}/>
         </div>
     )
 }
