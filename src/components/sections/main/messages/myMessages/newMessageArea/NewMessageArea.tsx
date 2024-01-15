@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react'
 import classes from './NewMessageArea.module.css'
-import {ActionType, NewMessageAreaPropsType} from '../../../../../../redux/state'
+import {ActionType, NewMessageAreaPropsType} from '../../../../../../redux/store'
 import {sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../../redux/messages-reducer'
 
 

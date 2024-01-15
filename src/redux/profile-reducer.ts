@@ -1,4 +1,4 @@
-import {ActionType, PostsDataType, ProfilePagePropsType} from './state'
+import {ActionType, PostsDataType, ProfilePagePropsType} from './store'
 import img2 from '../assets/images/winter.jpg'
 
 export const ADD_POST = 'ADD-POST'

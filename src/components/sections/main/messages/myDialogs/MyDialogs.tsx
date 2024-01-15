@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './MyDialogs.module.css'
 import DialogItem from './dialogItem/DialogItem'
-import {DialogsDataType} from '../../../../../redux/state'
+import {DialogsDataType} from '../../../../../redux/store'
 
 
 const MyDialogs: React.FC<{ dialogsData: Array<DialogsDataType> }> = (props ) => {

@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Profile.module.css'
 import MyPosts from './myPosts/MyPosts'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import {ProfilePageWithFuncPropsType} from '../../../../redux/state'
+import {ProfilePageWithFuncPropsType} from '../../../../redux/store'
 import FriendsSideBar from './friendsSideBar/FriendsSideBar'
 
 

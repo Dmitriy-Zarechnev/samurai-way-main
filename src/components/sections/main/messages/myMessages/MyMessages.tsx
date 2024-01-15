@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
-import {MessagesPageWithoutDialogsPropsType} from '../../../../../redux/state'
+import {MessagesPageWithoutDialogsPropsType} from '../../../../../redux/store'
 import NewMessageArea from './newMessageArea/NewMessageArea'
 
 

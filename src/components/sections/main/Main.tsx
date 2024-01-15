@@ -6,7 +6,7 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {SummaryStatePropsType} from '../../../redux/state'
+import {SummaryStatePropsType} from '../../../redux/store'
 
 
 const Main: React.FC<SummaryStatePropsType> = (props) => {

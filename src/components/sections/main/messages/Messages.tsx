@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Messages.module.css'
 import MyDialogs from './myDialogs/MyDialogs'
 import MyMessages from './myMessages/MyMessages'
-import {MessagesPageWithFuncPropsType} from '../../../../redux/state'
+import {MessagesPageWithFuncPropsType} from '../../../../redux/store'
 
 
 const Messages: React.FC<MessagesPageWithFuncPropsType> = (props) => {

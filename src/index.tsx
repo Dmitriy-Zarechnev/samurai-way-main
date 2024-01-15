@@ -1,5 +1,5 @@
 import './index.css'
-import store, {RootStateDataType} from './redux/state'
+import store, {RootStateDataType} from './redux/store'
 import ReactDOM from 'react-dom'
 import App from './App'
 

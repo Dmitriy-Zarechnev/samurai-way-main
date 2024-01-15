@@ -1,4 +1,4 @@
-import {ActionType, MessagesDataType, MessagesPagePropsType} from './state'
+import {ActionType, MessagesDataType, MessagesPagePropsType} from './store'
 
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'

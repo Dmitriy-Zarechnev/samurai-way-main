@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
-import {SummaryStatePropsType} from './redux/state'
+import {SummaryStatePropsType} from './redux/store'
 
 function App(props: SummaryStatePropsType) {
     return (
