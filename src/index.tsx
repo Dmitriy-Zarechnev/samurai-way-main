@@ -1,7 +1,8 @@
 import './index.css'
-import store, {RootStateDataType} from './redux/store'
+import {RootStateDataType} from './redux/store'
 import ReactDOM from 'react-dom'
 import App from './App'
+import store from './redux/redux-store'
 
 
 let rerenderEntireTree = (state: RootStateDataType) => {
@@ -15,5 +16,6 @@ let rerenderEntireTree = (state: RootStateDataType) => {
 
 rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree)
+store.subscribe(()=>{
+    rerenderEntireTree(store.getState())})
 
