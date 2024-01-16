@@ -30,12 +30,14 @@ const MyMessagesContainer: React.FC = () => {
                     store.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
                 }
 
-                return <MyMessages
-                    messagesData={state.messagesPage.messagesData}
-                    newMessg={state.messagesPage.newMessg}
-                    updateNewMessage={onChangeNewMessage}
-                    sendNewMessage={onClickAddNewMessage}
-                />
+                return (
+                    <MyMessages
+                        messagesData={state.messagesPage.messagesData}
+                        newMessg={state.messagesPage.newMessg}
+                        updateNewMessage={onChangeNewMessage}
+                        sendNewMessage={onClickAddNewMessage}
+                    />
+                )
             }}
 
         </StoreContext.Consumer>

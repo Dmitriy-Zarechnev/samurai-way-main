@@ -37,12 +37,14 @@ const MyPostsContainer: React.FC = () => {
                     store.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
                 }
 
-                return <MyPosts
-                    posts={state.profilePage.postsData}
-                    newPost={state.profilePage.newPost}
-                    updateNewPostTextArea={onChangePostTextArea}
-                    updateNewPostInput={onChangePostInput}
-                    addPost={onClickAddNewPost}/>
+                return (
+                    <MyPosts
+                        posts={state.profilePage.postsData}
+                        newPost={state.profilePage.newPost}
+                        updateNewPostTextArea={onChangePostTextArea}
+                        updateNewPostInput={onChangePostInput}
+                        addPost={onClickAddNewPost}/>
+                )
             }}
         </StoreContext.Consumer>
     )
