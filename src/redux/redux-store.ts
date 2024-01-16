@@ -1,13 +1,17 @@
-import {combineReducers, createStore} from 'redux'
+import {combineReducers, createStore, Store} from 'redux'
 import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
-import {StoreType} from './store'
+import {ActionType, StoreType} from './store'
+
+
+
+
 
 let reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer
 })
 
-let store:StoreType = createStore(reducers)
+let store: Store<StoreType, ActionType> = createStore(reducers)
 
 export default store

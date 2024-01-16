@@ -10,7 +10,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
         props.addPost()
     }
 
-    // Функции для input
+    //  --------------   Функции для input  -----------------
     const onChangePostInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let headerValue = e.currentTarget.value
         props.updateNewPostInput(headerValue)
@@ -19,8 +19,9 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         e.key === 'Enter' && onClickAddNewPostHandler()
     }
+    //  ---------------------------------------------------------
 
-    // Функции для textarea
+    //  --------------   Функции для textarea  -----------------
     const onChangePostTextAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let postValue = e.currentTarget.value
         props.updateNewPostTextArea(postValue)
@@ -29,6 +30,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     const onKeyDownTextAreaHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         e.ctrlKey && e.key === 'Enter' && onClickAddNewPostHandler()
     }
+    //  ---------------------------------------------------------
 
     return (
         <div className={classes.my_posts}>

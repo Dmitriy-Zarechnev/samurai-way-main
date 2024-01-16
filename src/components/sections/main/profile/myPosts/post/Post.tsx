@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './Post.module.css'
 import {PostsDataType} from '../../../../../../redux/store'
 
-
 const Post: React.FC<{ postsData: Array<PostsDataType> }> = ({postsData}) => {
     return (
         <div className={classes.post}>
@@ -21,5 +20,4 @@ const Post: React.FC<{ postsData: Array<PostsDataType> }> = ({postsData}) => {
         </div>
     )
 }
-
 export default Post

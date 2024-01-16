@@ -1,22 +1,17 @@
 import './index.css'
-import {RootStateDataType} from './redux/store'
+import {StoreType} from './redux/store'
 import ReactDOM from 'react-dom'
 import App from './App'
 import store from './redux/redux-store'
-import {StoreContext} from './StoreContext'
 import React from 'react'
+import {Provider} from 'react-redux'
 
 
-let rerenderEntireTree = (state: RootStateDataType) => {
+let rerenderEntireTree = (state: StoreType) => {
     ReactDOM.render(
-        <StoreContext.Provider value={store} >
+        <Provider store={store}>
             <App/>
-        </StoreContext.Provider>,
-
-        // <Provider store={store} >
-        //         //     <App />
-        //         // </Provider>,
-
+        </Provider>,
         document.getElementById('root')
     )
 }
