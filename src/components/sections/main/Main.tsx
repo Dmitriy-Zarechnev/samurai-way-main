@@ -6,20 +6,17 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import {StoreType} from '../../../redux/store'
 
 
-const Main: React.FC<{ store: StoreType }> = ({store}) => {
+const Main: React.FC = () => {
     return (
         <div className={classes.app_main}>
 
             <Route path="/profile" render={() =>
-                <Profile store={store}
-                />}/>
+                <Profile />}/>
 
             <Route path="/messages" render={() =>
-                <Messages store={store}
-                />}/>
+                <Messages />}/>
 
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>

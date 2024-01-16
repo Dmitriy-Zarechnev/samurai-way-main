@@ -1,28 +1,44 @@
 import React from 'react'
-import {ActionType, RootStateDataType, StoreType} from '../../../../../redux/store'
+import {ActionType, RootStateDataType} from '../../../../../redux/store'
 import MyMessages from './MyMessages'
 import {sendNewMessageCreator, updateNewSendMessageCreator} from '../../../../../redux/messages-reducer'
+import {StoreContext} from '../../../../../StoreContext'
 
 
-const MyMessagesContainer: React.FC<{ store: StoreType }> = ({store}) => {
+const MyMessagesContainer: React.FC = () => {
 
-    let state: RootStateDataType = store.getState()
-
-    const onClickAddNewMessage = () => {
-        store.dispatch(sendNewMessageCreator() as ActionType)
-    }
-
-    let onChangeNewMessage = (textareaValue: string) => {
-        store.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
-    }
+    // let state: RootStateDataType = store.getState()
+    //
+    // const onClickAddNewMessage = () => {
+    //     store.dispatch(sendNewMessageCreator() as ActionType)
+    // }
+    //
+    // let onChangeNewMessage = (textareaValue: string) => {
+    //     store.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
+    // }
 
     return (
-        <MyMessages
-            messagesData={state.messagesPage.messagesData}
-            newMessg={state.messagesPage.newMessg}
-            updateNewMessage={onChangeNewMessage}
-            sendNewMessage={onClickAddNewMessage}
-        />
+        <StoreContext.Consumer>
+            {(store) => {
+                let state: RootStateDataType = store.getState()
+
+                const onClickAddNewMessage = () => {
+                    store.dispatch(sendNewMessageCreator() as ActionType)
+                }
+
+                let onChangeNewMessage = (textareaValue: string) => {
+                    store.dispatch(updateNewSendMessageCreator(textareaValue) as ActionType)
+                }
+
+                return <MyMessages
+                    messagesData={state.messagesPage.messagesData}
+                    newMessg={state.messagesPage.newMessg}
+                    updateNewMessage={onChangeNewMessage}
+                    sendNewMessage={onClickAddNewMessage}
+                />
+            }}
+
+        </StoreContext.Consumer>
     )
 }
 

@@ -5,18 +5,17 @@ import Footer from './components/footer/Footer'
 import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
-import { StoreType} from './redux/store'
 
-function App(props: { store: StoreType }) {
+function App() {
+
     return (
         <BrowserRouter>
             <div className={'app-body'}>
-                <Header/>
-                <NavbarLeft/>
-                <Main
-                    store={props.store}
-                />
-                <Footer/>
+
+                <Header />
+                <NavbarLeft />
+                <Main />
+                <Footer />
             </div>
         </BrowserRouter>
     )

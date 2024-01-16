@@ -1,15 +1,14 @@
 import React from 'react'
 import classes from './Messages.module.css'
-import {StoreType} from '../../../../redux/store'
 import MyDialogsContainer from './myDialogs/MyDialogsContainer'
 import MyMessagesContainer from './myMessages/MyMessagesContainer'
 
 
-const Messages: React.FC<{ store: StoreType }> = ({store}) => {
+const Messages: React.FC = () => {
     return (
         <section className={classes.messages}>
-            <MyDialogsContainer store={store}/>
-            <MyMessagesContainer store={store}/>
+            <MyDialogsContainer />
+            <MyMessagesContainer />
         </section>
     )
 }

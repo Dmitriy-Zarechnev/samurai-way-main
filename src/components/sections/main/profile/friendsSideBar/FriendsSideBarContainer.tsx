@@ -1,11 +1,15 @@
 import React from 'react'
-import {StoreType} from '../../../../../redux/store'
 import FriendsSideBar from './FriendsSideBar'
+import {StoreContext} from '../../../../../StoreContext'
 
 
-const FriendsSideBarContainer: React.FC<{ store: StoreType }> = ({store}) => {
+const FriendsSideBarContainer: React.FC = () => {
     return (
-        <FriendsSideBar friendsList={store.getState().profilePage.friendsList}/>
+        <StoreContext.Consumer>
+            {(store) => {
+                return <FriendsSideBar friendsList={store.getState().profilePage.friendsList}/>
+            }}
+        </StoreContext.Consumer>
     )
 }
 

@@ -1,11 +1,15 @@
 import React from 'react'
-import {StoreType} from '../../../../../redux/store'
 import MyDialogs from './MyDialogs'
+import {StoreContext} from '../../../../../StoreContext'
 
 
-const MyDialogsContainer: React.FC<{ store: StoreType }> = ({store}) => {
+const MyDialogsContainer: React.FC = () => {
     return (
-        <MyDialogs dialogsData={store.getState().messagesPage.dialogsData}/>
+        <StoreContext.Consumer>
+            {(store) => {
+                return <MyDialogs dialogsData={store.getState().messagesPage.dialogsData}/>
+            }}
+        </StoreContext.Consumer>
     )
 }
 
