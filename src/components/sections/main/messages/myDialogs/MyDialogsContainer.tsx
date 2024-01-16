@@ -1,8 +1,10 @@
 import React from 'react'
 import MyDialogs from './MyDialogs'
-import {StoreContext} from '../../../../../StoreContext'
+import {connect} from 'react-redux'
+import {ActionType, RootStateDataType} from '../../../../../redux/store'
 
-
+// Удалить после 45 урока
+/*
 const MyDialogsContainer: React.FC = () => {
     return (
         <StoreContext.Consumer>
@@ -12,5 +14,18 @@ const MyDialogsContainer: React.FC = () => {
         </StoreContext.Consumer>
     )
 }
+ */
+// --------------------------
 
+let mapStateToProps = (state: RootStateDataType) => {
+    return {
+        dialogsData: state.messagesPage.dialogsData
+    }
+}
+
+let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
+    return {}
+}
+
+const MyDialogsContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(MyDialogs)
 export default MyDialogsContainer

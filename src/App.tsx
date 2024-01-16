@@ -7,7 +7,6 @@ import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
 
 function App() {
-
     return (
         <BrowserRouter>
             <div className={'app-body'}>
