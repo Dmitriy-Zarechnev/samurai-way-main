@@ -19,7 +19,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
         props.updateNewMessage(textareaValue)
     }
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        e.key === 'Enter' && onClickAddNewMessHandler()
+        e.ctrlKey && e.key === 'Enter' && onClickAddNewMessHandler()
     }
 
     return (

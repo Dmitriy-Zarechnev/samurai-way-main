@@ -27,7 +27,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     }
 
     const onKeyDownTextAreaHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        e.key === 'Enter' && onClickAddNewPostHandler()
+        e.ctrlKey && e.key === 'Enter' && onClickAddNewPostHandler()
     }
 
     return (
