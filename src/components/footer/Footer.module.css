@@ -1,12 +1,12 @@
 .app_footer {
     background-color: #ACC4CC;
     grid-area: F;
-    padding: 5px 10px;
+    padding: 5px 5px;
 }
 
 .app_footer img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 
