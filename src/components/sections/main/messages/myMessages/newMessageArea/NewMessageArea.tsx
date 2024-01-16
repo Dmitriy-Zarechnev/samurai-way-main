@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react'
+import React, {ChangeEvent, KeyboardEvent} from 'react'
 import classes from './NewMessageArea.module.css'
 
 
@@ -18,11 +18,15 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
         let textareaValue = e.currentTarget.value
         props.updateNewMessage(textareaValue)
     }
+    const onKeyDownInputHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        e.key === 'Enter' && onClickAddNewMessHandler()
+    }
 
     return (
         <div className={classes.new_message}>
 
             <textarea onChange={onChangeNewMessHandler}
+                      onKeyDown={onKeyDownInputHandler}
                       value={props.newMessg}
                       className={classes.new_message__textarea}
                       placeholder={'Your message begins here ...'}/>
