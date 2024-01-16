@@ -55,6 +55,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                 />
 
                 <button
+                    disabled={!props.newPost[0] && !props.newPost[1]}
                     onClick={onClickAddNewPostHandler}
                     className={classes.my_posts__button}>
                     Add new post

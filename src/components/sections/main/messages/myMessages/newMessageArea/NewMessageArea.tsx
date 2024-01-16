@@ -11,6 +11,7 @@ type NewMessageAreaPropsType = {
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 
     const onClickAddNewMessHandler = () => {
+
         props.sendNewMessage()
     }
 
@@ -31,7 +32,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
                       className={classes.new_message__textarea}
                       placeholder={'Your message begins here ...'}/>
 
-            <button onClick={onClickAddNewMessHandler}
+            <button disabled={!props.newMessg} onClick={onClickAddNewMessHandler}
                     className={classes.new_message__button}>
                 Send new message
             </button>
