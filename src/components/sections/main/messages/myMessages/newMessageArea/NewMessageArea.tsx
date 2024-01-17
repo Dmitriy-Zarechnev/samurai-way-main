@@ -6,7 +6,6 @@ import {NewMessageAreaPropsType} from '../../../../../../redux/redux-store'
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 
     const onClickAddNewMessHandler = () => {
-
         props.sendNewMessage()
     }
 
@@ -15,6 +14,7 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
         props.updateNewMessage(textareaValue)
     }
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+
         e.ctrlKey && e.key === 'Enter' && onClickAddNewMessHandler()
     }
 
