@@ -64,11 +64,10 @@ let initialState: ProfilePagePropsType = {
     ]
 }
 
-
 export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionType) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost: PostsDataType = {
                 id: 5,
                 header: state.newPost[0],
@@ -76,20 +75,28 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 message: state.newPost[1],
                 likesCount: 0
             }
-            state.postsData.unshift(newPost)
-            state.newPost[0] = ''
-            state.newPost[1] = ''
-            return state
 
-        case UPDATE_NEW_POST_TEXT:
+            let stateCopy = {...state}
+            stateCopy.postsData = [...state.postsData]
+            stateCopy.newPost = [...state.newPost]
+            stateCopy.postsData.unshift(newPost)
+            stateCopy.newPost[0] = ''
+            stateCopy.newPost[1] = ''
+            return stateCopy
+        }
+
+        case UPDATE_NEW_POST_TEXT: {
+            let stateCopy = {...state}
+            stateCopy.newPost = [...state.newPost]
             if (action.newHeaderText) {
-                state.newPost[0] = action.newHeaderText
+                stateCopy.newPost[0] = action.newHeaderText
             }
 
             if (action.newText) {
-                state.newPost[1] = action.newText
+                stateCopy.newPost[1] = action.newText
             }
-            return state
+            return stateCopy
+        }
 
         default:
             return state

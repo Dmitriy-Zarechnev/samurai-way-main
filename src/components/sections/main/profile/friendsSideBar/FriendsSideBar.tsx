@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './FriendsSideBar.module.css'
-import {FriendsListDataType} from '../../../../../redux/store'
+import {FriendsListDataType} from '../../../../../redux/redux-store'
 import {NavLink} from 'react-router-dom'
 
 const FriendsSideBar: React.FC<{ friendsList: Array<FriendsListDataType> }> = ({friendsList}) => {

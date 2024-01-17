@@ -1,21 +1,8 @@
 import React from 'react'
 import FriendsSideBar from './FriendsSideBar'
 import {connect} from 'react-redux'
-import {ActionType, RootStateDataType} from '../../../../../redux/store'
+import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
 
-// Удалить после 45 урока
-/*
-const FriendsSideBarContainer: React.FC = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                return <FriendsSideBar friendsList={store.getState().profilePage.friendsList}/>
-            }}
-        </StoreContext.Consumer>
-    )
-}
- */
-// --------------------------
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {

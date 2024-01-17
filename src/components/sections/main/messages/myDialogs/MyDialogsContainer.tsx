@@ -1,21 +1,9 @@
 import React from 'react'
 import MyDialogs from './MyDialogs'
 import {connect} from 'react-redux'
-import {ActionType, RootStateDataType} from '../../../../../redux/store'
+import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
 
-// Удалить после 45 урока
-/*
-const MyDialogsContainer: React.FC = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                return <MyDialogs dialogsData={store.getState().messagesPage.dialogsData}/>
-            }}
-        </StoreContext.Consumer>
-    )
-}
- */
-// --------------------------
+
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {

@@ -1,15 +1,9 @@
 import React from 'react'
 import classes from './MyMessages.module.css'
 import Message from './message/Message'
-import {MessagesDataType} from '../../../../../redux/store'
+import { MyMessagesPropsType} from '../../../../../redux/redux-store'
 import NewMessageArea from './newMessageArea/NewMessageArea'
 
-type MyMessagesPropsType = {
-    messagesData: Array<MessagesDataType>
-    newMessg: string,
-    updateNewMessage: (textareaValue: string) => void,
-    sendNewMessage: () => void
-}
 
 const MyMessages: React.FC<MyMessagesPropsType> = (props) => {
 

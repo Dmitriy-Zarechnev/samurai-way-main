@@ -1,59 +1,9 @@
 import React from 'react'
-import {ActionType, RootStateDataType} from '../../../../../redux/store'
+import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
 import {addPostCreator, updateNewPostInputCreator, updateNewPostTextAreaCreator} from '../../../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
 
-// Удалить после 45 урока
-/*
-const MyPostsContainer: React.FC = () => {
-
-    // let state: RootStateDataType = store.getState()
-
-    // const onClickAddNewPost = () => {
-    //     store.dispatch(addPostCreator() as ActionType)
-    // }
-    //
-    // const onChangePostInput = (headerValue: string) => {
-    //     store.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
-    // }
-    //
-    // const onChangePostTextArea = (postValue: string) => {
-    //     store.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
-    // }
-
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-
-                let state: RootStateDataType = store.getState()
-                const onClickAddNewPost = () => {
-                    store.dispatch(addPostCreator() as ActionType)
-                }
-
-                const onChangePostInput = (headerValue: string) => {
-                    store.dispatch(updateNewPostInputCreator(headerValue) as ActionType)
-                }
-
-                const onChangePostTextArea = (postValue: string) => {
-                    store.dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
-                }
-
-                return (
-                    <MyPosts
-                        posts={state.profilePage.postsData}
-                        newPost={state.profilePage.newPost}
-                        updateNewPostTextArea={onChangePostTextArea}
-                        updateNewPostInput={onChangePostInput}
-                        addPost={onClickAddNewPost}/>
-                )
-            }}
-        </StoreContext.Consumer>
-    )
-}
-
- */
-// --------------------------
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {

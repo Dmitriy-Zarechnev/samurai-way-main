@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Post.module.css'
-import {PostsDataType} from '../../../../../../redux/store'
+import {PostsDataType} from '../../../../../../redux/redux-store'
 
 const Post: React.FC<{ postsData: Array<PostsDataType> }> = ({postsData}) => {
     return (

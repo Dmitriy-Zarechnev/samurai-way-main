@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
-import {MyPostsPropsType} from '../../../../../redux/store'
+import {MyPostsPropsType} from '../../../../../redux/redux-store'
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {

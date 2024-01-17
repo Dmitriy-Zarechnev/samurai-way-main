@@ -1,12 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import classes from './NewMessageArea.module.css'
+import {NewMessageAreaPropsType} from '../../../../../../redux/redux-store'
 
-
-type NewMessageAreaPropsType = {
-    newMessg: string,
-    updateNewMessage: (textareaValue: string) => void,
-    sendNewMessage: () => void
-}
 
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 

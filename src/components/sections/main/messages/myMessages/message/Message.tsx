@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Message.module.css'
-import {MessagesDataType} from '../../../../../../redux/store'
+import {MessagesDataType} from '../../../../../../redux/redux-store'
 
 
 const Message: React.FC<{ messagesData: Array<MessagesDataType> }> = ({messagesData}) => {
