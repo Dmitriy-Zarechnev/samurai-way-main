@@ -31,7 +31,10 @@ let initialState: ProfilePagePropsType = {
         {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
         {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
     ],
-    newPost: ['', ''],
+    newPost: {
+        newHeader: '',
+        newText: ''
+    },
     friendsList: [
         {
             id: 1,
@@ -78,22 +81,28 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
         case ADD_POST:
             let newPostBody: PostsDataType = {
                 id: 5,
-                header: state.newPost[0],
+                header: state.newPost.newHeader,
                 src: img2,
-                message: state.newPost[1],
+                message: state.newPost.newText,
                 likesCount: 0
             }
 
             return {
                 ...state,
                 postsData: [newPostBody, ...state.postsData],
-                newPost: ['', '']
+                newPost: {
+                    newHeader: '',
+                    newText: ''
+                }
             }
 
         case UPDATE_NEW_POST_TEXT:
             return {
                 ...state,
-                newPost: [action.newHeaderText, action.newText]
+                newPost: {
+                    newHeader: action.newHeaderText,
+                    newText: action.newText
+                }
             }
 
         default:

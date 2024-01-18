@@ -42,7 +42,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                 <input
                     onChange={onChangePostInputHandler}
                     onKeyDown={onKeyDownInputHandler}
-                    value={props.newPost[0]}
+                    value={props.newPost.newHeader}
                     className={classes.my_posts__input}
                     id={'headerAddPost'}
                     type="text"
@@ -53,13 +53,13 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                 <textarea
                     onChange={onChangePostTextAreaHandler}
                     onKeyDown={onKeyDownTextAreaHandler}
-                    value={props.newPost[1]}
+                    value={props.newPost.newText}
                     className={classes.my_posts__textarea}
                     placeholder={'Your Post begins here ...'}
                 />
 
                 <button
-                    disabled={!props.newPost[0] && !props.newPost[1]}
+                    disabled={!props.newPost.newHeader && !props.newPost.newText}
                     onClick={onClickAddNewPostHandler}
                     className={classes.my_posts__button}>
                     Add new post

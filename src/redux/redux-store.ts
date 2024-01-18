@@ -31,11 +31,16 @@ export type ActionType = {
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType,
     postsData: Array<PostsDataType>,
-    newPost: Array<string>,
+    newPost: NewPostType,
     friendsList: Array<FriendsListDataType>
 }
 
-export type ProfileInfoType ={
+export type NewPostType = {
+    newHeader: string,
+    newText: string
+}
+
+export type ProfileInfoType = {
     id: number,
     src: string,
     info: string
@@ -60,7 +65,7 @@ export type FriendsListDataType = {
 // Типизация для страницы постов
 export type MyPostsPropsType = {
     posts: Array<PostsDataType>,
-    newPost: Array<string>,
+    newPost: NewPostType,
     updateNewPostTextArea: (postValue: string) => void
     updateNewPostInput: (headerValue: string) => void
     addPost: () => void
