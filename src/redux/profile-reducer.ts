@@ -9,8 +9,9 @@ import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
 import avatar from '../assets/images/prof.png'
 
-export const ADD_POST = 'ADD-POST'
-export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let initialState: ProfilePagePropsType = {
     profileInfo:
@@ -78,6 +79,7 @@ let initialState: ProfilePagePropsType = {
 export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionType) => {
 
     switch (action.type) {
+
         case ADD_POST:
             let newPostBody: PostsDataType = {
                 id: 5,
@@ -97,13 +99,24 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
             }
 
         case UPDATE_NEW_POST_TEXT:
+
             return {
                 ...state,
                 newPost: {
-                    newHeader: action.newHeaderText,
+
                     newText: action.newText
                 }
             }
+
+        case UPDATE_NEW_POST_HEADER:
+
+            return {
+                ...state,
+                newPost: {
+                    newHeader: action.newHeaderText
+                }
+            }
+
 
         default:
             return state
@@ -115,7 +128,7 @@ export const addPostCreator = () => ({
 })
 
 export const updateNewPostInputCreator = (headerValue: string) => ({
-    type: UPDATE_NEW_POST_TEXT,
+    type: UPDATE_NEW_POST_HEADER,
     newHeaderText: headerValue
 })
 

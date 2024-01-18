@@ -7,7 +7,7 @@
 .friends_sidebar__header {
     color: black;
     font-size: 25px;
-    line-height: 1.2;
+    font-weight: 700;
     margin-bottom: 5px;
     text-align: center;
 }
@@ -35,7 +35,6 @@
 
 .friends_sidebar__name {
     font-size: 18px;
-    line-height: 1.2;
     font-weight: 700;
     color: #B49463;
     text-transform: capitalize;

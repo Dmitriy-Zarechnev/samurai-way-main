@@ -21,7 +21,7 @@ export type RootStateDataType = {
 
 // Типизация для action
 export type ActionType = {
-    type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
+        type: 'ADD-POST' | 'UPDATE-NEW-POST-HEADER' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
     newText?: string,
     message?: string,
@@ -48,9 +48,9 @@ export type ProfileInfoType = {
 
 export type PostsDataType = {
     id: number,
-    header: string,
+    header: string ,
     src: string,
-    message: string,
+    message: string ,
     likesCount: number
 }
 

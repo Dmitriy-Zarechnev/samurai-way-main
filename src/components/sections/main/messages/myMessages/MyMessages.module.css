@@ -5,7 +5,8 @@
 
 .my_messages__header {
     font-size: 25px;
-    line-height: 1.2;
+    font-weight: 700;
     margin-bottom: 5px;
+    text-align: center;
 }
 

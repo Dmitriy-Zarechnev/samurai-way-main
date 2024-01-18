@@ -7,11 +7,9 @@
 .my_posts__header {
     text-align: center;
     font-size: 25px;
-    line-height: 1.2;
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 5px;
-
 }
 
 .my_posts__new_post {
@@ -20,8 +18,7 @@
 
 .my_posts__input_label {
     font-size: 18px;
-    line-height: 1.2;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: capitalize;
     color: black;
 
@@ -30,8 +27,6 @@
 
 
 .my_posts__input {
-    font-size: 16px;
-    line-height: 1.2;
     font-weight: 400;
     color: black;
 
@@ -42,15 +37,12 @@
 
 .my_posts__input::placeholder {
     font-size: 14px;
-    line-height: 1.2;
     font-weight: 400;
     color: #3B4D3A;
     text-transform: capitalize;
 }
 
 .my_posts__textarea {
-    font-size: 16px;
-    line-height: 1.2;
     font-weight: 400;
     color: black;
     background-color: white;
@@ -64,7 +56,6 @@
 
 .my_posts__textarea::placeholder {
     font-size: 14px;
-    line-height: 1.2;
     font-weight: 400;
     color: #3B4D3A;
     text-transform: capitalize;
@@ -73,7 +64,6 @@
 .my_posts__button {
     display: block;
     font-size: 18px;
-    line-height: 1.2;
     font-weight: 500;
     color: #E4ECFC;
     text-transform: capitalize;

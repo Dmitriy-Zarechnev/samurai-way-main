@@ -5,6 +5,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
 
     @media (prefers-reduced-motion: reduce) {
         animation: none;

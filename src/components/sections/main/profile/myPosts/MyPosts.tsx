@@ -7,6 +7,7 @@ import {MyPostsPropsType} from '../../../../../redux/redux-store'
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
     const onClickAddNewPostHandler = () => {
+
         props.addPost()
     }
 
@@ -17,7 +18,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     }
 
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        e.key === 'Enter' && onClickAddNewPostHandler()
+        e.ctrlKey && e.key === 'Enter' && onClickAddNewPostHandler()
     }
     //  ---------------------------------------------------------
 
@@ -42,7 +43,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                 <input
                     onChange={onChangePostInputHandler}
                     onKeyDown={onKeyDownInputHandler}
-                    value={props.newPost.newHeader}
+                    value={props.newPost.newHeader }
                     className={classes.my_posts__input}
                     id={'headerAddPost'}
                     type="text"
@@ -53,7 +54,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                 <textarea
                     onChange={onChangePostTextAreaHandler}
                     onKeyDown={onKeyDownTextAreaHandler}
-                    value={props.newPost.newText}
+                    value={props.newPost.newText }
                     className={classes.my_posts__textarea}
                     placeholder={'Your Post begins here ...'}
                 />
