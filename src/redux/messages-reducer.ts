@@ -1,4 +1,4 @@
-import {ActionType, MessagesDataType, MessagesPagePropsType} from './store'
+import {ActionType, MessagesDataType, MessagesPagePropsType} from './redux-store'
 import cammyFriend from '../assets/images/webp/Cammy.webp'
 import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'

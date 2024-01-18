@@ -7,7 +7,6 @@ import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
 
-
 const Main: React.FC = () => {
     return (
         <div className={classes.app_main}>

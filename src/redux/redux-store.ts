@@ -2,8 +2,6 @@ import {combineReducers, createStore, Store} from 'redux'
 import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
 
-
-
 // Типизация для Store
 export type StoreType = {
     _state: RootStateDataType,
