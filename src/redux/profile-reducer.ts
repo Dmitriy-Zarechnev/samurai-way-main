@@ -74,11 +74,9 @@ let initialState: ProfilePagePropsType = {
 
 export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionType) => {
 
-    let stateCopy
-
     switch (action.type) {
         case ADD_POST:
-            let newPost: PostsDataType = {
+            let newPostBody: PostsDataType = {
                 id: 5,
                 header: state.newPost[0],
                 src: img2,
@@ -86,27 +84,17 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 likesCount: 0
             }
 
-            stateCopy = {
+            return {
                 ...state,
-                postsData: [...state.postsData],
-                newPost: [...state.newPost]
+                postsData: [newPostBody, ...state.postsData],
+                newPost: ['', '']
             }
-
-            stateCopy.postsData.unshift(newPost)
-            stateCopy.newPost[0] = ''
-            stateCopy.newPost[1] = ''
-            return stateCopy
 
         case UPDATE_NEW_POST_TEXT:
-            stateCopy = {...state, newPost: [...state.newPost]}
-            if (action.newHeaderText) {
-                stateCopy.newPost[0] = action.newHeaderText
+            return {
+                ...state,
+                newPost: [action.newHeaderText, action.newText]
             }
-
-            if (action.newText) {
-                stateCopy.newPost[1] = action.newText
-            }
-            return stateCopy
 
         default:
             return state
