@@ -1,13 +1,3 @@
-import img1 from '../assets/images/Cupcake.jpg'
-import cammyFriend from '../assets/images/webp/Cammy.webp'
-import kratosFriend from '../assets/images/webp/Kratos.webp'
-import groguFriend from '../assets/images/webp/Grogu.webp'
-import trissFriend from '../assets/images/webp/Triss.webp'
-import itachiFriend from '../assets/images/webp/Itachi.webp'
-import nineS from '../assets/images/webp/9s.webp'
-import {profileReducer} from './profile-reducer'
-import {messagesReducer} from './messages-reducer'
-
 // Типизация для Store
 export type StoreType = {
     _state: RootStateDataType,
@@ -34,8 +24,10 @@ export type ActionType = {
 }
 
 // Типизация для observer
+/*
 type ObserverType = (state: RootStateDataType) => void
 
+ */
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
@@ -209,14 +201,16 @@ let store: StoreType = {
         this._callSubscriber = observer
     },
 
-    // dispatch(action: ActionType) {
-    //     this._state.profilePage = profileReducer(this._state.profilePage, action)
-    //     this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
-    //
-    //     this._callSubscriber(this._state)
-    // }
+    dispatch(action: ActionType) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+
+        this._callSubscriber(this._state)
+    }
 }
 
 
+
+ export default store
+
  */
-// export default store

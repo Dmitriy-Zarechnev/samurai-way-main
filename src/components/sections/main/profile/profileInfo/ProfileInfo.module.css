@@ -10,9 +10,12 @@
     height: 150px;
     object-fit: cover;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 5px auto;
 }
 
 .profile_info__text {
     text-indent: 20px;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400;
 }

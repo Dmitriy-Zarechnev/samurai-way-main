@@ -17,7 +17,7 @@ let initialState: ProfilePagePropsType = {
         {
             id: 1,
             src: avatar,
-            info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod support system.'
+            info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod.'
         }
     ],
     postsData: [
