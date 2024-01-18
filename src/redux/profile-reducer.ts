@@ -13,13 +13,13 @@ export const ADD_POST = 'ADD-POST'
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let initialState: ProfilePagePropsType = {
-    profileInfo: [
+    profileInfo:
         {
             id: 1,
             src: avatar,
             info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod.'
         }
-    ],
+    ,
     postsData: [
         {
             id: 1,
@@ -84,9 +84,11 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 likesCount: 0
             }
 
-            let stateCopy = {...state}
-            stateCopy.postsData = [...state.postsData]
-            stateCopy.newPost = [...state.newPost]
+            let stateCopy = {
+                ...state,
+                postsData: [...state.postsData],
+                newPost: [...state.newPost]
+            }
             stateCopy.postsData.unshift(newPost)
             stateCopy.newPost[0] = ''
             stateCopy.newPost[1] = ''
@@ -94,8 +96,10 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
         }
 
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPost = [...state.newPost]
+            let stateCopy = {
+                ...state,
+                newPost: [...state.newPost]
+            }
             if (action.newHeaderText) {
                 stateCopy.newPost[0] = action.newHeaderText
             }

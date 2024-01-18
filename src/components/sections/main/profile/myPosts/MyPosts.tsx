@@ -46,7 +46,9 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                     className={classes.my_posts__input}
                     id={'headerAddPost'}
                     type="text"
-                    placeholder={'Write your post\'s Header ...'}/>
+                    placeholder={'Write your post\'s Header ...'}
+                    autoComplete={'off'}
+                />
 
                 <textarea
                     onChange={onChangePostTextAreaHandler}

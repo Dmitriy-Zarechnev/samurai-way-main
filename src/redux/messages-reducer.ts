@@ -69,8 +69,11 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
                 message: state.newMessg
             }
 
-            let stateCopy = {...state}
-            stateCopy.messagesData = [...state.messagesData]
+            let stateCopy = {
+                ...state,
+                messagesData: [...state.messagesData]
+            }
+
             stateCopy.messagesData.push(newMessg)
             stateCopy.newMessg = ''
             return stateCopy

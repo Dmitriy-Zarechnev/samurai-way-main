@@ -31,7 +31,7 @@ export type ActionType = {
 
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
-    profileInfo: Array<ProfileInfoType>,
+    profileInfo: ProfileInfoType,
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
     friendsList: Array<FriendsListDataType>
