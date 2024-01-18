@@ -1,4 +1,4 @@
-import {ActionType, PostsDataType, ProfilePagePropsType} from './store'
+import {ActionType, PostsDataType, ProfilePagePropsType} from './redux-store'
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
 import cammyFriend from '../assets/images/webp/Cammy.webp'
@@ -7,11 +7,19 @@ import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
+import avatar from '../assets/images/prof.png'
 
 export const ADD_POST = 'ADD-POST'
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let initialState: ProfilePagePropsType = {
+    profileInfo: [
+        {
+            id: 1,
+            src: avatar,
+            info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod support system.'
+        }
+    ],
     postsData: [
         {
             id: 1,

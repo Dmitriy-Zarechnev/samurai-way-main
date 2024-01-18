@@ -1,12 +1,16 @@
 import React from 'react'
 import classes from './ProfileInfo.module.css'
-import profImg from '../../../../../assets/images/prof.png'
+import {ProfileInfoType} from '../../../../../redux/redux-store'
 
-const ProfileInfo: React.FC = () => {
+
+const ProfileInfo: React.FC<{ profileInfo: Array<ProfileInfoType> }> = (props) => {
+
     return (
         <div className={classes.profile_info}>
-            <img className={classes.profile_info__img} src={profImg} alt={'mainLogo'}/>
-            <p className={classes.profile_info__text}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam modi nam neque nobis officia quas quasi, repudiandae suscipit voluptatibus?</p>
+            <img className={classes.profile_info__img} src={props.profileInfo[0].src} alt={'mainLogo'}/>
+            <p className={classes.profile_info__text}>
+                {props.profileInfo[0].info}
+            </p>
         </div>
     )
 }

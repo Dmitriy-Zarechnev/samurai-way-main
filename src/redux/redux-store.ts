@@ -3,6 +3,7 @@ import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
 
 
+
 // Типизация для Store
 export type StoreType = {
     _state: RootStateDataType,
@@ -30,9 +31,16 @@ export type ActionType = {
 
 // Типизация для ProfilePage
 export type ProfilePagePropsType = {
+    profileInfo: Array<ProfileInfoType>,
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
     friendsList: Array<FriendsListDataType>
+}
+
+export type ProfileInfoType ={
+    id: number,
+    src: string,
+    info: string
 }
 
 export type PostsDataType = {
@@ -99,8 +107,5 @@ let reducers = combineReducers({
 })
 
 let store: Store<StoreType, ActionType> = createStore(reducers)
-
-
-
 
 export default store

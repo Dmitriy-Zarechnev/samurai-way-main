@@ -88,6 +88,7 @@ export type DialogsDataType = {
 
 
 // Store содержит все данные и методы
+/*
 let store: StoreType = {
     _state: {
         //  Данные для ProfilePage
@@ -208,12 +209,14 @@ let store: StoreType = {
         this._callSubscriber = observer
     },
 
-    dispatch(action: ActionType) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
-
-        this._callSubscriber(this._state)
-    }
+    // dispatch(action: ActionType) {
+    //     this._state.profilePage = profileReducer(this._state.profilePage, action)
+    //     this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+    //
+    //     this._callSubscriber(this._state)
+    // }
 }
 
-export default store
+
+ */
+// export default store
