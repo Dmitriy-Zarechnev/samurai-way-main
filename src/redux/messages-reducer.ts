@@ -63,28 +63,24 @@ let initialState: MessagesPagePropsType = {
 export const messagesReducer = (state: MessagesPagePropsType = initialState, action: ActionType) => {
 
     switch (action.type) {
-        case SEND_NEW_MESSAGE: {
-            let newMessg: MessagesDataType = {
+        case SEND_NEW_MESSAGE:
+            let newMessgBody: MessagesDataType = {
                 id: 7,
                 message: state.newMessg
             }
 
-            let stateCopy = {
+            return {
                 ...state,
-                messagesData: [...state.messagesData]
+                messagesData: [...state.messagesData, newMessgBody],
+                newMessg: ''
             }
 
-            stateCopy.messagesData.push(newMessg)
-            stateCopy.newMessg = ''
-            return stateCopy
-        }
-        case UPDATE_NEW_SEND_MESSAGE: {
-            let stateCopy = {...state}
-            if (action.message) {
-                stateCopy.newMessg = action.message
+        case UPDATE_NEW_SEND_MESSAGE:
+            return {
+                ...state,
+                newMessg: action.message
             }
-            return stateCopy
-        }
+
         default:
             return state
     }
