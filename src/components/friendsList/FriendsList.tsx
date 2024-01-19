@@ -1,28 +1,28 @@
 import React from 'react'
 import {FriendsListDataType} from '../../redux/redux-store'
-import classes from '../sections/main/profile/friendsSideBar/FriendsSideBar.module.css'
+import classes from './FriendsList.module.css'
 import {NavLink} from 'react-router-dom'
 
 
-const FriendsList: React.FC<{ friendsList: FriendsListDataType[] }> = ({friendsList}) => {
+const FriendsList: React.FC<{ friendsList: FriendsListDataType[], navlink: string }> = ({friendsList, navlink}) => {
     return (
         <div>
             {friendsList.map((el) => {
                 return (
-                    <li className={classes.friends_sidebar__friend}
+                    <li className={classes.friend}
                         key={el.id}>
 
                         <NavLink
-                            to={`/profile/${el.id}`}
-                            className={classes.friends_sidebar__link}>
+                            to={`/${navlink}/${el.id}`}
+                            className={classes.link}>
                             <img src={el.src}
                                  alt={el.alt}
-                                 className={classes.friends_sidebar__img}/>
+                                 className={classes.img}/>
                         </NavLink>
 
                         <NavLink
-                            to={`/profile/${el.id}`}
-                            className={classes.friends_sidebar__name}>
+                            to={`/${navlink}/${el.id}`}
+                            className={classes.name}>
                             {el.name}
                         </NavLink>
                     </li>
