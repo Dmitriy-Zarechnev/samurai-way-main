@@ -29,25 +29,11 @@
     cursor: pointer;
 }
 
-
-.my_posts__input {
-    font-weight: 400;
-    color: black;
-
-    padding: 5px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.my_posts__input::placeholder {
-    font-size: 14px;
-    font-weight: 400;
-    color: #3B4D3A;
-    text-transform: capitalize;
+/* Локальные стили для input*/
+.my_posts__new_post input {
 }
 
 /* Локальные стили для textarea*/
 .my_posts__new_post textarea {
-
 }
 

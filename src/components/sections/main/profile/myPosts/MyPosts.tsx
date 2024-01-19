@@ -4,6 +4,7 @@ import classes from './MyPosts.module.css'
 import {MyPostsPropsType} from '../../../../../redux/redux-store'
 import Button from '../../../../button/Button'
 import TextArea from '../../../../textarea/TextArea'
+import Input from '../../../../input/Input'
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -40,16 +41,20 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
             <div className={classes.my_posts__new_post}>
 
-                <label htmlFor="headerAddPost" className={classes.my_posts__input_label}>Post's Header</label>
-                <input
-                    onChange={onChangePostInputHandler}
-                    onKeyDown={onKeyDownInputHandler}
-                    value={props.newPost.newHeader}
-                    className={classes.my_posts__input}
+                <label
+                    htmlFor="headerAddPost"
+                    className={classes.my_posts__input_label}>
+                    Post's Header
+                </label>
+
+                <Input
                     id={'headerAddPost'}
                     type="text"
-                    placeholder={'Write your post\'s Header ...'}
                     autoComplete={'off'}
+                    value={props.newPost.newHeader}
+                    onChange={onChangePostInputHandler}
+                    onKeyDown={onKeyDownInputHandler}
+                    placeholder={'Write your post\'s Header ...'}
                 />
 
                 <TextArea

@@ -120,6 +120,18 @@ export type TextAreaPropsType = {
     onKeyDown: (e: KeyboardEvent<HTMLTextAreaElement>) => void,
 }
 
+// Типизация для input
+export type InputPropsType = {
+    id: string,
+    type: string,
+    value: string,
+    autoComplete: 'off' | 'on',
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void,
+    onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void,
+    placeholder: string,
+}
+
+
 let reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer
