@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {MyPostsPropsType} from '../../../../../redux/redux-store'
+import Button from '../../../../button/Button'
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -58,12 +59,10 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                     placeholder={'Your Post begins here ...'}
                 />
 
-                <button
-                    disabled={!props.newPost.newHeader && !props.newPost.newText}
-                    onClick={onClickAddNewPostHandler}
-                    className={classes.my_posts__button}>
-                    Add new post
-                </button>
+                <Button name={'Add new post'}
+                        onClick={onClickAddNewPostHandler}
+                        disabled={!props.newPost.newHeader && !props.newPost.newText}
+                />
             </div>
 
             <Post postsData={props.posts}/>

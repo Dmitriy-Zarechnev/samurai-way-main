@@ -16,6 +16,10 @@
     margin-bottom: 10px;
 }
 
+/*.my_posts__new_post button {*/
+/*    display: block;*/
+/*}*/
+
 .my_posts__input_label {
     font-size: 18px;
     font-weight: 700;
@@ -61,15 +65,8 @@
     text-transform: capitalize;
 }
 
-.my_posts__button {
-    display: block;
-    font-size: 18px;
-    font-weight: 500;
-    color: #E4ECFC;
-    text-transform: capitalize;
+/*.my_posts__button {*/
+/*    display: block;*/
+/*    */
 
-    background-color: #A68B5C;
-    padding: 10px 20px;
-    margin: 0 0 0 auto;
-
-}
+/*}*/
