@@ -1,0 +1,27 @@
+.friend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    background: none;
+    padding-bottom: 0;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #B49463;
+    text-transform: capitalize;
+}
