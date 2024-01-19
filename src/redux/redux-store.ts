@@ -23,7 +23,7 @@ export type RootStateDataType = {
 export type ActionType = {
         type: 'ADD-POST' | 'UPDATE-NEW-POST-HEADER' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
-    newText?: string,
+    newPostText?: string,
     message?: string,
 }
 

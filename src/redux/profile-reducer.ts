@@ -99,25 +99,22 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
             }
 
         case UPDATE_NEW_POST_TEXT:
-
             return {
                 ...state,
                 newPost: {
-
-                    newText: action.newText
+                    ...state.newPost,
+                    newText: action.newPostText
                 }
             }
 
         case UPDATE_NEW_POST_HEADER:
-
             return {
                 ...state,
                 newPost: {
+                    ...state.newPost,
                     newHeader: action.newHeaderText
                 }
             }
-
-
         default:
             return state
     }
@@ -134,5 +131,5 @@ export const updateNewPostInputCreator = (headerValue: string) => ({
 
 export const updateNewPostTextAreaCreator = (postValue: string) => ({
     type: UPDATE_NEW_POST_TEXT,
-    newText: postValue
+    newPostText: postValue
 })

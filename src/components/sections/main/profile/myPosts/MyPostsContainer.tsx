@@ -22,6 +22,7 @@ let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
         },
         addPost: () => {
             dispatch(addPostCreator() as ActionType)
+
         }
     }
 }
