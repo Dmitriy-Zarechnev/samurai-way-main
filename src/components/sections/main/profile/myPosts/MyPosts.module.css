@@ -16,9 +16,9 @@
     margin-bottom: 10px;
 }
 
-/*.my_posts__new_post button {*/
-/*    display: block;*/
-/*}*/
+/* Локальные стили для button*/
+.my_posts__new_post button {
+}
 
 .my_posts__input_label {
     font-size: 18px;
@@ -46,27 +46,8 @@
     text-transform: capitalize;
 }
 
-.my_posts__textarea {
-    font-weight: 400;
-    color: black;
-    background-color: white;
+/* Локальные стили для textarea*/
+.my_posts__new_post textarea {
 
-    resize: none;
-    height: 100px;
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
 }
 
-.my_posts__textarea::placeholder {
-    font-size: 14px;
-    font-weight: 400;
-    color: #3B4D3A;
-    text-transform: capitalize;
-}
-
-/*.my_posts__button {*/
-/*    display: block;*/
-/*    */
-
-/*}*/

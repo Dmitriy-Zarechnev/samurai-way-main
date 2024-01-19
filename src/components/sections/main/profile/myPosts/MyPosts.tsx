@@ -3,6 +3,7 @@ import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {MyPostsPropsType} from '../../../../../redux/redux-store'
 import Button from '../../../../button/Button'
+import TextArea from '../../../../textarea/TextArea'
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -51,17 +52,17 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                     autoComplete={'off'}
                 />
 
-                <textarea
+                <TextArea
+                    placeholder={'Your Post begins here ...'}
+                    value={props.newPost.newText}
                     onChange={onChangePostTextAreaHandler}
                     onKeyDown={onKeyDownTextAreaHandler}
-                    value={props.newPost.newText}
-                    className={classes.my_posts__textarea}
-                    placeholder={'Your Post begins here ...'}
                 />
 
-                <Button name={'Add new post'}
-                        onClick={onClickAddNewPostHandler}
-                        disabled={!props.newPost.newHeader && !props.newPost.newText}
+                <Button
+                    name={'Add new post'}
+                    onClick={onClickAddNewPostHandler}
+                    disabled={!props.newPost.newHeader && !props.newPost.newText}
                 />
             </div>
 

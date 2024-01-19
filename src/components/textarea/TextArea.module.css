@@ -1,0 +1,16 @@
+.textarea {
+    color: black;
+    background-color: white;
+
+    resize: none;
+    height: 100px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.textarea::placeholder {
+    font-size: 14px;
+    color: #052718;
+    text-transform: capitalize;
+}

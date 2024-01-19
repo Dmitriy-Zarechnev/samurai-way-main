@@ -1,6 +1,7 @@
 import {combineReducers, createStore, Store} from 'redux'
 import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
+import {ChangeEvent, KeyboardEvent} from 'react'
 
 // Типизация для Store
 export type StoreType = {
@@ -21,7 +22,7 @@ export type RootStateDataType = {
 
 // Типизация для action
 export type ActionType = {
-        type: 'ADD-POST' | 'UPDATE-NEW-POST-HEADER' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
+    type: 'ADD-POST' | 'UPDATE-NEW-POST-HEADER' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
     newPostText?: string,
     message?: string,
@@ -48,9 +49,9 @@ export type ProfileInfoType = {
 
 export type PostsDataType = {
     id: number,
-    header: string ,
+    header: string,
     src: string,
-    message: string ,
+    message: string,
     likesCount: number
 }
 
@@ -102,6 +103,21 @@ export type DialogsDataType = {
     src: string,
     name: string,
     alt: string
+}
+
+// Типизация для button
+export type ButtonPropsType = {
+    name: string
+    onClick: () => void
+    disabled: boolean
+}
+
+// Типизация для textarea
+export type TextAreaPropsType = {
+    placeholder: string,
+    value: string,
+    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
+    onKeyDown: (e: KeyboardEvent<HTMLTextAreaElement>) => void,
 }
 
 let reducers = combineReducers({

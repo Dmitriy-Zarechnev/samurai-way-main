@@ -1,11 +1,7 @@
 import React from 'react'
 import classes from './Button.module.css'
+import {ButtonPropsType} from '../../redux/redux-store'
 
-type ButtonPropsType = {
-    name: string
-    onClick: () => void
-    disabled: boolean
-}
 
 const Button: React.FC<ButtonPropsType> = (props) => {
     return (

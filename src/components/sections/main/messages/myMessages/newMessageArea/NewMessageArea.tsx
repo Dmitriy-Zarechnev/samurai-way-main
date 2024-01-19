@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import classes from './NewMessageArea.module.css'
 import {NewMessageAreaPropsType} from '../../../../../../redux/redux-store'
 import Button from '../../../../../button/Button'
+import TextArea from '../../../../../textarea/TextArea'
 
 
 const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
@@ -20,18 +21,18 @@ const NewMessageArea: React.FC<NewMessageAreaPropsType> = (props) => {
 
     return (
         <div className={classes.new_message}>
+            <TextArea
+                value={props.newMessg}
+                onChange={onChangeNewMessHandler}
+                onKeyDown={onKeyDownInputHandler}
+                placeholder={'Your message begins here ...'}
+            />
 
-            <textarea onChange={onChangeNewMessHandler}
-                      onKeyDown={onKeyDownInputHandler}
-                      value={props.newMessg}
-                      className={classes.new_message__textarea}
-                      placeholder={'Your message begins here ...'}/>
-
-            {/*<button disabled={!props.newMessg} onClick={onClickAddNewMessHandler}*/}
-            {/*        className={classes.new_message__button}>*/}
-            {/*    Send new message*/}
-            {/*</button>*/}
-            <Button name={'Send new message'} onClick={onClickAddNewMessHandler} disabled={!props.newMessg}/>
+            <Button
+                name={'Send new message'}
+                onClick={onClickAddNewMessHandler}
+                disabled={!props.newMessg}
+            />
         </div>
     )
 }

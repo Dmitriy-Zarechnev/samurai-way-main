@@ -62,14 +62,16 @@ body {
     overflow: hidden;
 }
 
+/* Анимация всех эффектов кнопки */
 button {
     cursor: pointer;
-    transition: all .2s ease;
+    transition: all .3s ease;
 }
 
 /* Стили для hover эффекта кнопки */
 button:hover {
-    box-shadow: 0 0 0 2px #E4ECFC, 0 0 4px 4px #052718;
+    box-shadow: 0 0 0 1px #E4ECFC, 0 0 3px 3px #052718;
+    color: #052718;
 }
 
 /* Стили при клике на кнопки */
