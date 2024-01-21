@@ -1,12 +1,6 @@
 import {ActionType, PostsDataType, ProfilePagePropsType} from './redux-store'
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
-import cammyFriend from '../assets/images/webp/Cammy.webp'
-import kratosFriend from '../assets/images/webp/Kratos.webp'
-import groguFriend from '../assets/images/webp/Grogu.webp'
-import trissFriend from '../assets/images/webp/Triss.webp'
-import itachiFriend from '../assets/images/webp/Itachi.webp'
-import nineS from '../assets/images/webp/9s.webp'
 import avatar from '../assets/images/prof.png'
 
 const ADD_POST = 'ADD-POST'
@@ -14,13 +8,11 @@ const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let initialState: ProfilePagePropsType = {
-    profileInfo:
-        {
-            id: 1,
-            src: avatar,
-            info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod.'
-        }
-    ,
+    profileInfo: {
+        id: 1,
+        src: avatar,
+        info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod.'
+    },
     postsData: [
         {
             id: 1,
@@ -35,45 +27,7 @@ let initialState: ProfilePagePropsType = {
     newPost: {
         newHeader: '',
         newText: ''
-    },
-    friendsList: [
-        {
-            id: 1,
-            src: cammyFriend,
-            name: 'Cammy',
-            alt: 'Cammy Avatar'
-        },
-        {
-            id: 2,
-            src: kratosFriend,
-            name: 'Kratos',
-            alt: 'Kratos Avatar'
-        },
-        {
-            id: 3,
-            src: groguFriend,
-            name: 'Grogu',
-            alt: 'Grogu Avatar'
-        },
-        {
-            id: 4,
-            src: trissFriend,
-            name: 'Triss',
-            alt: 'Triss Avatar'
-        },
-        {
-            id: 5,
-            src: itachiFriend,
-            name: 'itachi',
-            alt: 'itachi Avatar'
-        },
-        {
-            id: 6,
-            src: nineS,
-            name: '9S',
-            alt: '9S Avatar'
-        }
-    ]
+    }
 }
 
 export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionType) => {

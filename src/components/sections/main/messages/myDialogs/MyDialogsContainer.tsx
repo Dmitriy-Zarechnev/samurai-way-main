@@ -7,7 +7,7 @@ import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {
-        dialogsData: state.messagesPage.dialogsData
+        dialogsData: state.friendsListData
     }
 }
 

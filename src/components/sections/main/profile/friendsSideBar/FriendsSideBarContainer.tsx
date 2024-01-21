@@ -6,7 +6,7 @@ import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {
-        friendsList: state.profilePage.friendsList
+        friendsList: state.friendsListData
     }
 }
 

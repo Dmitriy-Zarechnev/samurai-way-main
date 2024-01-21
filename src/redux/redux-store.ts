@@ -2,14 +2,16 @@ import {combineReducers, createStore, Store} from 'redux'
 import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
 import {ChangeEvent, KeyboardEvent} from 'react'
+import {friendsListReducer} from './friends-list-reducer'
 
-// Типизация для Store
+// --------------- Типизация для Store -------------------------
+
 export type StoreType = {
     _state: RootStateDataType,
     _callSubscriber: (state: RootStateDataType) => void,
 
     getState: () => RootStateDataType,
-    subscribe: (observer: any) => void,
+    subscribe: (observer: ObserverType) => void,
 
     dispatch: (action: ActionType) => void,
 }
@@ -17,8 +19,12 @@ export type StoreType = {
 // Типизация для State
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
-    messagesPage: MessagesPagePropsType
+    messagesPage: MessagesPagePropsType,
+    friendsListData: Array<FriendsListDataType>
 }
+
+// Типизация для observer
+type ObserverType = (state: RootStateDataType) => void
 
 // Типизация для action
 export type ActionType = {
@@ -27,18 +33,14 @@ export type ActionType = {
     newPostText?: string,
     message?: string,
 }
+// --------------------------------------------------------------
 
-// Типизация для ProfilePage
+// --------------- Типизация для ProfilePage -------------------------
+
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType,
     postsData: Array<PostsDataType>,
-    newPost: NewPostType,
-    friendsList: Array<FriendsListDataType>
-}
-
-export type NewPostType = {
-    newHeader: string,
-    newText: string
+    newPost: NewPostType
 }
 
 export type ProfileInfoType = {
@@ -55,15 +57,12 @@ export type PostsDataType = {
     likesCount: number
 }
 
-export type FriendsListDataType = {
-    id: number,
-    src: string,
-    name: string,
-    alt: string
+export type NewPostType = {
+    newHeader: string,
+    newText: string
 }
 
-
-// Типизация для страницы постов
+// Типизация для страницы MyPosts
 export type MyPostsPropsType = {
     posts: Array<PostsDataType>,
     newPost: NewPostType,
@@ -71,24 +70,12 @@ export type MyPostsPropsType = {
     updateNewPostInput: (headerValue: string) => void
     addPost: () => void
 }
+// --------------------------------------------------------------
 
-// Типизация для страницы сообщений
-export type MyMessagesPropsType = {
-    messagesData: Array<MessagesDataType>
-    newMessg: string,
-    updateNewMessage: (textareaValue: string) => void,
-    sendNewMessage: () => void
-}
+// --------------- Типизация для MessagesPage -------------------------
 
-export type NewMessageAreaPropsType = {
-    newMessg: string,
-    updateNewMessage: (textareaValue: string) => void,
-    sendNewMessage: () => void
-}
-
-// Типизация для MessagePage
 export type MessagesPagePropsType = {
-    dialogsData: Array<DialogsDataType>,
+    // dialogsData: Array<DialogsDataType>,
     messagesData: Array<MessagesDataType>,
     newMessg: string
 }
@@ -98,12 +85,32 @@ export type MessagesDataType = {
     message: string
 }
 
-export type DialogsDataType = {
+// Типизация для страницы MyMessages
+export type MyMessagesPropsType = {
+    messagesData: Array<MessagesDataType>
+    newMessg: string,
+    updateNewMessage: (textareaValue: string) => void,
+    sendNewMessage: () => void
+}
+
+// Типизация для страницы NewMessage
+export type NewMessageAreaPropsType = {
+    newMessg: string,
+    updateNewMessage: (textareaValue: string) => void,
+    sendNewMessage: () => void
+}
+// --------------------------------------------------------------
+
+// --------------- Типизация для FriendsListData -------------------------
+export type FriendsListDataType = {
     id: number,
     src: string,
     name: string,
     alt: string
 }
+// --------------------------------------------------------------
+
+// --------------- Типизация для отдельных компонент -------------------------
 
 // Типизация для button
 export type ButtonPropsType = {
@@ -130,11 +137,13 @@ export type InputPropsType = {
     onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void,
     placeholder: string,
 }
+// --------------------------------------------------------------
 
 
 let reducers = combineReducers({
     profilePage: profileReducer,
-    messagesPage: messagesReducer
+    messagesPage: messagesReducer,
+    friendsListData: friendsListReducer
 })
 
 let store: Store<StoreType, ActionType> = createStore(reducers)
