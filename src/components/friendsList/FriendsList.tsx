@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom'
 
 const FriendsList: React.FC<{ friendsList: FriendsListDataType[], navlink: string }> = ({friendsList, navlink}) => {
     return (
-        <div>
+        <div className={classes.friends_lists}>
             {friendsList.map((el) => {
                 return (
                     <li className={classes.friend}

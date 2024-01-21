@@ -6,7 +6,7 @@ import {DialogsDataType} from '../../../../../../redux/redux-store'
 
 const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = ({dialogsData}) => {
     return (
-        <ul className={classes.dialog_items}>
+        <div className={classes.dialog_items}>
             {dialogsData.map((el: DialogsDataType) => {
                 return (
                     <li key={el.id} className={classes.dialog_items__item}>
@@ -24,7 +24,7 @@ const DialogItem: React.FC<{ dialogsData: Array<DialogsDataType> }> = ({dialogsD
                     </li>
                 )
             })}
-        </ul>
+        </div>
     )
 }
 
