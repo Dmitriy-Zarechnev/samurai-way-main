@@ -34,21 +34,24 @@ const Users: React.FC<UsersPropsType> = (props) => {
                         <div className={classes.users_down_list}>
                             <div className={classes.users_down_list__left}>
                                 <h4 className={classes.users_down_list__left_fullName}>{el.fullName}</h4>
-                                <div className={classes.users_down_list__left_down}>
-                                    <span className={classes.users_down_list__left_country}>{el.location.country}</span>
-                                    <span className={classes.users_down_list__left_city}>{el.location.city}</span>
-                                </div>
+                                <span className={classes.users_down_list__left_location}>city:
+                                        <span> {el.location.city}</span>
+                                </span>
+                                <span className={classes.users_down_list__left_location}>country:
+                                        <span> {el.location.country}</span>
+                                </span>
                             </div>
+
                             <div className={classes.users_down_list__right}>
                                 {el.followed
                                     ?
-                                    <button onClick={() => {
+                                    <button className={classes.users_down_list__right_blue} onClick={() => {
                                         props.unfollowFriend(el.id)
                                     }}>
                                         UnFollow
                                     </button>
                                     :
-                                    <button onClick={() => {
+                                    <button className={classes.users_down_list__right_brown} onClick={() => {
                                         props.followFriend(el.id)
                                     }}>
                                         Follow

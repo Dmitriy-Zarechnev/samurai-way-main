@@ -1,5 +1,77 @@
-.img{
-    width: 50px;
-    height: 50px;
+.users_lists {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 10px 10px;
+    overflow: auto;
+    height: calc(100% - 35px);
+}
+
+.users_list {
+    border: 2px solid #052718;
+    border-radius: 20px;
+    background-color: #ACC4CC;
+    padding: 20px;
+}
+
+.users_list:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.users_up_list {
+    display: flex;
+    gap: 20px;
+}
+
+.users_up_list__img {
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    object-position: center center;
+    cursor: pointer;
+}
+
+.users_up_list__status {
+    flex: 1 1 auto;
+    font-size: 30px;
+}
+
+.users_down_list {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.users_down_list__left {
+    display: flex;
+    flex-direction: column;
+}
+
+.users_down_list__left_fullName {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.users_down_list__left_location {
+    font-size: 20px;
+}
+
+.users_down_list__left_location span {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.users_down_list__right button {
+    font-size: 40px;
+    padding: 5px;
+    color: #E4ECFC;
+}
+
+.users_down_list__right_blue {
+    background-color: red;
+}
+
+.users_down_list__right_brown {
+    background-color: #052718;
 }
