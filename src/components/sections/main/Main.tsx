@@ -6,7 +6,7 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
-import Users from './users/Users'
+import UsersContainer from './users/UsersContainer'
 
 const Main: React.FC = () => {
     return (
@@ -20,7 +20,7 @@ const Main: React.FC = () => {
 
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
-            <Route path="/users" render={() => <Users/>}/>
+            <Route path="/users" render={() => <UsersContainer/>}/>
 
             <Route path="/settings" render={() => <Settings/>}/>
         </div>

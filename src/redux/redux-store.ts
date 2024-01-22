@@ -1,11 +1,12 @@
-import {combineReducers, createStore, Store} from 'redux'
+import {combineReducers, createStore} from 'redux'
 import {profileReducer} from './profile-reducer'
 import {messagesReducer} from './messages-reducer'
 import {ChangeEvent, KeyboardEvent} from 'react'
 import {friendsListReducer} from './friends-list-reducer'
+import {usersReducer} from './users-reducer'
 
 // --------------- Типизация для Store -------------------------
-
+/*
 export type StoreType = {
     _state: RootStateDataType,
     _callSubscriber: (state: RootStateDataType) => void,
@@ -15,16 +16,21 @@ export type StoreType = {
 
     dispatch: (action: ActionType) => void,
 }
+ */
 
 // Типизация для State
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
     messagesPage: MessagesPagePropsType,
-    friendsListData: Array<FriendsListDataType>
+    friendsListData: Array<FriendsListDataType>,
+    usersPage: UsersInitialState
 }
 
 // Типизация для observer
+/*
 type ObserverType = (state: RootStateDataType) => void
+
+ */
 
 // Типизация для action
 export type ActionType = {
@@ -119,7 +125,7 @@ export type FriendsListDataType = {
 }
 // --------------------------------------------------------------
 
-// --------------- Типизация для UsersListData -------------------------
+// --------------- Типизация для UsersPageData -------------------------
 export type UsersInitialState = {
     users: UsersListType[]
 }
@@ -129,6 +135,7 @@ export type UsersListType = {
     fullName: string,
     status: string,
     followed: boolean,
+    photoURL:string,
     location: LocationType
 }
 
@@ -171,9 +178,10 @@ export type InputPropsType = {
 let reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer,
-    friendsListData: friendsListReducer
+    friendsListData: friendsListReducer,
+    usersPage: usersReducer
 })
 
-let store: Store<StoreType, ActionType> = createStore(reducers)
+let store = createStore(reducers)
 
 export default store

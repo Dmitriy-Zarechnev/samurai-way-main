@@ -21,7 +21,7 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
     switch (action.type) {
         case SEND_NEW_MESSAGE:
             let newMessgBody: MessagesDataType = {
-                id: 7,
+                id: state.messagesData.length + 1,
                 message: state.newMessg
             }
 

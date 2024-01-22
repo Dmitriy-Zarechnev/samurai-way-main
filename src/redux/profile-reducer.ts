@@ -36,7 +36,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
 
         case ADD_POST:
             let newPostBody: PostsDataType = {
-                id: 5,
+                id: state.postsData.length + 1,
                 header: state.newPost.newHeader,
                 src: img2,
                 message: state.newPost.newText,
