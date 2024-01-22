@@ -110,6 +110,25 @@ export type FriendsListDataType = {
 }
 // --------------------------------------------------------------
 
+// --------------- Типизация для UsersListData -------------------------
+export type UsersInitialState = {
+    users: UsersListType[]
+}
+
+type UsersListType = {
+    id: number,
+    fullName: string,
+    status: string,
+    followed: boolean,
+    location: LocationType
+}
+
+type LocationType = {
+    city: string,
+    country: string
+}
+
+
 // --------------- Типизация для отдельных компонент -------------------------
 
 // Типизация для button

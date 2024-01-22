@@ -6,19 +6,22 @@ import Music from './music/Music'
 import Settings from './settings/Settings'
 import classes from './Main.module.css'
 import Profile from './profile/Profile'
+import Users from './users/Users'
 
 const Main: React.FC = () => {
     return (
         <div className={classes.app_main}>
 
             <Route path="/profile" render={() =>
-                <Profile />}/>
+                <Profile/>}/>
 
             <Route path="/messages" render={() =>
-                <Messages />}/>
+                <Messages/>}/>
 
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
+            <Route path="/users" render={() => <Users/>}/>
+
             <Route path="/settings" render={() => <Settings/>}/>
         </div>
     )
