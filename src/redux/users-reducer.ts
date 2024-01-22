@@ -14,9 +14,30 @@ let initialState: UsersInitialState = {
 }
 
 
-export const UsersReducer = (state: UsersInitialState = initialState, action: ActionType) => {
-    return state
+export const usersReducer = (state: UsersInitialState = initialState, action: ActionType) => {
+
+    switch (action.type) {
+        case FOLLOW_FRIEND:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    return u.id === action.userID ? {...u, followed: true} : u
+                })
+            }
+
+        case UNFOLLOW_FRIEND:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    return u.id === action.userID ? {...u, followed: false} : u
+                })
+            }
+
+        default:
+            return state
+    }
+
 }
 
-export const followAC=()=> ({type: FOLLOW_FRIEND})
-export const unfollowAC=()=> ({type: UNFOLLOW_FRIEND})
+export const followAC = (userID: number) => ({type: FOLLOW_FRIEND, userID})
+export const unfollowAC = (userID: number) => ({type: UNFOLLOW_FRIEND, userID})

@@ -28,10 +28,17 @@ type ObserverType = (state: RootStateDataType) => void
 
 // Типизация для action
 export type ActionType = {
-    type: 'ADD-POST' | 'UPDATE-NEW-POST-HEADER' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
+    type: 'ADD-POST' |
+        'UPDATE-NEW-POST-HEADER' |
+        'UPDATE-NEW-POST-TEXT' |
+        'SEND-NEW-MESSAGE' |
+        'UPDATE-NEW-SEND-MESSAGE' |
+        'FOLLOW-FRIEND' |
+        'UNFOLLOW-FRIEND',
     newHeaderText?: string,
     newPostText?: string,
     message?: string,
+    userID?: number
 }
 // --------------------------------------------------------------
 
