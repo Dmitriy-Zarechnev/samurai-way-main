@@ -1,8 +1,8 @@
-import {ActionType, UsersInitialState} from './redux-store'
+import {ActionType, UsersInitialState, UsersListType} from './redux-store'
 
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
 const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
-
+const SET_USERS = 'SET-USERS'
 
 let initialState: UsersInitialState = {
     users: [
@@ -33,6 +33,9 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
                 })
             }
 
+        case SET_USERS:
+            return {...state, users: [...state.users, action.users]}
+
         default:
             return state
     }
@@ -41,3 +44,4 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
 
 export const followAC = (userID: number) => ({type: FOLLOW_FRIEND, userID})
 export const unfollowAC = (userID: number) => ({type: UNFOLLOW_FRIEND, userID})
+export const setUsersAC = (users: UsersListType[]) => ({type: SET_USERS, users})

@@ -34,11 +34,13 @@ export type ActionType = {
         'SEND-NEW-MESSAGE' |
         'UPDATE-NEW-SEND-MESSAGE' |
         'FOLLOW-FRIEND' |
-        'UNFOLLOW-FRIEND',
+        'UNFOLLOW-FRIEND' |
+        'SET-USERS',
     newHeaderText?: string,
     newPostText?: string,
     message?: string,
-    userID?: number
+    userID?: number,
+    users?: UsersListType[]
 }
 // --------------------------------------------------------------
 
@@ -122,7 +124,7 @@ export type UsersInitialState = {
     users: UsersListType[]
 }
 
-type UsersListType = {
+export type UsersListType = {
     id: number,
     fullName: string,
     status: string,
