@@ -4,6 +4,22 @@ import MyDialogsContainer from './myDialogs/MyDialogsContainer'
 import MyMessagesContainer from './myMessages/MyMessagesContainer'
 
 
+class Messages extends React.Component {
+    render() {
+        return (
+            <section className={classes.messages}>
+                <MyDialogsContainer/>
+                <MyMessagesContainer/>
+            </section>
+        )
+    }
+}
+
+
+export default Messages
+
+// Функциональная компонента
+/*
 const Messages: React.FC = () => {
     return (
         <section className={classes.messages}>
@@ -13,5 +29,4 @@ const Messages: React.FC = () => {
     )
 }
 
-
-export default Messages
+ */

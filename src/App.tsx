@@ -6,6 +6,25 @@ import {BrowserRouter} from 'react-router-dom'
 import NavbarLeft from './components/sections/navBarLeft/NavbarLeft'
 import Main from './components/sections/main/Main'
 
+class App extends React.Component {
+    render() {
+        return (
+            <BrowserRouter>
+                <div className={'app-body'}>
+                    <Header/>
+                    <NavbarLeft/>
+                    <Main/>
+                    <Footer/>
+                </div>
+            </BrowserRouter>
+        )
+    }
+}
+
+export default App
+
+// Функциональная компонента
+/*
 function App() {
     return (
         <BrowserRouter>
@@ -18,5 +37,4 @@ function App() {
         </BrowserRouter>
     )
 }
-
-export default App
+ */

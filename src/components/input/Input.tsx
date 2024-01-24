@@ -3,6 +3,27 @@ import {InputPropsType} from '../../redux/redux-store'
 import classes from './Input.module.css'
 
 
+class Input extends React.Component<InputPropsType> {
+    render() {
+        return (
+            <input
+                id={this.props.id}
+                type={this.props.type}
+                autoComplete={'off'}
+                onChange={this.props.onChange}
+                onKeyDown={this.props.onKeyDown}
+                value={this.props.value}
+                placeholder={this.props.placeholder}
+                className={classes.input}
+            />
+        )
+    }
+}
+
+export default Input
+
+// Функциональная компонента
+/*
 const Input: React.FC<InputPropsType> = (props) => {
     return (
         <input
@@ -17,5 +38,4 @@ const Input: React.FC<InputPropsType> = (props) => {
         />
     )
 }
-
-export default Input
+ */

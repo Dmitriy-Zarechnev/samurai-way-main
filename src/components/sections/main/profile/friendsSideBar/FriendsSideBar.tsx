@@ -3,11 +3,7 @@ import classes from './FriendsSideBar.module.css'
 import {FriendsListDataType} from '../../../../../redux/redux-store'
 import FriendsList from '../../../../friendsList/FriendsList'
 
-
 class FriendsSideBar extends React.Component<{ friendsList: Array<FriendsListDataType> }> {
-    constructor(props: { friendsList: Array<FriendsListDataType> }) {
-        super(props)
-    }
 
     render() {
         return (

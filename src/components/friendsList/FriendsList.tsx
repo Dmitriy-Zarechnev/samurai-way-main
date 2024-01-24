@@ -6,10 +6,6 @@ import {NavLink} from 'react-router-dom'
 
 class FriendsList extends React.Component<{ friendsList: FriendsListDataType[], navlink: string }> {
 
-    constructor(props: { friendsList: FriendsListDataType[], navlink: string }) {
-        super(props)
-    }
-
     render() {
         return (
             <div className={classes.friends_lists}>

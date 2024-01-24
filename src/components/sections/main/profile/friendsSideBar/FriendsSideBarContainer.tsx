@@ -14,6 +14,6 @@ let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
     return {}
 }
 
-// const FriendsSideBarContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
+const FriendsSideBarContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
+export default FriendsSideBarContainer

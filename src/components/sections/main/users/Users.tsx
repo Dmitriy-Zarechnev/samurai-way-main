@@ -16,19 +16,19 @@ class Users extends React.Component<UsersPropsType> {
             })
     }
 
-    getUsers = () => {
-        if (this.props.items.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(response => {
-                    this.props.setUsers(response.data.items)
-                })
-        }
-    }
+    // getUsers = () => {
+    //     if (this.props.items.length === 0) {
+    //         axios.get('https://social-network.samuraijs.com/api/1.0/users')
+    //             .then(response => {
+    //                 this.props.setUsers(response.data.items)
+    //             })
+    //     }
+    // }
 
     render() {
         return (
             <div className={classes.users_lists}>
-                <Button name={'Get Users'} onClick={this.getUsers}/>
+                {/*<Button name={'Get Users'} onClick={this.getUsers}/>*/}
 
                 {this.props.items.map(el => {
                     return (
