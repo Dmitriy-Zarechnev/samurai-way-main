@@ -42,23 +42,8 @@
     align-items: center;
 }
 
-.users_down_list__left {
-    display: flex;
-    flex-direction: column;
-}
-
 .users_down_list__left_fullName {
     font-size: 40px;
-    font-weight: 700;
-}
-
-.users_down_list__left_location {
-    font-size: 20px;
-}
-
-.users_down_list__left_location span {
-    font-size: 20px;
-    font-style: italic;
     font-weight: 700;
 }
 

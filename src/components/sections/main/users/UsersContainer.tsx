@@ -25,6 +25,6 @@ let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
     }
 }
 
-const UsersContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(Users)
+// const UsersContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(Users)
 
-export default UsersContainer
+export default connect(mapStateToProps, mapDispatchToProps)(Users)

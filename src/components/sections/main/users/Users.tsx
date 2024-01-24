@@ -61,9 +61,14 @@ import axios from 'axios'
 // }
 
 class Users extends React.Component<UsersPropsType> {
-    // constructor(props: UsersPropsType) {
-    //     super(props)
-    // }
+    constructor(props: UsersPropsType) {
+        super(props)
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
 
     getUsers = () => {
         if (this.props.items.length === 0) {
@@ -92,9 +97,7 @@ class Users extends React.Component<UsersPropsType> {
                                 </p>
                             </div>
                             <div className={classes.users_down_list}>
-                                <div className={classes.users_down_list__left}>
-                                    <h4 className={classes.users_down_list__left_fullName}>{el.name}</h4>
-                                </div>
+                                <h4 className={classes.users_down_list__left_fullName}>{el.name}</h4>
 
                                 <Button
                                     name={el.followed ? 'UnFollow' : 'Follow'}
