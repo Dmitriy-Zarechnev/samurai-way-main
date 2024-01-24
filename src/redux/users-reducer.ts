@@ -32,7 +32,6 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
 
         case SET_USERS:
 
-            // return { ...state, items: [...state.items, ...action.items] }
             if (action.items && Array.isArray(action.items)) {
                 return {...state, items: [...state.items, ...action.items]}
             } else {

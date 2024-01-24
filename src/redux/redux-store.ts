@@ -31,7 +31,6 @@ export type ActionType = {
     userID?: number,
     items?: UsersListType[]
 }
-// --------------------------------------------------------------
 
 // --------------- Типизация для ProfilePage -------------------------
 
@@ -68,7 +67,6 @@ export type MyPostsPropsType = {
     updateNewPostInput: (headerValue: string) => void
     addPost: () => void
 }
-// --------------------------------------------------------------
 
 // --------------- Типизация для MessagesPage -------------------------
 
@@ -97,7 +95,6 @@ export type NewMessageAreaPropsType = {
     updateNewMessage: (textareaValue: string) => void,
     sendNewMessage: () => void
 }
-// --------------------------------------------------------------
 
 // --------------- Типизация для FriendsListData -------------------------
 export type FriendsListDataType = {
@@ -106,7 +103,6 @@ export type FriendsListDataType = {
     name: string,
     alt: string
 }
-// --------------------------------------------------------------
 
 // --------------- Типизация для UsersPageData -------------------------
 export type UsersInitialState = {
@@ -165,7 +161,6 @@ export type InputPropsType = {
     placeholder: string,
 }
 // --------------------------------------------------------------
-
 
 let reducers = combineReducers({
     profilePage: profileReducer,
