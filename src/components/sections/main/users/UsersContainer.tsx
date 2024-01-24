@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Users from './Users'
 import {ActionType, RootStateDataType, UsersListType} from '../../../../redux/redux-store'
 import {followAC, setUsersAC, unfollowAC} from '../../../../redux/users-reducer'
+import {Dispatch} from 'redux'
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {
@@ -10,7 +11,7 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
     return {
         followFriend: (userID: number) => {
             dispatch(followAC(userID) as ActionType)
@@ -19,7 +20,6 @@ let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
             dispatch(unfollowAC(userID) as ActionType)
         },
         setUsers: (items: UsersListType[]) => {
-
             dispatch(setUsersAC(items) as ActionType)
         }
     }
