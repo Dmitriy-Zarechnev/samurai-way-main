@@ -8,14 +8,6 @@ let initialState: UsersInitialState = {
     items: [],
     totalCount: 0,
     error: ''
-    // users: [
-    //     {id: 1, fullName: 'Morgan White', status: 'I am using react', followed: true, photoURL: min, location: {city: 'Zenon', country: 'Madagaskar'}},
-    //     {id: 2, fullName: 'Malenia Blade of Mikkela', status: 'I am using css', followed: false, photoURL: min, location: {city: 'Hell', country: 'Haven'}},
-    //     {id: 3, fullName: 'Hard Nut', status: 'I am using html', followed: true, photoURL: min, location: {city: 'Paradice', country: 'Haven'}},
-    //     {id: 4, fullName: 'Blade Blue', status: 'I am using bll', followed: false, photoURL: min, location: {city: 'Moscow', country: 'Zelda'}}
-    // ]
-
-    // items: []
 }
 
 
@@ -25,7 +17,7 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
         case FOLLOW_FRIEND:
             return {
                 ...state,
-                users: state.items.map(u => {
+                items: state.items.map(u => {
                     return u.id === action.userID ? {...u, followed: true} : u
                 })
             }
@@ -33,7 +25,7 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
         case UNFOLLOW_FRIEND:
             return {
                 ...state,
-                users: state.items.map(u => {
+                items: state.items.map(u => {
                     return u.id === action.userID ? {...u, followed: false} : u
                 })
             }

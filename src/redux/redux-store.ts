@@ -6,17 +6,6 @@ import {friendsListReducer} from './friends-list-reducer'
 import {usersReducer} from './users-reducer'
 
 // --------------- Типизация для Store -------------------------
-/*
-export type StoreType = {
-    _state: RootStateDataType,
-    _callSubscriber: (state: RootStateDataType) => void,
-
-    getState: () => RootStateDataType,
-    subscribe: (observer: ObserverType) => void,
-
-    dispatch: (action: ActionType) => void,
-}
- */
 
 // Типизация для State
 export type RootStateDataType = {
@@ -25,12 +14,6 @@ export type RootStateDataType = {
     friendsListData: Array<FriendsListDataType>,
     usersPage: UsersInitialState
 }
-
-// Типизация для observer
-/*
-type ObserverType = (state: RootStateDataType) => void
-
- */
 
 // Типизация для action
 export type ActionType = {
@@ -145,33 +128,13 @@ type UsersPhotos = {
     large: string
 }
 
-// type LocationType = {
-//     city: string,
-//     country: string
-// }
-
-
-
-
-//  --------------- Типизация для UsersPageData с сервера -------------------------
-export type APIUsersPageData = {
-    items: UserType[]
-    totalCount: number
-    error: string
+// Типизация для страницы Users
+export type UsersPropsType = {
+    items: UsersListType[],
+    followFriend: (userID: number) => void,
+    unfollowFriend: (userID: number) => void,
+    setUsers: (items: UsersListType[]) => void
 }
-
-type UserType = {
-    name: string
-    id: number
-    photos: UsersPhotos
-    status: string
-    followed: boolean
-}
-
-//  type UsersPhotos = {
-//     small: string
-//     large: string
-// }
 
 // --------------- Типизация для отдельных компонент -------------------------
 
@@ -180,7 +143,7 @@ export type ButtonPropsType = {
     name: string
     onClick: () => void
     disabled: boolean
-    additionalClass?:string
+    additionalClass?: string
 }
 
 // Типизация для textarea

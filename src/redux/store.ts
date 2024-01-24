@@ -4,10 +4,17 @@ export type StoreType = {
     _callSubscriber: (state: RootStateDataType) => void,
 
     getState: () => RootStateDataType,
-    subscribe: (observer: any) => void,
+    subscribe: (observer: ObserverType) => void,
 
     dispatch: (action: ActionType) => void,
 }
+
+
+// Типизация для observer
+
+type ObserverType = (state: RootStateDataType) => void
+
+
 
 // Типизация для State
 export type RootStateDataType = {

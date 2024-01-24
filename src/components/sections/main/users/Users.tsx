@@ -1,23 +1,13 @@
 import React from 'react'
-import {UsersListType} from '../../../../redux/redux-store'
+import {UsersPropsType} from '../../../../redux/redux-store'
 import classes from './Users.module.css'
 import Button from '../../../button/Button'
 import axios from 'axios'
 import min from '../../../../assets/images/min.jpg'
 
-
-type UsersPropsType = {
-    items: UsersListType[],
-    followFriend: (userID: number) => void,
-    unfollowFriend: (userID: number) => void,
-    setUsers: (items: UsersListType[]) => void
-}
-
-
 const Users: React.FC<UsersPropsType> = (props) => {
 
     if (props.items.length === 0) {
-
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
                 props.setUsers(response.data.items)
