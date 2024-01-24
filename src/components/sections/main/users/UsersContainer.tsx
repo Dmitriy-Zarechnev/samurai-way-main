@@ -6,7 +6,7 @@ import {followAC, setUsersAC, unfollowAC} from '../../../../redux/users-reducer'
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {
-        users: state.usersPage.users
+        items: state.usersPage.items
     }
 }
 
@@ -18,8 +18,9 @@ let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
         unfollowFriend: (userID: number) => {
             dispatch(unfollowAC(userID) as ActionType)
         },
-        setUsers: (users: UsersListType[]) => {
-            dispatch(setUsersAC(users) as ActionType)
+        setUsers: (items: UsersListType[]) => {
+
+            dispatch(setUsersAC(items) as ActionType)
         }
     }
 }

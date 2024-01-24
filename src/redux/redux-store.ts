@@ -46,7 +46,7 @@ export type ActionType = {
     newPostText?: string,
     message?: string,
     userID?: number,
-    users?: UsersListType[]
+    items?: UsersListType[]
 }
 // --------------------------------------------------------------
 
@@ -127,23 +127,51 @@ export type FriendsListDataType = {
 
 // --------------- Типизация для UsersPageData -------------------------
 export type UsersInitialState = {
-    users: UsersListType[]
+    items: UsersListType[]
+    totalCount: number
+    error: string
 }
 
 export type UsersListType = {
-    id: number,
-    fullName: string,
-    status: string,
-    followed: boolean,
-    photoURL: string,
-    location: LocationType
+    name: string
+    id: number
+    photos: UsersPhotos
+    status: string
+    followed: boolean
 }
 
-type LocationType = {
-    city: string,
-    country: string
+type UsersPhotos = {
+    small: string
+    large: string
 }
 
+// type LocationType = {
+//     city: string,
+//     country: string
+// }
+
+
+
+
+//  --------------- Типизация для UsersPageData с сервера -------------------------
+export type APIUsersPageData = {
+    items: UserType[]
+    totalCount: number
+    error: string
+}
+
+type UserType = {
+    name: string
+    id: number
+    photos: UsersPhotos
+    status: string
+    followed: boolean
+}
+
+//  type UsersPhotos = {
+//     small: string
+//     large: string
+// }
 
 // --------------- Типизация для отдельных компонент -------------------------
 
