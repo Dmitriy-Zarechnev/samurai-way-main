@@ -1,7 +1,7 @@
-import React from 'react'
 import FriendsSideBar from './FriendsSideBar'
 import {connect} from 'react-redux'
 import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
+import {Dispatch} from 'redux'
 
 
 let mapStateToProps = (state: RootStateDataType) => {
@@ -10,10 +10,10 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionType) => void) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
     return {}
 }
 
-const FriendsSideBarContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
+// const FriendsSideBarContainer: React.FC = connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
 
-export default FriendsSideBarContainer
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsSideBar)
