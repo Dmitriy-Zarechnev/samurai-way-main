@@ -135,7 +135,7 @@ export type UsersListType = {
     fullName: string,
     status: string,
     followed: boolean,
-    photoURL:string,
+    photoURL: string,
     location: LocationType
 }
 
@@ -152,6 +152,7 @@ export type ButtonPropsType = {
     name: string
     onClick: () => void
     disabled: boolean
+    additionalClass?:string
 }
 
 // Типизация для textarea

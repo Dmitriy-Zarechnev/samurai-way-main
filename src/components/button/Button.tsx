@@ -8,7 +8,7 @@ const Button: React.FC<ButtonPropsType> = (props) => {
         <button
             disabled={props.disabled}
             onClick={props.onClick}
-            className={classes.button}>
+            className={`${classes.button} ${props.additionalClass}`}>
             {props.name}
         </button>
     )

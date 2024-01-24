@@ -1,6 +1,7 @@
 import React from 'react'
 import {UsersListType} from '../../../../redux/redux-store'
 import classes from './Users.module.css'
+import Button from '../../../button/Button'
 
 
 type UsersPropsType = {
@@ -42,22 +43,30 @@ const Users: React.FC<UsersPropsType> = (props) => {
                                 </span>
                             </div>
 
-                            <div className={classes.users_down_list__right}>
-                                {el.followed
-                                    ?
-                                    <button className={classes.users_down_list__right_blue} onClick={() => {
-                                        props.unfollowFriend(el.id)
-                                    }}>
-                                        UnFollow
-                                    </button>
-                                    :
-                                    <button className={classes.users_down_list__right_brown} onClick={() => {
-                                        props.followFriend(el.id)
-                                    }}>
-                                        Follow
-                                    </button>
+                            <Button
+                                name={el.followed ? 'UnFollow' : 'Follow'}
+                                onClick={el.followed
+                                    ? () => props.unfollowFriend(el.id)
+                                    : () => props.followFriend(el.id)
                                 }
-                            </div>
+                                disabled={false}
+                                additionalClass={el.followed ? classes.users_down_list__btn_red : ''}
+                            />
+
+                            {/*{el.followed*/}
+                            {/*    ?*/}
+                            {/*    <button className={classes.users_down_list__right_blue} onClick={() => {*/}
+                            {/*        props.unfollowFriend(el.id)*/}
+                            {/*    }}>*/}
+                            {/*        UnFollow*/}
+                            {/*    </button>*/}
+                            {/*    :*/}
+                            {/*    <button className={classes.users_down_list__right_brown} onClick={() => {*/}
+                            {/*        props.followFriend(el.id)*/}
+                            {/*    }}>*/}
+                            {/*        Follow*/}
+                            {/*    </button>*/}
+                            {/*}*/}
                         </div>
                     </div>
                 )

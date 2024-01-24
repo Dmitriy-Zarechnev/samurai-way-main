@@ -62,16 +62,7 @@
     font-weight: 700;
 }
 
-.users_down_list__right button {
-    font-size: 40px;
-    padding: 5px;
-    color: #E4ECFC;
-}
-
-.users_down_list__right_blue {
+.users_down_list__btn_red {
     background-color: red;
 }
 
-.users_down_list__right_brown {
-    background-color: #052718;
-}
