@@ -138,7 +138,7 @@ export type UsersPropsType = {
 export type ButtonPropsType = {
     name: string
     onClick: () => void
-    disabled: boolean
+    disabled?: boolean
     additionalClass?: string
 }
 
