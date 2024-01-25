@@ -7,29 +7,18 @@ import axios from 'axios'
 
 
 class Users extends React.Component<UsersPropsType> {
-    constructor(props: UsersPropsType) {
-        super(props)
 
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
                 this.props.setUsers(response.data.items)
             })
     }
 
-    // getUsers = () => {
-    //     if (this.props.items.length === 0) {
-    //         axios.get('https://social-network.samuraijs.com/api/1.0/users')
-    //             .then(response => {
-    //                 this.props.setUsers(response.data.items)
-    //             })
-    //     }
-    // }
 
     render() {
         return (
             <div className={classes.users_lists}>
-                {/*<Button name={'Get Users'} onClick={this.getUsers}/>*/}
-
                 {this.props.items.map(el => {
                     return (
                         <div key={el.id} className={classes.users_list}>
@@ -97,12 +86,12 @@ export default Users
 //                         <div className={classes.users_down_list}>
 //                             <div className={classes.users_down_list__left}>
 //                                 <h4 className={classes.users_down_list__left_fullName}>{el.name}</h4>
-                                // {/*<span className={classes.users_down_list__left_location}>city:*/}
-                                // {/*        <span> {el.location.city}</span>*/}
-                                // {/*</span>*/}
-                                // {/*<span className={classes.users_down_list__left_location}>country:*/}
-                                // {/*        <span> {el.location.country}</span>*/}
-                                // {/*</span>*/}
+// {/*<span className={classes.users_down_list__left_location}>city:*/}
+// {/*        <span> {el.location.city}</span>*/}
+// {/*</span>*/}
+// {/*<span className={classes.users_down_list__left_location}>country:*/}
+// {/*        <span> {el.location.country}</span>*/}
+// {/*</span>*/}
 //
 //                             </div>
 //
