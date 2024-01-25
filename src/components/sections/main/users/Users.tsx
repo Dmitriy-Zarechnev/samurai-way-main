@@ -7,7 +7,6 @@ import Pagination from './pagination/Pagination'
 
 const Users: React.FC<UsersPropsType> = (props) => {
 
-
     let pagesCount = Math.ceil(props.totalCount / props.pageSize)
     let pages = []
 
@@ -23,10 +22,10 @@ const Users: React.FC<UsersPropsType> = (props) => {
     let pagCenter = pages.slice(curPF, curPL)
     let pagEnd = pages.slice(pages.length - 3)
 
-    if (props.currentPage <= 7) {
+    if (curPg <= 7) {
         pagStart = []
     }
-    if (props.currentPage >= pages.length - 7) {
+    if (curPg >= pages.length - 7) {
         pagEnd = []
     }
 
