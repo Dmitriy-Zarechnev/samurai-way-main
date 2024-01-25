@@ -1,0 +1,9 @@
+.selected_page {
+    font-weight: 700;
+    color: #B49463;
+}
+
+.page_number{
+    color: #052718;
+    cursor: pointer
+}

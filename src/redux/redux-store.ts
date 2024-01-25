@@ -143,6 +143,14 @@ export type UsersPropsType = {
     setTotalUsersCount: (totalCount: number) => void
 }
 
+// Типизация для пагинации страниц
+export type PaginationPropsType = {
+    currentArray: Array<number>,
+    onPageChanged: (currentPage: number) => void,
+    currentPage: number,
+}
+
+
 // --------------- Типизация для отдельных компонент -------------------------
 
 // Типизация для button

@@ -4,6 +4,7 @@ import classes from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {UsersPropsType} from '../../../../redux/redux-store'
 import axios from 'axios'
+import Pagination from './pagination/Pagination'
 
 class Users extends React.Component<UsersPropsType> {
 
@@ -36,56 +37,37 @@ class Users extends React.Component<UsersPropsType> {
         let curPg = this.props.currentPage
         let curPF = ((curPg - 5) < 0) ? 0 : curPg - 5
         let curPL = curPg + 5
-        let slicedPages = pages.slice(curPF, curPL)
-        let res = [...pages.slice(0,2), ...pages.slice(curPF, curPL), ...pages.slice(pages.length - 3)]
-        console.log(res)
 
-        let res1 = pages.slice(0, 3)
-        let res2 = pages.slice(curPF, curPL)
-        let res3 = pages.slice(pages.length - 3)
+        let pagStart = pages.slice(0, 3)
+        let pagCenter = pages.slice(curPF, curPL)
+        let pagEnd = pages.slice(pages.length - 3)
 
         if (this.props.currentPage <= 7) {
-            res1 = []
+            pagStart = []
         }
         if (this.props.currentPage >= pages.length - 7) {
-            res3 = []
+            pagEnd = []
         }
 
         return (
             <div className={classes.users_lists}>
                 <div className={classes.users_lists__pagination}>
-                    {res1.map(el => {
-                        return (
-                            <span className={this.props.currentPage === el ? classes.selected_page : ''}
-                                  onClick={() => {
-                                      this.onPageChanged(el)
-                                  }}
-                            >
-                            {el} </span>
-                        )
-                    })}
-                    {res1.length > 0 && <span>... </span>}
+                    <Pagination
+                        currentArray={pagStart}
+                        onPageChanged={this.onPageChanged}
+                        currentPage={this.props.currentPage}/>
+                    {pagStart.length > 0 && <span className={classes.users_lists__dotes}>... </span>}
 
-                    {res2.map(el => {
-                        return (
-                            <span className={this.props.currentPage === el ? classes.selected_page : ''}
-                                  onClick={() => {
-                                      this.onPageChanged(el)
-                                  }}
-                            >
-                            {el} </span>)
-                    })}
+                    <Pagination
+                        currentArray={pagCenter}
+                        onPageChanged={this.onPageChanged}
+                        currentPage={this.props.currentPage}/>
 
-                    {res3.length > 0 && <span>... </span>}
-                    {res3.map(el => {
-                        return (
-                            <span className={this.props.currentPage === el ? classes.selected_page : ''}
-                                  onClick={() => {
-                                      this.onPageChanged(el)
-                                  }}
-                            >
-                            {el} </span>)
-                    })}
+                    {pagEnd.length > 0 && <span className={classes.users_lists__dotes}>... </span>}
+                    <Pagination
+                        currentArray={pagEnd}
+                        onPageChanged={this.onPageChanged}
+                        currentPage={this.props.currentPage}/>
                 </div>
 
                 {this.props.items.map(el => {
