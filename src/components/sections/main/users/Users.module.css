@@ -17,6 +17,18 @@
     margin-bottom: 15px;
 }
 
+.users_lists__pagination {
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.selected_page {
+    font-weight: 700;
+    color: red;
+    cursor: pointer
+}
+
+
 .users_up_list {
     display: flex;
     gap: 20px;

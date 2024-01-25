@@ -1,6 +1,5 @@
-import React from 'react'
 import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
-import {addPostCreator, updateNewPostInputCreator, updateNewPostTextAreaCreator} from '../../../../../redux/profile-reducer'
+import {addPostAC, updateNewPostInputAC, updateNewPostTextAreaAC} from '../../../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
@@ -16,18 +15,17 @@ let mapStateToProps = (state: RootStateDataType) => {
 let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
     return {
         updateNewPostTextArea: (postValue: string) => {
-            dispatch(updateNewPostTextAreaCreator(postValue) as ActionType)
+            dispatch(updateNewPostTextAreaAC(postValue) as ActionType)
         },
         updateNewPostInput: (headerValue: string) => {
-            dispatch(updateNewPostInputCreator(headerValue) as ActionType)
+            dispatch(updateNewPostInputAC(headerValue) as ActionType)
         },
         addPost: () => {
-            dispatch(addPostCreator() as ActionType)
-
+            dispatch(addPostAC() as ActionType)
         }
     }
 }
 
-const MyPostsContainer= connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer

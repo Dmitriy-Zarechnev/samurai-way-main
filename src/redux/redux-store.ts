@@ -24,12 +24,16 @@ export type ActionType = {
         'UPDATE-NEW-SEND-MESSAGE' |
         'FOLLOW-FRIEND' |
         'UNFOLLOW-FRIEND' |
-        'SET-USERS',
+        'SET-USERS' |
+        'SET-CURRENT-PAGE' |
+        'SET-TOTAL-USERS-COUNT',
     newHeaderText?: string,
     newPostText?: string,
     message?: string,
     userID?: number,
-    items?: UsersListType[]
+    items?: UsersListType[],
+    totalCount?: number,
+    currentPage?: number
 }
 
 // --------------- Типизация для ProfilePage -------------------------
@@ -109,6 +113,8 @@ export type UsersInitialState = {
     items: UsersListType[]
     totalCount: number
     error: string
+    pageSize: number
+    currentPage: number
 }
 
 export type UsersListType = {
@@ -127,9 +133,14 @@ type UsersPhotos = {
 // Типизация для страницы Users
 export type UsersPropsType = {
     items: UsersListType[],
+    totalCount: number,
+    pageSize: number,
+    currentPage: number,
     followFriend: (userID: number) => void,
     unfollowFriend: (userID: number) => void,
-    setUsers: (items: UsersListType[]) => void
+    setUsers: (items: UsersListType[]) => void,
+    setCurrentPage: (currentPage: number) => void,
+    setTotalUsersCount: (totalCount: number) => void
 }
 
 // --------------- Типизация для отдельных компонент -------------------------
