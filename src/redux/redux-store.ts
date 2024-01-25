@@ -130,8 +130,8 @@ type UsersPhotos = {
     large: string
 }
 
-// Типизация для страницы Users
-export type UsersPropsType = {
+// Типизация для страницы UsersAPIComponent
+export type UsersAPIComponentPropsType = {
     items: UsersListType[],
     totalCount: number,
     pageSize: number,
@@ -141,6 +141,17 @@ export type UsersPropsType = {
     setUsers: (items: UsersListType[]) => void,
     setCurrentPage: (currentPage: number) => void,
     setTotalUsersCount: (totalCount: number) => void
+}
+
+// Типизация для страницы Users
+export type UsersPropsType = {
+    items: UsersListType[],
+    totalCount: number,
+    pageSize: number,
+    currentPage: number,
+    followFriend: (userID: number) => void,
+    unfollowFriend: (userID: number) => void,
+    onPageChanged: (currentPage: number) => void
 }
 
 // Типизация для пагинации страниц
