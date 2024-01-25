@@ -42,7 +42,6 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 message: state.newPost.newText,
                 likesCount: 0
             }
-
             return {
                 ...state,
                 postsData: [newPostBody, ...state.postsData],

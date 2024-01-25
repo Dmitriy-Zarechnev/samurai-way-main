@@ -1,6 +1,5 @@
 import {ActionType, MessagesDataType, MessagesPagePropsType} from './redux-store'
 
-
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
 
@@ -24,7 +23,6 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
                 id: state.messagesData.length + 1,
                 message: state.newMessg
             }
-
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessgBody],
