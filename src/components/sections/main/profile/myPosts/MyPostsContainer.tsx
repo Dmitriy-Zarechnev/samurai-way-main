@@ -1,4 +1,4 @@
-import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
+import {ActionsTypes, RootStateDataType} from '../../../../../redux/redux-store'
 import {addPostAC, updateNewPostInputAC, updateNewPostTextAreaAC} from '../../../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
@@ -12,16 +12,16 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionsTypes>) => {
     return {
         updateNewPostTextArea: (postValue: string) => {
-            dispatch(updateNewPostTextAreaAC(postValue) as ActionType)
+            dispatch(updateNewPostTextAreaAC(postValue))
         },
         updateNewPostInput: (headerValue: string) => {
-            dispatch(updateNewPostInputAC(headerValue) as ActionType)
+            dispatch(updateNewPostInputAC(headerValue))
         },
         addPost: () => {
-            dispatch(addPostAC() as ActionType)
+            dispatch(addPostAC())
         }
     }
 }

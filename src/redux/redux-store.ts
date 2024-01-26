@@ -15,26 +15,39 @@ export type RootStateDataType = {
     usersPage: UsersInitialState
 }
 
-// Типизация для action
-export type ActionType = {
-    type: 'ADD-POST' |
-        'UPDATE-NEW-POST-HEADER' |
-        'UPDATE-NEW-POST-TEXT' |
-        'SEND-NEW-MESSAGE' |
-        'UPDATE-NEW-SEND-MESSAGE' |
-        'FOLLOW-FRIEND' |
-        'UNFOLLOW-FRIEND' |
-        'SET-USERS' |
-        'SET-CURRENT-PAGE' |
-        'SET-TOTAL-USERS-COUNT',
-    newHeaderText?: string,
-    newPostText?: string,
-    message?: string,
-    userID?: number,
-    items?: UsersListType[],
-    totalCount?: number,
-    currentPage?: number
-}
+// Типизация для Actions
+export type ActionsTypes =
+    addPostActionType |
+    updateNewPostHeaderActionType |
+    updateNewPostTextActionType |
+    sendNewMessageActionType |
+    updateNewSendMessageActionType |
+    followFriendActionType|
+    unfollowFriendActionType|
+    setUsersActionType|
+    setCurrentPageActionType|
+    setTotalUsersCountActionType
+
+//
+// export type ActionType = {
+//     type: 'ADD-POST' |
+//         'UPDATE-NEW-POST-HEADER' |
+//         'UPDATE-NEW-POST-TEXT' |
+//         'SEND-NEW-MESSAGE' |
+//         'UPDATE-NEW-SEND-MESSAGE' |
+//         'FOLLOW-FRIEND' |
+//         'UNFOLLOW-FRIEND' |
+//         'SET-USERS' |
+//         'SET-CURRENT-PAGE' |
+//         'SET-TOTAL-USERS-COUNT',
+//     newHeaderText?: string,
+//     newPostText?: string,
+//     message?: string,
+//     userID?: number,
+//     items?: UsersListType[],
+//     totalCount?: number,
+//     currentPage?: number
+// }
 
 // --------------- Типизация для ProfilePage -------------------------
 
@@ -72,6 +85,21 @@ export type MyPostsPropsType = {
     addPost: () => void
 }
 
+// Типизация для MyPosts Actions
+export type addPostActionType = {
+    type: 'ADD-POST'
+}
+
+export type updateNewPostHeaderActionType = {
+    type: 'UPDATE-NEW-POST-HEADER'
+    newHeaderText: string,
+}
+
+export type updateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT',
+    newPostText: string,
+}
+
 // --------------- Типизация для MessagesPage -------------------------
 
 export type MessagesPagePropsType = {
@@ -98,6 +126,16 @@ export type NewMessageAreaPropsType = {
     newMessg: string,
     updateNewMessage: (textareaValue: string) => void,
     sendNewMessage: () => void
+}
+
+// Типизация для MyMessages Actions
+export type sendNewMessageActionType = {
+    type: 'SEND-NEW-MESSAGE'
+}
+
+export type updateNewSendMessageActionType = {
+    type: 'UPDATE-NEW-SEND-MESSAGE',
+    message: string,
 }
 
 // --------------- Типизация для FriendsListData -------------------------
@@ -161,6 +199,31 @@ export type PaginationPropsType = {
     currentPage: number,
 }
 
+// Типизация для UsersAPIComponent Actions
+export type followFriendActionType = {
+    type: 'FOLLOW-FRIEND'
+    userID: number
+}
+
+export type unfollowFriendActionType = {
+    type: 'UNFOLLOW-FRIEND'
+    userID: number
+}
+
+export type setUsersActionType = {
+    type: 'SET-USERS'
+    items: UsersListType[],
+}
+
+export type setCurrentPageActionType = {
+    type: 'SET-CURRENT-PAGE'
+    currentPage: number
+}
+
+export type setTotalUsersCountActionType = {
+    type: 'SET-TOTAL-USERS-COUNT'
+    totalCount: number
+}
 
 // --------------- Типизация для отдельных компонент -------------------------
 

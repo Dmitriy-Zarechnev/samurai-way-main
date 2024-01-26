@@ -4,7 +4,6 @@ import {PaginationPropsType} from '../../../../../redux/redux-store'
 
 
 class Pagination extends React.Component <PaginationPropsType> {
-
     render() {
         return (
             <>

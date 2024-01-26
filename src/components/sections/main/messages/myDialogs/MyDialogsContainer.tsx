@@ -1,7 +1,6 @@
-import React from 'react'
 import MyDialogs from './MyDialogs'
 import {connect} from 'react-redux'
-import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
+import {ActionsTypes, RootStateDataType} from '../../../../../redux/redux-store'
 import {Dispatch} from 'redux'
 
 
@@ -11,7 +10,7 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionsTypes>) => {
     return {}
 }
 

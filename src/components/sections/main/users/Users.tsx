@@ -5,7 +5,7 @@ import min from '../../../../assets/images/min.jpg'
 import {UsersPropsType} from '../../../../redux/redux-store'
 import Pagination from './pagination/Pagination'
 
-const Users: React.FC<UsersPropsType> = (props) => {
+const Users = (props: UsersPropsType) => {
 
     let pagesCount = Math.ceil(props.totalCount / props.pageSize)
     let pages = []
@@ -71,7 +71,10 @@ const Users: React.FC<UsersPropsType> = (props) => {
                                     ? () => props.unfollowFriend(el.id)
                                     : () => props.followFriend(el.id)
                                 }
-                                additionalClass={el.followed ? classes.users_down_list__btn_red : ''}
+                                additionalClass={
+                                    el.followed
+                                        ? `${classes.users_down_list__btn} ${classes.unfollow_red}`
+                                        : classes.users_down_list__btn}
                             />
                         </div>
                     </div>

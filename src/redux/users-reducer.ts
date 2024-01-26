@@ -1,4 +1,4 @@
-import {ActionType, UsersInitialState, UsersListType} from './redux-store'
+import {ActionsTypes, followFriendActionType, setCurrentPageActionType, setTotalUsersCountActionType, setUsersActionType, unfollowFriendActionType, UsersInitialState, UsersListType} from './redux-store'
 
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
 const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
@@ -15,7 +15,7 @@ let initialState: UsersInitialState = {
 }
 
 
-export const usersReducer = (state: UsersInitialState = initialState, action: ActionType) => {
+export const usersReducer = (state: UsersInitialState = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
         case FOLLOW_FRIEND:
@@ -48,8 +48,8 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Ac
     }
 }
 
-export const followAC = (userID: number) => ({type: FOLLOW_FRIEND, userID})
-export const unfollowAC = (userID: number) => ({type: UNFOLLOW_FRIEND, userID})
-export const setUsersAC = (items: UsersListType[]) => ({type: SET_USERS, items})
-export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersCountAC = (totalCount: number) => ({type: SET_TOTAL_USERS_COUNT, totalCount})
+export const followAC = (userID: number): followFriendActionType => ({type: FOLLOW_FRIEND, userID})
+export const unfollowAC = (userID: number): unfollowFriendActionType => ({type: UNFOLLOW_FRIEND, userID})
+export const setUsersAC = (items: UsersListType[]): setUsersActionType => ({type: SET_USERS, items})
+export const setCurrentPageAC = (currentPage: number): setCurrentPageActionType => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCountAC = (totalCount: number): setTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalCount})

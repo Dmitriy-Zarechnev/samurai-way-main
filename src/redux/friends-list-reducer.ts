@@ -1,4 +1,4 @@
-import {ActionType, FriendsListDataType} from './redux-store'
+import {ActionsTypes, FriendsListDataType} from './redux-store'
 import cammyFriend from '../assets/images/webp/Cammy.webp'
 import kratosFriend from '../assets/images/webp/Kratos.webp'
 import groguFriend from '../assets/images/webp/Grogu.webp'
@@ -46,6 +46,6 @@ let initialState: Array<FriendsListDataType> = [
     }
 ]
 
-export const friendsListReducer = (state: Array<FriendsListDataType> = initialState, action: ActionType) => {
+export const friendsListReducer = (state: Array<FriendsListDataType> = initialState, action: ActionsTypes) => {
     return state
 }

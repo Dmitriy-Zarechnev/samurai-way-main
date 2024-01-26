@@ -1,4 +1,4 @@
-import {ActionType, RootStateDataType} from '../../../../../redux/redux-store'
+import {ActionsTypes, RootStateDataType} from '../../../../../redux/redux-store'
 import MyMessages from './MyMessages'
 import {connect} from 'react-redux'
 import {sendNewMessageAC, updateNewSendMessageAC} from '../../../../../redux/messages-reducer'
@@ -12,13 +12,13 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionsTypes>) => {
     return {
         updateNewMessage: (textareaValue: string) => {
-            dispatch(updateNewSendMessageAC(textareaValue) as ActionType)
+            dispatch(updateNewSendMessageAC(textareaValue))
         },
         sendNewMessage: () => {
-            dispatch(sendNewMessageAC() as ActionType)
+            dispatch(sendNewMessageAC())
         }
     }
 }

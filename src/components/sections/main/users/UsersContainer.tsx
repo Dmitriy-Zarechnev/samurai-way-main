@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {ActionType, RootStateDataType, UsersAPIComponentPropsType, UsersListType} from '../../../../redux/redux-store'
+import {ActionsTypes, RootStateDataType, UsersAPIComponentPropsType, UsersListType} from '../../../../redux/redux-store'
 import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from '../../../../redux/users-reducer'
 import {Dispatch} from 'redux'
 import React from 'react'
@@ -39,7 +39,6 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     }
 }
 
-
 let mapStateToProps = (state: RootStateDataType) => {
     return {
         items: state.usersPage.items,
@@ -49,22 +48,22 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<ActionType>) => {
+let mapDispatchToProps = (dispatch: Dispatch<ActionsTypes>) => {
     return {
         followFriend: (userID: number) => {
-            dispatch(followAC(userID) as ActionType)
+            dispatch(followAC(userID))
         },
         unfollowFriend: (userID: number) => {
-            dispatch(unfollowAC(userID) as ActionType)
+            dispatch(unfollowAC(userID))
         },
         setUsers: (items: UsersListType[]) => {
-            dispatch(setUsersAC(items) as ActionType)
+            dispatch(setUsersAC(items))
         },
         setCurrentPage: (currentPage: number) => {
-            dispatch(setCurrentPageAC(currentPage) as ActionType)
+            dispatch(setCurrentPageAC(currentPage))
         },
         setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUsersCountAC(totalCount) as ActionType)
+            dispatch(setTotalUsersCountAC(totalCount))
         }
     }
 }

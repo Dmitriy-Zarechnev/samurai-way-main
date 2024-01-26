@@ -1,4 +1,4 @@
-import {ActionType, PostsDataType, ProfilePagePropsType} from './redux-store'
+import {ActionsTypes, addPostActionType, PostsDataType, ProfilePagePropsType, updateNewPostHeaderActionType, updateNewPostTextActionType} from './redux-store'
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
 import avatar from '../assets/images/prof.png'
@@ -30,7 +30,7 @@ let initialState: ProfilePagePropsType = {
     }
 }
 
-export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionType) => {
+export const profileReducer = (state: ProfilePagePropsType = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
 
@@ -68,21 +68,22 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                     newHeader: action.newHeaderText
                 }
             }
-        default:
+
+            default:
             return state
     }
 }
 
-export const addPostAC = () => ({
+export const addPostAC = (): addPostActionType => ({
     type: ADD_POST
 })
 
-export const updateNewPostInputAC = (headerValue: string) => ({
+export const updateNewPostInputAC = (headerValue: string): updateNewPostHeaderActionType => ({
     type: UPDATE_NEW_POST_HEADER,
     newHeaderText: headerValue
 })
 
-export const updateNewPostTextAreaAC = (postValue: string) => ({
+export const updateNewPostTextAreaAC = (postValue: string): updateNewPostTextActionType => ({
     type: UPDATE_NEW_POST_TEXT,
     newPostText: postValue
 })

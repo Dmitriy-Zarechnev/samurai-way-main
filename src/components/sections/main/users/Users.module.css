@@ -56,7 +56,13 @@
     font-weight: 700;
 }
 
-.users_down_list__btn_red {
+.users_down_list__btn {
+    font-size: 25px;
+}
+
+.unfollow_red {
     background-color: red;
 }
+
+
 
