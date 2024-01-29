@@ -82,7 +82,8 @@ button:not(:disabled):active {
 /* Стили disabled кнопки */
 button:disabled{
     background-color: #052718;
-    opacity:0.5
+    opacity:0.5;
+    cursor:not-allowed;
 }
 
 
