@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {ActionsTypes, RootStateDataType, UsersAPIComponentPropsType, UsersListType} from '../../../../redux/redux-store'
+import {RootStateDataType, UsersAPIComponentActionsType, UsersAPIComponentPropsType, UsersListType} from '../../../../redux/redux-store'
 import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC} from '../../../../redux/users-reducer'
 import {Dispatch} from 'redux'
 import Users from './Users'
@@ -57,7 +57,7 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<ActionsTypes>) => {
+let mapDispatchToProps = (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
     return {
         followFriend: (userID: number) => {
             dispatch(followAC(userID))

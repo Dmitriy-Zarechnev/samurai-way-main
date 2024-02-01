@@ -1,4 +1,4 @@
-import {ActionsTypes, FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, UnfollowFriendActionType, UsersInitialState, UsersListType} from './redux-store'
+import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from './redux-store'
 
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
 const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
@@ -17,7 +17,7 @@ let initialState: UsersInitialState = {
 }
 
 
-export const usersReducer = (state: UsersInitialState = initialState, action: ActionsTypes) => {
+export const usersReducer = (state: UsersInitialState = initialState, action: UsersAPIComponentActionsType) => {
 
     switch (action.type) {
         case FOLLOW_FRIEND:

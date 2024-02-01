@@ -1,4 +1,4 @@
-import {ActionsTypes, MessagesDataType, MessagesPagePropsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from './redux-store'
+import {MessagesDataType, MessagesPagePropsType, MyMessagesActionsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from './redux-store'
 
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
@@ -15,7 +15,7 @@ let initialState: MessagesPagePropsType = {
     newMessg: ''
 }
 
-export const messagesReducer = (state: MessagesPagePropsType = initialState, action: ActionsTypes) => {
+export const messagesReducer = (state: MessagesPagePropsType = initialState, action: MyMessagesActionsType) => {
 
     switch (action.type) {
         case SEND_NEW_MESSAGE:

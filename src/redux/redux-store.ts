@@ -15,19 +15,9 @@ export type RootStateDataType = {
     usersPage: UsersInitialState
 }
 
-// Типизация для Actions
-export type ActionsTypes =
-    AddPostActionType |
-    UpdateNewPostHeaderActionType |
-    UpdateNewPostTextActionType |
-    SendNewMessageActionType |
-    UpdateNewSendMessageActionType |
-    FollowFriendActionType |
-    UnfollowFriendActionType |
-    SetUsersActionType |
-    SetCurrentPageActionType |
-    SetTotalUsersCountActionType |
-    ToggleIsFetchingActionType
+// Заглушка для экшенов , где их нет
+export type EmptyActionType = { type: 'hello' }
+
 
 // --------------- Типизация для ProfilePage -------------------------
 
@@ -66,6 +56,11 @@ export type MyPostsPropsType = {
 }
 
 // Типизация для MyPosts Actions
+
+export type MyPostsActionsType =
+    AddPostActionType |
+    UpdateNewPostHeaderActionType |
+    UpdateNewPostTextActionType
 
 export type AddPostActionType = {
     type: 'ADD-POST'
@@ -110,6 +105,11 @@ export type NewMessageAreaPropsType = {
 }
 
 // Типизация для MyMessages Actions
+
+export type MyMessagesActionsType =
+    SendNewMessageActionType |
+    UpdateNewSendMessageActionType
+
 export type SendNewMessageActionType = {
     type: 'SEND-NEW-MESSAGE'
 }
@@ -126,6 +126,9 @@ export type FriendsListDataType = {
     name: string,
     alt: string
 }
+
+
+
 
 // --------------- Типизация для UsersPageData -------------------------
 export type UsersInitialState = {
@@ -184,6 +187,16 @@ export type PaginationPropsType = {
 }
 
 // Типизация для UsersAPIComponent Actions
+
+export type UsersAPIComponentActionsType =
+    FollowFriendActionType |
+    UnfollowFriendActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
+    ToggleIsFetchingActionType
+
+
 export type FollowFriendActionType = {
     type: 'FOLLOW-FRIEND'
     userID: number
