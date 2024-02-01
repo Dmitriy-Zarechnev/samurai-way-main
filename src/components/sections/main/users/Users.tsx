@@ -3,7 +3,7 @@ import Button from '../../../common/button/Button'
 import classes from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {UsersPropsType} from '../../../../redux/redux-store'
-import Pagination from './pagination/Pagination'
+import Pagination from '../../../common/pagination/Pagination'
 
 const Users = (props: UsersPropsType) => {
 

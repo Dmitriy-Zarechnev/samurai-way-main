@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
-import ProfileInfo from './ProfileInfo'
-import { EmptyActionType, RootStateDataType} from '../../../../../redux/redux-store'
-import {Dispatch} from 'redux'
+import {ProfileInfo} from './ProfileInfo'
+import {RootStateDataType} from '../../../../../redux/redux-store'
+
 
 let mapStateToProps = (state: RootStateDataType) => {
     return {
@@ -9,11 +9,7 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<EmptyActionType>) => {
-    return {}
-}
 
-const ProfileInfoContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)
+export const ProfileInfoContainer = connect(mapStateToProps, {})(ProfileInfo)
 
 
-export default ProfileInfoContainer

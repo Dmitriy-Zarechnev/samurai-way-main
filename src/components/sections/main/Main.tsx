@@ -1,17 +1,17 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
-import Messages from './messages/Messages'
-import News from './news/News'
+import {Messages} from './messages/Messages'
+import {News} from './news/News'
 import Music from './music/Music'
 import Settings from './settings/Settings'
-import classes from './Main.module.css'
-import Profile from './profile/Profile'
-import UsersContainer from './users/UsersContainer'
+import S from './Main.module.css'
+import {Profile} from './profile/Profile'
+import {UsersContainer} from './users/UsersContainer'
 
 class Main extends React.Component {
     render() {
         return (
-            <div className={classes.app_main}>
+            <div className={S.app_main}>
                 <Route exact path="/" render={() =>
                     <Profile/>}/>
 

@@ -1,32 +1,16 @@
 import React from 'react'
-import classes from './FriendsSideBar.module.css'
+import S from './FriendsSideBar.module.css'
 import {FriendsListDataType} from '../../../../../redux/redux-store'
-import FriendsList from '../../../../common/friendsList/FriendsList'
+import {FriendsList} from '../../../../common/friendsList/FriendsList'
 
-class FriendsSideBar extends React.Component<{ friendsList: Array<FriendsListDataType> }> {
-
-    render() {
-        return (
-            <ul className={classes.friends_sidebar}>
-                <h3 className={classes.friends_sidebar__header}>My Friends</h3>
-                <FriendsList friendsList={this.props.friendsList} navlink={'profile'}/>
-            </ul>
-        )
-    }
-}
-
-export default FriendsSideBar
-
-// Функциональная компонента
-/*
-const FriendsSideBar: React.FC<{ friendsList: Array<FriendsListDataType> }> = ({friendsList}) => {
+export const FriendsSideBar = (props: { friendsList: Array<FriendsListDataType> }) => {
     return (
-        <ul className={classes.friends_sidebar}>
-            <h3 className={classes.friends_sidebar__header}>My Friends</h3>
-            <FriendsList friendsList={friendsList} navlink={'profile'}/>
+        <ul className={S.friends_sidebar}>
+            <h3 className={S.friends_sidebar__header}>My Friends</h3>
+            <FriendsList friendsList={props.friendsList} navlink={'profile'}/>
         </ul>
     )
 }
- */
+
 
 

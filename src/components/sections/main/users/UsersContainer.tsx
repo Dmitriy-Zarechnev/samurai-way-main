@@ -1,9 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {RootStateDataType, UsersAPIComponentActionsType, UsersAPIComponentPropsType, UsersListType} from '../../../../redux/redux-store'
-import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC} from '../../../../redux/users-reducer'
-import {Dispatch} from 'redux'
+import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../redux/redux-store'
+import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
 import Users from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 
@@ -57,29 +56,9 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-    return {
-        followFriend: (userID: number) => {
-            dispatch(followAC(userID))
-        },
-        unfollowFriend: (userID: number) => {
-            dispatch(unfollowAC(userID))
-        },
-        setUsers: (items: UsersListType[]) => {
-            dispatch(setUsersAC(items))
-        },
-        setCurrentPage: (currentPage: number) => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-}
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
+export const UsersContainer = connect(mapStateToProps,
+    {followFriend, unfollowFriend, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching}
+)(UsersAPIComponent)
 
-export default UsersContainer
+

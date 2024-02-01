@@ -1,8 +1,7 @@
-import {MyPostsActionsType, RootStateDataType} from '../../../../../redux/redux-store'
-import {addPostAC, updateNewPostInputAC, updateNewPostTextAreaAC} from '../../../../../redux/profile-reducer'
-import MyPosts from './MyPosts'
+import {RootStateDataType} from '../../../../../redux/redux-store'
+import {addPost, updateNewPostInput, updateNewPostTextArea} from '../../../../../redux/profile-reducer'
+import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
-import {Dispatch} from 'redux'
 
 
 let mapStateToProps = (state: RootStateDataType) => {
@@ -12,20 +11,7 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<MyPostsActionsType>) => {
-    return {
-        updateNewPostTextArea: (postValue: string) => {
-            dispatch(updateNewPostTextAreaAC(postValue))
-        },
-        updateNewPostInput: (headerValue: string) => {
-            dispatch(updateNewPostInputAC(headerValue))
-        },
-        addPost: () => {
-            dispatch(addPostAC())
-        }
-    }
-}
+export const MyPostsContainer = connect(mapStateToProps, {
+    updateNewPostTextArea, updateNewPostInput, addPost
+})(MyPosts)
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
-
-export default MyPostsContainer

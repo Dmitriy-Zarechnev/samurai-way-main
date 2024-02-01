@@ -1,7 +1,6 @@
-import MyDialogs from './MyDialogs'
+import {MyDialogs} from './MyDialogs'
 import {connect} from 'react-redux'
-import {EmptyActionType, RootStateDataType} from '../../../../../redux/redux-store'
-import {Dispatch} from 'redux'
+import {RootStateDataType} from '../../../../../redux/redux-store'
 
 
 let mapStateToProps = (state: RootStateDataType) => {
@@ -10,9 +9,5 @@ let mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<EmptyActionType>) => {
-    return {}
-}
 
-const MyDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(MyDialogs)
-export default MyDialogsContainer
+export const MyDialogsContainer = connect(mapStateToProps, {})(MyDialogs)

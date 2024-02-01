@@ -53,9 +53,9 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
     }
 }
 
-export const followAC = (userID: number): FollowFriendActionType => ({type: FOLLOW_FRIEND, userID})
-export const unfollowAC = (userID: number): UnfollowFriendActionType => ({type: UNFOLLOW_FRIEND, userID})
-export const setUsersAC = (items: UsersListType[]): SetUsersActionType => ({type: SET_USERS, items})
-export const setCurrentPageAC = (currentPage: number): SetCurrentPageActionType => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersCountAC = (totalCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
-export const toggleIsFetchingAC = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const followFriend = (userID: number): FollowFriendActionType => ({type: FOLLOW_FRIEND, userID})
+export const unfollowFriend = (userID: number): UnfollowFriendActionType => ({type: UNFOLLOW_FRIEND, userID})
+export const setUsers = (items: UsersListType[]): SetUsersActionType => ({type: SET_USERS, items})
+export const setCurrentPage = (currentPage: number): SetCurrentPageActionType => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCount = (totalCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
+export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})

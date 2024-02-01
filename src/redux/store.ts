@@ -15,7 +15,6 @@ export type StoreType = {
 type ObserverType = (state: RootStateDataType) => void
 
 
-
 // Типизация для State
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
@@ -219,5 +218,30 @@ let store: StoreType = {
 
 
  export default store
+
+!!!!!!!!!!!!!!!!!!!!! Как работает mapDispatchToProps !!!!!!!!!!!!!!!!!!!!!!
+// let mapDispatchToProps = (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+//     return {
+//         followFriend: (userID: number) => {
+//             dispatch(followAC(userID))
+//         },
+//         unfollowFriend: (userID: number) => {
+//             dispatch(unfollowAC(userID))
+//         },
+//         setUsers: (items: UsersListType[]) => {
+//             dispatch(setUsersAC(items))
+//         },
+//         setCurrentPage: (currentPage: number) => {
+//             dispatch(setCurrentPageAC(currentPage))
+//         },
+//         setTotalUsersCount: (totalCount: number) => {
+//             dispatch(setTotalUsersCountAC(totalCount))
+//         },
+//         toggleIsFetching: (isFetching: boolean) => {
+//             dispatch(toggleIsFetchingAC(isFetching))
+//         }
+//     }
+// }
+
 
  */

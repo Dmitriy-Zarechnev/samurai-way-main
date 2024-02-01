@@ -40,11 +40,11 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
     }
 }
 
-export const sendNewMessageAC = (): SendNewMessageActionType => ({
+export const sendNewMessage = (): SendNewMessageActionType => ({
     type: SEND_NEW_MESSAGE
 })
 
-export const updateNewSendMessageAC = (textareaValue: string): UpdateNewSendMessageActionType => ({
+export const updateNewMessage = (textareaValue: string): UpdateNewSendMessageActionType => ({
     type: UPDATE_NEW_SEND_MESSAGE,
     message: textareaValue
 })

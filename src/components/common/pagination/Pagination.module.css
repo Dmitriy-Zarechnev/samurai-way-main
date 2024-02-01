@@ -1,9 +1,14 @@
+.page {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
 .selected_page {
     font-weight: 700;
     color: #B49463;
 }
 
-.page_number{
+.page_number {
     color: #052718;
     cursor: pointer
 }

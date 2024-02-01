@@ -74,16 +74,16 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
     }
 }
 
-export const addPostAC = (): AddPostActionType => ({
+export const addPost = (): AddPostActionType => ({
     type: ADD_POST
 })
 
-export const updateNewPostInputAC = (headerValue: string): UpdateNewPostHeaderActionType => ({
+export const updateNewPostInput = (headerValue: string): UpdateNewPostHeaderActionType => ({
     type: UPDATE_NEW_POST_HEADER,
     newHeaderText: headerValue
 })
 
-export const updateNewPostTextAreaAC = (postValue: string): UpdateNewPostTextActionType => ({
+export const updateNewPostTextArea = (postValue: string): UpdateNewPostTextActionType => ({
     type: UPDATE_NEW_POST_TEXT,
     newPostText: postValue
 })
