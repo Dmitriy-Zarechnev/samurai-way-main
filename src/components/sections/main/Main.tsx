@@ -5,17 +5,17 @@ import {News} from './news/News'
 import {Music} from './music/Music'
 import {Settings} from './settings/Settings'
 import S from './Main.module.css'
-import {Profile} from './profile/Profile'
 import {UsersContainer} from './users/UsersContainer'
+import {ProfileContainer} from './profile/ProfileContainer'
 
 export const Main = () => {
     return (
         <div className={S.app_main}>
             <Route exact path="/" render={() =>
-                <Profile/>}/>
+                <ProfileContainer/>}/>
 
             <Route path="/profile" render={() =>
-                <Profile/>}/>
+                <ProfileContainer/>}/>
 
             <Route path="/messages" render={() =>
                 <Messages/>}/>

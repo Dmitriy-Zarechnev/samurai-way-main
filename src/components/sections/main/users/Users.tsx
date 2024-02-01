@@ -4,6 +4,7 @@ import S from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {UsersPropsType} from '../../../../redux/redux-store'
 import {Pagination} from '../../../common/pagination/Pagination'
+import {NavLink} from 'react-router-dom'
 
 export const Users = (props: UsersPropsType) => {
 
@@ -54,9 +55,12 @@ export const Users = (props: UsersPropsType) => {
                 return (
                     <div key={el.id} className={S.users_list}>
                         <div className={S.users_up_list}>
-                            <img src={el.photos.small ? el.photos.small : min}
-                                 alt={`${el.name}-AvatarImg`}
-                                 className={S.users_up_list__img}/>
+
+                            <NavLink to={`/profile/ ${el.id}`}>
+                                <img src={el.photos.small ? el.photos.small : min}
+                                     alt={`${el.name}-AvatarImg`}
+                                     className={S.users_up_list__img}/>
+                            </NavLink>
 
                             <p className={S.users_up_list__status}>
                                 {el.status}
