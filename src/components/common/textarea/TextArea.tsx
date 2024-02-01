@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './TextArea.module.css'
-import {TextAreaPropsType} from '../../redux/redux-store'
+import {TextAreaPropsType} from '../../../redux/redux-store'
 
 class TextArea extends React.Component<TextAreaPropsType> {
     render() {

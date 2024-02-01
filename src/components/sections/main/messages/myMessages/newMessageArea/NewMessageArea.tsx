@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import classes from './NewMessageArea.module.css'
 import {NewMessageAreaPropsType} from '../../../../../../redux/redux-store'
-import Button from '../../../../../button/Button'
-import TextArea from '../../../../../textarea/TextArea'
+import Button from '../../../../../common/button/Button'
+import TextArea from '../../../../../common/textarea/TextArea'
 
 
 class NewMessageArea extends React.Component<NewMessageAreaPropsType> {

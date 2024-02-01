@@ -12,6 +12,8 @@ class Main extends React.Component {
     render() {
         return (
             <div className={classes.app_main}>
+                <Route exact path="/" render={() =>
+                    <Profile/>}/>
 
                 <Route path="/profile" render={() =>
                     <Profile/>}/>

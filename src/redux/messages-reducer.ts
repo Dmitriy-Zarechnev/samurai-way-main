@@ -1,4 +1,4 @@
-import {ActionsTypes, MessagesDataType, MessagesPagePropsType, sendNewMessageActionType, updateNewSendMessageActionType} from './redux-store'
+import {ActionsTypes, MessagesDataType, MessagesPagePropsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from './redux-store'
 
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
@@ -40,11 +40,11 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
     }
 }
 
-export const sendNewMessageAC = (): sendNewMessageActionType => ({
+export const sendNewMessageAC = (): SendNewMessageActionType => ({
     type: SEND_NEW_MESSAGE
 })
 
-export const updateNewSendMessageAC = (textareaValue: string): updateNewSendMessageActionType => ({
+export const updateNewSendMessageAC = (textareaValue: string): UpdateNewSendMessageActionType => ({
     type: UPDATE_NEW_SEND_MESSAGE,
     message: textareaValue
 })

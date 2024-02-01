@@ -1,5 +1,5 @@
 import React from 'react'
-import {InputPropsType} from '../../redux/redux-store'
+import {InputPropsType} from '../../../redux/redux-store'
 import classes from './Input.module.css'
 
 

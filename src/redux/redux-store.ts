@@ -17,37 +17,17 @@ export type RootStateDataType = {
 
 // Типизация для Actions
 export type ActionsTypes =
-    addPostActionType |
-    updateNewPostHeaderActionType |
-    updateNewPostTextActionType |
-    sendNewMessageActionType |
-    updateNewSendMessageActionType |
-    followFriendActionType|
-    unfollowFriendActionType|
-    setUsersActionType|
-    setCurrentPageActionType|
-    setTotalUsersCountActionType
-
-//
-// export type ActionType = {
-//     type: 'ADD-POST' |
-//         'UPDATE-NEW-POST-HEADER' |
-//         'UPDATE-NEW-POST-TEXT' |
-//         'SEND-NEW-MESSAGE' |
-//         'UPDATE-NEW-SEND-MESSAGE' |
-//         'FOLLOW-FRIEND' |
-//         'UNFOLLOW-FRIEND' |
-//         'SET-USERS' |
-//         'SET-CURRENT-PAGE' |
-//         'SET-TOTAL-USERS-COUNT',
-//     newHeaderText?: string,
-//     newPostText?: string,
-//     message?: string,
-//     userID?: number,
-//     items?: UsersListType[],
-//     totalCount?: number,
-//     currentPage?: number
-// }
+    AddPostActionType |
+    UpdateNewPostHeaderActionType |
+    UpdateNewPostTextActionType |
+    SendNewMessageActionType |
+    UpdateNewSendMessageActionType |
+    FollowFriendActionType |
+    UnfollowFriendActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
+    ToggleIsFetchingActionType
 
 // --------------- Типизация для ProfilePage -------------------------
 
@@ -86,16 +66,17 @@ export type MyPostsPropsType = {
 }
 
 // Типизация для MyPosts Actions
-export type addPostActionType = {
+
+export type AddPostActionType = {
     type: 'ADD-POST'
 }
 
-export type updateNewPostHeaderActionType = {
+export type UpdateNewPostHeaderActionType = {
     type: 'UPDATE-NEW-POST-HEADER'
     newHeaderText: string,
 }
 
-export type updateNewPostTextActionType = {
+export type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string,
 }
@@ -129,11 +110,11 @@ export type NewMessageAreaPropsType = {
 }
 
 // Типизация для MyMessages Actions
-export type sendNewMessageActionType = {
+export type SendNewMessageActionType = {
     type: 'SEND-NEW-MESSAGE'
 }
 
-export type updateNewSendMessageActionType = {
+export type UpdateNewSendMessageActionType = {
     type: 'UPDATE-NEW-SEND-MESSAGE',
     message: string,
 }
@@ -153,6 +134,7 @@ export type UsersInitialState = {
     error: string
     pageSize: number
     currentPage: number
+    isFetching: boolean
 }
 
 export type UsersListType = {
@@ -178,7 +160,9 @@ export type UsersAPIComponentPropsType = {
     unfollowFriend: (userID: number) => void,
     setUsers: (items: UsersListType[]) => void,
     setCurrentPage: (currentPage: number) => void,
-    setTotalUsersCount: (totalCount: number) => void
+    setTotalUsersCount: (totalCount: number) => void,
+    toggleIsFetching: (isFetching: boolean) => void
+    isFetching: boolean
 }
 
 // Типизация для страницы Users
@@ -200,29 +184,34 @@ export type PaginationPropsType = {
 }
 
 // Типизация для UsersAPIComponent Actions
-export type followFriendActionType = {
+export type FollowFriendActionType = {
     type: 'FOLLOW-FRIEND'
     userID: number
 }
 
-export type unfollowFriendActionType = {
+export type UnfollowFriendActionType = {
     type: 'UNFOLLOW-FRIEND'
     userID: number
 }
 
-export type setUsersActionType = {
+export type SetUsersActionType = {
     type: 'SET-USERS'
     items: UsersListType[],
 }
 
-export type setCurrentPageActionType = {
+export type SetCurrentPageActionType = {
     type: 'SET-CURRENT-PAGE'
     currentPage: number
 }
 
-export type setTotalUsersCountActionType = {
+export type SetTotalUsersCountActionType = {
     type: 'SET-TOTAL-USERS-COUNT'
     totalCount: number
+}
+
+export type ToggleIsFetchingActionType = {
+    type: 'TOGGLE-IS-FETCHING'
+    isFetching: boolean
 }
 
 // --------------- Типизация для отдельных компонент -------------------------

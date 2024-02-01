@@ -1,5 +1,5 @@
 import React from 'react'
-import {FriendsListDataType} from '../../redux/redux-store'
+import {FriendsListDataType} from '../../../redux/redux-store'
 import classes from './FriendsList.module.css'
 import {NavLink} from 'react-router-dom'
 

@@ -2,9 +2,9 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import Post from './post/Post'
 import classes from './MyPosts.module.css'
 import {MyPostsPropsType} from '../../../../../redux/redux-store'
-import Button from '../../../../button/Button'
-import TextArea from '../../../../textarea/TextArea'
-import Input from '../../../../input/Input'
+import Button from '../../../../common/button/Button'
+import TextArea from '../../../../common/textarea/TextArea'
+import Input from '../../../../common/input/Input'
 
 
 class MyPosts extends React.Component<MyPostsPropsType> {

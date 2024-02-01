@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './FriendsSideBar.module.css'
 import {FriendsListDataType} from '../../../../../redux/redux-store'
-import FriendsList from '../../../../friendsList/FriendsList'
+import FriendsList from '../../../../common/friendsList/FriendsList'
 
 class FriendsSideBar extends React.Component<{ friendsList: Array<FriendsListDataType> }> {
 

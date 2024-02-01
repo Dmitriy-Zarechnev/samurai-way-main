@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Button.module.css'
-import {ButtonPropsType} from '../../redux/redux-store'
+import {ButtonPropsType} from '../../../redux/redux-store'
 
 
 class Button extends React.Component<ButtonPropsType> {
