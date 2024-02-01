@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../redux/redux-store'
 import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
-import Users from './Users'
+import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
@@ -27,6 +27,7 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
                 this.props.setUsers(response.data.items)
             })
     }
+
 
     render() {
         return (

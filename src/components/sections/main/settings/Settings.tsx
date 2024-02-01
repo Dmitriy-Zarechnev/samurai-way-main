@@ -1,29 +1,12 @@
 import React from 'react'
-import classes from './Settings.module.css'
-import SettingsData from './settingsData/SettingsData'
-import SettingsSideBar from './settingsSideBar/SettingsSideBar'
+import S from './Settings.module.css'
+import {SettingsData} from './settingsData/SettingsData'
+import {SettingsSideBar} from './settingsSideBar/SettingsSideBar'
 
-class Settings extends React.Component {
-    render() {
-        return (
-            <section className={classes.settings}>
-                <h2 className={classes.settings__header}>
-                    Settings
-                </h2>
-                <SettingsData/>
-                <SettingsSideBar/>
-            </section>
-        )
-    }
-}
-
-export default Settings
-// Функциональная компонента
-/*
-const Settings: React.FC = () => {
+export const Settings = () => {
     return (
-        <section className={classes.settings}>
-            <h2 className={classes.settings__header}>
+        <section className={S.settings}>
+            <h2 className={S.settings__header}>
                 Settings
             </h2>
             <SettingsData/>
@@ -31,4 +14,5 @@ const Settings: React.FC = () => {
         </section>
     )
 }
- */
+
+

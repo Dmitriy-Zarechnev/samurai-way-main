@@ -1,7 +1,7 @@
 import React from 'react'
 import S from './News.module.css'
-import NewsData from './newsData/NewsData'
-import NewsSideBar from './newsSideBar/NewsSideBar'
+import {NewsData} from './newsData/NewsData'
+import {NewsSideBar} from './newsSideBar/NewsSideBar'
 
 export const News = () => {
     return (

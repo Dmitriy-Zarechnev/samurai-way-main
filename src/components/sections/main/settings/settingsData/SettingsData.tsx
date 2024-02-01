@@ -1,25 +1,11 @@
 import React from 'react'
-import classes from './SettingData.module.css'
+import S from './SettingData.module.css'
 
-class SettingsData extends React.Component {
-    render() {
-        return (
-            <div className={classes.settings_data}>
-                Hello
-            </div>
-        )
-    }
-}
-
-export default SettingsData
-// Функциональная компонента
-/*
-const SettingsData: React.FC = () => {
+export const SettingsData = () => {
     return (
-        <div className={classes.settings_data}>
+        <div className={S.settings_data}>
             Hello
         </div>
     )
 }
 
- */

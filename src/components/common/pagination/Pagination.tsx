@@ -21,4 +21,3 @@ export const Pagination = (props: PaginationPropsType) => {
     )
 }
 
-export default Pagination

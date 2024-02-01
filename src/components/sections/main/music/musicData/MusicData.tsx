@@ -1,25 +1,10 @@
 import React from 'react'
-import classes from './MusicData.module.css'
+import S from './MusicData.module.css'
 
-class MusicData extends React.Component {
-    render() {
-        return (
-            <div className={classes.music_data}>
-                Why
-            </div>
-        )
-    }
-}
-
-export default MusicData
-
-// Функциональная компонента
-/*
-const MusicData:React.FC = () => {
+export const MusicData = () => {
     return (
-        <div className={classes.music_data}>
+        <div className={S.music_data}>
             Why
         </div>
     )
 }
- */

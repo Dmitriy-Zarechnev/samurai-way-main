@@ -1,24 +1,11 @@
 import React from 'react'
-import classes from './MusicSideBar.module.css'
+import S from './MusicSideBar.module.css'
 
-class MusicSideBar extends React.Component {
-    render() {
-        return (
-            <div className={classes.music_sidebar}>
-                Why
-            </div>
-        )
-    }
-}
-
-export default MusicSideBar
-// Функциональная компонента
-/*
-const MusicSideBar:React.FC = () => {
+export const MusicSideBar = () => {
     return (
-        <div className={classes.music_sidebar}>
+        <div className={S.music_sidebar}>
             Why
         </div>
     )
 }
- */
+
