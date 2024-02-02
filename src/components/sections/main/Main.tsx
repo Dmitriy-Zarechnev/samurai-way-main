@@ -6,16 +6,17 @@ import {Music} from './music/Music'
 import {Settings} from './settings/Settings'
 import S from './Main.module.css'
 import {UsersContainer} from './users/UsersContainer'
-import {ProfileContainer} from './profile/ProfileContainer'
+import {Profile} from './profile/Profile'
+
 
 export const Main = () => {
     return (
         <div className={S.app_main}>
             <Route exact path="/" render={() =>
-                <ProfileContainer/>}/>
+                <Profile/>}/>
 
             <Route path="/profile" render={() =>
-                <ProfileContainer/>}/>
+                <Profile/>}/>
 
             <Route path="/messages" render={() =>
                 <Messages/>}/>

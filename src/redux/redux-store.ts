@@ -23,14 +23,32 @@ export type EmptyActionType = { type: 'hello' }
 
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType,
-    postsData: Array<PostsDataType>,
-    newPost: NewPostType
+    postsData: PostsDataType[],
+    newPost: NewPostType,
 }
 
-export type ProfileInfoType = {
-    id: number,
-    src: string,
-    info: string
+export type  ProfileInfoType = {
+    aboutMe: string;
+    contacts: Contacts;
+    lookingForAJob: boolean;
+    lookingForAJobDescription: string;
+    fullName: string;
+    userId: number;
+    photos: {
+        small: string;
+        large: string;
+    };
+}
+
+export type Contacts = {
+    facebook: string;
+    website: string | null;
+    vk: string;
+    twitter: string;
+    instagram: string;
+    youtube: string | null;
+    github: string;
+    mainLink: string | null;
 }
 
 export type PostsDataType = {
@@ -46,6 +64,7 @@ export type NewPostType = {
     newText: string
 }
 
+
 // Типизация для страницы MyPosts
 export type MyPostsPropsType = {
     posts: Array<PostsDataType>,
@@ -55,12 +74,22 @@ export type MyPostsPropsType = {
     addPost: () => void
 }
 
+
+// Типизация для ProfileInfo Actions
+
+export type SetUserProfileActionType = {
+    type: 'SET-USER-PROFILE',
+    profileInfo: ProfileInfoType
+}
+
+
 // Типизация для MyPosts Actions
 
 export type MyPostsActionsType =
     AddPostActionType |
     UpdateNewPostHeaderActionType |
-    UpdateNewPostTextActionType
+    UpdateNewPostTextActionType |
+    SetUserProfileActionType
 
 export type AddPostActionType = {
     type: 'ADD-POST'
@@ -126,8 +155,6 @@ export type FriendsListDataType = {
     name: string,
     alt: string
 }
-
-
 
 
 // --------------- Типизация для UsersPageData -------------------------

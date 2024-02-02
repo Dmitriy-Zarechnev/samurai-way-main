@@ -1,17 +1,33 @@
-import { AddPostActionType, MyPostsActionsType, PostsDataType, ProfilePagePropsType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from './redux-store'
+import {AddPostActionType, MyPostsActionsType, PostsDataType, ProfileInfoType, ProfilePagePropsType, SetUserProfileActionType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from './redux-store'
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
-import avatar from '../assets/images/prof.png'
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let initialState: ProfilePagePropsType = {
     profileInfo: {
-        id: 1,
-        src: avatar,
-        info: 'I am a YoRHa android created to battle the machine lifeforms that have invaded the planet on behalf of the surviving humans. ' + 'Equipment is a multitude of weapons for close quarters combat and can attack from range using the Pod.'
+        aboutMe: '',
+        contacts: {
+            facebook: '',
+            website: null,
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: null,
+            github: '',
+            mainLink: null
+        },
+        lookingForAJob: false,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: 0,
+        photos: {
+            small: '',
+            large: ''
+        }
     },
     postsData: [
         {
@@ -69,7 +85,12 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 }
             }
 
-            default:
+        case SET_USER_PROFILE:
+            return {
+                ...state, profileInfo: action.profileInfo
+            }
+
+        default:
             return state
     }
 }
@@ -87,3 +108,5 @@ export const updateNewPostTextArea = (postValue: string): UpdateNewPostTextActio
     type: UPDATE_NEW_POST_TEXT,
     newPostText: postValue
 })
+
+export const setUserProfile = (profileInfo: ProfileInfoType): SetUserProfileActionType => ({type: SET_USER_PROFILE, profileInfo})

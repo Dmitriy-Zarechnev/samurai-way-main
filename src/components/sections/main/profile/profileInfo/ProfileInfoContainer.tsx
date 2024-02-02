@@ -1,6 +1,31 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {RootStateDataType} from '../../../../../redux/redux-store'
+import {ProfileInfoType, RootStateDataType} from '../../../../../redux/redux-store'
+import {setUserProfile} from '../../../../../redux/profile-reducer'
+import React from 'react'
+import axios from 'axios'
+
+export type ProfileInfoAPIComponentPropsType = {
+    setUserProfile: (profileInfo: ProfileInfoType) => void
+    profileInfo: ProfileInfoType
+}
+
+
+class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPropsType> {
+
+    componentDidMount() {
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${2}`)
+            .then(response => {
+                this.props.setUserProfile(response.data)
+            })
+    }
+
+    render() {
+        return (
+            <ProfileInfo profileInfo={this.props.profileInfo}/>)
+    }
+}
 
 
 let mapStateToProps = (state: RootStateDataType) => {
@@ -10,6 +35,6 @@ let mapStateToProps = (state: RootStateDataType) => {
 }
 
 
-export const ProfileInfoContainer = connect(mapStateToProps, {})(ProfileInfo)
+export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile})(ProfileInfoAPIComponent)
 
 
