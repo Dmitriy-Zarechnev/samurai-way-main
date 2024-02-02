@@ -206,12 +206,7 @@ export type UsersPropsType = {
     onPageChanged: (currentPage: number) => void
 }
 
-// Типизация для пагинации страниц
-export type PaginationPropsType = {
-    currentArray: Array<number>,
-    onPageChanged: (currentPage: number) => void,
-    currentPage: number,
-}
+
 
 // Типизация для UsersAPIComponent Actions
 
@@ -281,6 +276,20 @@ export type InputPropsType = {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void,
     onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void,
     placeholder: string,
+}
+
+// Типизация для Pagination
+export type PaginationPropsType = {
+    currentArray: Array<number>,
+    onPageChanged: (currentPage: number) => void,
+    currentPage: number,
+}
+
+// Типизация для contacts
+export type ContactsPropsType = {
+    href: string
+    alt: string
+    src: string
 }
 // --------------------------------------------------------------
 
