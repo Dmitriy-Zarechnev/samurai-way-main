@@ -28,7 +28,7 @@
 }
 
 .profile_info__text {
-
+    font-size: 20px;
 }
 
 .profile__work_box {
@@ -37,8 +37,9 @@
     gap: 30px;
 }
 
-.profile_info__text {
+.profile_work__text {
     font-size: 20px;
+    align-self: center;
 }
 
 .profile__img {

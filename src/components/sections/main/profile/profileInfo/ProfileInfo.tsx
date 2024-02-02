@@ -21,10 +21,12 @@ export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
                                 {props.profileInfo.aboutMe}
                             </p>
                             <div className={S.profile__work_box}>
-                                <p className={S.profile_info__text}>
+                                <p className={S.profile_work__text}>
                                     {props.profileInfo.lookingForAJobDescription}
                                 </p>
-                                <span>{props.profileInfo.lookingForAJob ? '🔍' : '🐱‍👤'}</span>
+                                <span className={S.profile_work__text}>
+                                    {props.profileInfo.lookingForAJob ? '🔍' : '🐱‍👤'}
+                                </span>
                             </div>
                         </div>
                         <img className={S.profile__img}
