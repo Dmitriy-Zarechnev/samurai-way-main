@@ -22,7 +22,7 @@ export type EmptyActionType = { type: 'hello' }
 // --------------- Типизация для ProfilePage -------------------------
 
 export type ProfilePagePropsType = {
-    profileInfo: ProfileInfoType,
+    profileInfo: ProfileInfoType | null,
     postsData: PostsDataType[],
     newPost: NewPostType,
 }

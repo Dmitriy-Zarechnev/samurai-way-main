@@ -6,7 +6,7 @@ import git from '../../../../../assets/images/git.svg'
 import vk from '../../../../../assets/images/vk.svg'
 
 
-export const ProfileInfo = (props: { profileInfo: ProfileInfoType }) => {
+export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
     return (
         <>
             <Preloader isFetching={!props.profileInfo}/>

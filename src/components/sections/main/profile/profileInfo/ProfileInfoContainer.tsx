@@ -7,7 +7,7 @@ import axios from 'axios'
 
 export type ProfileInfoAPIComponentPropsType = {
     setUserProfile: (profileInfo: ProfileInfoType) => void
-    profileInfo: ProfileInfoType
+    profileInfo: ProfileInfoType | null
 }
 
 

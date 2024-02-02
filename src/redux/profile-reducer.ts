@@ -8,27 +8,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let initialState: ProfilePagePropsType = {
-    profileInfo: {
-        aboutMe: '',
-        contacts: {
-            facebook: '',
-            website: null,
-            vk: '',
-            twitter: '',
-            instagram: '',
-            youtube: null,
-            github: '',
-            mainLink: null
-        },
-        lookingForAJob: false,
-        lookingForAJobDescription: '',
-        fullName: '',
-        userId: 0,
-        photos: {
-            small: '',
-            large: ''
-        }
-    },
+    profileInfo: null,
     postsData: [
         {
             id: 1,
