@@ -32,16 +32,18 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     render() {
         return (
             <>
-                <Preloader isFetching={this.props.isFetching}/>
-                <Users
-                    items={this.props.items}
-                    totalCount={this.props.totalCount}
-                    pageSize={this.props.pageSize}
-                    currentPage={this.props.currentPage}
-                    followFriend={this.props.followFriend}
-                    unfollowFriend={this.props.unfollowFriend}
-                    onPageChanged={this.onPageChanged}
-                />
+                {this.props.isFetching
+                    ? <Preloader isFetching={this.props.isFetching}/>
+                    : <Users
+                        items={this.props.items}
+                        totalCount={this.props.totalCount}
+                        pageSize={this.props.pageSize}
+                        currentPage={this.props.currentPage}
+                        followFriend={this.props.followFriend}
+                        unfollowFriend={this.props.unfollowFriend}
+                        onPageChanged={this.onPageChanged}
+                    />
+                }
             </>
         )
     }
