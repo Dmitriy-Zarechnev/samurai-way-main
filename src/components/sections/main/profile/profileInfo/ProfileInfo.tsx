@@ -5,6 +5,7 @@ import {Preloader} from '../../../../common/preloader/Preloader'
 import git from '../../../../../assets/images/git.svg'
 import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
+import sam from '../../../../../assets/images/sam.webp'
 
 
 export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
@@ -30,7 +31,7 @@ export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
                             </div>
                         </div>
                         <img className={S.profile__img}
-                             src={props.profileInfo.photos.large}
+                             src={props.profileInfo.photos.large ? props.profileInfo.photos.large : sam}
                              alt={`${props.profileInfo.fullName} - avatar should be here`}
                         />
                     </div>

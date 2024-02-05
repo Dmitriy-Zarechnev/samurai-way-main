@@ -5,6 +5,7 @@ import min from '../../../../assets/images/min.jpg'
 import {UsersPropsType} from '../../../../redux/redux-store'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
 
 export const Users = (props: UsersPropsType) => {
 
@@ -72,8 +73,30 @@ export const Users = (props: UsersPropsType) => {
                             <Button
                                 name={el.followed ? 'UnFollow' : 'Follow'}
                                 onClick={el.followed
-                                    ? () => props.unfollowFriend(el.id)
-                                    : () => props.followFriend(el.id)
+                                    ? () => {
+                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`, {
+                                            withCredentials: true,
+                                            headers: {
+                                                'API-KEY': 'd9bbcdc0-0dbd-4e98-ab2c-6652c2ba0fb0'
+                                            }
+                                        }).then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.unfollowFriend(el.id)
+                                            }
+                                        })
+                                    }
+                                    : () => {
+                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`, {}, {
+                                            withCredentials: true,
+                                            headers: {
+                                                'API-KEY': 'd9bbcdc0-0dbd-4e98-ab2c-6652c2ba0fb0'
+                                            }
+                                        }).then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.followFriend(el.id)
+                                            }
+                                        })
+                                    }
                                 }
                                 additionalClass={
                                     el.followed
