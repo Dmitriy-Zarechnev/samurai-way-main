@@ -49,7 +49,7 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     }
 }
 
-let mapStateToProps = (state: RootStateDataType) => {
+const mapStateToProps = (state: RootStateDataType) => {
     return {
         items: state.usersPage.items,
         totalCount: state.usersPage.totalCount,

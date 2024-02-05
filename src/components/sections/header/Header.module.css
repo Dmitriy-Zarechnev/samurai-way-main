@@ -3,10 +3,18 @@
     grid-area: H;
 
     padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .app_header img {
     width: 50px;
     height: 50px;
+}
+
+.login_block a {
+    color: white
 }
 

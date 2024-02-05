@@ -4,6 +4,7 @@ import {messagesReducer} from './messages-reducer'
 import {ChangeEvent, KeyboardEvent} from 'react'
 import {friendsListReducer} from './friends-list-reducer'
 import {usersReducer} from './users-reducer'
+import {authReducer} from './auth-reducer'
 
 // --------------- Типизация для Store -------------------------
 
@@ -207,7 +208,6 @@ export type UsersPropsType = {
 }
 
 
-
 // Типизация для UsersAPIComponent Actions
 
 export type UsersAPIComponentActionsType =
@@ -248,6 +248,31 @@ export type ToggleIsFetchingActionType = {
     type: 'TOGGLE-IS-FETCHING'
     isFetching: boolean
 }
+
+
+// --------------- Типизация для authPage -------------------------
+
+export type AuthPageInitialState = {
+    data: UserDataType | {}
+    isFetching: boolean
+}
+
+// Типизация для AuthPageAPIComponent Actions
+
+export type AuthPageAPIComponentActionsType = SetUserDataActionType
+
+
+export type SetUserDataActionType = {
+    type: 'SET-USER-DATA'
+    data: UserDataType
+}
+
+export type UserDataType = {
+    id: number,
+    email: string,
+    login: string,
+}
+
 
 // --------------- Типизация для отдельных компонент -------------------------
 
@@ -297,7 +322,8 @@ let reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer,
     friendsListData: friendsListReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth: authReducer
 })
 
 let store = createStore(reducers)
