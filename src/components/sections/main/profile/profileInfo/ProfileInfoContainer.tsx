@@ -16,7 +16,7 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
 
     componentDidMount() {
         let userId = Number(this.props.match.params.userId)
-        if (!userId) userId = 2
+        if (!userId) userId = 30743
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {

@@ -1,24 +1,27 @@
-import {AuthPageAPIComponentActionsType, AuthPageInitialState, SetUserDataActionType, UserDataType} from './redux-store'
+import {AuthPageAPIComponentActionsType, AuthPageInitialState, SetAuthUserDataActionType, UserDataType} from './redux-store'
 
 
-const SET_USER_DATA = 'SET-USER-DATA'
+const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'
 
 let initialState: AuthPageInitialState = {
     data: {},
+    isAuth: false,
     isFetching: false
 }
 
 export const authReducer = (state: AuthPageInitialState = initialState, action: AuthPageAPIComponentActionsType) => {
 
     switch (action.type) {
-        case SET_USER_DATA:
+        case SET_AUTH_USER_DATA:
             return {
                 ...state,
-                data: {...action.data}
+                data: {...action.data},
+                isAuth: true
             }
+
         default:
             return state
     }
 }
 
-export const setUserData = (data: UserDataType): SetUserDataActionType => ({type: SET_USER_DATA, data})
+export const setAuthUserData = (data: UserDataType): SetAuthUserDataActionType => ({type: SET_AUTH_USER_DATA, data})

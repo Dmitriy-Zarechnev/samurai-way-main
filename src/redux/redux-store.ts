@@ -13,7 +13,8 @@ export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
     messagesPage: MessagesPagePropsType,
     friendsListData: Array<FriendsListDataType>,
-    usersPage: UsersInitialState
+    usersPage: UsersInitialState,
+    auth: AuthPageInitialState
 }
 
 // Заглушка для экшенов , где их нет
@@ -254,16 +255,17 @@ export type ToggleIsFetchingActionType = {
 
 export type AuthPageInitialState = {
     data: UserDataType | {}
+    isAuth: boolean
     isFetching: boolean
 }
 
 // Типизация для AuthPageAPIComponent Actions
 
-export type AuthPageAPIComponentActionsType = SetUserDataActionType
+export type AuthPageAPIComponentActionsType = SetAuthUserDataActionType
 
 
-export type SetUserDataActionType = {
-    type: 'SET-USER-DATA'
+export type SetAuthUserDataActionType = {
+    type: 'SET-AUTH-USER-DATA'
     data: UserDataType
 }
 
