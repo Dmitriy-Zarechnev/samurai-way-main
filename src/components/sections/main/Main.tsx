@@ -15,7 +15,7 @@ export const Main = () => {
             <Route exact path="/" render={() =>
                 <Profile/>}/>
 
-            <Route path="/profile" render={() =>
+            <Route path="/profile/:userId?" render={() =>
                 <Profile/>}/>
 
             <Route path="/messages" render={() =>
