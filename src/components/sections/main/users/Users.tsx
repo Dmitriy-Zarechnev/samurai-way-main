@@ -9,45 +9,45 @@ import axios from 'axios'
 
 export const Users = (props: UsersPropsType) => {
 
-    let pagesCount = Math.ceil(props.totalCount / props.pageSize)
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
-    let curPg = props.currentPage
-    let curPF = ((curPg - 5) < 0) ? 0 : curPg - 5
-    let curPL = curPg + 5
-
-    let pagStart = pages.slice(0, 3)
-    let pagCenter = pages.slice(curPF, curPL)
-    let pagEnd = pages.slice(pages.length - 3)
-
-    if (curPg <= 7) {
-        pagStart = []
-    }
-    if (curPg >= pages.length - 7) {
-        pagEnd = []
-    }
+    // let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+    // let pages = []
+    //
+    // for (let i = 1; i <= pagesCount; i++) {
+    //     pages.push(i)
+    // }
+    //
+    // let curPg = props.currentPage
+    // let curPF = ((curPg - 5) < 0) ? 0 : curPg - 5
+    // let curPL = curPg + 5
+    //
+    // let pagStart = pages.slice(0, 3)
+    // let pagCenter = pages.slice(curPF, curPL)
+    // let pagEnd = pages.slice(pages.length - 3)
+    //
+    // if (curPg <= 7) {
+    //     pagStart = []
+    // }
+    // if (curPg >= pages.length - 7) {
+    //     pagEnd = []
+    // }
 
     return (
         <div className={S.users_lists}>
             <div className={S.users_lists__pagination}>
                 <Pagination
-                    currentArray={pagStart}
+                    currentArray={props.pagStart}
                     onPageChanged={props.onPageChanged}
                     currentPage={props.currentPage}/>
-                {pagStart.length > 0 && <span className={S.users_lists__dotes}>... </span>}
+                {props.pagStart.length > 0 && <span className={S.users_lists__dotes}>... </span>}
 
                 <Pagination
-                    currentArray={pagCenter}
+                    currentArray={props.pagCenter}
                     onPageChanged={props.onPageChanged}
                     currentPage={props.currentPage}/>
 
-                {pagEnd.length > 0 && <span className={S.users_lists__dotes}>... </span>}
+                {props.pagEnd.length > 0 && <span className={S.users_lists__dotes}>... </span>}
                 <Pagination
-                    currentArray={pagEnd}
+                    currentArray={props.pagEnd}
                     onPageChanged={props.onPageChanged}
                     currentPage={props.currentPage}/>
             </div>

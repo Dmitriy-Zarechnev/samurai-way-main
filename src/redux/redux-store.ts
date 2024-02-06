@@ -203,6 +203,9 @@ export type UsersPropsType = {
     totalCount: number,
     pageSize: number,
     currentPage: number,
+    pagStart: number[],
+    pagCenter: number[],
+    pagEnd: number[],
     followFriend: (userID: number) => void,
     unfollowFriend: (userID: number) => void,
     onPageChanged: (currentPage: number) => void
