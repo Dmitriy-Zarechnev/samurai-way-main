@@ -24,7 +24,6 @@ export const followUnfollowAPI = {
     unfollowUser(id: number) {
         return instance.delete(`follow/${id}`).then(response => response.data)
     }
-
 }
 
 // -------------- profileAPI -------------------
@@ -34,3 +33,9 @@ export const profileAPI = {
     }
 }
 
+// -------------- Auth -------------------
+export const authAPI = {
+    authHeader() {
+        return instance.get(`auth/me`).then(response => response.data)
+    }
+}
