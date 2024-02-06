@@ -1,5 +1,7 @@
+@import "../../../ColorVar.module.css";
+
 .app_footer {
-    background-color: #ACC4CC;
+    background-color: var(--secondary-bg);
     grid-area: F;
     padding: 5px 5px;
 }

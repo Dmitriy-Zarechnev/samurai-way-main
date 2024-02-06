@@ -1,5 +1,7 @@
+@import "../../../ColorVar.module.css";
+
 .input {
-    color: black;
+    color: var(--main-text);
 
     padding: 5px;
     width: 100%;
@@ -8,6 +10,6 @@
 
 .input::placeholder {
     font-size: 14px;
-    color: #052718;
+    color: var(--secondary-bg);
     text-transform: capitalize;
 }

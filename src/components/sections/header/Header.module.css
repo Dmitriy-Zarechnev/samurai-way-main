@@ -1,5 +1,7 @@
+@import "../../../ColorVar.module.css";
+
 .app_header {
-    background-color: #B49463;
+    background-color: var(--third-bg);
     grid-area: H;
 
     padding: 10px 10px;
@@ -14,7 +16,11 @@
     height: 50px;
 }
 
+.login_block {
+    color: var(--secondary-text)
+}
+
 .login_block a {
-    color: white
+    color: var(--secondary-text)
 }
 

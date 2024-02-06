@@ -1,3 +1,5 @@
+@import "../../../../ColorVar.module.css";
+
 .users_lists {
     display: flex;
     flex-direction: column;
@@ -7,9 +9,9 @@
 }
 
 .users_list {
-    border: 2px solid #052718;
+    border: 2px solid var(--accent-main);
     border-radius: 20px;
-    background-color: #ACC4CC;
+    background-color: var(--third-bg);
     padding: 20px;
 }
 
@@ -22,7 +24,7 @@
 }
 
 .users_lists__dotes {
-    color: #052718;
+    color: var(--main-text);
 }
 
 
@@ -54,7 +56,7 @@
 .users_down_list a {
     font-size: 40px;
     font-weight: 700;
-    color: black;
+    color: var(--secondary-text);
 }
 
 .users_down_list__left_fullName {
@@ -68,7 +70,7 @@
 }
 
 .unfollow_red {
-    background-color: red;
+    background-color:var(--main-text);
 }
 
 

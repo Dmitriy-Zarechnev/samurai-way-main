@@ -1,3 +1,4 @@
+
 .post {
     padding: 10px;
 }
@@ -14,13 +15,11 @@
     font-size: 25px;
     font-weight: 600;
     text-transform: capitalize;
-    color: black;
     margin-bottom: 10px;
 }
 
 .post__item_message {
     font-size: 18px;
-    color: black;
     margin-bottom: 5px;
 }
 

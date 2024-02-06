@@ -1,3 +1,5 @@
+@import "./ColorVar.module.css";
+
 .app_body {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -8,7 +10,7 @@
             "F F";
 
     height: 100vh;
-    background-color: #E4ECFC;
+    background-color: var(--main-bg);
     max-width: 1220px;
     margin: 0 auto;
 }

@@ -1,3 +1,5 @@
+@import "ColorVar.module.css";
+
 *,
 *::before,
 *::after {
@@ -8,6 +10,7 @@
     font-size: 16px;
     line-height: 1.2;
     font-weight: 400;
+    color: var(--main-text);
 
     @media (prefers-reduced-motion: reduce) {
         animation: none;
@@ -16,20 +19,20 @@
 
 /* Стили при выделении текста */
 *::selection {
-    color: #E4ECFC;
-    background-color: #052718;
+    color: var(--main-bg);
+    background-color: var(--accent-main);
 }
 
 /* Рамка при фокусе */
 *:focus-visible {
-    outline: 2px solid #052718;
+    outline: 2px solid var(--accent-main);
 }
 
 /* Стили для скролла FireFox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #052718 #E4ECFC;
-}
+/** {*/
+/*    scrollbar-width: thin;*/
+/*    scrollbar-color: var(--secondary-bg) var(--main-bg);*/
+/*}*/
 
 /* Стили для скролла Chrome */
 
@@ -40,25 +43,25 @@
 
 *::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track:horizontal {
-    background-color: #E4ECFC;
+    background-color: var(--main-bg);
 }
 
 
 *::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb:horizontal {
-    background-color: #052718;
-    border: 3px solid #E4ECFC;
+    background-color: var(--secondary-bg);
+    border: 3px solid var(--main-bg);
     border-radius: 5px;
 }
 
 
 *::-webkit-scrollbar-thumb:hover,
 *::-webkit-scrollbar-thumb:horizontal:hover {
-    background-color: #B49463;
+    background-color: var(--accent-main);
 }
 
 body {
-    background-color: #E4ECFC;
+    background-color: var(--main-bg);
     overflow: hidden;
 }
 
@@ -70,8 +73,8 @@ button {
 
 /* Стили для hover эффекта кнопки */
 button:not(:disabled):hover {
-    box-shadow: 0 0 0 1px #E4ECFC, 0 0 3px 3px #052718;
-    color: #052718;
+    box-shadow: 0 0 0 1px var(--main-bg), 0 0 3px 3px var(--accent-main);
+    color: var(--accent-main);
 }
 
 /* Стили при клике на кнопки */
@@ -80,10 +83,10 @@ button:not(:disabled):active {
 }
 
 /* Стили disabled кнопки */
-button:disabled{
-    background-color: #052718;
-    opacity:0.5;
-    cursor:not-allowed;
+button:disabled {
+    background-color: var(--third-bg);
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 
@@ -91,7 +94,7 @@ button:disabled{
 a {
     text-decoration: none;
     padding-bottom: 5px;
-    background: linear-gradient(#052718, #052718) 0 75% / 0 2px no-repeat;
+    background: linear-gradient(var(--accent-main), var(--accent-main)) 0 75% / 0 2px no-repeat;
     transition: .5s;
     background-size: 0 3px;
 }
@@ -101,9 +104,9 @@ a:hover {
     cursor: pointer;
 }
 
-a:visited{
-    color: #052718;
-}
+/*a:visited {*/
+/*    color: var(--accent-main);*/
+/*}*/
 
 
 

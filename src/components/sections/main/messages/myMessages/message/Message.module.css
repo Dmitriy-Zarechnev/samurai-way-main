@@ -1,3 +1,5 @@
+@import "../../../../../../ColorVar.module.css";
+
 .message_list {
     list-style: none;
     overflow: auto;
@@ -8,9 +10,10 @@
 }
 
 .message_list__item {
-    background-color: #ACC4CC;
+    background-color: var(--third-bg);
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 5px;
     font-weight: 500;
+    color: var(--secondary-text);
 }
