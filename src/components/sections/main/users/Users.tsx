@@ -46,7 +46,7 @@ export const Users = (props: UsersPropsType) => {
                             </p>
                         </div>
                         <div className={S.users_down_list}>
-                            <h4 className={S.users_down_list__left_fullName}>{el.name}</h4>
+                            <NavLink to={`/profile/ ${el.id}`} >{el.name}</NavLink>
 
                             <Button
                                 name={el.followed ? 'UnFollow' : 'Follow'}

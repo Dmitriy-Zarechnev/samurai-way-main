@@ -51,9 +51,16 @@
     align-items: center;
 }
 
+.users_down_list a {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+}
+
 .users_down_list__left_fullName {
     font-size: 40px;
     font-weight: 700;
+
 }
 
 .users_down_list__btn {

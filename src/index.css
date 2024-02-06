@@ -101,4 +101,9 @@ a:hover {
     cursor: pointer;
 }
 
+a:visited{
+    color: #052718;
+}
+
+
 
