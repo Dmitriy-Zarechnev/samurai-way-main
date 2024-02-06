@@ -26,3 +26,11 @@ export const followUnfollowAPI = {
     }
 
 }
+
+// -------------- profileAPI -------------------
+export const profileAPI = {
+    userProfile(userId: number) {
+        return instance.get(`profile/${userId}`).then(response => response.data)
+    }
+}
+

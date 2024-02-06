@@ -3,8 +3,8 @@ import {ProfileInfo} from './ProfileInfo'
 import {ProfileInfoType, RootStateDataType} from '../../../../../redux/redux-store'
 import {setUserProfile} from '../../../../../redux/profile-reducer'
 import React from 'react'
-import axios from 'axios'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
+import {profileAPI} from '../../../../../api/api'
 
 export type ProfileInfoAPIComponentPropsType = {
     setUserProfile: (profileInfo: ProfileInfoType) => void
@@ -18,10 +18,9 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
         let userId = Number(this.props.match.params.userId)
         if (!userId) userId = 30743
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            })
+        profileAPI.userProfile(userId).then(data => {
+            this.props.setUserProfile(data)
+        })
     }
 
     render() {
