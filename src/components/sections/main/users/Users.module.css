@@ -9,7 +9,7 @@
 }
 
 .users_list {
-    border: 2px solid var(--accent-main);
+    border: 2px solid var(--secondary-bg);
     border-radius: 20px;
     background-color: var(--third-bg);
     padding: 20px;

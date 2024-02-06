@@ -1,35 +1,37 @@
 import React from 'react'
-import axios from 'axios'
 import {connect} from 'react-redux'
 import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../redux/redux-store'
 import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
+import {usersAPI} from '../../../../api/api'
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
 
+
+    //  -------- Первая загрузка списка пользователей ----------------
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}
-        )
-            .then(response => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
-            })
+
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false)
+            this.props.setUsers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
+        })
     }
 
+    //  -------- Изменение текущей страницы ----------------
     onPageChanged = (currentPage: number) => {
         this.props.setCurrentPage(currentPage)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`, {withCredentials: true})
-            .then(response => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
-            })
+
+        usersAPI.getUsers(currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false)
+            this.props.setUsers(data.items)
+        })
     }
 
-
+    // ----- Изменение списка пагинации при переключении -------
     onPagination = () => {
         let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize)
         let pages = []
