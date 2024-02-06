@@ -167,6 +167,7 @@ export type UsersInitialState = {
     pageSize: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: number[]
 }
 
 export type UsersListType = {
@@ -188,13 +189,15 @@ export type UsersAPIComponentPropsType = {
     totalCount: number,
     pageSize: number,
     currentPage: number,
+    isFetching: boolean,
+    followingInProgress: number[],
     followFriend: (userID: number) => void,
     unfollowFriend: (userID: number) => void,
     setUsers: (items: UsersListType[]) => void,
     setCurrentPage: (currentPage: number) => void,
     setTotalUsersCount: (totalCount: number) => void,
-    toggleIsFetching: (isFetching: boolean) => void
-    isFetching: boolean
+    toggleIsFetching: (isFetching: boolean) => void,
+    toggleFollowingInProgress: (isFetching: boolean, userId: number) => void
 }
 
 // Типизация для страницы Users
@@ -206,9 +209,11 @@ export type UsersPropsType = {
     pagStart: number[],
     pagCenter: number[],
     pagEnd: number[],
+    followingInProgress: number[],
     followFriend: (userID: number) => void,
     unfollowFriend: (userID: number) => void,
-    onPageChanged: (currentPage: number) => void
+    onPageChanged: (currentPage: number) => void,
+    toggleFollowingInProgress: (isFetching: boolean, userId: number) => void
 }
 
 
@@ -220,7 +225,8 @@ export type UsersAPIComponentActionsType =
     SetUsersActionType |
     SetCurrentPageActionType |
     SetTotalUsersCountActionType |
-    ToggleIsFetchingActionType
+    ToggleIsFetchingActionType |
+    ToggleIsFollowingInProgressActionType
 
 
 export type FollowFriendActionType = {
@@ -253,8 +259,21 @@ export type ToggleIsFetchingActionType = {
     isFetching: boolean
 }
 
+export type ToggleIsFollowingInProgressActionType = {
+    type: 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
+    isFetching: boolean
+    userId: number
+}
 
 // --------------- Типизация для authPage -------------------------
+
+// Типизация для HeaderAPIComponent
+export type HeaderAPIContainerPropsType = {
+    isAuth: boolean,
+    data: UserDataType | {},
+    setAuthUserData: (data: UserDataType) => void
+}
+
 
 export type AuthPageInitialState = {
     data: UserDataType | {}
@@ -276,6 +295,12 @@ export type UserDataType = {
     id: number,
     email: string,
     login: string,
+}
+
+// --------------- Типизация для Header -------------------------
+export type HeaderPropsType = {
+    isAuth: boolean,
+    data: UserDataType
 }
 
 

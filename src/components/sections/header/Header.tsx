@@ -2,12 +2,7 @@ import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
-import {UserDataType} from '../../../redux/redux-store'
-
-export type HeaderPropsType = {
-    isAuth: boolean,
-    data: UserDataType
-}
+import {HeaderPropsType} from '../../../redux/redux-store'
 
 
 export const Header = (props: HeaderPropsType) => {

@@ -50,26 +50,33 @@ export const Users = (props: UsersPropsType) => {
 
                             <Button
                                 name={el.followed ? 'UnFollow' : 'Follow'}
-                                onClick={el.followed
-                                    ? () => {
-                                        followUnfollowAPI.unfollowUser(el.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unfollowFriend(el.id)
-                                            }
-                                        })
-                                    }
-                                    : () => {
-                                        followUnfollowAPI.followUser(el.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.followFriend(el.id)
-                                            }
-                                        })
-                                    }
+                                onClick={
+                                    el.followed
+                                        ? () => {
+                                            props.toggleFollowingInProgress(true, el.id)
+                                            followUnfollowAPI.unfollowUser(el.id).then(data => {
+                                                if (data.resultCode === 0) {
+                                                    props.unfollowFriend(el.id)
+                                                }
+                                                props.toggleFollowingInProgress(false, el.id)
+                                            })
+                                        }
+                                        : () => {
+                                            props.toggleFollowingInProgress(true, el.id)
+                                            followUnfollowAPI.followUser(el.id).then(data => {
+                                                if (data.resultCode === 0) {
+                                                    props.followFriend(el.id)
+                                                }
+                                                props.toggleFollowingInProgress(false, el.id)
+                                            })
+                                        }
                                 }
                                 additionalClass={
                                     el.followed
                                         ? `${S.users_down_list__btn} ${S.unfollow_red}`
                                         : S.users_down_list__btn}
+
+                                disabled={props.followingInProgress.some(id => id === el.id)}
                             />
                         </div>
                     </div>

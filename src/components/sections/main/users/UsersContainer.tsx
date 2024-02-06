@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../redux/redux-store'
-import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
+import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {usersAPI} from '../../../../api/api'
@@ -76,6 +76,8 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
                         pagStart={pagStart}
                         pagCenter={pagCenter}
                         pagEnd={pagEnd}
+                        toggleFollowingInProgress={this.props.toggleFollowingInProgress}
+                        followingInProgress={this.props.followingInProgress}
                     />
                 }
             </>
@@ -89,13 +91,14 @@ const mapStateToProps = (state: RootStateDataType) => {
         totalCount: state.usersPage.totalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
 
 export const UsersContainer = connect(mapStateToProps,
-    {followFriend, unfollowFriend, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching}
+    {followFriend, unfollowFriend, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingInProgress}
 )(UsersAPIComponent)
 
 

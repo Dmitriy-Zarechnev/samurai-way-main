@@ -1,15 +1,10 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {RootStateDataType, UserDataType} from '../../../redux/redux-store'
+import {HeaderAPIContainerPropsType, RootStateDataType, UserDataType} from '../../../redux/redux-store'
 import {setAuthUserData} from '../../../redux/auth-reducer'
 import {authAPI} from '../../../api/api'
 
-export type HeaderAPIContainerPropsType = {
-    isAuth: boolean,
-    data: UserDataType | {},
-    setAuthUserData: (data: UserDataType) => void
-}
 
 
 class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
