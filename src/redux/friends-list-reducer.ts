@@ -46,6 +46,6 @@ let initialState: Array<FriendsListDataType> = [
     }
 ]
 
-export const friendsListReducer = (state: Array<FriendsListDataType> = initialState, action: EmptyActionType) => {
+export const friendsListReducer = (state: Array<FriendsListDataType> = initialState, action: EmptyActionType):Array<FriendsListDataType> => {
     return state
 }

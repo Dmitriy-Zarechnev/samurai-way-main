@@ -15,7 +15,7 @@ let initialState: MessagesPagePropsType = {
     newMessg: ''
 }
 
-export const messagesReducer = (state: MessagesPagePropsType = initialState, action: MyMessagesActionsType) => {
+export const messagesReducer = (state: MessagesPagePropsType = initialState, action: MyMessagesActionsType):MessagesPagePropsType => {
 
     switch (action.type) {
         case SEND_NEW_MESSAGE:

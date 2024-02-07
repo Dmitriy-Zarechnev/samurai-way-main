@@ -26,7 +26,7 @@ let initialState: ProfilePagePropsType = {
     }
 }
 
-export const profileReducer = (state: ProfilePagePropsType = initialState, action: MyPostsActionsType) => {
+export const profileReducer = (state: ProfilePagePropsType = initialState, action: MyPostsActionsType):ProfilePagePropsType => {
 
     switch (action.type) {
 

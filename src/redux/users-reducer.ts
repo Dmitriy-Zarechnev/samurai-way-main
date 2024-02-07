@@ -19,7 +19,7 @@ let initialState: UsersInitialState = {
 }
 
 
-export const usersReducer = (state: UsersInitialState = initialState, action: UsersAPIComponentActionsType) => {
+export const usersReducer = (state: UsersInitialState = initialState, action: UsersAPIComponentActionsType): UsersInitialState => {
 
     switch (action.type) {
         case FOLLOW_FRIEND:

@@ -9,7 +9,7 @@ let initialState: AuthPageInitialState = {
     isFetching: false
 }
 
-export const authReducer = (state: AuthPageInitialState = initialState, action: AuthPageAPIComponentActionsType) => {
+export const authReducer = (state: AuthPageInitialState = initialState, action: AuthPageAPIComponentActionsType):AuthPageInitialState => {
 
     switch (action.type) {
         case SET_AUTH_USER_DATA:
