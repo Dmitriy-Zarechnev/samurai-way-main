@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../redux/redux-store'
 import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {usersAPI} from '../../../../api/api'
+import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../types/entities'
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
 

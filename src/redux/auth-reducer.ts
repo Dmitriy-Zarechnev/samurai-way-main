@@ -1,4 +1,4 @@
-import {AuthPageAPIComponentActionsType, AuthPageInitialState, SetAuthUserDataActionType, UserDataType} from './redux-store'
+import {AuthPageAPIComponentActionsType, AuthPageInitialState, SetAuthUserDataActionType, UserDataType} from '../types/entities'
 
 
 const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'

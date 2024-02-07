@@ -1,6 +1,7 @@
 import React from 'react'
 import S from './TextArea.module.css'
-import {TextAreaPropsType} from '../../../redux/redux-store'
+import {TextAreaPropsType} from '../../../types/entities'
+
 
 export const TextArea = (props: TextAreaPropsType) => {
     return (

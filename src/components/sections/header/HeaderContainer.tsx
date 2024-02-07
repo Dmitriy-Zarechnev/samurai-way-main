@@ -1,9 +1,9 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {HeaderAPIContainerPropsType, RootStateDataType, UserDataType} from '../../../redux/redux-store'
 import {setAuthUserData} from '../../../redux/auth-reducer'
 import {authAPI} from '../../../api/api'
+import {HeaderAPIContainerPropsType, RootStateDataType, UserDataType} from '../../../types/entities'
 
 
 

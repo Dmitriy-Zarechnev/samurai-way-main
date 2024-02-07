@@ -1,7 +1,7 @@
 import React from 'react'
 import S from './FriendsSideBar.module.css'
-import {FriendsListDataType} from '../../../../../redux/redux-store'
 import {FriendsList} from '../../../../common/friendsList/FriendsList'
+import {FriendsListDataType} from '../../../../../types/entities'
 
 export const FriendsSideBar = (props: { friendsList: Array<FriendsListDataType> }) => {
     return (

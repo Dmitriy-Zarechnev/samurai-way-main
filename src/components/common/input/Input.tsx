@@ -1,6 +1,6 @@
 import React from 'react'
-import {InputPropsType} from '../../../redux/redux-store'
 import S from './Input.module.css'
+import {InputPropsType} from '../../../types/entities'
 
 
 export const Input = (props: InputPropsType) => {

@@ -1,10 +1,10 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import {Post} from './post/Post'
 import S from './MyPosts.module.css'
-import {MyPostsPropsType} from '../../../../../redux/redux-store'
 import {Button} from '../../../../common/button/Button'
 import {TextArea} from '../../../../common/textarea/TextArea'
 import {Input} from '../../../../common/input/Input'
+import {MyPostsPropsType} from '../../../../../types/entities'
 
 export const MyPosts = (props: MyPostsPropsType) => {
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import S from './Pagination.module.css'
-import {PaginationPropsType} from '../../../redux/redux-store'
+import {PaginationPropsType} from '../../../types/entities'
+
 
 
 export const Pagination = (props: PaginationPropsType) => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import S from './Contacts.module.css'
-import {ContactsPropsType} from '../../../redux/redux-store'
+import {ContactsPropsType} from '../../../types/entities'
+
 
 
 export const Contacts = (props: ContactsPropsType) => {

@@ -1,6 +1,6 @@
-import {AddPostActionType, MyPostsActionsType, PostsDataType, ProfileInfoType, ProfilePagePropsType, SetUserProfileActionType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from './redux-store'
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
+import {AddPostActionType, MyPostsActionsType, PostsDataType, ProfileInfoType, ProfilePagePropsType, SetUserProfileActionType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from '../types/entities'
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
@@ -26,7 +26,7 @@ let initialState: ProfilePagePropsType = {
     }
 }
 
-export const profileReducer = (state: ProfilePagePropsType = initialState, action: MyPostsActionsType):ProfilePagePropsType => {
+export const profileReducer = (state: ProfilePagePropsType = initialState, action: MyPostsActionsType): ProfilePagePropsType => {
 
     switch (action.type) {
 

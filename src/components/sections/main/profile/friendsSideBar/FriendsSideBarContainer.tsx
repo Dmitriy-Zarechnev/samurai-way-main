@@ -1,6 +1,7 @@
 import {FriendsSideBar} from './FriendsSideBar'
 import {connect} from 'react-redux'
-import {RootStateDataType} from '../../../../../redux/redux-store'
+import {RootStateDataType} from '../../../../../types/entities'
+
 
 
 let mapStateToProps = (state: RootStateDataType) => {

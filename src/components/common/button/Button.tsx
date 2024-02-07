@@ -1,6 +1,6 @@
 import React from 'react'
 import S from './Button.module.css'
-import {ButtonPropsType} from '../../../redux/redux-store'
+import {ButtonPropsType} from '../../../types/entities'
 
 
 export const Button = (props: ButtonPropsType) => {

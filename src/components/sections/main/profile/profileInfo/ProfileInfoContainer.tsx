@@ -1,10 +1,10 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {ProfileInfoType, RootStateDataType} from '../../../../../redux/redux-store'
 import {setUserProfile} from '../../../../../redux/profile-reducer'
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {profileAPI} from '../../../../../api/api'
+import {ProfileInfoType, RootStateDataType} from '../../../../../types/entities'
 
 export type ProfileInfoAPIComponentPropsType = {
     setUserProfile: (profileInfo: ProfileInfoType) => void

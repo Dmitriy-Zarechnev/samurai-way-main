@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import S from './NewMessageArea.module.css'
-import {NewMessageAreaPropsType} from '../../../../../../redux/redux-store'
 import {Button} from '../../../../../common/button/Button'
 import {TextArea} from '../../../../../common/textarea/TextArea'
+import {NewMessageAreaPropsType} from '../../../../../../types/entities'
 
 
 export const NewMessageArea = (props: NewMessageAreaPropsType) => {

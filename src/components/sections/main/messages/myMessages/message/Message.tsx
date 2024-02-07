@@ -1,6 +1,6 @@
 import React from 'react'
 import S from './Message.module.css'
-import {MessagesDataType} from '../../../../../../redux/redux-store'
+import {MessagesDataType} from '../../../../../../types/entities'
 
 
 export const Message = (props: { messagesData: Array<MessagesDataType> }) => {

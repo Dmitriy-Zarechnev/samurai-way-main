@@ -1,11 +1,11 @@
 import React from 'react'
 import S from './ProfileInfo.module.css'
-import {ProfileInfoType} from '../../../../../redux/redux-store'
 import {Preloader} from '../../../../common/preloader/Preloader'
 import git from '../../../../../assets/images/git.svg'
 import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
 import sam from '../../../../../assets/images/sam.webp'
+import {ProfileInfoType} from '../../../../../types/entities'
 
 
 export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {

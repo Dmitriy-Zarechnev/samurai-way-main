@@ -2,10 +2,10 @@ import React from 'react'
 import {Button} from '../../../common/button/Button'
 import S from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
-import {UsersPropsType} from '../../../../redux/redux-store'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
 import {followUnfollowAPI} from '../../../../api/api'
+import {UsersPropsType} from '../../../../types/entities'
 
 export const Users = (props: UsersPropsType) => {
 

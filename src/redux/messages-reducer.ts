@@ -1,4 +1,5 @@
-import {MessagesDataType, MessagesPagePropsType, MyMessagesActionsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from './redux-store'
+import {MessagesDataType, MessagesPagePropsType, MyMessagesActionsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from '../types/entities'
+
 
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'

@@ -1,7 +1,7 @@
-import {RootStateDataType} from '../../../../../redux/redux-store'
 import {MyMessages} from './MyMessages'
 import {connect} from 'react-redux'
 import {sendNewMessage, updateNewMessage} from '../../../../../redux/messages-reducer'
+import {RootStateDataType} from '../../../../../types/entities'
 
 
 let mapStateToProps = (state: RootStateDataType) => {

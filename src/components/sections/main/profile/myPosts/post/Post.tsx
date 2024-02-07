@@ -1,6 +1,7 @@
 import React from 'react'
 import S from './Post.module.css'
-import {PostsDataType} from '../../../../../../redux/redux-store'
+import {PostsDataType} from '../../../../../../types/entities'
+
 
 export const Post = (props: { postsData: PostsDataType[] }) => {
     return (

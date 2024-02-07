@@ -1,7 +1,7 @@
-import {RootStateDataType} from '../../../../../redux/redux-store'
 import {addPost, updateNewPostInput, updateNewPostTextArea} from '../../../../../redux/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
+import {RootStateDataType} from '../../../../../types/entities'
 
 
 let mapStateToProps = (state: RootStateDataType) => {

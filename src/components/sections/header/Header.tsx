@@ -2,7 +2,8 @@ import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
-import {HeaderPropsType} from '../../../redux/redux-store'
+import {HeaderPropsType} from '../../../types/entities'
+
 
 
 export const Header = (props: HeaderPropsType) => {

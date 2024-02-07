@@ -1,4 +1,4 @@
-import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, ToggleIsFollowingInProgressActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from './redux-store'
+import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, ToggleIsFollowingInProgressActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from '../types/entities'
 
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
 const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'

@@ -1,8 +1,8 @@
 import React from 'react'
 import S from './MyMessages.module.css'
 import {Message} from './message/Message'
-import {MyMessagesPropsType} from '../../../../../redux/redux-store'
 import {NewMessageArea} from './newMessageArea/NewMessageArea'
+import {MyMessagesPropsType} from '../../../../../types/entities'
 
 
 export const MyMessages = (props: MyMessagesPropsType) => {
