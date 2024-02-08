@@ -3,7 +3,6 @@ import {ChangeEvent, KeyboardEvent} from 'react'
 // --------------- Типизация для Store -------------------------
 
 // Типизация для State
-
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
     messagesPage: MessagesPagePropsType,
@@ -17,7 +16,6 @@ export type EmptyActionType = { type: 'hello' }
 
 
 // --------------- Типизация для ProfilePage -------------------------
-
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType | null,
     postsData: PostsDataType[],
@@ -73,7 +71,6 @@ export type MyPostsPropsType = {
 
 
 // Типизация для ProfileInfo Actions
-
 export type SetUserProfileActionType = {
     type: 'SET-USER-PROFILE',
     profileInfo: ProfileInfoType
@@ -81,7 +78,6 @@ export type SetUserProfileActionType = {
 
 
 // Типизация для MyPosts Actions
-
 export type MyPostsActionsType =
     AddPostActionType |
     UpdateNewPostHeaderActionType |
@@ -103,7 +99,6 @@ export type UpdateNewPostTextActionType = {
 }
 
 // --------------- Типизация для MessagesPage -------------------------
-
 export type MessagesPagePropsType = {
     // dialogsData: Array<DialogsDataType>,
     messagesData: Array<MessagesDataType>,
@@ -131,7 +126,6 @@ export type NewMessageAreaPropsType = {
 }
 
 // Типизация для MyMessages Actions
-
 export type MyMessagesActionsType =
     SendNewMessageActionType |
     UpdateNewSendMessageActionType
@@ -213,7 +207,6 @@ export type UsersPropsType = {
 
 
 // Типизация для UsersAPIComponent Actions
-
 export type UsersAPIComponentActionsType =
     FollowFriendActionType |
     UnfollowFriendActionType |
@@ -277,7 +270,6 @@ export type AuthPageInitialState = {
 }
 
 // Типизация для AuthPageAPIComponent Actions
-
 export type AuthPageAPIComponentActionsType = SetAuthUserDataActionType
 
 
@@ -341,4 +333,3 @@ export type ContactsPropsType = {
     alt: string
     src: string
 }
-// --------------------------------------------------------------
