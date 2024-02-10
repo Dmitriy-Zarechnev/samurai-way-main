@@ -264,7 +264,7 @@ export type HeaderAPIContainerPropsType = {
 
 
 export type AuthPageInitialState = {
-    data: UserDataType | {}
+    data: UserDataType
     isAuth: boolean
     isFetching: boolean
 }
@@ -279,7 +279,7 @@ export type SetAuthUserDataActionType = {
 }
 
 export type UserDataType = {
-    id: number,
+    id: number | null,
     email: string,
     login: string,
 }

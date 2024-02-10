@@ -3,13 +3,17 @@ import {AuthPageAPIComponentActionsType, AuthPageInitialState, SetAuthUserDataAc
 
 const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'
 
-let initialState: AuthPageInitialState = {
-    data: {},
+const initialState: AuthPageInitialState = {
+    data: {
+        id: null,
+        email: '',
+        login: ''
+    },
     isAuth: false,
     isFetching: false
 }
 
-export const authReducer = (state: AuthPageInitialState = initialState, action: AuthPageAPIComponentActionsType):AuthPageInitialState => {
+export const authReducer = (state: AuthPageInitialState = initialState, action: AuthPageAPIComponentActionsType): AuthPageInitialState => {
 
     switch (action.type) {
         case SET_AUTH_USER_DATA:
