@@ -4,7 +4,7 @@ import {MessagesDataType, MessagesPagePropsType, MyMessagesActionsType, SendNewM
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
 const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
 
-let initialState: MessagesPagePropsType = {
+const initialState: MessagesPagePropsType = {
     messagesData: [
         {id: 1, message: 'hello there'},
         {id: 2, message: 'hi are you?'},
