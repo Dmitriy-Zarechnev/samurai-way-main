@@ -52,6 +52,7 @@ test('profile reducer should increase the postsData length by one', () => {
     expect(newState.profileInfo).toBe(state.profileInfo)
 })
 
+
 test('profile reducer should update new post text', () => {
 
     const state: ProfilePagePropsType = {
@@ -101,6 +102,7 @@ test('profile reducer should update new post text', () => {
     expect(newState.newPost.newHeader).toBe('')
     expect(newState.postsData.length).toBe(state.postsData.length)
 })
+
 
 test('profile reducer should update new post header', () => {
 

@@ -49,7 +49,7 @@ test('friendList reducer should return Data', () => {
         }
     ]
 
-    const newState = friendsListReducer(state, {type: 'hello'})
+    const newState = friendsListReducer(state)
 
     expect(newState.length).toBe(6)
 })

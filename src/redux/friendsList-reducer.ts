@@ -4,7 +4,7 @@ import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
-import {EmptyActionType, FriendsListDataType} from '../types/entities'
+import { FriendsListDataType} from '../types/entities'
 
 
 const initialState: Array<FriendsListDataType> = [
@@ -46,6 +46,6 @@ const initialState: Array<FriendsListDataType> = [
     }
 ]
 
-export const friendsListReducer = (state: Array<FriendsListDataType> = initialState, action: EmptyActionType):Array<FriendsListDataType> => {
+export const friendsListReducer = (state: Array<FriendsListDataType> = initialState):Array<FriendsListDataType> => {
     return state
 }

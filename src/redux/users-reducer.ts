@@ -8,7 +8,7 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
 
-let initialState: UsersInitialState = {
+const initialState: UsersInitialState = {
     items: [],
     totalCount: 0,
     error: '',
