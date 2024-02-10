@@ -17,7 +17,7 @@ export type EmptyActionType = { type: 'hello' }
 
 // --------------- Типизация для ProfilePage -------------------------
 export type ProfilePagePropsType = {
-    profileInfo: ProfileInfoType | null,
+    profileInfo: ProfileInfoType ,
     postsData: PostsDataType[],
     newPost: NewPostType,
 }
@@ -28,7 +28,7 @@ export type  ProfileInfoType = {
     lookingForAJob: boolean;
     lookingForAJobDescription: string;
     fullName: string;
-    userId: number;
+    userId: number | null;
     photos: {
         small: string;
         large: string;

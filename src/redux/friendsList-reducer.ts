@@ -7,7 +7,7 @@ import nineS from '../assets/images/webp/9s.webp'
 import {EmptyActionType, FriendsListDataType} from '../types/entities'
 
 
-let initialState: Array<FriendsListDataType> = [
+const initialState: Array<FriendsListDataType> = [
     {
         id: 1,
         src: cammyFriend,

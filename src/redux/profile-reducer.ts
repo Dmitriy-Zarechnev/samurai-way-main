@@ -7,8 +7,28 @@ const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
-let initialState: ProfilePagePropsType = {
-    profileInfo: null,
+const initialState: ProfilePagePropsType = {
+    profileInfo: {
+        aboutMe: '',
+        contacts: {
+            facebook: '',
+            website: null,
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: null,
+            github: '',
+            mainLink: null
+        },
+        lookingForAJob: false,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: null,
+        photos: {
+            small: '',
+            large: ''
+        }
+    },
     postsData: [
         {
             id: 1,
@@ -31,7 +51,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
     switch (action.type) {
 
         case ADD_POST:
-            let newPostBody: PostsDataType = {
+            const newPostBody: PostsDataType = {
                 id: state.postsData.length + 1,
                 header: state.newPost.newHeader,
                 src: img2,
@@ -42,6 +62,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 ...state,
                 postsData: [newPostBody, ...state.postsData],
                 newPost: {
+                    ...state.newPost,
                     newHeader: '',
                     newText: ''
                 }
