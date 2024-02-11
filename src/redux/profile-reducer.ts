@@ -1,12 +1,17 @@
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
 import {AddPostActionType, MyPostsActionsType, PostsDataType, ProfileInfoType, ProfilePagePropsType, SetUserProfileActionType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from '../types/entities'
+import {profileAPI} from '../api/api'
+import {Dispatch} from 'redux'
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
+// *********** Константы названий экшенов ****************
+export const ADD_POST = 'ADD-POST'
+export const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
+export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+export const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
+
+// *********** Первоначальный стэйт для profileReducer ****************
 const initialState: ProfilePagePropsType = {
     profileInfo: {
         aboutMe: '',
@@ -46,6 +51,8 @@ const initialState: ProfilePagePropsType = {
     }
 }
 
+
+// *********** Reducer - редьюсер, чистая функция для изменения стэйта после получения экшена от диспача ****************
 export const profileReducer = (state: ProfilePagePropsType = initialState, action: MyPostsActionsType): ProfilePagePropsType => {
 
     switch (action.type) {
@@ -96,18 +103,33 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
     }
 }
 
+
+// *********** Action creators - экшн криэйторы создают объект action ****************
 export const addPost = (): AddPostActionType => ({
     type: ADD_POST
 })
-
 export const updateNewPostInput = (headerValue: string): UpdateNewPostHeaderActionType => ({
     type: UPDATE_NEW_POST_HEADER,
     newHeaderText: headerValue
 })
-
 export const updateNewPostTextArea = (postValue: string): UpdateNewPostTextActionType => ({
     type: UPDATE_NEW_POST_TEXT,
     newPostText: postValue
 })
-
 export const setUserProfile = (profileInfo: ProfileInfoType): SetUserProfileActionType => ({type: SET_USER_PROFILE, profileInfo})
+
+
+// *********** Thunk - санки необходимые для общения с DAL ****************
+//  -------- Загрузка страницы пользователя ----------------
+export const goToPage = (id: string) => {
+
+    return (dispatch: Dispatch<MyPostsActionsType>) => {
+        let userId = Number(id)
+        if (!userId) userId = 30743
+
+        profileAPI.userProfile(userId).then(data => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
+

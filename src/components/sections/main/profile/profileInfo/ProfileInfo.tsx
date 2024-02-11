@@ -8,10 +8,10 @@ import sam from '../../../../../assets/images/sam.webp'
 import {ProfileInfoType} from '../../../../../types/entities'
 
 
-export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
+export const ProfileInfo = (props: { profileInfo: ProfileInfoType }) => {
     return (
         <>
-            {props.profileInfo
+            {props.profileInfo.userId
                 ? <div className={S.profile}>
                     <div className={S.profile__box}>
                         <div className={S.profile__left}>
@@ -40,7 +40,7 @@ export const ProfileInfo = (props: { profileInfo: ProfileInfoType | null }) => {
                         <Contacts href={props.profileInfo.contacts.github} alt={'git-logo'} src={git}/>
                     </div>
                 </div>
-                : <Preloader isFetching={!props.profileInfo}/>
+                : <Preloader isFetching={!props.profileInfo.userId}/>
             }
         </>
     )

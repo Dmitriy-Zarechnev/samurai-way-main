@@ -4,9 +4,8 @@ import S from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
-import {followUnfollowAPI} from '../../../../api/api'
 import {UsersPropsType} from '../../../../types/entities'
-import {unFollow} from '../../../../redux/users-reducer'
+
 
 export const Users = (props: UsersPropsType) => {
 

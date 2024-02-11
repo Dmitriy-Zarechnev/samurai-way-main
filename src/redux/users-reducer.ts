@@ -1,14 +1,15 @@
 import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, ToggleIsFollowingInProgressActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from '../types/entities'
 import {followUnfollowAPI, usersAPI} from '../api/api'
+import {Dispatch} from 'redux'
 
 // *********** Константы названий экшенов ****************
-const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
-const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
-const SET_USERS = 'SET-USERS'
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
-const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
+export const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
+export const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
+export const SET_USERS = 'SET-USERS'
+export const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+export const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
+export const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
+export const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
 
 
 // *********** Первоначальный стэйт для usersReducer ****************
@@ -84,7 +85,7 @@ export const toggleFollowingInProgress = (isFetching: boolean, userId: number): 
 //  -------- Первая загрузка списка пользователей ----------------
 export const getUsers = (currentPage: number, pageSize: number) => {
 
-    return (dispatch: any) => {
+    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
         dispatch(toggleIsFetching(true))
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
@@ -98,7 +99,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
 //  -------- Изменение текущей страницы ----------------
 export const newPageGetUsers = (currentPage: number, pageSize: number) => {
 
-    return (dispatch: any) => {
+    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
         dispatch(setCurrentPage(currentPage))
         dispatch(toggleIsFetching(true))
 
@@ -112,7 +113,7 @@ export const newPageGetUsers = (currentPage: number, pageSize: number) => {
 //  -------- Отписка от дружбы ----------------
 export const unFollow = (id: number) => {
 
-    return (dispatch: any) => {
+    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
         dispatch(toggleFollowingInProgress(true, id))
         followUnfollowAPI.unfollowUser(id).then(data => {
             if (data.resultCode === 0) {
@@ -126,7 +127,7 @@ export const unFollow = (id: number) => {
 //  -------- Подписка для дружбы ----------------
 export const follow = (id: number) => {
 
-    return (dispatch: any) => {
+    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
         dispatch(toggleFollowingInProgress(true, id))
         followUnfollowAPI.followUser(id).then(data => {
             if (data.resultCode === 0) {

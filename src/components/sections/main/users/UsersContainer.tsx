@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {follow, followFriend, getUsers, newPageGetUsers, toggleFollowingInProgress, unFollow, unfollowFriend} from '../../../../redux/users-reducer'
+import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
-
 import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../types/entities'
+
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
 
@@ -45,7 +45,6 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
         return {pagStart, pagCenter, pagEnd}
     }
 
-
     render() {
         const {pagStart, pagCenter, pagEnd} = this.onPagination()
 
@@ -85,9 +84,7 @@ const mapStateToProps = (state: RootStateDataType) => {
 
 
 export const UsersContainer = connect(mapStateToProps,
-    {
-        getUsers, newPageGetUsers, follow, unFollow
-    }
+    {getUsers, newPageGetUsers, follow, unFollow}
 )(UsersAPIComponent)
 
 
