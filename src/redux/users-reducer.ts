@@ -1,5 +1,7 @@
 import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, ToggleIsFollowingInProgressActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from '../types/entities'
+import {followUnfollowAPI, usersAPI} from '../api/api'
 
+// *********** Константы названий экшенов ****************
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
 const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
 const SET_USERS = 'SET-USERS'
@@ -8,6 +10,8 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
 
+
+// *********** Первоначальный стэйт для usersReducer ****************
 const initialState: UsersInitialState = {
     items: [],
     totalCount: 0,
@@ -19,6 +23,7 @@ const initialState: UsersInitialState = {
 }
 
 
+// *********** Reducer - редьюсер, чистая функция для изменения стэйта после получения экшена от диспача ****************
 export const usersReducer = (state: UsersInitialState = initialState, action: UsersAPIComponentActionsType): UsersInitialState => {
 
     switch (action.type) {
@@ -64,6 +69,8 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
     }
 }
 
+
+// *********** Action creators - экшн криэйторы создают объект action ****************
 export const followFriend = (userID: number): FollowFriendActionType => ({type: FOLLOW_FRIEND, userID})
 export const unfollowFriend = (userID: number): UnfollowFriendActionType => ({type: UNFOLLOW_FRIEND, userID})
 export const setUsers = (items: UsersListType[]): SetUsersActionType => ({type: SET_USERS, items})
@@ -71,3 +78,62 @@ export const setCurrentPage = (currentPage: number): SetCurrentPageActionType =>
 export const setTotalUsersCount = (totalCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowingInProgress = (isFetching: boolean, userId: number): ToggleIsFollowingInProgressActionType => ({type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, isFetching, userId})
+
+
+// *********** Thunk - санки необходимые для общения с DAL ****************
+//  -------- Первая загрузка списка пользователей ----------------
+export const getUsers = (currentPage: number, pageSize: number) => {
+
+    return (dispatch: any) => {
+        dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalUsersCount(data.totalCount))
+        })
+    }
+}
+
+//  -------- Изменение текущей страницы ----------------
+export const newPageGetUsers = (currentPage: number, pageSize: number) => {
+
+    return (dispatch: any) => {
+        dispatch(setCurrentPage(currentPage))
+        dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+        })
+    }
+}
+
+//  -------- Отписка от дружбы ----------------
+export const unFollow = (id: number) => {
+
+    return (dispatch: any) => {
+        dispatch(toggleFollowingInProgress(true, id))
+        followUnfollowAPI.unfollowUser(id).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowFriend(id))
+            }
+            dispatch(toggleFollowingInProgress(false, id))
+        })
+    }
+}
+
+//  -------- Подписка для дружбы ----------------
+export const follow = (id: number) => {
+
+    return (dispatch: any) => {
+        dispatch(toggleFollowingInProgress(true, id))
+        followUnfollowAPI.followUser(id).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followFriend(id))
+            }
+            dispatch(toggleFollowingInProgress(false, id))
+        })
+    }
+}
+

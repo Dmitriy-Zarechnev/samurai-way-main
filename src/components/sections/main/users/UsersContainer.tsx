@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, toggleIsFetching, unfollowFriend} from '../../../../redux/users-reducer'
+import {follow, followFriend, getUsers, newPageGetUsers, toggleFollowingInProgress, unFollow, unfollowFriend} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
-import {usersAPI} from '../../../../api/api'
+
 import {RootStateDataType, UsersAPIComponentPropsType} from '../../../../types/entities'
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
@@ -11,24 +11,12 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
 
     //  -------- Первая загрузка списка пользователей ----------------
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     //  -------- Изменение текущей страницы ----------------
     onPageChanged = (currentPage: number) => {
-        this.props.setCurrentPage(currentPage)
-        this.props.toggleIsFetching(true)
-
-        usersAPI.getUsers(currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })
+        this.props.newPageGetUsers(currentPage, this.props.pageSize)
     }
 
     // ----- Изменение списка пагинации при переключении -------
@@ -70,14 +58,13 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
                         totalCount={this.props.totalCount}
                         pageSize={this.props.pageSize}
                         currentPage={this.props.currentPage}
-                        followFriend={this.props.followFriend}
-                        unfollowFriend={this.props.unfollowFriend}
                         onPageChanged={this.onPageChanged}
                         pagStart={pagStart}
                         pagCenter={pagCenter}
                         pagEnd={pagEnd}
-                        toggleFollowingInProgress={this.props.toggleFollowingInProgress}
                         followingInProgress={this.props.followingInProgress}
+                        follow={this.props.follow}
+                        unFollow={this.props.unFollow}
                     />
                 }
             </>
@@ -98,7 +85,9 @@ const mapStateToProps = (state: RootStateDataType) => {
 
 
 export const UsersContainer = connect(mapStateToProps,
-    {followFriend, unfollowFriend, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingInProgress}
+    {
+        getUsers, newPageGetUsers, follow, unFollow
+    }
 )(UsersAPIComponent)
 
 

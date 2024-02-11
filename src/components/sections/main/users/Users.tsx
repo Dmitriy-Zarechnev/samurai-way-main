@@ -6,6 +6,7 @@ import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
 import {followUnfollowAPI} from '../../../../api/api'
 import {UsersPropsType} from '../../../../types/entities'
+import {unFollow} from '../../../../redux/users-reducer'
 
 export const Users = (props: UsersPropsType) => {
 
@@ -53,24 +54,13 @@ export const Users = (props: UsersPropsType) => {
                                 onClick={
                                     el.followed
                                         ? () => {
-                                            props.toggleFollowingInProgress(true, el.id)
-                                            followUnfollowAPI.unfollowUser(el.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.unfollowFriend(el.id)
-                                                }
-                                                props.toggleFollowingInProgress(false, el.id)
-                                            })
+                                            props.unFollow(el.id)
                                         }
                                         : () => {
-                                            props.toggleFollowingInProgress(true, el.id)
-                                            followUnfollowAPI.followUser(el.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.followFriend(el.id)
-                                                }
-                                                props.toggleFollowingInProgress(false, el.id)
-                                            })
+                                            props.follow(el.id)
                                         }
                                 }
+
                                 additionalClass={
                                     el.followed
                                         ? `${S.users_down_list__btn} ${S.unfollow_red}`

@@ -1,4 +1,5 @@
 import {ChangeEvent, KeyboardEvent} from 'react'
+import {getUsers, newPageGetUsers} from '../redux/users-reducer'
 
 // --------------- Типизация для Store -------------------------
 
@@ -17,7 +18,7 @@ export type EmptyActionType = { type: 'hello' }
 
 // --------------- Типизация для ProfilePage -------------------------
 export type ProfilePagePropsType = {
-    profileInfo: ProfileInfoType ,
+    profileInfo: ProfileInfoType,
     postsData: PostsDataType[],
     newPost: NewPostType,
 }
@@ -180,13 +181,10 @@ export type UsersAPIComponentPropsType = {
     currentPage: number,
     isFetching: boolean,
     followingInProgress: number[],
-    followFriend: (userID: number) => void,
-    unfollowFriend: (userID: number) => void,
-    setUsers: (items: UsersListType[]) => void,
-    setCurrentPage: (currentPage: number) => void,
-    setTotalUsersCount: (totalCount: number) => void,
-    toggleIsFetching: (isFetching: boolean) => void,
-    toggleFollowingInProgress: (isFetching: boolean, userId: number) => void
+    getUsers: (currentPage: number, pageSize: number) => void
+    newPageGetUsers: (currentPage: number, pageSize: number) => void
+    unFollow: (id: number) => void
+    follow: (id: number) => void
 }
 
 // Типизация для страницы Users
@@ -199,10 +197,9 @@ export type UsersPropsType = {
     pagCenter: number[],
     pagEnd: number[],
     followingInProgress: number[],
-    followFriend: (userID: number) => void,
-    unfollowFriend: (userID: number) => void,
     onPageChanged: (currentPage: number) => void,
-    toggleFollowingInProgress: (isFetching: boolean, userId: number) => void
+    unFollow: (id: number) => void
+    follow: (id: number) => void
 }
 
 
