@@ -10,7 +10,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className={S.app_body}>
-                <HeaderContainer/>
+                <HeaderContainer />
                 <NavbarLeft/>
                 <Main/>
                 <Footer/>

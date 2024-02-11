@@ -1,20 +1,15 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {setAuthUserData} from '../../../redux/auth-reducer'
-import {authAPI} from '../../../api/api'
+import {authMe, setAuthUserData} from '../../../redux/auth-reducer'
 import {HeaderAPIContainerPropsType, RootStateDataType, UserDataType} from '../../../types/entities'
-
 
 
 class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
 
+    //  -------- Авторизация на сервере ----------------
     componentDidMount() {
-        authAPI.authHeader().then(data => {
-            if (data.resultCode === 0) {
-                this.props.setAuthUserData(data.data)
-            }
-        })
+        this.props.authMe()
     }
 
     render() {
@@ -34,6 +29,6 @@ const mapStateToProps = (state: RootStateDataType) => {
     }
 }
 
-export const HeaderContainer = connect(mapStateToProps, {setAuthUserData})(HeaderAPIContainer)
+export const HeaderContainer = connect(mapStateToProps, {setAuthUserData, authMe})(HeaderAPIContainer)
 
 
