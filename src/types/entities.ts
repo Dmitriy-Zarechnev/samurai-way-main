@@ -3,7 +3,7 @@ import {FOLLOW_FRIEND, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS, TOGGL
 import {ADD_POST, SET_USER_PROFILE, UPDATE_NEW_POST_HEADER, UPDATE_NEW_POST_TEXT} from '../redux/profile-reducer'
 import {RouteComponentProps} from 'react-router-dom'
 import {SEND_NEW_MESSAGE, UPDATE_NEW_SEND_MESSAGE} from '../redux/messages-reducer'
-import { SET_AUTH_USER_DATA} from '../redux/auth-reducer'
+import {SET_AUTH_USER_DATA} from '../redux/auth-reducer'
 
 // --------------- Типизация для Store -------------------------
 
@@ -70,6 +70,7 @@ export type ProfileInfoAPIComponentPropsType =
 
 type ProfileInfoAPIComponentMapStateToProps = {
     profileInfo: ProfileInfoType
+    isAuth:boolean
 }
 
 type ProfileInfoAPIComponentMapDispatchToProps = {
@@ -122,24 +123,35 @@ export type MessagesPagePropsType = {
     newMessg: string
 }
 
+
 export type MessagesDataType = {
     id: number
     message: string
 }
 
 // Типизация для страницы MyMessages
-export type MyMessagesPropsType = {
+export type MyMessagesPropsType =
+    MyMessagesMapStateToProps &
+    MyMessagesMapDispatchToProps
+
+type MyMessagesMapStateToProps = {
     messagesData: Array<MessagesDataType>
     newMessg: string
+    isAuth:boolean
+}
+
+type MyMessagesMapDispatchToProps = {
     updateNewMessage: (textareaValue: string) => void
     sendNewMessage: () => void
 }
+
 
 // Типизация для страницы NewMessage
 export type NewMessageAreaPropsType = {
     newMessg: string
     updateNewMessage: (textareaValue: string) => void
     sendNewMessage: () => void
+    isAuth:boolean
 }
 
 // Типизация для MyMessages Actions

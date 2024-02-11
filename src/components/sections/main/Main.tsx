@@ -7,6 +7,7 @@ import {Settings} from './settings/Settings'
 import S from './Main.module.css'
 import {UsersContainer} from './users/UsersContainer'
 import {Profile} from './profile/Profile'
+import {LogIn} from './logIn/LogIn'
 
 
 export const Main = () => {
@@ -24,6 +25,9 @@ export const Main = () => {
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
             <Route path="/users" render={() => <UsersContainer/>}/>
+
+            <Route path="/login" render={() => <LogIn/>}/>
+
 
             <Route path="/settings" render={() => <Settings/>}/>
         </div>

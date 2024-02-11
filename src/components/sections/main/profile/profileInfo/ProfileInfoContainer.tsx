@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
 import {goToPage, setUserProfile} from '../../../../../redux/profile-reducer'
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import {ProfileInfoAPIComponentPropsType, RootStateDataType} from '../../../../../types/entities'
 
 
@@ -14,6 +14,9 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     }
 
     render() {
+        //  -------- Redirect -------------
+        if (!this.props.isAuth) return <Redirect to={'/login'}/>
+        
         return (
             <ProfileInfo profileInfo={this.props.profileInfo}/>)
     }
@@ -22,7 +25,8 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
 
 const mapStateToProps = (state: RootStateDataType) => {
     return {
-        profileInfo: state.profilePage.profileInfo
+        profileInfo: state.profilePage.profileInfo,
+        isAuth: state.auth.isAuth
     }
 }
 

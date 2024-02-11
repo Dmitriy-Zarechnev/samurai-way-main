@@ -13,6 +13,7 @@ export const MyMessages = (props: MyMessagesPropsType) => {
             <NewMessageArea newMessg={props.newMessg}
                             updateNewMessage={props.updateNewMessage}
                             sendNewMessage={props.sendNewMessage}
+                            isAuth={props.isAuth}
             />
         </div>
     )

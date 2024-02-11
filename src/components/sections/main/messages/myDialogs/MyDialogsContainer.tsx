@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {RootStateDataType} from '../../../../../types/entities'
 
 
-
 let mapStateToProps = (state: RootStateDataType) => {
     return {
         dialogsData: state.friendsListData

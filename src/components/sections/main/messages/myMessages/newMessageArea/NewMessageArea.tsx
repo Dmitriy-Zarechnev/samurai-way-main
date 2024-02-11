@@ -3,6 +3,7 @@ import S from './NewMessageArea.module.css'
 import {Button} from '../../../../../common/button/Button'
 import {TextArea} from '../../../../../common/textarea/TextArea'
 import {NewMessageAreaPropsType} from '../../../../../../types/entities'
+import {Redirect} from 'react-router-dom'
 
 
 export const NewMessageArea = (props: NewMessageAreaPropsType) => {
@@ -19,6 +20,10 @@ export const NewMessageArea = (props: NewMessageAreaPropsType) => {
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         e.ctrlKey && e.key === 'Enter' && onClickAddNewMessHandler()
     }
+
+    //  -------- Redirect -------------
+    if (!props.isAuth) return <Redirect to={'/login'}/>
+
 
     return (
         <div className={S.new_message}>

@@ -4,7 +4,7 @@ import {FriendsList} from '../../../../common/friendsList/FriendsList'
 import {FriendsListDataType} from '../../../../../types/entities'
 
 
-export const MyDialogs = (props: { dialogsData: Array<FriendsListDataType> }) => {
+export const MyDialogs = (props: { dialogsData: Array<FriendsListDataType>}) => {
     return (
         <ul className={S.my_dialogs}>
             <h3 className={S.my_dialogs__header}>Dialogs</h3>
