@@ -1,10 +1,10 @@
 import {MyMessages} from './MyMessages'
 import {connect} from 'react-redux'
 import {sendNewMessage, updateNewMessage} from '../../../../../redux/messages-reducer'
-import {RootStateDataType} from '../../../../../types/entities'
+import {AppRootState} from '../../../../../redux/redux-store'
 
 
-let mapStateToProps = (state: RootStateDataType) => {
+let mapStateToProps = (state: AppRootState) => {
     return {
         messagesData: state.messagesPage.messagesData,
         newMessg: state.messagesPage.newMessg,

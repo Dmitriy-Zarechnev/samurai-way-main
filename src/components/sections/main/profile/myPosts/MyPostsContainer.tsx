@@ -1,10 +1,10 @@
 import {addPost, updateNewPostInput, updateNewPostTextArea} from '../../../../../redux/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
-import {RootStateDataType} from '../../../../../types/entities'
+import {AppRootState} from '../../../../../redux/redux-store'
 
 
-let mapStateToProps = (state: RootStateDataType) => {
+let mapStateToProps = (state: AppRootState) => {
     return {
         posts: state.profilePage.postsData,
         newPost: state.profilePage.newPost

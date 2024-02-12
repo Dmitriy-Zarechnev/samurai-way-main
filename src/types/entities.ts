@@ -8,13 +8,13 @@ import {SET_AUTH_USER_DATA} from '../redux/auth-reducer'
 // --------------- Типизация для Store -------------------------
 
 // Типизация для State
-export type RootStateDataType = {
-    profilePage: ProfilePagePropsType
-    messagesPage: MessagesPagePropsType
-    friendsListData: Array<FriendsListDataType>
-    usersPage: UsersInitialState
-    auth: AuthPageInitialState
-}
+// export type RootStateDataType = {
+//     profilePage: ProfilePagePropsType
+//     messagesPage: MessagesPagePropsType
+//     friendsListData: Array<FriendsListDataType>
+//     usersPage: UsersInitialState
+//     auth: AuthPageInitialState
+// }
 
 
 // --------------- Типизация для ProfilePage -------------------------

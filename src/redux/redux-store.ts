@@ -6,7 +6,7 @@ import {usersReducer} from './users-reducer'
 import {authReducer} from './auth-reducer'
 import thunkMiddleware from 'redux-thunk'
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer,
     friendsListData: friendsListReducer,
@@ -14,6 +14,9 @@ let reducers = combineReducers({
     auth: authReducer
 })
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware))
+export type AppRootState = ReturnType<typeof rootReducer>
+
+
+let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 export default store
