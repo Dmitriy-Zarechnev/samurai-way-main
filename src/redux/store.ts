@@ -1,4 +1,5 @@
-// Типизация для Store
+
+ /*
 export type StoreType = {
     _state: RootStateDataType,
     _callSubscriber: (state: RootStateDataType) => void,
@@ -9,19 +10,29 @@ export type StoreType = {
     dispatch: (action: ActionType) => void,
 }
 
+  */
+
+
+
 
 // Типизация для observer
 
-type ObserverType = (state: RootStateDataType) => void
+export type ObserverType = (state: any) => void
+
+
 
 
 // Типизация для State
+/*
 export type RootStateDataType = {
     profilePage: ProfilePagePropsType,
     messagesPage: MessagesPagePropsType
 }
 
+ */
+
 // Типизация для action
+/*
 export type ActionType = {
     type: 'ADD-POST' | 'UPDATE-NEW-POST-TEXT' | 'SEND-NEW-MESSAGE' | 'UPDATE-NEW-SEND-MESSAGE',
     newHeaderText?: string,
@@ -29,12 +40,15 @@ export type ActionType = {
     message?: string,
 }
 
+ */
+
 // Типизация для observer
 /*
 type ObserverType = (state: RootStateDataType) => void
 
  */
 // Типизация для ProfilePage
+/*
 export type ProfilePagePropsType = {
     postsData: Array<PostsDataType>,
     newPost: Array<string>,
@@ -56,7 +70,10 @@ export type FriendsListDataType = {
     alt: string
 }
 
+
+ */
 // Типизация для страницы постов
+/*
 export type MyPostsPropsType = {
     posts: Array<PostsDataType>,
     newPost: Array<string>,
@@ -65,7 +82,10 @@ export type MyPostsPropsType = {
     addPost: () => void
 }
 
+ */
+
 // Типизация для MessagePage
+/*
 export type MessagesPagePropsType = {
     dialogsData: Array<DialogsDataType>,
     messagesData: Array<MessagesDataType>,
@@ -83,6 +103,8 @@ export type DialogsDataType = {
     name: string,
     alt: string
 }
+
+ */
 
 
 // Store содержит все данные и методы
