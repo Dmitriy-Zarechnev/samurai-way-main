@@ -3,7 +3,7 @@ import {ProfileInfo} from './ProfileInfo'
 import {goToPage, setUserProfile} from '../../../../../redux/profile-reducer'
 import React from 'react'
 import {Redirect, withRouter} from 'react-router-dom'
-import {ProfileInfoAPIComponentPropsType} from '../../../../../types/entities'
+import {ProfileInfoAPIComponentMapStateToProps, ProfileInfoAPIComponentPropsType} from '../../../../../types/entities'
 import {AppRootState} from '../../../../../redux/redux-store'
 
 
@@ -24,7 +24,7 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
 }
 
 
-const mapStateToProps = (state: AppRootState) => {
+const mapStateToProps = (state: AppRootState):ProfileInfoAPIComponentMapStateToProps => {
     return {
         profileInfo: state.profilePage.profileInfo,
         isAuth: state.auth.isAuth

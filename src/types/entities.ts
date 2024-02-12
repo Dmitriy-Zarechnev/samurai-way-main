@@ -68,7 +68,7 @@ export type ProfileInfoAPIComponentPropsType =
     RouteComponentProps<{ userId: string }>
 
 
-type ProfileInfoAPIComponentMapStateToProps = {
+export type ProfileInfoAPIComponentMapStateToProps = {
     profileInfo: ProfileInfoType
     isAuth:boolean
 }
@@ -207,7 +207,7 @@ export type UsersAPIComponentPropsType =
     UsersAPIComponentMapStateToProps &
     UsersAPIComponentMapDispatchToProps
 
-type UsersAPIComponentMapStateToProps = {
+export type UsersAPIComponentMapStateToProps = {
     items: UsersListType[]
     totalCount: number
     pageSize: number

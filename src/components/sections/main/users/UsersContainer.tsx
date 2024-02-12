@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
-import {UsersAPIComponentPropsType} from '../../../../types/entities'
+import {UsersAPIComponentMapStateToProps, UsersAPIComponentPropsType} from '../../../../types/entities'
 import {AppRootState} from '../../../../redux/redux-store'
 
 
@@ -72,7 +72,7 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     }
 }
 
-const mapStateToProps = (state: AppRootState) => {
+const mapStateToProps = (state: AppRootState): UsersAPIComponentMapStateToProps => {
     return {
         items: state.usersPage.items,
         totalCount: state.usersPage.totalCount,
