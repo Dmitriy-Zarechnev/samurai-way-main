@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {ChangeEvent, KeyboardEvent} from 'react'
 import S from './TextArea.module.css'
-import {TextAreaPropsType} from '../../../types/entities'
 
+// Типизация
+type TextAreaPropsType = {
+    placeholder: string
+    value: string
+    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    onKeyDown: (e: KeyboardEvent<HTMLTextAreaElement>) => void
+}
 
 export const TextArea = (props: TextAreaPropsType) => {
     return (

@@ -1,8 +1,13 @@
 import React from 'react'
 import S from './Contacts.module.css'
-import {ContactsPropsType} from '../../../types/entities'
 
 
+// Типизация
+type ContactsPropsType = {
+    href: string
+    alt: string
+    src: string
+}
 
 export const Contacts = (props: ContactsPropsType) => {
     return (

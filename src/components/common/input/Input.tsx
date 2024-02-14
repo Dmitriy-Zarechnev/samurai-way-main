@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {ChangeEvent, KeyboardEvent} from 'react'
 import S from './Input.module.css'
-import {InputPropsType} from '../../../types/entities'
 
+
+// Типизация
+type InputPropsType = {
+    id: string
+    type: string
+    value: string
+    autoComplete: 'off' | 'on'
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void
+    placeholder: string
+}
 
 export const Input = (props: InputPropsType) => {
     return (

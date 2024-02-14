@@ -1,8 +1,13 @@
 import React from 'react'
 import S from './Pagination.module.css'
-import {PaginationPropsType} from '../../../types/entities'
 
 
+// Типизация
+type PaginationPropsType = {
+    currentArray: Array<number>
+    onPageChanged: (currentPage: number) => void
+    currentPage: number
+}
 
 export const Pagination = (props: PaginationPropsType) => {
     return (

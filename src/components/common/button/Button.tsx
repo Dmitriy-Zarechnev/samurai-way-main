@@ -1,7 +1,13 @@
 import React from 'react'
 import S from './Button.module.css'
-import {ButtonPropsType} from '../../../types/entities'
 
+// Типизация
+type ButtonPropsType = {
+    name: string
+    onClick: () => void
+    disabled?: boolean
+    additionalClass?: string
+}
 
 export const Button = (props: ButtonPropsType) => {
     return (
