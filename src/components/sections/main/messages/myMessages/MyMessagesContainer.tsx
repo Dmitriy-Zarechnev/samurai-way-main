@@ -24,17 +24,6 @@ let mapStateToProps = (state: AppRootState) => {
     }
 }
 
-// ---- HOC - используется чтобы добавить свойство redirect
-/*
-let AuthRedirectComponent = (props: {isAuth:boolean}) => {
-
-    //  -------- Redirect -------------
-    if (!props.isAuth) return <Redirect to={'/login'}/>
-
-    return <MyMessages {...props}/>
-}
- */
-
 
 export const MyMessagesContainer = withAuthRedirect(connect(mapStateToProps,
     {updateNewMessage, sendNewMessage})(MyMessages))

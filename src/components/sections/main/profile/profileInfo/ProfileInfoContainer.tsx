@@ -32,26 +32,12 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     }
 }
 
-// ---- HOC - используется чтобы добавить свойство redirect
-/*
-const AuthRedirectComponent = (props: ProfileInfoAPIComponentPropsType) => {
-
-    //  -------- Redirect -------------
-    if (!props.isAuth) return <Redirect to={'/login'}/>
-
-    return <ProfileInfoAPIComponent {...props}/>
-}
-
- */
-
-
 const mapStateToProps = (state: AppRootState) => {
     return {
         profileInfo: state.profilePage.profileInfo
     }
 }
 
-
-export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile, goToPage})(withRouter(ProfileInfoAPIComponent))
+export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile, goToPage})(withAuthRedirect(withRouter(ProfileInfoAPIComponent)))
 
 

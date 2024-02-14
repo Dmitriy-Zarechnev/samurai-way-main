@@ -13,13 +13,11 @@ type mapStateToPropsForRedirectPropsType = ReturnType<typeof mapStateToPropsForR
 
 
 // ---- HOC - используется чтобы добавить свойство redirect
-export const withAuthRedirect = (Component: React.ComponentType) => {
+export const withAuthRedirect = (Component: React.ComponentType<any>) => {
     class RedirectComponent extends React.Component<mapStateToPropsForRedirectPropsType> {
         render() {
             if (!this.props.isAuth) return <Redirect to={'/login'}/>
-
-            return <Component/>
-
+            return <Component  />
         }
     }
 
