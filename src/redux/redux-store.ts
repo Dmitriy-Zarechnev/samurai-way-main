@@ -14,8 +14,8 @@ let rootReducer = combineReducers({
     auth: authReducer
 })
 
+// Типизация
 export type AppRootState = ReturnType<typeof rootReducer>
-
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 

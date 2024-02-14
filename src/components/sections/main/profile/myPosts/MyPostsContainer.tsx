@@ -1,4 +1,4 @@
-import {addPostAC, updateNewPostInputAC, updateNewPostTextAreaAC} from '../../../../../redux/profile-reducer'
+import {addPost, updateNewPostInput, updateNewPostTextArea} from '../../../../../redux/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
 import {AppRootState} from '../../../../../redux/redux-store'
@@ -12,6 +12,6 @@ let mapStateToProps = (state: AppRootState) => {
 }
 
 export const MyPostsContainer = connect(mapStateToProps, {
-    updateNewPostTextArea: updateNewPostTextAreaAC, updateNewPostInput: updateNewPostInputAC, addPost: addPostAC
+    updateNewPostTextArea: updateNewPostTextArea, updateNewPostInput: updateNewPostInput, addPost: addPost
 })(MyPosts)
 

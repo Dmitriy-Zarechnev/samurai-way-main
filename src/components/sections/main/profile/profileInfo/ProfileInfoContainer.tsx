@@ -1,9 +1,10 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {goToPage, ProfileInfoType, setUserProfileAC} from '../../../../../redux/profile-reducer'
+import {goToPage, ProfileInfoType, setUserProfile} from '../../../../../redux/profile-reducer'
 import React from 'react'
-import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom'
+import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
+import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 
 // Типизация
 type ProfileInfoAPIComponentPropsType =
@@ -25,23 +26,32 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     }
 
     render() {
-        //  -------- Redirect -------------
-        if (!this.props.isAuth) return <Redirect to={'/login'}/>
 
         return (
             <ProfileInfo profileInfo={this.props.profileInfo}/>)
     }
 }
 
+// ---- HOC - используется чтобы добавить свойство redirect
+/*
+const AuthRedirectComponent = (props: ProfileInfoAPIComponentPropsType) => {
+
+    //  -------- Redirect -------------
+    if (!props.isAuth) return <Redirect to={'/login'}/>
+
+    return <ProfileInfoAPIComponent {...props}/>
+}
+
+ */
+
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        profileInfo: state.profilePage.profileInfo,
-        isAuth: state.auth.isAuth
+        profileInfo: state.profilePage.profileInfo
     }
 }
 
 
-export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile: setUserProfileAC, goToPage})(withRouter(ProfileInfoAPIComponent))
+export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile, goToPage})(withRouter(ProfileInfoAPIComponent))
 
 

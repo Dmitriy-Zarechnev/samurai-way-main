@@ -54,10 +54,10 @@ type MyPostsActionsType =
     SetUserProfileActionType
 
 
-type AddPostActionType = ReturnType<typeof addPostAC>
-type UpdateNewPostHeaderActionType = ReturnType<typeof updateNewPostInputAC>
-type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAreaAC>
-type SetUserProfileActionType = ReturnType<typeof setUserProfileAC>
+type AddPostActionType = ReturnType<typeof addPost>
+type UpdateNewPostHeaderActionType = ReturnType<typeof updateNewPostInput>
+type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextArea>
+type SetUserProfileActionType = ReturnType<typeof setUserProfile>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = 'ADD-POST'
@@ -160,16 +160,16 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const addPostAC = () => {
+export const addPost = () => {
     return {type: ADD_POST} as const
 }
-export const updateNewPostInputAC = (headerValue: string) => {
+export const updateNewPostInput = (headerValue: string) => {
     return {type: UPDATE_NEW_POST_HEADER, payload: {newHeaderText: headerValue}} as const
 }
-export const updateNewPostTextAreaAC = (postValue: string) => {
+export const updateNewPostTextArea = (postValue: string) => {
     return {type: UPDATE_NEW_POST_TEXT, payload: {newPostText: postValue}} as const
 }
-export const setUserProfileAC = (profileInfo: ProfileInfoType) => {
+export const setUserProfile = (profileInfo: ProfileInfoType) => {
     return {type: SET_USER_PROFILE, payload: {profileInfo}} as const
 }
 
@@ -183,7 +183,7 @@ export const goToPage = (id: string) => {
         if (!userId) userId = 30743
 
         profileAPI.userProfile(userId).then(data => {
-            dispatch(setUserProfileAC(data))
+            dispatch(setUserProfile(data))
         })
     }
 }
