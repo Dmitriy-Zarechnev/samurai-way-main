@@ -3,7 +3,7 @@ import {FOLLOW_FRIEND, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS, TOGGL
 import {ADD_POST, SET_USER_PROFILE, UPDATE_NEW_POST_HEADER, UPDATE_NEW_POST_TEXT} from '../redux/profile-reducer'
 import {RouteComponentProps} from 'react-router-dom'
 import {SEND_NEW_MESSAGE, UPDATE_NEW_SEND_MESSAGE} from '../redux/messages-reducer'
-import {SET_AUTH_USER_DATA} from '../redux/auth-reducer'
+
 
 // --------------- Типизация для Store -------------------------
 
@@ -169,12 +169,15 @@ export type UpdateNewSendMessageActionType = {
 }
 
 // --------------- Типизация для FriendsListData -------------------------
+/*
 export type FriendsListDataType = {
     id: number
     src: string
     name: string
     alt: string
 }
+
+ */
 
 
 // --------------- Типизация для UsersPageData -------------------------
@@ -290,6 +293,7 @@ export type ToggleIsFollowingInProgressActionType = {
 // --------------- Типизация для authPage -------------------------
 
 // Типизация для HeaderAPIComponent
+/*
 export type HeaderAPIContainerPropsType =
     HeaderAPIComponentMapStateToProps &
     HeaderAPIComponentMapDispatchToProps
@@ -305,14 +309,20 @@ type HeaderAPIComponentMapDispatchToProps = {
     authMe: () => void
 }
 
+ */
+
 // Типизация для первоначального стэйта для authReducer
+/*
 export type AuthPageInitialState = {
     data: UserDataType
     isAuth: boolean
     isFetching: boolean
 }
 
+ */
+
 // Типизация для AuthPageAPIComponent Actions
+/*
 export type AuthPageAPIComponentActionsType = SetAuthUserDataActionType
 
 
@@ -320,18 +330,26 @@ export type SetAuthUserDataActionType = {
     type: typeof SET_AUTH_USER_DATA
     data: UserDataType
 }
-
+*/
+/*
 export type UserDataType = {
     id: number | null
     email: string
     login: string
 }
 
+ */
+
+
+
 // --------------- Типизация для Header -------------------------
+/*
 export type HeaderPropsType = {
     isAuth: boolean
     data: UserDataType
 }
+
+ */
 
 
 // --------------- Типизация для отдельных компонент -------------------------

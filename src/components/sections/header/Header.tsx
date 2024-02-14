@@ -2,9 +2,14 @@ import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
-import {HeaderPropsType} from '../../../types/entities'
+import {UserDataType} from '../../../redux/auth-reducer'
 
 
+// Типизация
+type HeaderPropsType = {
+    isAuth: boolean
+    data: UserDataType
+}
 
 export const Header = (props: HeaderPropsType) => {
 

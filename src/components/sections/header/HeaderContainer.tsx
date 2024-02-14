@@ -1,10 +1,19 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {authMe, setAuthUserData} from '../../../redux/auth-reducer'
-import {HeaderAPIContainerPropsType, UserDataType} from '../../../types/entities'
+import {authMe, setAuthUserData, UserDataType} from '../../../redux/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 
+// Типизация
+type HeaderAPIContainerPropsType =
+    HeaderAPIComponentMapStateToProps &
+    HeaderAPIComponentMapDispatchToProps
+
+type HeaderAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
+type HeaderAPIComponentMapDispatchToProps = {
+    setAuthUserData: (data: UserDataType) => void
+    authMe: () => void
+}
 
 class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
 
