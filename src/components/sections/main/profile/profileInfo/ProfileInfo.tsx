@@ -5,7 +5,8 @@ import git from '../../../../../assets/images/git.svg'
 import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
 import sam from '../../../../../assets/images/sam.webp'
-import {ProfileInfoType} from '../../../../../types/entities'
+import {ProfileInfoType} from '../../../../../redux/profile-reducer'
+
 
 
 export const ProfileInfo = (props: { profileInfo: ProfileInfoType }) => {

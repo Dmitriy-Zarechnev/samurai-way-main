@@ -1,5 +1,4 @@
-import {ProfilePagePropsType} from '../types/entities'
-import {addPost, profileReducer, setUserProfile, updateNewPostInput, updateNewPostTextArea} from '../redux/profile-reducer'
+import {addPostAC, ProfilePagePropsType, profileReducer, setUserProfileAC, updateNewPostInputAC, updateNewPostTextAreaAC} from '../redux/profile-reducer'
 import img1 from '../assets/images/Cupcake.jpg'
 
 
@@ -44,7 +43,7 @@ test('profile reducer should increase the postsData length by one', () => {
         }
     }
 
-    const newState = profileReducer(state, addPost())
+    const newState = profileReducer(state, addPostAC())
 
     expect(newState.postsData.length).toBe(state.postsData.length + 1)
     expect(newState.newPost.newHeader).toBe('')
@@ -96,7 +95,7 @@ test('profile reducer should update new post text', () => {
 
     const text = 'Update'
 
-    const newState = profileReducer(state, updateNewPostTextArea(text))
+    const newState = profileReducer(state, updateNewPostTextAreaAC(text))
 
     expect(newState.newPost.newText).toBe('Update')
     expect(newState.newPost.newHeader).toBe('')
@@ -147,7 +146,7 @@ test('profile reducer should update new post header', () => {
 
     const text = 'New Header'
 
-    const newState = profileReducer(state, updateNewPostInput(text))
+    const newState = profileReducer(state, updateNewPostInputAC(text))
 
     expect(newState.newPost.newHeader).toBe('New Header')
     expect(newState.newPost.newText).toBe('')
@@ -219,7 +218,7 @@ test('profile reducer should update profileInfo', () => {
         }
     }
 
-    const newState = profileReducer(state, setUserProfile(info))
+    const newState = profileReducer(state, setUserProfileAC(info))
 
     expect(newState.profileInfo.aboutMe).toBe('i am not alcoholic')
     expect(newState.profileInfo.fullName).toBe('Hulk')

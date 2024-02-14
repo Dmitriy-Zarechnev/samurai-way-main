@@ -3,12 +3,22 @@ import {connect} from 'react-redux'
 import {sendNewMessage, updateNewMessage} from '../../../../../redux/messages-reducer'
 import {AppRootState} from '../../../../../redux/redux-store'
 
+export type MyMessagesPropsType =
+    MyMessagesMapStateToProps &
+    MyMessagesMapDispatchToProps
+
+type MyMessagesMapStateToProps = ReturnType<typeof mapStateToProps>
+
+type MyMessagesMapDispatchToProps = {
+    updateNewMessage: (textareaValue: string) => void
+    sendNewMessage: () => void
+}
 
 let mapStateToProps = (state: AppRootState) => {
     return {
         messagesData: state.messagesPage.messagesData,
         newMessg: state.messagesPage.newMessg,
-        isAuth:state.auth.isAuth
+        isAuth: state.auth.isAuth
     }
 }
 

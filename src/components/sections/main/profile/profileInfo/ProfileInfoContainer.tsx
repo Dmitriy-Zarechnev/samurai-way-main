@@ -1,11 +1,21 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {goToPage, setUserProfile} from '../../../../../redux/profile-reducer'
+import {goToPage, ProfileInfoType, setUserProfileAC} from '../../../../../redux/profile-reducer'
 import React from 'react'
-import {Redirect, withRouter} from 'react-router-dom'
-import {ProfileInfoAPIComponentMapStateToProps, ProfileInfoAPIComponentPropsType} from '../../../../../types/entities'
+import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
 
+// Типизация
+type ProfileInfoAPIComponentPropsType =
+    ProfileInfoAPIComponentMapStateToProps &
+    ProfileInfoAPIComponentMapDispatchToProps &
+    RouteComponentProps<{ userId: string }>
+
+type ProfileInfoAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
+type ProfileInfoAPIComponentMapDispatchToProps = {
+    setUserProfile: (profileInfo: ProfileInfoType) => void
+    goToPage: (id: string) => void
+}
 
 class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPropsType> {
 
@@ -17,14 +27,14 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     render() {
         //  -------- Redirect -------------
         if (!this.props.isAuth) return <Redirect to={'/login'}/>
-        
+
         return (
             <ProfileInfo profileInfo={this.props.profileInfo}/>)
     }
 }
 
 
-const mapStateToProps = (state: AppRootState):ProfileInfoAPIComponentMapStateToProps => {
+const mapStateToProps = (state: AppRootState) => {
     return {
         profileInfo: state.profilePage.profileInfo,
         isAuth: state.auth.isAuth
@@ -32,6 +42,6 @@ const mapStateToProps = (state: AppRootState):ProfileInfoAPIComponentMapStateToP
 }
 
 
-export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile, goToPage})(withRouter(ProfileInfoAPIComponent))
+export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile: setUserProfileAC, goToPage})(withRouter(ProfileInfoAPIComponent))
 
 

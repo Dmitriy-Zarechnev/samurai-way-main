@@ -3,8 +3,21 @@ import {connect} from 'react-redux'
 import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
-import {UsersAPIComponentMapStateToProps, UsersAPIComponentPropsType} from '../../../../types/entities'
 import {AppRootState} from '../../../../redux/redux-store'
+
+// Типизация
+export type UsersAPIComponentPropsType =
+    UsersAPIComponentMapStateToProps &
+    UsersAPIComponentMapDispatchToProps
+
+type UsersAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
+
+type UsersAPIComponentMapDispatchToProps = {
+    getUsers: (currentPage: number, pageSize: number) => void
+    newPageGetUsers: (currentPage: number, pageSize: number) => void
+    unFollow: (id: number) => void
+    follow: (id: number) => void
+}
 
 
 class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
@@ -72,7 +85,7 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     }
 }
 
-const mapStateToProps = (state: AppRootState): UsersAPIComponentMapStateToProps => {
+const mapStateToProps = (state: AppRootState) => {
     return {
         items: state.usersPage.items,
         totalCount: state.usersPage.totalCount,

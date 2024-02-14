@@ -2,7 +2,8 @@ import React from 'react'
 import S from './MyMessages.module.css'
 import {Message} from './message/Message'
 import {NewMessageArea} from './newMessageArea/NewMessageArea'
-import {MyMessagesPropsType} from '../../../../../types/entities'
+import {MyMessagesPropsType} from './MyMessagesContainer'
+
 
 
 export const MyMessages = (props: MyMessagesPropsType) => {

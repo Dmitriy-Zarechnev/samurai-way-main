@@ -7,7 +7,7 @@ import nineS from '../assets/images/webp/9s.webp'
 
 
 // Типизация
-type FriendsListDataType = {
+export type FriendsListDataType = {
     id: number
     src: string
     name: string

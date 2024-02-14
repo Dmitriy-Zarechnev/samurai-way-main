@@ -1,5 +1,4 @@
-import {MessagesPagePropsType} from '../types/entities'
-import {messagesReducer, sendNewMessage, updateNewMessage} from '../redux/messages-reducer'
+import {MessagesPagePropsType, messagesReducer, sendNewMessage, updateNewMessage} from '../redux/messages-reducer'
 
 test('messages reducer should increase the messagesData length by one', () => {
 

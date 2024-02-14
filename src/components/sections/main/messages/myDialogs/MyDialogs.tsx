@@ -1,7 +1,8 @@
 import React from 'react'
 import S from './MyDialogs.module.css'
 import {FriendsList} from '../../../../common/friendsList/FriendsList'
-import {FriendsListDataType} from '../../../../../types/entities'
+import {FriendsListDataType} from '../../../../../redux/friendsList-reducer'
+
 
 
 export const MyDialogs = (props: { dialogsData: Array<FriendsListDataType>}) => {

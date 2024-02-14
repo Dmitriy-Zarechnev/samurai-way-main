@@ -1,6 +1,49 @@
-import {FollowFriendActionType, SetCurrentPageActionType, SetTotalUsersCountActionType, SetUsersActionType, ToggleIsFetchingActionType, ToggleIsFollowingInProgressActionType, UnfollowFriendActionType, UsersAPIComponentActionsType, UsersInitialState, UsersListType} from '../types/entities'
 import {followUnfollowAPI, usersAPI} from '../api/api'
 import {Dispatch} from 'redux'
+
+
+// Типизация
+export type UsersInitialState = {
+    items: UsersListType[]
+    totalCount: number
+    error: string
+    pageSize: number
+    currentPage: number
+    isFetching: boolean
+    followingInProgress: number[]
+}
+
+export type UsersListType = {
+    name: string
+    id: number
+    photos: UsersPhotos
+    status: string
+    followed: boolean
+}
+
+type UsersPhotos = {
+    small: string
+    large: string
+}
+
+
+type UsersAPIComponentActionsType =
+    FollowFriendActionType |
+    UnfollowFriendActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
+    ToggleIsFetchingActionType |
+    ToggleIsFollowingInProgressActionType
+
+type FollowFriendActionType = ReturnType<typeof followFriend>
+type UnfollowFriendActionType = ReturnType<typeof unfollowFriend>
+type SetUsersActionType = ReturnType<typeof setUsers>
+type SetCurrentPageActionType = ReturnType<typeof setCurrentPage>
+type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCount>
+type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetching>
+type ToggleIsFollowingInProgressActionType = ReturnType<typeof toggleFollowingInProgress>
+
 
 // *********** Константы названий экшенов ****************
 export const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
@@ -32,7 +75,7 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
             return {
                 ...state,
                 items: state.items.map(u => {
-                    return u.id === action.userID ? {...u, followed: true} : u
+                    return u.id === action.payload.userID ? {...u, followed: true} : u
                 })
             }
 
@@ -40,29 +83,29 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
             return {
                 ...state,
                 items: state.items.map(u => {
-                    return u.id === action.userID ? {...u, followed: false} : u
+                    return u.id === action.payload.userID ? {...u, followed: false} : u
                 })
             }
 
         case SET_USERS:
-            return {...state, items: action.items}
+            return {...state, items: action.payload.items}
 
         case SET_CURRENT_PAGE:
-            return {...state, currentPage: action.currentPage}
+            return {...state, currentPage: action.payload.currentPage}
 
         case SET_TOTAL_USERS_COUNT:
-            return {...state, totalCount: action.totalCount}
+            return {...state, totalCount: action.payload.totalCount}
 
         case TOGGLE_IS_FETCHING:
-            return {...state, isFetching: action.isFetching}
+            return {...state, isFetching: action.payload.isFetching}
 
         case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
             return {
                 ...state,
                 followingInProgress:
-                    action.isFetching
-                        ? [...state.followingInProgress, action.userId]
-                        : state.followingInProgress.filter(id => id != action.userId)
+                    action.payload.isFetching
+                        ? [...state.followingInProgress, action.payload.userId]
+                        : state.followingInProgress.filter(id => id != action.payload.userId)
             }
 
         default:
@@ -71,14 +114,28 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
 }
 
 
-// *********** Action creators - экшн криэйторы создают объект action ****************
-export const followFriend = (userID: number): FollowFriendActionType => ({type: FOLLOW_FRIEND, userID})
-export const unfollowFriend = (userID: number): UnfollowFriendActionType => ({type: UNFOLLOW_FRIEND, userID})
-export const setUsers = (items: UsersListType[]): SetUsersActionType => ({type: SET_USERS, items})
-export const setCurrentPage = (currentPage: number): SetCurrentPageActionType => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersCount = (totalCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
-export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
-export const toggleFollowingInProgress = (isFetching: boolean, userId: number): ToggleIsFollowingInProgressActionType => ({type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, isFetching, userId})
+// ****** Action creators - экшн криэйторы создают объект action ***********
+export const followFriend = (userID: number) => {
+    return {type: FOLLOW_FRIEND, payload: {userID}} as const
+}
+export const unfollowFriend = (userID: number) => {
+    return {type: UNFOLLOW_FRIEND, payload: {userID}} as const
+}
+export const setUsers = (items: UsersListType[]) => {
+    return {type: SET_USERS, payload: {items}} as const
+}
+export const setCurrentPage = (currentPage: number) => {
+    return {type: SET_CURRENT_PAGE, payload: {currentPage}} as const
+}
+export const setTotalUsersCount = (totalCount: number) => {
+    return {type: SET_TOTAL_USERS_COUNT, payload: {totalCount}} as const
+}
+export const toggleIsFetching = (isFetching: boolean) => {
+    return {type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const
+}
+export const toggleFollowingInProgress = (isFetching: boolean, userId: number) => {
+    return {type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, payload: {isFetching, userId}} as const
+}
 
 
 // *********** Thunk - санки необходимые для общения с DAL ****************

@@ -1,8 +1,5 @@
 import {ChangeEvent, KeyboardEvent} from 'react'
-import {FOLLOW_FRIEND, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS, TOGGLE_IS_FETCHING, TOGGLE_IS_FOLLOWING_IN_PROGRESS, UNFOLLOW_FRIEND} from '../redux/users-reducer'
-import {ADD_POST, SET_USER_PROFILE, UPDATE_NEW_POST_HEADER, UPDATE_NEW_POST_TEXT} from '../redux/profile-reducer'
-import {RouteComponentProps} from 'react-router-dom'
-import {SEND_NEW_MESSAGE, UPDATE_NEW_SEND_MESSAGE} from '../redux/messages-reducer'
+
 
 
 // --------------- Типизация для Store -------------------------
@@ -18,6 +15,7 @@ import {SEND_NEW_MESSAGE, UPDATE_NEW_SEND_MESSAGE} from '../redux/messages-reduc
 
 
 // --------------- Типизация для ProfilePage -------------------------
+/*
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType
     postsData: PostsDataType[]
@@ -61,7 +59,10 @@ export type NewPostType = {
     newText: string
 }
 
+ */
+
 // Типизация для страницы ProfileInfoAPIComponent
+/*
 export type ProfileInfoAPIComponentPropsType =
     ProfileInfoAPIComponentMapStateToProps &
     ProfileInfoAPIComponentMapDispatchToProps &
@@ -78,7 +79,10 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
     goToPage: (id: string) => void
 }
 
+ */
+
 // Типизация для страницы MyPosts
+/*
 export type MyPostsPropsType = {
     posts: Array<PostsDataType>
     newPost: NewPostType
@@ -87,15 +91,21 @@ export type MyPostsPropsType = {
     addPost: () => void
 }
 
+ */
+
 
 // Типизация для ProfileInfo Actions
+/*
 export type SetUserProfileActionType = {
     type: typeof SET_USER_PROFILE
     profileInfo: ProfileInfoType
 }
 
 
+ */
+
 // Типизация для MyPosts Actions
+/*
 export type MyPostsActionsType =
     AddPostActionType |
     UpdateNewPostHeaderActionType |
@@ -116,20 +126,28 @@ export type UpdateNewPostTextActionType = {
     newPostText: string
 }
 
+
+ */
 // --------------- Типизация для MessagesPage -------------------------
+/*
 export type MessagesPagePropsType = {
     // dialogsData: Array<DialogsDataType>,
     messagesData: Array<MessagesDataType>
     newMessg: string
 }
 
+ */
 
+/*
 export type MessagesDataType = {
     id: number
     message: string
 }
 
+ */
+
 // Типизация для страницы MyMessages
+/*
 export type MyMessagesPropsType =
     MyMessagesMapStateToProps &
     MyMessagesMapDispatchToProps
@@ -145,8 +163,11 @@ type MyMessagesMapDispatchToProps = {
     sendNewMessage: () => void
 }
 
+ */
+
 
 // Типизация для страницы NewMessage
+/*
 export type NewMessageAreaPropsType = {
     newMessg: string
     updateNewMessage: (textareaValue: string) => void
@@ -154,7 +175,10 @@ export type NewMessageAreaPropsType = {
     isAuth:boolean
 }
 
+ */
+
 // Типизация для MyMessages Actions
+/*
 export type MyMessagesActionsType =
     SendNewMessageActionType |
     UpdateNewSendMessageActionType
@@ -167,6 +191,8 @@ export type UpdateNewSendMessageActionType = {
     type: typeof UPDATE_NEW_SEND_MESSAGE
     message: string
 }
+
+ */
 
 // --------------- Типизация для FriendsListData -------------------------
 /*
@@ -181,6 +207,7 @@ export type FriendsListDataType = {
 
 
 // --------------- Типизация для UsersPageData -------------------------
+/*
 export type UsersInitialState = {
     items: UsersListType[]
     totalCount: number
@@ -204,8 +231,10 @@ type UsersPhotos = {
     large: string
 }
 
-// Типизация для страницы UsersAPIComponent
+ */
 
+// Типизация для страницы UsersAPIComponent
+/*
 export type UsersAPIComponentPropsType =
     UsersAPIComponentMapStateToProps &
     UsersAPIComponentMapDispatchToProps
@@ -226,8 +255,11 @@ type UsersAPIComponentMapDispatchToProps = {
     follow: (id: number) => void
 }
 
+ */
+
 
 // Типизация для страницы Users
+/*
 export type UsersPropsType = {
     items: UsersListType[]
     totalCount: number
@@ -242,8 +274,11 @@ export type UsersPropsType = {
     follow: (id: number) => void
 }
 
+ */
+
 
 // Типизация для UsersAPIComponent Actions
+/*
 export type UsersAPIComponentActionsType =
     FollowFriendActionType |
     UnfollowFriendActionType |
@@ -289,6 +324,8 @@ export type ToggleIsFollowingInProgressActionType = {
     isFetching: boolean
     userId: number
 }
+
+ */
 
 // --------------- Типизация для authPage -------------------------
 

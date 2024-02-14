@@ -1,4 +1,17 @@
-import {MessagesDataType, MessagesPagePropsType, MyMessagesActionsType, SendNewMessageActionType, UpdateNewSendMessageActionType} from '../types/entities'
+import {MessagesDataType} from '../components/sections/main/messages/myMessages/message/Message'
+
+// Типизация
+export type MessagesPagePropsType = {
+    messagesData: Array<MessagesDataType>
+    newMessg: string
+}
+
+type MyMessagesActionsType =
+    SendNewMessageActionType |
+    UpdateNewSendMessageActionType
+
+type SendNewMessageActionType = ReturnType<typeof sendNewMessage>
+type UpdateNewSendMessageActionType = ReturnType<typeof updateNewMessage>
 
 // *********** Константы названий экшенов ****************
 export const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
@@ -37,7 +50,7 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
         case UPDATE_NEW_SEND_MESSAGE:
             return {
                 ...state,
-                newMessg: action.message
+                newMessg: action.payload.message
             }
 
         default:
@@ -47,12 +60,11 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const sendNewMessage = (): SendNewMessageActionType => ({
-    type: SEND_NEW_MESSAGE
-})
-export const updateNewMessage = (textareaValue: string): UpdateNewSendMessageActionType => ({
-    type: UPDATE_NEW_SEND_MESSAGE,
-    message: textareaValue
-})
+export const sendNewMessage = () => {
+    return {type: SEND_NEW_MESSAGE} as const
+}
+export const updateNewMessage = (textareaValue: string) => {
+    return {type: UPDATE_NEW_SEND_MESSAGE, payload: {message: textareaValue}} as const
+}
 
 // *********** Thunk - санки необходимые для общения с DAL ****************

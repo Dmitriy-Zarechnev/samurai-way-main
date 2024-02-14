@@ -1,8 +1,63 @@
 import img2 from '../assets/images/winter.jpg'
 import img1 from '../assets/images/Cupcake.jpg'
-import {AddPostActionType, MyPostsActionsType, PostsDataType, ProfileInfoType, ProfilePagePropsType, SetUserProfileActionType, UpdateNewPostHeaderActionType, UpdateNewPostTextActionType} from '../types/entities'
 import {profileAPI} from '../api/api'
 import {Dispatch} from 'redux'
+
+// Типизация
+export type ProfilePagePropsType = {
+    profileInfo: ProfileInfoType
+    postsData: PostsDataType[]
+    newPost: NewPostType
+}
+
+export type  ProfileInfoType = {
+    aboutMe: string
+    contacts: Contacts
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number | null
+    photos: {
+        small: string
+        large: string
+    }
+}
+
+type Contacts = {
+    facebook: string
+    website: string | null
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string | null
+    github: string
+    mainLink: string | null
+}
+
+export type PostsDataType = {
+    id: number
+    header: string
+    src: string
+    message: string
+    likesCount: number
+}
+
+export type NewPostType = {
+    newHeader: string
+    newText: string
+}
+
+type MyPostsActionsType =
+    AddPostActionType |
+    UpdateNewPostHeaderActionType |
+    UpdateNewPostTextActionType |
+    SetUserProfileActionType
+
+
+type AddPostActionType = ReturnType<typeof addPostAC>
+type UpdateNewPostHeaderActionType = ReturnType<typeof updateNewPostInputAC>
+type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAreaAC>
+type SetUserProfileActionType = ReturnType<typeof setUserProfileAC>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = 'ADD-POST'
@@ -80,7 +135,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 ...state,
                 newPost: {
                     ...state.newPost,
-                    newText: action.newPostText
+                    newText: action.payload.newPostText
                 }
             }
 
@@ -89,13 +144,13 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 ...state,
                 newPost: {
                     ...state.newPost,
-                    newHeader: action.newHeaderText
+                    newHeader: action.payload.newHeaderText
                 }
             }
 
         case SET_USER_PROFILE:
             return {
-                ...state, profileInfo: action.profileInfo
+                ...state, profileInfo: action.payload.profileInfo
             }
 
         default:
@@ -105,18 +160,18 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const addPost = (): AddPostActionType => ({
-    type: ADD_POST
-})
-export const updateNewPostInput = (headerValue: string): UpdateNewPostHeaderActionType => ({
-    type: UPDATE_NEW_POST_HEADER,
-    newHeaderText: headerValue
-})
-export const updateNewPostTextArea = (postValue: string): UpdateNewPostTextActionType => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newPostText: postValue
-})
-export const setUserProfile = (profileInfo: ProfileInfoType): SetUserProfileActionType => ({type: SET_USER_PROFILE, profileInfo})
+export const addPostAC = () => {
+    return {type: ADD_POST} as const
+}
+export const updateNewPostInputAC = (headerValue: string) => {
+    return {type: UPDATE_NEW_POST_HEADER, payload: {newHeaderText: headerValue}} as const
+}
+export const updateNewPostTextAreaAC = (postValue: string) => {
+    return {type: UPDATE_NEW_POST_TEXT, payload: {newPostText: postValue}} as const
+}
+export const setUserProfileAC = (profileInfo: ProfileInfoType) => {
+    return {type: SET_USER_PROFILE, payload: {profileInfo}} as const
+}
 
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
@@ -128,7 +183,7 @@ export const goToPage = (id: string) => {
         if (!userId) userId = 30743
 
         profileAPI.userProfile(userId).then(data => {
-            dispatch(setUserProfile(data))
+            dispatch(setUserProfileAC(data))
         })
     }
 }

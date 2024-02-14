@@ -1,7 +1,10 @@
 import React from 'react'
 import S from './Message.module.css'
-import {MessagesDataType} from '../../../../../../types/entities'
 
+export type MessagesDataType = {
+    id: number
+    message: string
+}
 
 export const Message = (props: { messagesData: Array<MessagesDataType> }) => {
     return (
@@ -13,5 +16,5 @@ export const Message = (props: { messagesData: Array<MessagesDataType> }) => {
     )
 }
 
-export default Message
+
 

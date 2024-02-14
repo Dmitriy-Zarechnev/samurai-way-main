@@ -1,7 +1,8 @@
 import React from 'react'
 import S from './FriendsList.module.css'
 import {NavLink} from 'react-router-dom'
-import {FriendsListDataType} from '../../../types/entities'
+import {FriendsListDataType} from '../../../redux/friendsList-reducer'
+
 
 
 export const FriendsList = (props: { friendsList: FriendsListDataType[], navlink: string }) => {

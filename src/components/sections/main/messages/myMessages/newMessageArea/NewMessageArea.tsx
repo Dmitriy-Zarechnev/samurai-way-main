@@ -2,9 +2,14 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import S from './NewMessageArea.module.css'
 import {Button} from '../../../../../common/button/Button'
 import {TextArea} from '../../../../../common/textarea/TextArea'
-import {NewMessageAreaPropsType} from '../../../../../../types/entities'
 import {Redirect} from 'react-router-dom'
 
+export type NewMessageAreaPropsType = {
+    newMessg: string
+    updateNewMessage: (textareaValue: string) => void
+    sendNewMessage: () => void
+    isAuth:boolean
+}
 
 export const NewMessageArea = (props: NewMessageAreaPropsType) => {
 

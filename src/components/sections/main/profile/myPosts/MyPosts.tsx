@@ -4,7 +4,16 @@ import S from './MyPosts.module.css'
 import {Button} from '../../../../common/button/Button'
 import {TextArea} from '../../../../common/textarea/TextArea'
 import {Input} from '../../../../common/input/Input'
-import {MyPostsPropsType} from '../../../../../types/entities'
+import {NewPostType, PostsDataType} from '../../../../../redux/profile-reducer'
+
+// Типизация
+type MyPostsPropsType = {
+    posts: Array<PostsDataType>
+    newPost: NewPostType
+    updateNewPostTextArea: (postValue: string) => void
+    updateNewPostInput: (headerValue: string) => void
+    addPost: () => void
+}
 
 export const MyPosts = (props: MyPostsPropsType) => {
 
@@ -21,7 +30,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
     const onKeyDownInputHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         e.ctrlKey && e.key === 'Enter' && onClickAddNewPostHandler()
     }
-    //  ---------------------------------------------------------
+
 
     //  --------------   Функции для textarea  -----------------
     const onChangePostTextAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,7 +42,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
         e.ctrlKey && e.key === 'Enter' && onClickAddNewPostHandler()
     }
 
-    //  ---------------------------------------------------------
+
     return (
         <div className={S.my_posts}>
             <h3 className={S.my_posts__header}>My posts</h3>
@@ -73,5 +82,4 @@ export const MyPosts = (props: MyPostsPropsType) => {
             <Post postsData={props.posts}/>
         </div>
     )
-
 }

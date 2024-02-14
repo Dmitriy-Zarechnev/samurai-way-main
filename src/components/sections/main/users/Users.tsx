@@ -4,8 +4,22 @@ import S from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
-import {UsersPropsType} from '../../../../types/entities'
+import {UsersListType} from '../../../../redux/users-reducer'
 
+// Типизация
+export type UsersPropsType = {
+    items: UsersListType[]
+    totalCount: number
+    pageSize: number
+    currentPage: number
+    pagStart: number[]
+    pagCenter: number[]
+    pagEnd: number[]
+    followingInProgress: number[]
+    onPageChanged: (currentPage: number) => void
+    unFollow: (id: number) => void
+    follow: (id: number) => void
+}
 
 export const Users = (props: UsersPropsType) => {
 
