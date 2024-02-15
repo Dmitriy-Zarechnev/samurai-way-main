@@ -77,10 +77,12 @@ button:not(:disabled):hover {
     color: var(--accent-main);
 }
 
+
 /* Стили при клике на кнопки */
 button:not(:disabled):active {
     transform: scale(0.96);
 }
+
 
 /* Стили disabled кнопки */
 button:disabled {
@@ -103,6 +105,7 @@ a:hover {
     background-size: 100% 3px;
     cursor: pointer;
 }
+
 
 /*a:visited {*/
 /*    color: var(--accent-main);*/
