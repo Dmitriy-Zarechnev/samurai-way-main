@@ -40,7 +40,8 @@ test('profile reducer should increase the postsData length by one', () => {
         newPost: {
             newHeader: '',
             newText: ''
-        }
+        },
+        status: ''
     }
 
     const newState = profileReducer(state, addPost())
@@ -90,7 +91,8 @@ test('profile reducer should update new post text', () => {
         newPost: {
             newHeader: '',
             newText: ''
-        }
+        },
+        status: ''
     }
 
     const text = 'Update'
@@ -141,7 +143,8 @@ test('profile reducer should update new post header', () => {
         newPost: {
             newHeader: '',
             newText: ''
-        }
+        },
+        status: ''
     }
 
     const text = 'New Header'
@@ -193,7 +196,8 @@ test('profile reducer should update profileInfo', () => {
         newPost: {
             newHeader: '',
             newText: ''
-        }
+        },
+        status: ''
     }
 
     const info = {

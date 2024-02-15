@@ -8,6 +8,7 @@ export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType
     postsData: PostsDataType[]
     newPost: NewPostType
+    status: string
 }
 
 export type  ProfileInfoType = {
@@ -51,19 +52,25 @@ type MyPostsActionsType =
     AddPostActionType |
     UpdateNewPostHeaderActionType |
     UpdateNewPostTextActionType |
-    SetUserProfileActionType
+    SetUserProfileActionType |
+    getUserStatusActionType |
+    updateUserStatusActionType
 
 
 type AddPostActionType = ReturnType<typeof addPost>
 type UpdateNewPostHeaderActionType = ReturnType<typeof updateNewPostInput>
 type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextArea>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
+type getUserStatusActionType = ReturnType<typeof getUserStatus>
+type updateUserStatusActionType = ReturnType<typeof updateUserStatus>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = 'ADD-POST'
 export const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
 export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 export const SET_USER_PROFILE = 'SET-USER-PROFILE'
+export const GET_USER_STATUS = 'GET-USER-STATUS'
+export const UPDATE_USER_STATUS = 'UPDATE-USER-STATUS'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -103,7 +110,8 @@ const initialState: ProfilePagePropsType = {
     newPost: {
         newHeader: '',
         newText: ''
-    }
+    },
+    status: ''
 }
 
 
@@ -153,6 +161,16 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 ...state, profileInfo: action.payload.profileInfo
             }
 
+        case GET_USER_STATUS:
+            return {
+                ...state, status: action.payload.status
+            }
+
+        case UPDATE_USER_STATUS:
+            return {
+                ...state, status: action.payload.status
+            }
+
         default:
             return state
     }
@@ -172,6 +190,12 @@ export const updateNewPostTextArea = (postValue: string) => {
 export const setUserProfile = (profileInfo: ProfileInfoType) => {
     return {type: SET_USER_PROFILE, payload: {profileInfo}} as const
 }
+export const getUserStatus = (status: string) => {
+    return {type: GET_USER_STATUS, payload: {status}} as const
+}
+export const updateUserStatus = (status: string) => {
+    return {type: UPDATE_USER_STATUS, payload: {status}} as const
+}
 
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
@@ -188,3 +212,24 @@ export const goToPage = (id: string) => {
     }
 }
 
+export const getStatus = (id: number) => {
+
+    return (dispatch: Dispatch<MyPostsActionsType>) => {
+
+        profileAPI.getStatus(id).then(response => {
+            debugger
+            dispatch(getUserStatus(response.statusText))
+        })
+    }
+}
+
+export const updateStatus = (status: string) => {
+
+    return (dispatch: Dispatch<MyPostsActionsType>) => {
+
+        profileAPI.updateStatus(status).then(response => {
+            debugger
+            dispatch(updateUserStatus(response.statusText))
+        })
+    }
+}

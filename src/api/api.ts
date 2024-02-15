@@ -1,4 +1,4 @@
- import axios from 'axios'
+import axios from 'axios'
 
 // ---------- Instance - хранит объект с общими настройками запроса ----------------
 const instance = axios.create({
@@ -30,6 +30,12 @@ export const followUnfollowAPI = {
 export const profileAPI = {
     userProfile(userId: number) {
         return instance.get(`profile/${userId}`).then(response => response.data)
+    },
+    getStatus(userId: number) {
+        return instance.get(`status/${userId}`)
+    },
+    updateStatus(status: string) {
+        return instance.put(`status`, {status})
     }
 }
 
