@@ -4,6 +4,8 @@ import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/use
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {AppRootState} from '../../../../redux/redux-store'
+import {compose} from 'redux'
+import {withAuthRedirect} from '../../../../hoc/withAuthRedirect'
 
 // Типизация
 export type UsersAPIComponentPropsType =
@@ -96,9 +98,8 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-
-export const UsersContainer = connect(mapStateToProps,
-    {getUsers, newPageGetUsers, follow, unFollow}
-)(UsersAPIComponent)
-
-
+export const UsersContainer = compose(
+    withAuthRedirect,
+    connect(mapStateToProps,
+        {getUsers, newPageGetUsers, follow, unFollow}
+    ))(UsersAPIComponent)  as React.FC

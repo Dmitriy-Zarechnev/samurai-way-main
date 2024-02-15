@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {sendNewMessage, updateNewMessage} from '../../../../../redux/messages-reducer'
 import {AppRootState} from '../../../../../redux/redux-store'
 import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
+import {compose} from 'redux'
+import React from 'react'
 
 
 export type MyMessagesPropsType =
@@ -25,7 +27,10 @@ let mapStateToProps = (state: AppRootState) => {
 }
 
 
-export const MyMessagesContainer = withAuthRedirect(connect(mapStateToProps,
-    {updateNewMessage, sendNewMessage})(MyMessages))
+export const MyMessagesContainer = compose(
+    withAuthRedirect,
+    connect(mapStateToProps,
+        {updateNewMessage, sendNewMessage})
+)(MyMessages) as React.FC
 
 
