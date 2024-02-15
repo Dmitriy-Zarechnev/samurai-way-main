@@ -40,7 +40,7 @@ const mapStateToProps = (state: AppRootState) => {
 }
 
 export const ProfileInfoContainer = compose(
-    withAuthRedirect,
+    // withAuthRedirect,
     connect(mapStateToProps,
         {
             setUserProfile,

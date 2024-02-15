@@ -27,9 +27,6 @@
     text-transform: uppercase;
 }
 
-.profile_info__text {
-    font-size: 20px;
-}
 
 .profile__work_box {
     display: flex;

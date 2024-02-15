@@ -6,7 +6,7 @@ import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
 import sam from '../../../../../assets/images/sam.webp'
 import {ProfileInfoType} from '../../../../../redux/profile-reducer'
-
+import {ProfileStatus} from '../../../../common/ProfileStatus/ProfileStatus'
 
 
 export const ProfileInfo = (props: { profileInfo: ProfileInfoType }) => {
@@ -19,9 +19,8 @@ export const ProfileInfo = (props: { profileInfo: ProfileInfoType }) => {
                             <p className={S.profile__full_name}>
                                 {props.profileInfo.fullName}
                             </p>
-                            <p className={S.profile_info__text}>
-                                {props.profileInfo.aboutMe}
-                            </p>
+                            <ProfileStatus status={props.profileInfo.aboutMe}/>
+
                             <div className={S.profile__work_box}>
                                 <p className={S.profile_work__text}>
                                     {props.profileInfo.lookingForAJobDescription}
