@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {getStatus,  goToPage, ProfileInfoType, setUserProfile} from '../../../../../redux/profile-reducer'
+import {getStatus, goToPage, ProfileInfoType, setUserProfile, updateStatus} from '../../../../../redux/profile-reducer'
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
@@ -17,7 +17,8 @@ type ProfileInfoAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
 type ProfileInfoAPIComponentMapDispatchToProps = {
     setUserProfile: (profileInfo: ProfileInfoType) => void
     goToPage: (id: string) => void
-    getStatus:(userId: number)=>void
+    getStatus:(userId: string)=>void
+    updateStatus:(status: string)=>void
 }
 
 class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPropsType> {
@@ -25,19 +26,20 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus(+this.props.match.params.userId)
+        this.props.getStatus(this.props.match.params.userId)
     }
 
     render() {
 
         return (
-            <ProfileInfo profileInfo={this.props.profileInfo}/>)
+            <ProfileInfo profileInfo={this.props.profileInfo} status={this.props.status} updateStatus={this.props.updateStatus}/>)
     }
 }
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        profileInfo: state.profilePage.profileInfo
+        profileInfo: state.profilePage.profileInfo,
+        status:state.profilePage.status
     }
 }
 
@@ -47,7 +49,8 @@ export const ProfileInfoContainer = compose(
         {
             setUserProfile,
             goToPage,
-            getStatus
+            getStatus,
+            updateStatus
         }),
     withRouter
 )(ProfileInfoAPIComponent) as React.FC

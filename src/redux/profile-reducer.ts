@@ -212,13 +212,12 @@ export const goToPage = (id: string) => {
     }
 }
 
-export const getStatus = (id: number) => {
+export const getStatus = (id: string) => {
 
     return (dispatch: Dispatch<MyPostsActionsType>) => {
 
-        profileAPI.getStatus(id).then(response => {
-            debugger
-            dispatch(getUserStatus(response.statusText))
+        profileAPI.getStatus(Number(id)).then(response => {
+            dispatch(getUserStatus(response.data))
         })
     }
 }
@@ -228,8 +227,9 @@ export const updateStatus = (status: string) => {
     return (dispatch: Dispatch<MyPostsActionsType>) => {
 
         profileAPI.updateStatus(status).then(response => {
-            debugger
-            dispatch(updateUserStatus(response.statusText))
+            if (response.data.resultCode === 0) {
+                dispatch(updateUserStatus(status))
+            }
         })
     }
 }
