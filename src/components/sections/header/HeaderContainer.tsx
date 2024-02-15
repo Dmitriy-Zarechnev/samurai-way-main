@@ -1,7 +1,7 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {authMe, setAuthUserData, UserDataType} from '../../../redux/auth-reducer'
+import {authMe, UserDataType} from '../../../redux/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 
 // Типизация
@@ -11,7 +11,6 @@ type HeaderAPIContainerPropsType =
 
 type HeaderAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
 type HeaderAPIComponentMapDispatchToProps = {
-    setAuthUserData: (data: UserDataType) => void
     authMe: () => void
 }
 
@@ -39,6 +38,6 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const HeaderContainer = connect(mapStateToProps, {setAuthUserData, authMe})(HeaderAPIContainer)
+export const HeaderContainer = connect(mapStateToProps, {authMe})(HeaderAPIContainer)
 
 
