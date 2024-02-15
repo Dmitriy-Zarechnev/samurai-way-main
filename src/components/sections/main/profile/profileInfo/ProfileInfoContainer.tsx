@@ -38,6 +38,10 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const ProfileInfoContainer = connect(mapStateToProps, {setUserProfile, goToPage})(withAuthRedirect(withRouter(ProfileInfoAPIComponent)))
+export const ProfileInfoContainer = withAuthRedirect(connect(mapStateToProps,
+    {
+        setUserProfile,
+        goToPage
+    })(withRouter(ProfileInfoAPIComponent)))
 
 
