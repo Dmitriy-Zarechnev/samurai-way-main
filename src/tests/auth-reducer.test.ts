@@ -1,4 +1,3 @@
-
 import {AuthPageInitialState, authReducer, setAuthUserData, UserDataType} from '../redux/auth-reducer'
 
 test('auth reducer should return newData', () => {
@@ -10,7 +9,12 @@ test('auth reducer should return newData', () => {
             login: ''
         },
         isAuth: false,
-        isFetching: false
+        isFetching: false,
+        logIn: {
+            email: '',
+            password: '',
+            rememberMe: false
+        }
     }
 
     const newData: UserDataType = {

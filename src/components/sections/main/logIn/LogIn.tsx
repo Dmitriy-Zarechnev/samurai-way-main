@@ -1,12 +1,19 @@
 import React from 'react'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import S from './LogIn.module.css'
+import {LogInType} from '../../../../redux/auth-reducer'
 
-type Inputs = {
+export type Inputs = {
     LogIn: string
     Password: string
-    Remember: string
+    Remember: boolean
 }
+
+type LogInPropsType = {
+    onSubmitForm: (data: Inputs) => void
+    logIn: LogInType
+}
+
 const VarObj = {
     logIn: 'LogIn',
     password: 'Password',
@@ -15,8 +22,8 @@ const VarObj = {
     placeHolderMessage: 'Write down your'
 } as const
 
-export const LogIn = () => {
-
+export const LogIn = (props: LogInPropsType) => {
+debugger
     const {
         register,
         handleSubmit,
@@ -27,6 +34,7 @@ export const LogIn = () => {
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data)
+        props.onSubmitForm(data)
         reset()
     }
 
@@ -34,28 +42,30 @@ export const LogIn = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={S.formWrapper}>
             <div className={S.labelInput}>
-                {/* register your input into the hook by invoking the "register" function */}
+
                 <label className={S.label} htmlFor={VarObj.logIn}>{VarObj.logIn}</label>
                 <input type={'text'} id={VarObj.logIn}
+                       defaultValue={props.logIn.email}
                        placeholder={`${VarObj.placeHolderMessage} ${VarObj.logIn}`}
                        {...register(VarObj.logIn, {required: true})}
-                       className={`${S.input} ${errors.Password ? S.errorClass : ''}`}
+                       className={`${S.input} ${errors.LogIn ? S.errorClass : ''}`}
                 />
-                {/* errors will return when field validation fails  */}
-                {<span className={`${S.span} ${errors.Password ? S.errorDisplay : S.spanDisplay}`}>
+
+                {<span className={`${S.span} ${errors.LogIn ? S.errorDisplay : S.spanDisplay}`}>
                     {VarObj.logIn} {VarObj.errorMessage}
                 </span>}
             </div>
 
             <div className={S.labelInput}>
-                {/* include validation with required or other standard HTML validation rules */}
+
                 <label className={S.label} htmlFor={VarObj.password}>{VarObj.password}</label>
                 <input type={'password'} id={VarObj.password}
+                       defaultValue={props.logIn.password}
                        placeholder={`${VarObj.placeHolderMessage} ${VarObj.password}`}
                        {...register(VarObj.password, {required: true})}
                        className={`${S.input} ${errors.Password ? S.errorClass : ''}`}
                 />
-                {/* errors will return when field validation fails  */}
+
                 {<span className={`${S.span} ${errors.Password ? S.errorDisplay : S.spanDisplay}`}>
                     {VarObj.password} {VarObj.errorMessage}
                 </span>}
@@ -64,6 +74,8 @@ export const LogIn = () => {
             <div className={S.checkBox}>
                 <input className={S.inputCheck}
                        id={VarObj.remember}
+
+                       checked={props.logIn.rememberMe}
                        type={'checkbox'}
                        {...register(VarObj.remember)}
                 />
