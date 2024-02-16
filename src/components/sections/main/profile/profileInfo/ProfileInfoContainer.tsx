@@ -4,7 +4,6 @@ import {getStatus, goToPage, ProfileInfoType, setUserProfile, updateStatus} from
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
-import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 
 // Типизация
@@ -26,7 +25,7 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus(this.props.match.params.userId)
+        this.props.getStatus('30743')
     }
 
     render() {

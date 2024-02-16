@@ -167,6 +167,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
             }
 
         case UPDATE_USER_STATUS:
+            debugger
             return {
                 ...state, status: action.payload.status
             }
@@ -217,6 +218,7 @@ export const getStatus = (id: string) => {
     return (dispatch: Dispatch<MyPostsActionsType>) => {
 
         profileAPI.getStatus(Number(id)).then(response => {
+
             dispatch(getUserStatus(response.data))
         })
     }
@@ -227,6 +229,7 @@ export const updateStatus = (status: string) => {
     return (dispatch: Dispatch<MyPostsActionsType>) => {
 
         profileAPI.updateStatus(status).then(response => {
+
             if (response.data.resultCode === 0) {
                 dispatch(updateUserStatus(status))
             }

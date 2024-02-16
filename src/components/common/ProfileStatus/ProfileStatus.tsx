@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react'
 import S from './ProfileStatus.module.css'
 
+
 // Типизация
 type ProfileStatusPropsType = {
     status: string
@@ -37,6 +38,14 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, State
         this.setState({
             status: e.currentTarget.value
         })
+    }
+
+    componentDidUpdate(prevProps: Readonly<ProfileStatusPropsType>, prevState: Readonly<StateType>, snapshot?: any) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
