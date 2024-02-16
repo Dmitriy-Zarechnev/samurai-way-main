@@ -1,0 +1,83 @@
+@import "../../../../ColorVar.module.css";
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label {
+    font-size: 20px;
+    color: var(--main-text);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.input {
+    padding: 5px;
+    font-size: 18px;
+    color: var(--main-text);
+    border-radius: 5px;
+    border: 1px solid var(--secondary-bg);
+    margin-bottom: 5px;
+}
+
+.errorClass {
+    border: 1px solid red;
+}
+
+.errorClass:focus-visible {
+    outline: 2px solid red
+}
+
+.span {
+    color: red;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.checkBox {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.spanDisplay {
+    opacity: 0;
+}
+
+.errorDisplay {
+    opacity: 1;
+}
+
+.inputCheck {
+    margin-right: 5px;
+}
+
+.labelCheck {
+    font-size: 18px;
+    color: var(--main-text);
+    text-transform: capitalize;
+}
+
+.submit {
+    padding: 5px 5px;
+    font-size: 20px;
+    width: 100%;
+    color: var(--secondary-text);
+    background-color: var(--secondary-bg);
+}
+
+.submit:hover {
+    cursor: pointer;
+    color: var(--accent-main);
+    background-color: var(--secondary-bg);
+}
