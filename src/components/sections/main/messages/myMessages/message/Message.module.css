@@ -3,7 +3,7 @@
 .message_list {
     list-style: none;
     overflow: auto;
-    height: calc(100% - 30px - 140px);
+    height: calc(100% - 30px - 180px);
     margin-bottom: 5px;
     display: flex;
     flex-direction: column;

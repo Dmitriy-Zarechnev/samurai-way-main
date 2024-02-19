@@ -23,7 +23,7 @@ const VarObj = {
 } as const
 
 export const LogIn = (props: LogInPropsType) => {
-debugger
+
     const {
         register,
         handleSubmit,

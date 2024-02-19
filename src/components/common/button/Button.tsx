@@ -4,7 +4,7 @@ import S from './Button.module.css'
 // Типизация
 type ButtonPropsType = {
     name: string
-    onClick: () => void
+    onClick?: () => void
     disabled?: boolean
     additionalClass?: string
 }

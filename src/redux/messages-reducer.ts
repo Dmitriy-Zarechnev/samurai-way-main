@@ -3,19 +3,16 @@ import {MessagesDataType} from '../components/sections/main/messages/myMessages/
 // Типизация
 export type MessagesPagePropsType = {
     messagesData: Array<MessagesDataType>
-    newMessg: string
 }
 
 type MyMessagesActionsType =
-    SendNewMessageActionType |
-    UpdateNewSendMessageActionType
+    SendNewMessageActionType
 
 type SendNewMessageActionType = ReturnType<typeof sendNewMessage>
-type UpdateNewSendMessageActionType = ReturnType<typeof updateNewMessage>
+// type UpdateNewSendMessageActionType = ReturnType<typeof updateNewMessage>
 
 // *********** Константы названий экшенов ****************
 export const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
-export const UPDATE_NEW_SEND_MESSAGE = 'UPDATE-NEW-SEND-MESSAGE'
 
 
 // *********** Первоначальный стэйт для messagesReducer ****************
@@ -27,8 +24,7 @@ const initialState: MessagesPagePropsType = {
         {id: 4, message: 'Are you happy in this world?'},
         {id: 5, message: 'Tell me something , boy'},
         {id: 6, message: 'I would rather not say'}
-    ],
-    newMessg: ''
+    ]
 }
 
 
@@ -39,19 +35,18 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
         case SEND_NEW_MESSAGE:
             const newMessgBody: MessagesDataType = {
                 id: state.messagesData.length + 1,
-                message: state.newMessg
+                message: action.payload.text
             }
             return {
                 ...state,
-                messagesData: [...state.messagesData, newMessgBody],
-                newMessg: ''
+                messagesData: [...state.messagesData, newMessgBody]
             }
 
-        case UPDATE_NEW_SEND_MESSAGE:
-            return {
-                ...state,
-                newMessg: action.payload.message
-            }
+        // case UPDATE_NEW_SEND_MESSAGE:
+        //     return {
+        //         ...state,
+        //         newMessg: action.payload.message
+        //     }
 
         default:
             return state
@@ -60,11 +55,11 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const sendNewMessage = () => {
-    return {type: SEND_NEW_MESSAGE} as const
+export const sendNewMessage = (text: string) => {
+    return {type: SEND_NEW_MESSAGE, payload: {text}} as const
 }
-export const updateNewMessage = (textareaValue: string) => {
-    return {type: UPDATE_NEW_SEND_MESSAGE, payload: {message: textareaValue}} as const
-}
+// export const updateNewMessage = (textareaValue: string) => {
+//     return {type: UPDATE_NEW_SEND_MESSAGE, payload: {message: textareaValue}} as const
+// }
 
 // *********** Thunk - санки необходимые для общения с DAL ****************

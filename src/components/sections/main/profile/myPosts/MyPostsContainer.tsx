@@ -12,6 +12,6 @@ let mapStateToProps = (state: AppRootState) => {
 }
 
 export const MyPostsContainer = connect(mapStateToProps, {
-    updateNewPostTextArea: updateNewPostTextArea, updateNewPostInput: updateNewPostInput, addPost: addPost
+    updateNewPostTextArea, updateNewPostInput, addPost
 })(MyPosts)
 
