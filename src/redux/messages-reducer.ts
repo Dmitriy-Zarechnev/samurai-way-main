@@ -5,11 +5,9 @@ export type MessagesPagePropsType = {
     messagesData: Array<MessagesDataType>
 }
 
-type MyMessagesActionsType =
-    SendNewMessageActionType
-
+type MyMessagesActionsType = SendNewMessageActionType
 type SendNewMessageActionType = ReturnType<typeof sendNewMessage>
-// type UpdateNewSendMessageActionType = ReturnType<typeof updateNewMessage>
+
 
 // *********** Константы названий экшенов ****************
 export const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
@@ -27,27 +25,18 @@ const initialState: MessagesPagePropsType = {
     ]
 }
 
-
 // *********** Reducer - редьюсер, чистая функция для изменения стэйта после получения экшена от диспача ****************
 export const messagesReducer = (state: MessagesPagePropsType = initialState, action: MyMessagesActionsType): MessagesPagePropsType => {
 
     switch (action.type) {
         case SEND_NEW_MESSAGE:
-            const newMessgBody: MessagesDataType = {
-                id: state.messagesData.length + 1,
-                message: action.payload.text
-            }
             return {
                 ...state,
-                messagesData: [...state.messagesData, newMessgBody]
+                messagesData: [...state.messagesData, {
+                    id: state.messagesData.length + 1,
+                    message: action.payload.text
+                }]
             }
-
-        // case UPDATE_NEW_SEND_MESSAGE:
-        //     return {
-        //         ...state,
-        //         newMessg: action.payload.message
-        //     }
-
         default:
             return state
     }
@@ -58,8 +47,6 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
 export const sendNewMessage = (text: string) => {
     return {type: SEND_NEW_MESSAGE, payload: {text}} as const
 }
-// export const updateNewMessage = (textareaValue: string) => {
-//     return {type: UPDATE_NEW_SEND_MESSAGE, payload: {message: textareaValue}} as const
-// }
+
 
 // *********** Thunk - санки необходимые для общения с DAL ****************

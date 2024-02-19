@@ -6,7 +6,7 @@ import {Button} from '../button/Button'
 
 type FormTextareaPropsType = {
     type: string,
-    onSubmitTextArea: (text: string) => void
+    onSubmitTextArea: (text: string) => void,
 }
 
 
