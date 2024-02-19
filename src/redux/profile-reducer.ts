@@ -7,7 +7,6 @@ import {Dispatch} from 'redux'
 export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType
     postsData: PostsDataType[]
-    newPost: NewPostType
     status: string
 }
 
@@ -43,31 +42,19 @@ export type PostsDataType = {
     likesCount: number
 }
 
-export type NewPostType = {
-    newHeader: string
-    newText: string
-}
-
 type MyPostsActionsType =
     AddPostActionType |
-    UpdateNewPostHeaderActionType |
-    UpdateNewPostTextActionType |
     SetUserProfileActionType |
     getUserStatusActionType |
     updateUserStatusActionType
 
-
 type AddPostActionType = ReturnType<typeof addPost>
-type UpdateNewPostHeaderActionType = ReturnType<typeof updateNewPostInput>
-type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextArea>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
 type getUserStatusActionType = ReturnType<typeof getUserStatus>
 type updateUserStatusActionType = ReturnType<typeof updateUserStatus>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = 'ADD-POST'
-export const UPDATE_NEW_POST_HEADER = 'UPDATE-NEW-POST-HEADER'
-export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 export const SET_USER_PROFILE = 'SET-USER-PROFILE'
 export const GET_USER_STATUS = 'GET-USER-STATUS'
 export const UPDATE_USER_STATUS = 'UPDATE-USER-STATUS'
@@ -107,10 +94,6 @@ const initialState: ProfilePagePropsType = {
         {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
         {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
     ],
-    newPost: {
-        newHeader: '',
-        newText: ''
-    },
     status: ''
 }
 
@@ -121,39 +104,16 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
     switch (action.type) {
 
         case ADD_POST:
-            const newPostBody: PostsDataType = {
+            const newPost: PostsDataType = {
                 id: state.postsData.length + 1,
-                header: state.newPost.newHeader,
+                header: action.payload.header,
                 src: img2,
-                message: state.newPost.newText,
+                message: action.payload.text,
                 likesCount: 0
             }
             return {
                 ...state,
-                postsData: [newPostBody, ...state.postsData],
-                newPost: {
-                    ...state.newPost,
-                    newHeader: '',
-                    newText: ''
-                }
-            }
-
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPost: {
-                    ...state.newPost,
-                    newText: action.payload.newPostText
-                }
-            }
-
-        case UPDATE_NEW_POST_HEADER:
-            return {
-                ...state,
-                newPost: {
-                    ...state.newPost,
-                    newHeader: action.payload.newHeaderText
-                }
+                postsData: [newPost, ...state.postsData]
             }
 
         case SET_USER_PROFILE:
@@ -167,7 +127,6 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
             }
 
         case UPDATE_USER_STATUS:
-            debugger
             return {
                 ...state, status: action.payload.status
             }
@@ -179,14 +138,8 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const addPost = () => {
-    return {type: ADD_POST} as const
-}
-export const updateNewPostInput = (headerValue: string) => {
-    return {type: UPDATE_NEW_POST_HEADER, payload: {newHeaderText: headerValue}} as const
-}
-export const updateNewPostTextArea = (postValue: string) => {
-    return {type: UPDATE_NEW_POST_TEXT, payload: {newPostText: postValue}} as const
+export const addPost = (header: string, text: string) => {
+    return {type: ADD_POST, payload: {header, text}} as const
 }
 export const setUserProfile = (profileInfo: ProfileInfoType) => {
     return {type: SET_USER_PROFILE, payload: {profileInfo}} as const
@@ -213,6 +166,7 @@ export const goToPage = (id: string) => {
     }
 }
 
+//  -------- Получение статуса пользователя ----------------
 export const getStatus = (id: string) => {
 
     return (dispatch: Dispatch<MyPostsActionsType>) => {
@@ -223,7 +177,7 @@ export const getStatus = (id: string) => {
         })
     }
 }
-
+//  -------- Изменение статуса пользователя ----------------
 export const updateStatus = (status: string) => {
 
     return (dispatch: Dispatch<MyPostsActionsType>) => {

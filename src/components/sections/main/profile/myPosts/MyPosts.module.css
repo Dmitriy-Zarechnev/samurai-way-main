@@ -20,14 +20,6 @@
 .my_posts__new_post button {
 }
 
-.my_posts__input_label {
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: capitalize;
-
-    cursor: pointer;
-}
-
 /* Локальные стили для input*/
 .my_posts__new_post input {
 }
