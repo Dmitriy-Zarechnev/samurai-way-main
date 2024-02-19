@@ -2,11 +2,13 @@ import React from 'react'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import S from './LogIn.module.css'
 import {LogInType} from '../../../../redux/auth-reducer'
+import {InputForm} from '../../../common/inputForm/InputForm'
 
 export type Inputs = {
     LogIn: string
     Password: string
     Remember: boolean
+    name:string
 }
 
 type LogInPropsType = {
@@ -83,6 +85,7 @@ export const LogIn = (props: LogInPropsType) => {
             </div>
 
             <button className={S.submit}>Send</button>
+            <InputForm value={'name'} errors={errors} placeholder={'Hello'} register={register} field={'input'}/>
         </form>
     )
 }
