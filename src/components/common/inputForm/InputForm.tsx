@@ -1,40 +1,39 @@
 import React from 'react'
 import S from './InputForm.module.css'
-import {FieldErrors, RegisterOptions} from 'react-hook-form'
+import {FieldError,  UseFormRegister} from 'react-hook-form'
+import {Inputs} from '../../sections/main/logIn/LogIn'
 
 type InputFormPropsType = {
-    field: 'input' | 'textarea',
     value: string,
+    type: 'text' | 'password' | 'email',
     defValue?: string,
-    placeholder: string,
-    register: (name: string, options?: RegisterOptions<Record<string, any>>) => void,
-    errors: FieldErrors
+    placeholder?: string,
+    register: UseFormRegister<any>,
+    errors: FieldError | undefined
 }
 
 export const InputForm = (props: InputFormPropsType) => {
 
     const {
-        field: FieldComponent,
-        value,
-        defValue,
-        placeholder,
-        register,
-        errors,
+        value, type, defValue,
+        placeholder, register, errors,
         ...restProps
     } = props
+
     return (
-        <div>
+        <div className={S.wrapper}>
             <label className={S.label} htmlFor={value}>{value}</label>
-            <FieldComponent type={'text'} id={value}
-                            defaultValue={defValue || ''}
-                            placeholder={placeholder || `Write your ${value}`}
-                            {...register(value, {required: true})}
-                            className={`${S.input} ${errors.value ? S.errorClass : ''}`}
+            <input id={value}
+                   type={type}
+                   defaultValue={defValue || ''}
+                   placeholder={placeholder || `Write your ${value}`}
+                   {...register(value, {required: true})}
+                   className={`${S.field} ${errors ? S.errorClass : ''}`}
             />
 
-            {<span className={`${S.span} ${errors.value ? S.errorDisplay : S.spanDisplay}`}>
-                    {value} field is required
-                </span>}
+            {<span className={`${S.span} ${errors ? S.errorDisplay : S.spanDisplay}`}
+            >{value} field is required
+            </span>}
         </div>
     )
 }
