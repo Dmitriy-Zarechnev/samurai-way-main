@@ -1,7 +1,7 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {authMe} from '../../../redux/auth-reducer'
+import {authMe, serverLogOut} from '../../../redux/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 
 // Типизация
@@ -12,6 +12,7 @@ type HeaderAPIContainerPropsType =
 type HeaderAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
 type HeaderAPIComponentMapDispatchToProps = {
     authMe: () => void
+    serverLogOut: () => void
 }
 
 class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
@@ -24,6 +25,7 @@ class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
     render() {
         return (
             <Header
+                logOut={this.props.serverLogOut}
                 {...this.props}
             />
         )
@@ -39,6 +41,6 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const HeaderContainer = connect(mapStateToProps, {authMe})(HeaderAPIContainer)
+export const HeaderContainer = connect(mapStateToProps, {authMe, serverLogOut})(HeaderAPIContainer)
 
 

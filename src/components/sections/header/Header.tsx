@@ -11,6 +11,7 @@ type HeaderPropsType = {
     email: string
     login: string
     isAuth: boolean
+    logOut: () => void
 }
 
 export const Header = (props: HeaderPropsType) => {
@@ -25,7 +26,7 @@ export const Header = (props: HeaderPropsType) => {
                     ?
                     <div className={S.button_box}>
                         <span className={S.span}>{props.login}</span>
-                        <Button name={'LogOut'}/>
+                        <Button name={'LogOut'} onClick={props.logOut}/>
                     </div>
 
                     : <NavLink to={'/login'}><Button name={'LogIn'}/></NavLink>}
