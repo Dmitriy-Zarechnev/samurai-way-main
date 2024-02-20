@@ -1,23 +1,32 @@
 import React from 'react'
 import S from './NewMessageArea.module.css'
-import {FormTextarea} from '../../../../../common/formTextarea/FormTextarea'
+import {SubmitHandler, useForm} from 'react-hook-form'
+import {TextAreaForm} from '../../../../../common/textareaForm/TextAreaForm'
+import {Button} from '../../../../../common/button/Button'
 
 export type NewMessageAreaPropsType = {
-    sendNewMessage: (text: string) => void
+    sendNewMessage: (message: string) => void
 }
 
 export const NewMessageArea = (props: NewMessageAreaPropsType) => {
 
-    const onSubmitTextArea = (text: string) => {
-        return props.sendNewMessage(text)
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {errors}
+    } = useForm<{ message: string }>()
+
+    const onSubmit: SubmitHandler<{ message: string }> = (data) => {
+        props.sendNewMessage(data.message)
+        reset()
     }
 
     return (
-        <div className={S.new_message}>
-            <FormTextarea type={'message'}
-                          onSubmitTextArea={onSubmitTextArea}
-            />
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className={S.new_message}>
+            <TextAreaForm value={'message'} register={register} errors={errors.message}/>
+            <Button name={'Add New Message'}/>
+        </form>
     )
 }
 

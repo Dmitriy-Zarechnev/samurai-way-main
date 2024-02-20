@@ -34,7 +34,7 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
                 ...state,
                 messagesData: [...state.messagesData, {
                     id: state.messagesData.length + 1,
-                    message: action.payload.text
+                    message: action.payload.message
                 }]
             }
         default:
@@ -44,8 +44,8 @@ export const messagesReducer = (state: MessagesPagePropsType = initialState, act
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const sendNewMessage = (text: string) => {
-    return {type: SEND_NEW_MESSAGE, payload: {text}} as const
+export const sendNewMessage = (message: string) => {
+    return {type: SEND_NEW_MESSAGE, payload: {message}} as const
 }
 
 

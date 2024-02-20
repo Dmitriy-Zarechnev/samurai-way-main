@@ -59,7 +59,7 @@ export const LogIn = (props: LogInPropsType) => {
                 <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>
             </div>
 
-            <Button name={'LogIn'}/>
+            <Button name={'Sing In'}/>
         </form>
     )
 }

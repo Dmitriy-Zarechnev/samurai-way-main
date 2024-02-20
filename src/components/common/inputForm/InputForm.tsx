@@ -1,6 +1,6 @@
 import React from 'react'
 import S from './InputForm.module.css'
-import {FieldError,  UseFormRegister} from 'react-hook-form'
+import {FieldError, UseFormRegister} from 'react-hook-form'
 
 type InputFormPropsType = {
     value: string,
@@ -15,8 +15,7 @@ export const InputForm = (props: InputFormPropsType) => {
 
     const {
         value, type, defValue,
-        placeholder, register, errors,
-        ...restProps
+        placeholder, register, errors
     } = props
 
     return (

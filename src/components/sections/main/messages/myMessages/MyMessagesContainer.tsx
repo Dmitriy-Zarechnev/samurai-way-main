@@ -15,7 +15,7 @@ export type MyMessagesPropsType =
 type MyMessagesMapStateToProps = ReturnType<typeof mapStateToProps>
 
 type MyMessagesMapDispatchToProps = {
-    sendNewMessage: (text: string) => void
+    sendNewMessage: (message: string) => void
 }
 
 
