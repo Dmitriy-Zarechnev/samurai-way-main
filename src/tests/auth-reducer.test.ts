@@ -12,17 +12,18 @@ test('auth reducer should return newData', () => {
             email: '',
             password: '',
             rememberMe: false
-        }
+        },
+        isServerError: ''
     }
 
     const newData = {
         id: 5,
         email: 'hello@gmail.com',
         login: 'Ori',
-        isAuth: true,
+        isAuth: true
     }
 
-    const newState = authReducer(state, setAuthUserData(newData.id, newData.email,newData.login,newData.isAuth))
+    const newState = authReducer(state, setAuthUserData(newData.id, newData.email, newData.login, newData.isAuth))
 
     expect(newState.isAuth).toBe(true)
     expect(newState.id).toBe(5)

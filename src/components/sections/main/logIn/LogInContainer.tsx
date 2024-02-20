@@ -21,13 +21,17 @@ class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
 
     //  -------- Первая авторизация ----------------
     onSubmitForm = (data: Inputs) => {
-
         this.props.serverLogIn(data.LogIn, data.Password, data.Remember)
     }
 
     render() {
         return (
-            <LogIn onSubmitForm={this.onSubmitForm} logIn={this.props.logIn} isAuth={this.props.isAuth}/>
+            <LogIn
+                onSubmitForm={this.onSubmitForm}
+                logIn={this.props.logIn}
+                isAuth={this.props.isAuth}
+                isServerError={this.props.isServerError}
+            />
         )
     }
 }
@@ -35,8 +39,8 @@ class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
 const mapStateToProps = (state: AppRootState) => {
     return {
         logIn: state.auth.logIn,
-        isAuth: state.auth.isAuth
-
+        isAuth: state.auth.isAuth,
+        isServerError: state.auth.isServerError
     }
 }
 

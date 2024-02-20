@@ -16,6 +16,7 @@ type LogInPropsType = {
     onSubmitForm: (data: Inputs) => void
     logIn: LogInType
     isAuth: boolean
+    isServerError: string
 }
 
 
@@ -29,7 +30,6 @@ export const LogIn = (props: LogInPropsType) => {
     } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        debugger
         props.onSubmitForm(data)
         reset()
     }
@@ -67,6 +67,7 @@ export const LogIn = (props: LogInPropsType) => {
                 </div>
 
                 <Button name={'Sing In'}/>
+                {props.isServerError && <p className={S.errorText}>{props.isServerError}</p>}
             </form>
         </>
     )

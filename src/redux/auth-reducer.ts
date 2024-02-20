@@ -7,10 +7,12 @@ import {AppRootState, CommonActionsTypeForApp} from './redux-store'
 // Типизация
 export type AuthReducerActionsType =
     SetAuthUserDataActionType |
-    LogInServerActionType
+    LogInServerActionType |
+    ServerErrorActionType
 
 type SetAuthUserDataActionType = ReturnType<typeof setAuthUserData>
 type LogInServerActionType = ReturnType<typeof logInServer>
+type ServerErrorActionType = ReturnType<typeof serverError>
 
 export type AuthPageInitialState = {
     id: number | null
@@ -19,6 +21,7 @@ export type AuthPageInitialState = {
     isAuth: boolean
     isFetching: boolean
     logIn: LogInType
+    isServerError: string
 }
 
 export type LogInType = {
@@ -33,6 +36,7 @@ type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeF
 // *********** Константы названий экшенов ****************
 const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'
 const LOG_IN_SERVER = 'LOG-IN-SERVER'
+const SERVER_ERROR = 'SERVER-ERROR'
 
 
 // *********** Первоначальный стэйт для authReducer ****************
@@ -46,7 +50,8 @@ const initialState: AuthPageInitialState = {
         email: '',
         password: '',
         rememberMe: false
-    }
+    },
+    isServerError: ''
 }
 
 
@@ -67,7 +72,14 @@ export const authReducer = (state: AuthPageInitialState = initialState, action: 
                     email: action.payload.logIn.email,
                     password: action.payload.logIn.password,
                     rememberMe: action.payload.logIn.rememberMe
-                }
+                },
+                isServerError: ''
+            }
+
+        case SERVER_ERROR:
+            return {
+                ...state,
+                isServerError: action.payload.message
             }
 
         default:
@@ -83,6 +95,10 @@ export const setAuthUserData = (id: number | null, email: string, login: string,
 
 export const logInServer = (logIn: LogInType) => {
     return {type: LOG_IN_SERVER, payload: {logIn}} as const
+}
+
+export const serverError = (message: string) => {
+    return {type: SERVER_ERROR, payload:{message}} as const
 }
 
 
@@ -107,6 +123,8 @@ export const serverLogIn = (email: string, password: string, rememberMe: boolean
             if (data.resultCode === 0) {
                 dispatch(authMe())
                 if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
+            } else {
+                dispatch(serverError(data.messages[0]))
             }
         })
     }

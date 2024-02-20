@@ -8,7 +8,7 @@ type InputFormPropsType = {
     defValue?: string,
     placeholder?: string,
     register: UseFormRegister<any>,
-    errors: FieldError | undefined
+    errors: FieldError | undefined,
 }
 
 export const InputForm = (props: InputFormPropsType) => {
@@ -17,6 +17,7 @@ export const InputForm = (props: InputFormPropsType) => {
         value, type, defValue,
         placeholder, register, errors
     } = props
+
 
     return (
         <div className={S.wrapper}>
@@ -30,8 +31,7 @@ export const InputForm = (props: InputFormPropsType) => {
             />
 
             {<span className={`${S.span} ${errors ? S.errorDisplay : S.spanDisplay}`}
-            >{value} field is required
-            </span>}
+            >{value} field is required</span>}
         </div>
     )
 }
