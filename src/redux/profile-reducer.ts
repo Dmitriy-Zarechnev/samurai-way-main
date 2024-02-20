@@ -167,11 +167,11 @@ export const goToPage = (id: string) => {
 }
 
 //  -------- Получение статуса пользователя ----------------
-export const getStatus = (id: string) => {
+export const getStatus = (id: number) => {
 
     return (dispatch: Dispatch<MyPostsActionsType>) => {
 
-        profileAPI.getStatus(Number(id)).then(response => {
+        profileAPI.getStatus(id).then(response => {
 
             dispatch(getUserStatus(response.data))
         })

@@ -5,7 +5,6 @@ import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
 import {compose} from 'redux'
-import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 
 // Типизация
 type ProfileInfoAPIComponentPropsType =
@@ -17,8 +16,8 @@ type ProfileInfoAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
 type ProfileInfoAPIComponentMapDispatchToProps = {
     setUserProfile: (profileInfo: ProfileInfoType) => void
     goToPage: (id: string) => void
-    getStatus:(userId: string)=>void
-    updateStatus:(status: string)=>void
+    getStatus: (userId: number | null) => void
+    updateStatus: (status: string) => void
 }
 
 class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPropsType> {
@@ -26,25 +25,30 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus('30743')
+        this.props.getStatus(this.props.userId)
+
     }
 
     render() {
-
         return (
-            <ProfileInfo profileInfo={this.props.profileInfo} status={this.props.status} updateStatus={this.props.updateStatus}/>)
+            <ProfileInfo profileInfo={this.props.profileInfo}
+                         status={this.props.status}
+                         updateStatus={this.props.updateStatus}
+            />)
     }
 }
 
 const mapStateToProps = (state: AppRootState) => {
     return {
         profileInfo: state.profilePage.profileInfo,
-        status:state.profilePage.status
+        status: state.profilePage.status,
+        userId: state.auth.id,
+        isAuth: state.auth.isAuth
     }
 }
 
 export const ProfileInfoContainer = compose(
-    withAuthRedirect,
+    // withAuthRedirect,
     connect(mapStateToProps,
         {
             setUserProfile,
