@@ -17,10 +17,28 @@
 }
 
 .login_block {
-    color: var(--secondary-text)
 }
 
 .login_block a {
     color: var(--secondary-text)
 }
 
+.button_box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_box button {
+    background-color:var(--secondary-text);
+    color: var(--secondary-bg);
+    font-weight: 600;
+
+}
+
+.span {
+    font-size: 20px;
+    color: var(--secondary-text)
+}

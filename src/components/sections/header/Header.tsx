@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
+import {Button} from '../../common/button/Button'
 
 
 // Типизация
@@ -20,7 +21,14 @@ export const Header = (props: HeaderPropsType) => {
             <img src={logo} alt={'main_logo'}/>
 
             <div className={S.login_block}>
-                {props.isAuth ? props.login : <NavLink to={'/login'}>LogIn</NavLink>}
+                {props.isAuth
+                    ?
+                    <div className={S.button_box}>
+                        <span className={S.span}>{props.login}</span>
+                        <Button name={'LogOut'}/>
+                    </div>
+
+                    : <NavLink to={'/login'}><Button name={'LogIn'}/></NavLink>}
             </div>
         </header>
     )

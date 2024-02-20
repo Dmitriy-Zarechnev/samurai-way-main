@@ -12,9 +12,6 @@ export type StoreType = {
 
   */
 
-
-
-
 // Типизация для observer
 
 export type ObserverType = (state: any) => void

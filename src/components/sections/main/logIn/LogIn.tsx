@@ -4,6 +4,7 @@ import S from './LogIn.module.css'
 import {LogInType} from '../../../../redux/auth-reducer'
 import {InputForm} from '../../../common/inputForm/InputForm'
 import {Button} from '../../../common/button/Button'
+import {Redirect} from 'react-router-dom'
 
 export type Inputs = {
     LogIn: string
@@ -14,6 +15,7 @@ export type Inputs = {
 type LogInPropsType = {
     onSubmitForm: (data: Inputs) => void
     logIn: LogInType
+    isAuth: boolean
 }
 
 
@@ -32,35 +34,41 @@ export const LogIn = (props: LogInPropsType) => {
         reset()
     }
 
+    // Redirect  на страницу профиля, при успешной авторизации
+    if (props.isAuth) return <Redirect to={'/profile'}/>
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={S.formWrapper}>
+        <>
+            <h2 className={S.header}>YOUR PARADISE BEGINS HERE</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className={S.formWrapper}>
 
-            <InputForm value={'LogIn'}
-                       errors={errors.LogIn}
-                       register={register}
-                       type={'email'}
-                       defValue={props.logIn.email}
-            />
-
-            <InputForm value={'Password'}
-                       errors={errors.Password}
-                       register={register}
-                       type={'password'}
-                       defValue={props.logIn.password}
-            />
-
-            <div className={S.checkBox}>
-                <input className={S.inputCheck}
-                       id={'Remember'}
-                       type={'checkbox'}
-                       defaultChecked={props.logIn.rememberMe}
-                       {...register('Remember')}
+                <InputForm value={'LogIn'}
+                           errors={errors.LogIn}
+                           register={register}
+                           type={'email'}
+                           defValue={props.logIn.email}
                 />
-                <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>
-            </div>
 
-            <Button name={'Sing In'}/>
-        </form>
+                <InputForm value={'Password'}
+                           errors={errors.Password}
+                           register={register}
+                           type={'password'}
+                           defValue={props.logIn.password}
+                />
+
+                <div className={S.checkBox}>
+                    <input className={S.inputCheck}
+                           id={'Remember'}
+                           type={'checkbox'}
+                           defaultChecked={props.logIn.rememberMe}
+                           {...register('Remember')}
+                    />
+                    <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>
+                </div>
+
+                <Button name={'Sing In'}/>
+            </form>
+        </>
     )
 }
 

@@ -20,25 +20,23 @@ class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
 
 
     //  -------- Первая авторизация ----------------
-    // componentDidMount() {
-    //     this.props.serverLogIn(this.props.logIn.email, this.props.logIn.password, this.props.logIn.rememberMe)
-    // }
-
-    onSubmitForm = (data:Inputs) => {
+    onSubmitForm = (data: Inputs) => {
 
         this.props.serverLogIn(data.LogIn, data.Password, data.Remember)
     }
 
     render() {
         return (
-            <LogIn onSubmitForm={this.onSubmitForm} logIn={this.props.logIn}/>
+            <LogIn onSubmitForm={this.onSubmitForm} logIn={this.props.logIn} isAuth={this.props.isAuth}/>
         )
     }
 }
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        logIn: state.auth.logIn
+        logIn: state.auth.logIn,
+        isAuth: state.auth.isAuth
+
     }
 }
 
