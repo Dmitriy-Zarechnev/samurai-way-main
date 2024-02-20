@@ -3,6 +3,7 @@ import {SubmitHandler, useForm} from 'react-hook-form'
 import S from './LogIn.module.css'
 import {LogInType} from '../../../../redux/auth-reducer'
 import {InputForm} from '../../../common/inputForm/InputForm'
+import {Button} from '../../../common/button/Button'
 
 export type Inputs = {
     LogIn: string
@@ -21,7 +22,6 @@ export const LogIn = (props: LogInPropsType) => {
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: {errors}
     } = useForm<Inputs>()
@@ -32,51 +32,21 @@ export const LogIn = (props: LogInPropsType) => {
         reset()
     }
 
-    //console.log(watch(VarObj.logIn)) // watch input value by passing the name of it
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={S.formWrapper}>
-            {/*<div className={S.labelInput}>*/}
-
-            {/*    <label className={S.label} htmlFor={VarObj.logIn}>{VarObj.logIn}</label>*/}
-            {/*    <input type={'text'} id={VarObj.logIn}*/}
-            {/*           defaultValue={props.logIn.email}*/}
-            {/*           placeholder={`${VarObj.placeHolderMessage} ${VarObj.logIn}`}*/}
-            {/*           {...register(VarObj.logIn, {required: true})}*/}
-            {/*           className={`${S.input} ${errors.LogIn ? S.errorClass : ''}`}*/}
-            {/*    />*/}
-
-            {/*    {<span className={`${S.span} ${errors.LogIn ? S.errorDisplay : S.spanDisplay}`}>*/}
-            {/*        {VarObj.logIn} {VarObj.errorMessage}*/}
-            {/*    </span>}*/}
-            {/*</div>*/}
-
-            {/*<div className={S.labelInput}>*/}
-
-            {/*    <label className={S.label} htmlFor={VarObj.password}>{VarObj.password}</label>*/}
-            {/*    <input type={'password'} id={VarObj.password}*/}
-            {/*           defaultValue={props.logIn.password}*/}
-            {/*           placeholder={`${VarObj.placeHolderMessage} ${VarObj.password}`}*/}
-            {/*           {...register(VarObj.password, {required: true})}*/}
-            {/*           className={`${S.input} ${errors.Password ? S.errorClass : ''}`}*/}
-            {/*    />*/}
-
-            {/*    {<span className={`${S.span} ${errors.Password ? S.errorDisplay : S.spanDisplay}`}>*/}
-            {/*        {VarObj.password} {VarObj.errorMessage}*/}
-            {/*    </span>}*/}
-            {/*</div>*/}
 
             <InputForm value={'LogIn'}
                        errors={errors.LogIn}
-                       placeholder={'Hello'}
                        register={register}
-                       type={'text'}
+                       type={'email'}
+                       defValue={props.logIn.email}
             />
 
             <InputForm value={'Password'}
                        errors={errors.Password}
-                       placeholder={'Hello'}
                        register={register}
                        type={'password'}
+                       defValue={props.logIn.password}
             />
 
             <div className={S.checkBox}>
@@ -89,9 +59,7 @@ export const LogIn = (props: LogInPropsType) => {
                 <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>
             </div>
 
-
-            <button className={S.submit}>Send</button>
-
+            <Button name={'LogIn'}/>
         </form>
     )
 }
