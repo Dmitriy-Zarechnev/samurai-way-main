@@ -28,7 +28,6 @@ export const Header = (props: HeaderPropsType) => {
                         <span className={S.span}>{props.login}</span>
                         <Button name={'LogOut'} onClick={props.logOut}/>
                     </div>
-
                     : <NavLink to={'/login'}><Button name={'LogIn'}/></NavLink>}
             </div>
         </header>

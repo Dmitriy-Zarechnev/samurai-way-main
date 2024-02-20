@@ -5,6 +5,7 @@ import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
 import {compose} from 'redux'
+import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 
 // Типизация
 type ProfileInfoAPIComponentPropsType =
@@ -43,7 +44,7 @@ const mapStateToProps = (state: AppRootState) => {
 }
 
 export const ProfileInfoContainer = compose(
-    // withAuthRedirect,
+    withAuthRedirect,
     connect(mapStateToProps,
         {
             setUserProfile,
