@@ -1,3 +1,5 @@
+@import "../../../../../ColorVar.module.css";
+
 .my_posts {
     overflow: auto;
     grid-area: MP;
@@ -15,6 +17,8 @@
 .my_posts__new_post {
     margin-bottom: 10px;
 }
+
+.formWrapper{}
 
 /* Локальные стили для button*/
 .my_posts__new_post button {

@@ -2,25 +2,45 @@ import React from 'react'
 import {Post} from './post/Post'
 import S from './MyPosts.module.css'
 import {PostsDataType} from '../../../../../redux/profile-reducer'
-import {FormTwoInputs, InputsDataType} from '../../../../common/formTwoInputs/FormTwoInputs'
+import {SubmitHandler, useForm} from 'react-hook-form'
+import {InputForm} from '../../../../common/inputForm/InputForm'
+import {TextAreaForm} from '../../../../common/textareaForm/TextAreaForm'
+import {Button} from '../../../../common/button/Button'
 
 // Типизация
 type MyPostsPropsType = {
     posts: Array<PostsDataType>
-    addPost: (header: string, text: string) => void
+    addPost: (header: string, post: string) => void
 }
+
+type InputsDataType = {
+    header: string
+    post: string
+}
+
 
 export const MyPosts = (props: MyPostsPropsType) => {
 
-    const onSubmitTwoForms = (data: InputsDataType) => {
-        props.addPost(data.header, data.text)
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {errors}
+    } = useForm<InputsDataType>()
+
+    const onSubmit: SubmitHandler<InputsDataType> = (data) => {
+        props.addPost(data.header, data.post)
+        reset()
     }
 
-    return (
+        return (
         <div className={S.my_posts}>
             <h3 className={S.my_posts__header}>My posts</h3>
-            <FormTwoInputs onSubmitTwoForms={onSubmitTwoForms}/>
-
+            <form onSubmit={handleSubmit(onSubmit)} className={S.formWrapper}>
+                <InputForm value={'header'} type={'text'} register={register} errors={errors.header}/>
+                <TextAreaForm value={'post'} register={register} errors={errors.post}/>
+                <Button name={'Add New Post'}/>
+            </form>
             <Post postsData={props.posts}/>
         </div>
     )

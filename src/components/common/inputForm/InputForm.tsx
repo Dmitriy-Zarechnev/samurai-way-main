@@ -1,7 +1,6 @@
 import React from 'react'
 import S from './InputForm.module.css'
 import {FieldError,  UseFormRegister} from 'react-hook-form'
-import {Inputs} from '../../sections/main/logIn/LogIn'
 
 type InputFormPropsType = {
     value: string,

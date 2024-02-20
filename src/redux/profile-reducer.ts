@@ -108,7 +108,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 id: state.postsData.length + 1,
                 header: action.payload.header,
                 src: img2,
-                message: action.payload.text,
+                message: action.payload.post,
                 likesCount: 0
             }
             return {
@@ -138,8 +138,8 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const addPost = (header: string, text: string) => {
-    return {type: ADD_POST, payload: {header, text}} as const
+export const addPost = (header: string, post: string) => {
+    return {type: ADD_POST, payload: {header, post}} as const
 }
 export const setUserProfile = (profileInfo: ProfileInfoType) => {
     return {type: SET_USER_PROFILE, payload: {profileInfo}} as const
