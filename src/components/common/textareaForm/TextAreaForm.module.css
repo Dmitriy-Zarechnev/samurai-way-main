@@ -5,6 +5,7 @@
     margin-bottom: 5px;
     text-transform: uppercase;
     font-weight: 600;
+    cursor:pointer;
 }
 
 .textarea {
