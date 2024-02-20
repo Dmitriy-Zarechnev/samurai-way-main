@@ -20,7 +20,7 @@ export const Header = (props: HeaderPropsType) => {
             <img src={logo} alt={'main_logo'}/>
 
             <div className={S.login_block}>
-                {props.isAuth ? props.login : <NavLink to={'/logIn'}>LogIn</NavLink>}
+                {props.isAuth ? props.login : <NavLink to={'/login'}>LogIn</NavLink>}
             </div>
         </header>
     )
