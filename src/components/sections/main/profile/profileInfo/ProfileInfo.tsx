@@ -6,7 +6,7 @@ import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
 import sam from '../../../../../assets/images/sam.webp'
 import {ProfileInfoType} from '../../../../../redux/profile-reducer'
-import {ProfileStatus} from '../../../../common/ProfileStatus/ProfileStatus'
+import {ProfileStatus} from '../../../../common/profileStatus/ProfileStatus'
 
 type ProfileInfoPropsType = {
     profileInfo: ProfileInfoType,
