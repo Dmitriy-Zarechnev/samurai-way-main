@@ -27,7 +27,7 @@ export const LogIn = (props: LogInPropsType) => {
     } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data)
+        debugger
         props.onSubmitForm(data)
         reset()
     }
@@ -52,8 +52,8 @@ export const LogIn = (props: LogInPropsType) => {
             <div className={S.checkBox}>
                 <input className={S.inputCheck}
                        id={'Remember'}
-                       checked={props.logIn.rememberMe}
                        type={'checkbox'}
+                       defaultChecked={props.logIn.rememberMe}
                        {...register('Remember')}
                 />
                 <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>

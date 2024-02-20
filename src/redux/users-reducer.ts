@@ -27,7 +27,7 @@ type UsersPhotos = {
 }
 
 
-type UsersAPIComponentActionsType =
+export type UsersAPIComponentActionsType =
     FollowFriendActionType |
     UnfollowFriendActionType |
     SetUsersActionType |

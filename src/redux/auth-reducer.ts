@@ -1,9 +1,11 @@
 import {authAPI} from '../api/api'
 import {Dispatch} from 'redux'
+import {ThunkAction, ThunkDispatch} from 'redux-thunk'
+import {AppRootState, CommonActionsTypeForApp} from './redux-store'
 
 
 // Типизация
-type AuthReducerActionsType =
+export type AuthReducerActionsType =
     SetAuthUserDataActionType |
     LogInServerActionType
 
@@ -11,16 +13,12 @@ type SetAuthUserDataActionType = ReturnType<typeof setAuthUserData>
 type LogInServerActionType = ReturnType<typeof logInServer>
 
 export type AuthPageInitialState = {
-    data: UserDataType
-    isAuth: boolean
-    isFetching: boolean
-    logIn: LogInType
-}
-
-export type UserDataType = {
     id: number | null
     email: string
     login: string
+    isAuth: boolean
+    isFetching: boolean
+    logIn: LogInType
 }
 
 export type LogInType = {
@@ -29,6 +27,9 @@ export type LogInType = {
     rememberMe: boolean
 }
 
+type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForApp>
+type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
+
 // *********** Константы названий экшенов ****************
 const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'
 const LOG_IN_SERVER = 'LOG-IN-SERVER'
@@ -36,11 +37,9 @@ const LOG_IN_SERVER = 'LOG-IN-SERVER'
 
 // *********** Первоначальный стэйт для authReducer ****************
 const initialState: AuthPageInitialState = {
-    data: {
-        id: null,
-        email: '',
-        login: ''
-    },
+    id: null,
+    email: '',
+    login: '',
     isAuth: false,
     isFetching: false,
     logIn: {
@@ -57,12 +56,10 @@ export const authReducer = (state: AuthPageInitialState = initialState, action: 
         case SET_AUTH_USER_DATA:
             return {
                 ...state,
-                data: {...action.payload.data},
-                isAuth: true
+                ...action.payload
             }
 
         case LOG_IN_SERVER:
-            debugger
             return {
                 ...state,
                 logIn: {
@@ -80,8 +77,8 @@ export const authReducer = (state: AuthPageInitialState = initialState, action: 
 
 
 // *********** Action creators - экшн криэйторы создают объект action ****************
-export const setAuthUserData = (data: UserDataType) => {
-    return {type: SET_AUTH_USER_DATA, payload: {data}} as const
+export const setAuthUserData = (id: number | null, email: string, login: string, isAuth: boolean) => {
+    return {type: SET_AUTH_USER_DATA, payload: {id, email, login, isAuth}} as const
 }
 
 export const logInServer = (logIn: LogInType) => {
@@ -96,20 +93,32 @@ export const authMe = () => {
     return (dispatch: Dispatch<AuthReducerActionsType>) => {
         authAPI.authHeader().then(data => {
             if (data.resultCode === 0) {
-                dispatch(setAuthUserData(data.data))
+                dispatch(setAuthUserData(data.data.id, data.data.email, data.data.login, true))
             }
         })
     }
 }
 
 //  -------- Логинизация на сервере ----------------
-export const serverLogIn = (email: string, password: string, rememberMe: boolean) => {
+export const serverLogIn = (email: string, password: string, rememberMe: boolean): ThunkType => {
+
+    return (dispatch: ThunkDispatchType) => {
+        authAPI.logIn(email, password, rememberMe).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(authMe())
+                if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
+            }
+        })
+    }
+}
+
+//  -------- Вылогинизация на сервере ----------------
+export const serverLogOut = () => {
 
     return (dispatch: Dispatch<AuthReducerActionsType>) => {
-        authAPI.logIn(email, password, rememberMe).then(data => {
-            debugger
+        authAPI.logOut().then(data => {
             if (data.resultCode === 0) {
-                dispatch(logInServer({email, password, rememberMe}))
+                dispatch(setAuthUserData(null, '', '', false))
             }
         })
     }

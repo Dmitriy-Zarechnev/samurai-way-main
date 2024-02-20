@@ -3,7 +3,7 @@ import S from './TextAreaForm.module.css'
 import {FieldError, UseFormRegister} from 'react-hook-form'
 
 type TextAreaFormPropsType = {
-    value:string,
+    value: string,
     register: UseFormRegister<any>,
     errors: FieldError | undefined
 }
@@ -18,7 +18,7 @@ export const TextAreaForm = (props: TextAreaFormPropsType) => {
                       className={`${S.textarea} ${props.errors ? S.errorClass : ''}`}
             />
 
-            {<span className={`${S.span} ${props.errors? S.errorDisplay : S.spanDisplay}`}>
+            {<span className={`${S.span} ${props.errors ? S.errorDisplay : S.spanDisplay}`}>
                     {props.value} field is required
                 </span>}
         </div>

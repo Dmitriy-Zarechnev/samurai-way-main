@@ -2,13 +2,14 @@ import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
-import {UserDataType} from '../../../redux/auth-reducer'
 
 
 // Типизация
 type HeaderPropsType = {
+    id: number | null
+    email: string
+    login: string
     isAuth: boolean
-    data: UserDataType
 }
 
 export const Header = (props: HeaderPropsType) => {
@@ -19,7 +20,7 @@ export const Header = (props: HeaderPropsType) => {
             <img src={logo} alt={'main_logo'}/>
 
             <div className={S.login_block}>
-                {props.isAuth ? props.data.login : <NavLink to={'/logIn'}>LogIn</NavLink>}
+                {props.isAuth ? props.login : <NavLink to={'/logIn'}>LogIn</NavLink>}
             </div>
         </header>
     )

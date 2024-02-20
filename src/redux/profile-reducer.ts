@@ -42,7 +42,7 @@ export type PostsDataType = {
     likesCount: number
 }
 
-type MyPostsActionsType =
+export type MyPostsActionsType =
     AddPostActionType |
     SetUserProfileActionType |
     getUserStatusActionType |

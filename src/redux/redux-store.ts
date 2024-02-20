@@ -1,10 +1,11 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
-import {profileReducer} from './profile-reducer'
-import {messagesReducer} from './messages-reducer'
+import {MyPostsActionsType, profileReducer} from './profile-reducer'
+import {messagesReducer, MyMessagesActionsType} from './messages-reducer'
 import {friendsListReducer} from './friendsList-reducer'
-import {usersReducer} from './users-reducer'
-import {authReducer} from './auth-reducer'
+import {UsersAPIComponentActionsType, usersReducer} from './users-reducer'
+import {authReducer, AuthReducerActionsType} from './auth-reducer'
 import thunkMiddleware from 'redux-thunk'
+
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -14,8 +15,16 @@ let rootReducer = combineReducers({
     auth: authReducer
 })
 
-// Типизация
+// Типизация всего STATE
 export type AppRootState = ReturnType<typeof rootReducer>
+
+// Типизация всех actioncreators для типизации thunk
+export type CommonActionsTypeForApp =
+    AuthReducerActionsType |
+    MyMessagesActionsType |
+    MyPostsActionsType |
+    UsersAPIComponentActionsType
+
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 

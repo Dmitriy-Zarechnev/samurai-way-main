@@ -25,7 +25,7 @@ class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
     // }
 
     onSubmitForm = (data:Inputs) => {
-        debugger
+
         this.props.serverLogIn(data.LogIn, data.Password, data.Remember)
     }
 

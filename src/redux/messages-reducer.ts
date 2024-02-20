@@ -5,7 +5,7 @@ export type MessagesPagePropsType = {
     messagesData: Array<MessagesDataType>
 }
 
-type MyMessagesActionsType = SendNewMessageActionType
+export type  MyMessagesActionsType = SendNewMessageActionType
 type SendNewMessageActionType = ReturnType<typeof sendNewMessage>
 
 

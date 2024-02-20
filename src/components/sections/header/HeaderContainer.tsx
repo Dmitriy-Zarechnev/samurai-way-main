@@ -1,7 +1,7 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {authMe, UserDataType} from '../../../redux/auth-reducer'
+import {authMe} from '../../../redux/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 
 // Типизация
@@ -24,8 +24,10 @@ class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
     render() {
         return (
             <Header
+                id={this.props.id}
+                email={this.props.email}
+                login={this.props.login}
                 isAuth={this.props.isAuth}
-                data={this.props.data as UserDataType}
             />
         )
     }
@@ -33,8 +35,10 @@ class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        isAuth: state.auth.isAuth,
-        data: state.auth.data
+        id: state.auth.id,
+        email: state.auth.email,
+        login: state.auth.login,
+        isAuth: state.auth.isAuth
     }
 }
 
