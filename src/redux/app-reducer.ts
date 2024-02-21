@@ -24,7 +24,6 @@ const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS'
 // *********** Первоначальный стэйт для authReducer ****************
 const initialState: AppInitialState = {
     initialized: false
-
 }
 
 
@@ -58,7 +57,5 @@ export const initializeApp = (): ThunkType => {
         dispatch(authMe()).then(() => {
             dispatch(initializedSuccess())
         })
-
-
     }
 }

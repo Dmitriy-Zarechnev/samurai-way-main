@@ -7,14 +7,18 @@ import {Main} from './components/sections/main/Main'
 import {HeaderContainer} from './components/sections/header/HeaderContainer'
 import {connect} from 'react-redux'
 import {initializeApp} from './redux/app-reducer'
+import {AppRootState} from './redux/redux-store'
+import {Preloader} from './components/common/preloader/Preloader'
 
 
 // Типизация
 type AppPropsType =
-    AppMapDispatchToProps
+    AppMapDispatchToProps & AppMapStateToProps
+type AppMapStateToProps = ReturnType<typeof mapStateToProps>
 type AppMapDispatchToProps = {
     initializeApp: () => void
 }
+
 
 class App extends React.Component<AppPropsType> {
 
@@ -24,6 +28,10 @@ class App extends React.Component<AppPropsType> {
     }
 
     render() {
+        // Показываем preloader  до полной загрузки
+        if (!this.props.initialized) return <Preloader isFetching={!this.props.initialized}/>
+
+        // Показываем основные компоненты после полной загрузки
         return (
             <BrowserRouter>
                 <div className={S.app_body}>
@@ -37,7 +45,14 @@ class App extends React.Component<AppPropsType> {
     }
 }
 
+const mapStateToProps = (state: AppRootState) => {
+    return {
+        initialized: state.app.initialized
+    }
+}
+
+
 export const AppConnect =
-    connect(null, {initializeApp})(App)
+    connect(mapStateToProps, {initializeApp})(App)
 
 

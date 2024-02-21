@@ -5,7 +5,7 @@ import {friendsListReducer} from './friendsList-reducer'
 import {UsersAPIComponentActionsType, usersReducer} from './users-reducer'
 import {authReducer, AuthReducerActionsType} from './auth-reducer'
 import thunkMiddleware from 'redux-thunk'
-import {AppReducerActionsType} from './app-reducer'
+import {appReducer, AppReducerActionsType} from './app-reducer'
 
 
 let rootReducer = combineReducers({
@@ -13,7 +13,8 @@ let rootReducer = combineReducers({
     messagesPage: messagesReducer,
     friendsListData: friendsListReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    app:appReducer
 })
 
 // Типизация всего STATE
