@@ -25,7 +25,7 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus(this.props.userId)
+        this.props.getStatus(30743)
 
     }
 
