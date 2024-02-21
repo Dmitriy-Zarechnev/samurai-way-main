@@ -1,4 +1,6 @@
 import {AppRootState} from '../redux-store'
+import {createSelector} from 'reselect'
+import {UsersListType} from '../reducers/users-reducer'
 
 // Селекторы необходимы для получения данных из state
 export const getUsersS = (state: AppRootState) => {
@@ -25,7 +27,10 @@ export const getIsFollowingInProgressS = (state: AppRootState) => {
     return state.usersPage.followingInProgress
 }
 
-export const friendsSelect = (state: AppRootState) => {
-    return state.usersPage.items.filter(el=> el.followed)
+export const friendsSelector = (state: AppRootState) => {
+    return getUsersS(state).filter(el => el.followed)
 }
 
+export const friendsSuperSelector = createSelector(getUsersS, (items: UsersListType[]) => {
+    return items.filter(el => el.followed)
+})
