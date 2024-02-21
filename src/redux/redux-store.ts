@@ -5,6 +5,7 @@ import {friendsListReducer} from './friendsList-reducer'
 import {UsersAPIComponentActionsType, usersReducer} from './users-reducer'
 import {authReducer, AuthReducerActionsType} from './auth-reducer'
 import thunkMiddleware from 'redux-thunk'
+import {AppReducerActionsType} from './app-reducer'
 
 
 let rootReducer = combineReducers({
@@ -23,7 +24,8 @@ export type CommonActionsTypeForApp =
     AuthReducerActionsType |
     MyMessagesActionsType |
     MyPostsActionsType |
-    UsersAPIComponentActionsType
+    UsersAPIComponentActionsType |
+    AppReducerActionsType
 
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

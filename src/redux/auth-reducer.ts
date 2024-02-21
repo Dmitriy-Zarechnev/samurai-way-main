@@ -107,7 +107,7 @@ export const serverError = (message: string) => {
 export const authMe = () => {
 
     return (dispatch: Dispatch<AuthReducerActionsType>) => {
-        authAPI.authHeader().then(data => {
+        return authAPI.authHeader().then(data => {
             if (data.resultCode === 0) {
                 dispatch(setAuthUserData(data.data.id, data.data.email, data.data.login, true))
             }
@@ -119,7 +119,7 @@ export const authMe = () => {
 export const serverLogIn = (email: string, password: string, rememberMe: boolean): ThunkType => {
 
     return (dispatch: ThunkDispatchType) => {
-        authAPI.logIn(email, password, rememberMe).then(data => {
+         authAPI.logIn(email, password, rememberMe).then(data => {
             if (data.resultCode === 0) {
                 dispatch(authMe())
                 if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
