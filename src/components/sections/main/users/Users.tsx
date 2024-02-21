@@ -45,6 +45,7 @@ export const Users = (props: UsersPropsType) => {
             </div>
 
             {props.items.map(el => {
+
                 return (
                     <div key={el.id} className={S.users_list}>
                         <div className={S.users_up_list}>

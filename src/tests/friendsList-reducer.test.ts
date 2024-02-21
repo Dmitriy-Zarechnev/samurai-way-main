@@ -4,7 +4,7 @@ import groguFriend from '../assets/images/webp/Grogu.webp'
 import trissFriend from '../assets/images/webp/Triss.webp'
 import itachiFriend from '../assets/images/webp/Itachi.webp'
 import nineS from '../assets/images/webp/9s.webp'
-import {FriendsListDataType, friendsListReducer} from '../redux/reducers/friendsList-reducer'
+import {FriendsListDataType, friendslistReducer} from '../redux/reducers/friendslist-reducer'
 
 
 test('friendList reducer should return Data', () => {
@@ -48,7 +48,7 @@ test('friendList reducer should return Data', () => {
         }
     ]
 
-    const newState = friendsListReducer(state)
+    const newState = friendslistReducer(state)
 
     expect(newState.length).toBe(6)
 })

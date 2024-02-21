@@ -14,7 +14,7 @@ export type FriendsListDataType = {
     alt: string
 }
 
-// *********** Первоначальный стэйт для friendsListReducer ****************
+// *********** Первоначальный стэйт для friendslistReducer ****************
 const initialState: Array<FriendsListDataType> = [
     {
         id: 1,
@@ -56,6 +56,8 @@ const initialState: Array<FriendsListDataType> = [
 
 
 // *********** Reducer - редьюсер, чистая функция для изменения стэйта после получения экшена от диспача ****************
-export const friendsListReducer = (state: Array<FriendsListDataType> = initialState): Array<FriendsListDataType> => {
+export const friendslistReducer = (state: Array<FriendsListDataType> = initialState): Array<FriendsListDataType> => {
+
+
     return state
 }

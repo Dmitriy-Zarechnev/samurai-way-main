@@ -27,10 +27,4 @@ export const getIsFollowingInProgressS = (state: AppRootState) => {
     return state.usersPage.followingInProgress
 }
 
-export const friendsSelector = (state: AppRootState) => {
-    return getUsersS(state).filter(el => el.followed)
-}
 
-export const friendsSuperSelector = createSelector(getUsersS, (items: UsersListType[]) => {
-    return items.filter(el => el.followed)
-})
