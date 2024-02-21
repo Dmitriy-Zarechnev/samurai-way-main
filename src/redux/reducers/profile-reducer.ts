@@ -1,6 +1,6 @@
-import img2 from '../assets/images/winter.jpg'
-import img1 from '../assets/images/Cupcake.jpg'
-import {profileAPI} from '../api/api'
+import img2 from '../../assets/images/winter.jpg'
+import img1 from '../../assets/images/Cupcake.jpg'
+import {profileAPI} from '../../api/api'
 import {Dispatch} from 'redux'
 
 // Типизация

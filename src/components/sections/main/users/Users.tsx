@@ -4,7 +4,7 @@ import S from './Users.module.css'
 import min from '../../../../assets/images/min.jpg'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
-import {UsersListType} from '../../../../redux/users-reducer'
+import {UsersListType} from '../../../../redux/reducers/users-reducer'
 
 // Типизация
 export type UsersPropsType = {

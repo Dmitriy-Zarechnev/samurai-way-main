@@ -1,4 +1,4 @@
-import {followUnfollowAPI, usersAPI} from '../api/api'
+import {followUnfollowAPI, usersAPI} from '../../api/api'
 import {Dispatch} from 'redux'
 
 

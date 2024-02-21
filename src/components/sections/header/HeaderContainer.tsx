@@ -1,7 +1,7 @@
 import React from 'react'
 import {Header} from './Header'
 import {connect} from 'react-redux'
-import {serverLogOut} from '../../../redux/auth-reducer'
+import {serverLogOut} from '../../../redux/reducers/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 
 // Типизация

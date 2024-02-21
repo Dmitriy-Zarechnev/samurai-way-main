@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/users-reducer'
+import {follow, getUsers, newPageGetUsers, unFollow} from '../../../../redux/reducers/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {AppRootState} from '../../../../redux/redux-store'
 import {compose} from 'redux'
+import {getCurrentPageS, getIsFetchingS, getIsFollowingInProgressS, getPageSizeS, getTotalCountS, getUsersS} from '../../../../redux/selectors/users-selectors'
 
 
 // Типизация
@@ -87,6 +88,7 @@ class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
     }
 }
 
+/*
 const mapStateToProps = (state: AppRootState) => {
     return {
         items: state.usersPage.items,
@@ -97,9 +99,21 @@ const mapStateToProps = (state: AppRootState) => {
         followingInProgress: state.usersPage.followingInProgress
     }
 }
+ */
+
+const mapStateToProps = (state: AppRootState) => {
+    return {
+        items: getUsersS(state),
+        totalCount: getTotalCountS(state),
+        pageSize: getPageSizeS(state),
+        currentPage: getCurrentPageS(state),
+        isFetching: getIsFetchingS(state),
+        followingInProgress: getIsFollowingInProgressS(state)
+    }
+}
 
 export const UsersContainer = compose(
     // withAuthRedirect,
     connect(mapStateToProps,
         {getUsers, newPageGetUsers, follow, unFollow}
-    ))(UsersAPIComponent)  as React.FC
+    ))(UsersAPIComponent) as React.FC

@@ -1,7 +1,8 @@
 // Типизация
 import {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {AppRootState, CommonActionsTypeForApp} from './redux-store'
+import {AppRootState, CommonActionsTypeForApp} from '../redux-store'
 import {authMe} from './auth-reducer'
+
 
 export type AppReducerActionsType =
     InitializedSuccessActionType

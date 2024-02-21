@@ -1,7 +1,7 @@
-import {authAPI} from '../api/api'
+import {authAPI} from '../../api/api'
 import {Dispatch} from 'redux'
 import {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {AppRootState, CommonActionsTypeForApp} from './redux-store'
+import {AppRootState, CommonActionsTypeForApp} from '../redux-store'
 
 
 // Типизация

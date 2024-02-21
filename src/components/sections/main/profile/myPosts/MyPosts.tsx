@@ -1,7 +1,7 @@
 import React from 'react'
 import {Post} from './post/Post'
 import S from './MyPosts.module.css'
-import {PostsDataType} from '../../../../../redux/profile-reducer'
+import {PostsDataType} from '../../../../../redux/reducers/profile-reducer'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import {InputForm} from '../../../../common/inputForm/InputForm'
 import {TextAreaForm} from '../../../../common/textareaForm/TextAreaForm'

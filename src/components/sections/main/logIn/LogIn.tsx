@@ -1,7 +1,7 @@
 import React from 'react'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import S from './LogIn.module.css'
-import {LogInType} from '../../../../redux/auth-reducer'
+import {LogInType} from '../../../../redux/reducers/auth-reducer'
 import {InputForm} from '../../../common/inputForm/InputForm'
 import {Button} from '../../../common/button/Button'
 import {Redirect} from 'react-router-dom'

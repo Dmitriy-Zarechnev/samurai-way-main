@@ -1,4 +1,4 @@
-import {MessagesDataType} from '../components/sections/main/messages/myMessages/message/Message'
+import {MessagesDataType} from '../../components/sections/main/messages/myMessages/message/Message'
 
 // Типизация
 export type MessagesPagePropsType = {

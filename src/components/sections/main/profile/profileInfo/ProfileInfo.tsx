@@ -5,7 +5,7 @@ import git from '../../../../../assets/images/git.svg'
 import vk from '../../../../../assets/images/vk.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
 import sam from '../../../../../assets/images/sam.webp'
-import {ProfileInfoType} from '../../../../../redux/profile-reducer'
+import {ProfileInfoType} from '../../../../../redux/reducers/profile-reducer'
 import {ProfileStatus} from '../../../../common/profileStatus/ProfileStatus'
 
 type ProfileInfoPropsType = {

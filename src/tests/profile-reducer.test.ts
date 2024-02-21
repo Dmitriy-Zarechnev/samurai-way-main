@@ -1,4 +1,4 @@
-import {addPost, ProfilePagePropsType, profileReducer, setUserProfile} from '../redux/profile-reducer'
+import {addPost, ProfilePagePropsType, profileReducer, setUserProfile} from '../redux/reducers/profile-reducer'
 import img1 from '../assets/images/Cupcake.jpg'
 
 

@@ -1,4 +1,4 @@
-import {AuthPageInitialState, authReducer, setAuthUserData} from '../redux/auth-reducer'
+import {AuthPageInitialState, authReducer, setAuthUserData} from '../redux/reducers/auth-reducer'
 
 test('auth reducer should return newData', () => {
 

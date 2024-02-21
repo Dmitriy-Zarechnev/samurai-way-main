@@ -1,11 +1,11 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
-import {MyPostsActionsType, profileReducer} from './profile-reducer'
-import {messagesReducer, MyMessagesActionsType} from './messages-reducer'
-import {friendsListReducer} from './friendsList-reducer'
-import {UsersAPIComponentActionsType, usersReducer} from './users-reducer'
-import {authReducer, AuthReducerActionsType} from './auth-reducer'
+import {MyPostsActionsType, profileReducer} from './reducers/profile-reducer'
+import {messagesReducer, MyMessagesActionsType} from './reducers/messages-reducer'
+import {friendsListReducer} from './reducers/friendsList-reducer'
+import {UsersAPIComponentActionsType, usersReducer} from './reducers/users-reducer'
+import {authReducer, AuthReducerActionsType} from './reducers/auth-reducer'
 import thunkMiddleware from 'redux-thunk'
-import {appReducer, AppReducerActionsType} from './app-reducer'
+import {appReducer, AppReducerActionsType} from './reducers/app-reducer'
 
 
 let rootReducer = combineReducers({

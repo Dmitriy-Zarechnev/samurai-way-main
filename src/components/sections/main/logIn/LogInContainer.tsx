@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {AppRootState} from '../../../../redux/redux-store'
 import {Inputs, LogIn} from './LogIn'
-import {serverLogIn} from '../../../../redux/auth-reducer'
+import {serverLogIn} from '../../../../redux/reducers/auth-reducer'
 
 // Типизация
 export type LogInAPIComponentPropsType =

@@ -1,4 +1,4 @@
-import {MessagesPagePropsType, messagesReducer, sendNewMessage} from '../redux/messages-reducer'
+import {MessagesPagePropsType, messagesReducer, sendNewMessage} from '../redux/reducers/messages-reducer'
 
 test('messages reducer should increase the messagesData length by one', () => {
 

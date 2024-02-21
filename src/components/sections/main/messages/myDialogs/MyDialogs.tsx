@@ -1,7 +1,7 @@
 import React from 'react'
 import S from './MyDialogs.module.css'
 import {FriendsList} from '../../../../common/friendsList/FriendsList'
-import {FriendsListDataType} from '../../../../../redux/friendsList-reducer'
+import {FriendsListDataType} from '../../../../../redux/reducers/friendsList-reducer'
 
 
 

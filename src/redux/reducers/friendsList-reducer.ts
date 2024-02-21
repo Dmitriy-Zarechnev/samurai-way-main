@@ -1,9 +1,9 @@
-import cammyFriend from '../assets/images/webp/Cammy.webp'
-import kratosFriend from '../assets/images/webp/Kratos.webp'
-import groguFriend from '../assets/images/webp/Grogu.webp'
-import trissFriend from '../assets/images/webp/Triss.webp'
-import itachiFriend from '../assets/images/webp/Itachi.webp'
-import nineS from '../assets/images/webp/9s.webp'
+import cammyFriend from '../../assets/images/webp/Cammy.webp'
+import kratosFriend from '../../assets/images/webp/Kratos.webp'
+import groguFriend from '../../assets/images/webp/Grogu.webp'
+import trissFriend from '../../assets/images/webp/Triss.webp'
+import itachiFriend from '../../assets/images/webp/Itachi.webp'
+import nineS from '../../assets/images/webp/9s.webp'
 
 
 // Типизация

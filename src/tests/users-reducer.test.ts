@@ -1,4 +1,4 @@
-import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, toggleIsFetching, unfollowFriend, UsersInitialState, usersReducer} from '../redux/users-reducer'
+import {followFriend, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, toggleIsFetching, unfollowFriend, UsersInitialState, usersReducer} from '../redux/reducers/users-reducer'
 
 
 test('users reducer should change followed false into true', () => {

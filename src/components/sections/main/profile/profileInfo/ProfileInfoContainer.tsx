@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {getStatus, goToPage, ProfileInfoType, setUserProfile, updateStatus} from '../../../../../redux/profile-reducer'
+import {getStatus, goToPage, ProfileInfoType, setUserProfile, updateStatus} from '../../../../../redux/reducers/profile-reducer'
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
