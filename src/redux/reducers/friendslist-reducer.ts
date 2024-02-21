@@ -4,6 +4,7 @@ import groguFriend from '../../assets/images/webp/Grogu.webp'
 import trissFriend from '../../assets/images/webp/Triss.webp'
 import itachiFriend from '../../assets/images/webp/Itachi.webp'
 import nineS from '../../assets/images/webp/9s.webp'
+import {UsersListType} from './users-reducer'
 
 
 // Типизация
@@ -15,6 +16,7 @@ export type FriendsListDataType = {
 }
 
 // *********** Первоначальный стэйт для friendslistReducer ****************
+/*
 const initialState: Array<FriendsListDataType> = [
     {
         id: 1,
@@ -54,9 +56,13 @@ const initialState: Array<FriendsListDataType> = [
     }
 ]
 
+ */
+
+const initialState: Array<UsersListType> = []
+
 
 // *********** Reducer - редьюсер, чистая функция для изменения стэйта после получения экшена от диспача ****************
-export const friendslistReducer = (state: Array<FriendsListDataType> = initialState): Array<FriendsListDataType> => {
+export const friendslistReducer = (state: Array<UsersListType> = initialState): Array<UsersListType> => {
 
 
     return state

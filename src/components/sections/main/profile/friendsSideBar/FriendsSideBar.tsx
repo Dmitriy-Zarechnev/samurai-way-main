@@ -1,14 +1,25 @@
 import React from 'react'
 import S from './FriendsSideBar.module.css'
 import {FriendsList} from '../../../../common/friendsList/FriendsList'
-import {FriendsListDataType} from '../../../../../redux/reducers/friendslist-reducer'
+import {UsersListType} from '../../../../../redux/reducers/users-reducer'
+import {NavLink} from 'react-router-dom'
+import find from '../../../../../assets/images/find.webp'
 
-
-export const FriendsSideBar = (props: { friendsList: Array<FriendsListDataType> }) => {
+export const FriendsSideBar = (props: { friendsSuperList: Array<UsersListType> }) => {
     return (
         <ul className={S.friends_sidebar}>
             <h3 className={S.friends_sidebar__header}>My Friends</h3>
-            <FriendsList friendsList={props.friendsList} navlink={'profile'}/>
+            {props.friendsSuperList.length
+                ? <FriendsList friendsList={props.friendsSuperList} navlink={'profile'}/>
+                : <NavLink
+                    to={'/users'}
+                    className={S.link}>
+                    <img src={find}
+                         alt={`find - avatar`}
+                         className={S.img}/>
+                    <span className={S.name}>Find Friends Here</span>
+                </NavLink>
+            }
         </ul>
     )
 }
