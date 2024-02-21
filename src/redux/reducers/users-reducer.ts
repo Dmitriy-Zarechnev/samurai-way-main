@@ -36,6 +36,7 @@ export type UsersAPIComponentActionsType =
     ToggleIsFetchingActionType |
     ToggleIsFollowingInProgressActionType
 
+
 type FollowFriendActionType = ReturnType<typeof followFriend>
 type UnfollowFriendActionType = ReturnType<typeof unfollowFriend>
 type SetUsersActionType = ReturnType<typeof setUsers>

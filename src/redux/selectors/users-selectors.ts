@@ -25,3 +25,7 @@ export const getIsFollowingInProgressS = (state: AppRootState) => {
     return state.usersPage.followingInProgress
 }
 
+export const friendsSelect = (state: AppRootState) => {
+    return state.usersPage.items.filter(el=> el.followed)
+}
+
