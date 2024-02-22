@@ -46,7 +46,7 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const ProfileInfoContainer = compose(
+export const ProfileInfoContainer = compose<React.ComponentType>(
     // withAuthRedirect,
     connect(mapStateToProps,
         {
@@ -56,6 +56,6 @@ export const ProfileInfoContainer = compose(
             updateStatus
         }),
     withRouter
-)(ProfileInfoAPIComponent) as React.FC
+)(ProfileInfoAPIComponent)
 
 

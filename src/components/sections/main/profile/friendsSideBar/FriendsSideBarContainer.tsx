@@ -51,8 +51,8 @@ let mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const FriendsSideBarContainer = compose(
+export const FriendsSideBarContainer = compose<React.ComponentType>(
     withRouter,
-    connect(mapStateToProps, {goToPage,getUsers}))
-(FriendsSideBarAPIComponent) as React.FC
+    connect(mapStateToProps, {goToPage, getUsers}))
+(FriendsSideBarAPIComponent)
 

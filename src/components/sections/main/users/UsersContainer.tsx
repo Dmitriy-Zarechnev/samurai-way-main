@@ -99,8 +99,8 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const UsersContainer = compose(
+export const UsersContainer = compose<React.ComponentType>(
     // withAuthRedirect,
     connect(mapStateToProps,
         {getUsers, newPageGetUsers, follow, unFollow}
-    ))(UsersAPIComponent) as React.FC
+    ))(UsersAPIComponent)

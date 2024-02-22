@@ -7,7 +7,6 @@ import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 
 
-
 export type MyMessagesPropsType =
     MyMessagesMapStateToProps &
     MyMessagesMapDispatchToProps
@@ -26,9 +25,9 @@ let mapStateToProps = (state: AppRootState) => {
 }
 
 
-export const MyMessagesContainer = compose(
+export const MyMessagesContainer = compose<React.ComponentType>(
     withAuthRedirect,
     connect(mapStateToProps, {sendNewMessage})
-)(MyMessages) as React.FC
+)(MyMessages)
 
 
