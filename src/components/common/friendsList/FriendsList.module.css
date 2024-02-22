@@ -1,8 +1,9 @@
 @import "../../../ColorVar.module.css";
 
-.friends_lists{
+.friends_lists {
     overflow: auto;
     height: calc(100% - 35px);
+width: 100%;
 }
 
 .friend {
@@ -10,6 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .link {
@@ -27,8 +30,7 @@
 }
 
 .name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--main-text);
     text-transform: capitalize;
 }
