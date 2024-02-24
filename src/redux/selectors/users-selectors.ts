@@ -1,6 +1,4 @@
 import {AppRootState} from '../redux-store'
-import {createSelector} from 'reselect'
-import {UsersListType} from '../reducers/users-reducer'
 
 // Селекторы необходимы для получения данных из state
 export const getUsersS = (state: AppRootState) => {

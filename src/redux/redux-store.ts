@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk'
 import {appReducer, AppReducerActionsType} from './reducers/app-reducer'
 
 
-let rootReducer = combineReducers({
+const rootReducer = combineReducers({
     profilePage: profileReducer,
     messagesPage: messagesReducer,
     friendsListData: friendslistReducer,
@@ -29,6 +29,6 @@ export type CommonActionsTypeForApp =
     AppReducerActionsType
 
 
-let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 export default store
