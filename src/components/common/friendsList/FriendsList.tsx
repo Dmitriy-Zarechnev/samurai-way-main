@@ -1,7 +1,7 @@
 import React from 'react'
 import S from './FriendsList.module.css'
 import {NavLink} from 'react-router-dom'
-import fox from '../../../assets/images/white-fox.webp'
+import fox from '../../../assets/images/FriendDefault.webp'
 import {UsersListType} from '../../../redux/reducers/users-reducer'
 
 type FriendsListPropsType = {

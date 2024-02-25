@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {AppRootState} from '../../../../redux/redux-store'
 import {Inputs, LogIn} from './LogIn'
 import {serverLogIn} from '../../../../redux/reducers/auth-reducer'
-import {getIsAuth, getIsServerError, getLogIn} from '../../../../redux/selectors/auth-selector'
+import {getIsAuth, getIsServerError, getLogInObj} from '../../../../redux/selectors/auth-selector'
 
 export type LogInAPIComponentPropsType =
     LogInAPIComponentMapStateToProps &
@@ -37,7 +37,7 @@ class LogInAPIComponent extends React.PureComponent<LogInAPIComponentPropsType> 
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        logIn: getLogIn(state),
+        logIn: getLogInObj(state),
         isAuth: getIsAuth(state),
         isServerError: getIsServerError(state)
     }

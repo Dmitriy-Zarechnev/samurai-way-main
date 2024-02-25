@@ -1,8 +1,9 @@
 import {AuthPageInitialState, authReducer, setAuthUserData} from '../redux/reducers/auth-reducer'
 
-test('auth reducer should return newData', () => {
+let startState: AuthPageInitialState
 
-    const state: AuthPageInitialState = {
+beforeEach(() => {
+    startState = {
         id: null,
         email: '',
         login: '',
@@ -15,6 +16,10 @@ test('auth reducer should return newData', () => {
         },
         isServerError: ''
     }
+})
+
+
+test('auth reducer should return newData', () => {
 
     const newData = {
         id: 5,
@@ -23,7 +28,7 @@ test('auth reducer should return newData', () => {
         isAuth: true
     }
 
-    const newState = authReducer(state, setAuthUserData(newData.id, newData.email, newData.login, newData.isAuth))
+    const newState = authReducer(startState, setAuthUserData(newData.id, newData.email, newData.login, newData.isAuth))
 
     expect(newState.isAuth).toBe(true)
     expect(newState.id).toBe(5)

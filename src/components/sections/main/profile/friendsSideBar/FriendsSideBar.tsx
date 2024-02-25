@@ -3,7 +3,7 @@ import S from './FriendsSideBar.module.css'
 import {FriendsList} from '../../../../common/friendsList/FriendsList'
 import {UsersListType} from '../../../../../redux/reducers/users-reducer'
 import {NavLink} from 'react-router-dom'
-import find from '../../../../../assets/images/find.webp'
+import find from '../../../../../assets/images/FindFriends.webp'
 
 export const FriendsSideBar = React.memo((props: { friendsSuperList: Array<UsersListType> }) => {
     return (

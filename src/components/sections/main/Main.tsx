@@ -7,11 +7,10 @@ import {Settings} from './settings/Settings'
 import S from './Main.module.css'
 import {UsersContainer} from './users/UsersContainer'
 import {Profile} from './profile/Profile'
-import {LogIn} from './logIn/LogIn'
 import {LogInContainer} from './logIn/LogInContainer'
 
 
-export const Main = () => {
+export const Main = React.memo(() => {
     return (
         <div className={S.app_main}>
             <Route exact path="/" render={() =>
@@ -33,6 +32,6 @@ export const Main = () => {
             <Route path="/settings" render={() => <Settings/>}/>
         </div>
     )
-}
+})
 
 

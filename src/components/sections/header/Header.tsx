@@ -1,11 +1,10 @@
 import React from 'react'
-import logo from '../../../assets/images/logo.svg'
+import logo from '../../../assets/images/MainLogo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
 import {Button} from '../../common/button/Button'
 
 
-// Типизация
 type HeaderPropsType = {
     id: number | null
     email: string
@@ -14,7 +13,7 @@ type HeaderPropsType = {
     logOut: () => void
 }
 
-export const Header = (props: HeaderPropsType) => {
+export const Header = React.memo((props: HeaderPropsType) => {
 
     return (
         <header className={S.app_header}>
@@ -32,6 +31,6 @@ export const Header = (props: HeaderPropsType) => {
             </div>
         </header>
     )
-}
+})
 
 

@@ -1,8 +1,9 @@
 import {MessagesPagePropsType, messagesReducer, sendNewMessage} from '../redux/reducers/messages-reducer'
 
-test('messages reducer should increase the messagesData length by one', () => {
+let startState: MessagesPagePropsType
 
-    const state: MessagesPagePropsType = {
+beforeEach(() => {
+    startState = {
         messagesData: [
             {id: 1, message: 'hello there'},
             {id: 2, message: 'hi are you?'},
@@ -12,10 +13,15 @@ test('messages reducer should increase the messagesData length by one', () => {
             {id: 6, message: 'I would rather not say'}
         ]
     }
+})
+
+
+test('messages reducer should increase the messagesData length by one', () => {
+
     const newMessage = 'hello'
 
-    const newState = messagesReducer(state, sendNewMessage(newMessage))
+    const newState = messagesReducer(startState, sendNewMessage(newMessage))
 
-    expect(newState.messagesData.length).toBe(state.messagesData.length + 1)
+    expect(newState.messagesData.length).toBe(startState.messagesData.length + 1)
     expect(newState.messagesData[6].message).toBe('hello')
 })

@@ -1,6 +1,6 @@
 import React from 'react'
 import S from './Preloader.module.css'
-import preLoader from '../../../assets/images/loader.svg'
+import preLoader from '../../../assets/images/Loader.svg'
 
 
 export const Preloader = React.memo((props: { isFetching: boolean }) => {

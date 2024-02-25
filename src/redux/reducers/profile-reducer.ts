@@ -1,5 +1,5 @@
-import img2 from '../../assets/images/winter.jpg'
-import img1 from '../../assets/images/Cupcake.jpg'
+import img2 from '../../assets/images/NewPostDefault.jpg'
+import img1 from '../../assets/images/PostDefault.jpg'
 import {profileAPI} from '../../api/api'
 import {Dispatch} from 'redux'
 
@@ -46,18 +46,21 @@ export type MyPostsActionsType =
     AddPostActionType |
     SetUserProfileActionType |
     getUserStatusActionType |
-    updateUserStatusActionType
+    UpdateUserStatusActionType |
+    DeletePostActionType
 
 type AddPostActionType = ReturnType<typeof addPost>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
 type getUserStatusActionType = ReturnType<typeof getUserStatus>
-type updateUserStatusActionType = ReturnType<typeof updateUserStatus>
+type UpdateUserStatusActionType = ReturnType<typeof updateUserStatus>
+type DeletePostActionType = ReturnType<typeof deletePost>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = 'ADD-POST'
 export const SET_USER_PROFILE = 'SET-USER-PROFILE'
 export const GET_USER_STATUS = 'GET-USER-STATUS'
 export const UPDATE_USER_STATUS = 'UPDATE-USER-STATUS'
+export const DELETE_POST = 'DELETE-POST'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -131,6 +134,12 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 ...state, status: action.payload.status
             }
 
+        case DELETE_POST:
+            return {
+                ...state,
+                postsData: state.postsData.filter(el => el.id !== action.payload.postId)
+            }
+
         default:
             return state
     }
@@ -149,6 +158,9 @@ export const getUserStatus = (status: string) => {
 }
 export const updateUserStatus = (status: string) => {
     return {type: UPDATE_USER_STATUS, payload: {status}} as const
+}
+export const deletePost = (postId: number) => {
+    return {type: DELETE_POST, payload: {postId}} as const
 }
 
 

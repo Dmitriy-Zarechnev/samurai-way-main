@@ -1,10 +1,10 @@
 import React from 'react'
 import S from './ProfileInfo.module.css'
 import {Preloader} from '../../../../common/preloader/Preloader'
-import git from '../../../../../assets/images/git.svg'
-import vk from '../../../../../assets/images/vk.svg'
+import git from '../../../../../assets/images/GitHubContacts.svg'
+import vk from '../../../../../assets/images/VKContacts.svg'
 import {Contacts} from '../../../../common/contacts/Contacts'
-import sam from '../../../../../assets/images/sam.webp'
+import sam from '../../../../../assets/images/AvatarDefault.webp'
 import {ProfileInfoType} from '../../../../../redux/reducers/profile-reducer'
 import {ProfileStatusWithHooks} from '../../../../common/profileStatus/ProfileStatusWithHooks'
 

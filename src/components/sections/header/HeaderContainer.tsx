@@ -3,8 +3,9 @@ import {Header} from './Header'
 import {connect} from 'react-redux'
 import {serverLogOut} from '../../../redux/reducers/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
+import {getEmail, getId, getIsAuth, getLogIn} from '../../../redux/selectors/auth-selector'
 
-// Типизация
+
 type HeaderAPIContainerPropsType =
     HeaderAPIComponentMapStateToProps &
     HeaderAPIComponentMapDispatchToProps
@@ -14,7 +15,7 @@ type HeaderAPIComponentMapDispatchToProps = {
     serverLogOut: () => void
 }
 
-class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
+class HeaderAPIContainer extends React.PureComponent<HeaderAPIContainerPropsType> {
 
     render() {
         return (
@@ -28,10 +29,10 @@ class HeaderAPIContainer extends React.Component<HeaderAPIContainerPropsType> {
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        id: state.auth.id,
-        email: state.auth.email,
-        login: state.auth.login,
-        isAuth: state.auth.isAuth
+        id: getId(state),
+        email: getEmail(state),
+        login: getLogIn(state),
+        isAuth: getIsAuth(state)
     }
 }
 
