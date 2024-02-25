@@ -1,5 +1,5 @@
 import React from 'react'
-import S from '../Users.module.css'
+import S from './User.module.css'
 import {NavLink} from 'react-router-dom'
 import min from '../../../../../assets/images/UserDefault.jpg'
 import {Button} from '../../../../common/button/Button'

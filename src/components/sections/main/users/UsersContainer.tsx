@@ -34,12 +34,14 @@ class UsersAPIComponent extends React.PureComponent<UsersAPIComponentPropsType> 
 
     //  -------- Изменение текущей страницы ----------------
     onPageChanged = (currentPage: number) => {
-        this.props.newPageGetUsers(currentPage, this.props.pageSize)
+        const  {pageSize} = this.props
+        this.props.newPageGetUsers(currentPage,pageSize)
     }
 
     // ----- Изменение списка пагинации при переключении -------
     onPagination() {
-        return onPaginationHelper(this.props.totalCount, this.props.pageSize, this.props.currentPage)
+        const {totalCount, pageSize, currentPage} = this.props
+        return onPaginationHelper(totalCount, pageSize, currentPage)
     }
 
 
