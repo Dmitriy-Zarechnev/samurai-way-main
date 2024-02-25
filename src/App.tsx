@@ -9,11 +9,13 @@ import {connect} from 'react-redux'
 import {initializeApp} from './redux/reducers/app-reducer'
 import {AppRootState} from './redux/redux-store'
 import {Preloader} from './components/common/preloader/Preloader'
+import {getInitialized} from './redux/selectors/app-selector'
 
 
 // Типизация
 type AppPropsType =
     AppMapDispatchToProps & AppMapStateToProps
+
 type AppMapStateToProps = ReturnType<typeof mapStateToProps>
 type AppMapDispatchToProps = {
     initializeApp: () => void
@@ -47,7 +49,7 @@ class App extends React.Component<AppPropsType> {
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        initialized: state.app.initialized
+        initialized: getInitialized(state)
     }
 }
 
