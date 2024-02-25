@@ -10,7 +10,7 @@ import {onPaginationHelper} from '../../../../utils/pagination-helper'
 
 
 // Типизация
-export type UsersAPIComponentPropsType =
+type UsersAPIComponentPropsType =
     UsersAPIComponentMapStateToProps &
     UsersAPIComponentMapDispatchToProps
 
@@ -38,7 +38,7 @@ class UsersAPIComponent extends React.PureComponent<UsersAPIComponentPropsType> 
     }
 
     // ----- Изменение списка пагинации при переключении -------
-    onPagination(){
+    onPagination() {
         return onPaginationHelper(this.props.totalCount, this.props.pageSize, this.props.currentPage)
     }
 
