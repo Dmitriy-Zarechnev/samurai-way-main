@@ -7,7 +7,7 @@ import {InputForm} from '../../../../common/inputForm/InputForm'
 import {TextAreaForm} from '../../../../common/textareaForm/TextAreaForm'
 import {Button} from '../../../../common/button/Button'
 
-// Типизация
+
 type MyPostsPropsType = {
     posts: Array<PostsDataType>
     addPost: (header: string, post: string) => void
@@ -19,7 +19,7 @@ type InputsDataType = {
 }
 
 
-export const MyPosts = (props: MyPostsPropsType) => {
+export const MyPosts = React.memo((props: MyPostsPropsType) => {
 
     const {
         register,
@@ -44,4 +44,4 @@ export const MyPosts = (props: MyPostsPropsType) => {
             <Post postsData={props.posts}/>
         </div>
     )
-}
+})

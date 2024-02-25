@@ -3,10 +3,10 @@ import S from './Post.module.css'
 import {PostsDataType} from '../../../../../../redux/reducers/profile-reducer'
 
 
-export const Post = (props: { postsData: PostsDataType[] }) => {
+export const Post = React.memo((props: { postsData: PostsDataType[] }) => {
     return (
         <div className={S.post}>
-            {props.postsData.map((el: PostsDataType) => {
+            {props.postsData.map((el) => {
                 return (
                     <div className={S.post__item} key={el.id}>
                         <h4 className={S.post__item_header}>{el.header}</h4>
@@ -20,6 +20,6 @@ export const Post = (props: { postsData: PostsDataType[] }) => {
             })}
         </div>
     )
-}
+})
 
 

@@ -20,7 +20,7 @@ type LogInPropsType = {
 }
 
 
-export const LogIn = (props: LogInPropsType) => {
+export const LogIn = React.memo((props: LogInPropsType) => {
 
     const {
         register,
@@ -71,5 +71,5 @@ export const LogIn = (props: LogInPropsType) => {
             </form>
         </>
     )
-}
+})
 

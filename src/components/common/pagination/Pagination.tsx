@@ -2,14 +2,14 @@ import React from 'react'
 import S from './Pagination.module.css'
 
 
-// Типизация
+
 type PaginationPropsType = {
     currentArray: Array<number>
     onPageChanged: (currentPage: number) => void
     currentPage: number
 }
 
-export const Pagination = (props: PaginationPropsType) => {
+export const Pagination = React.memo((props: PaginationPropsType) => {
     return (
         <>
             {props.currentArray.map(el => {
@@ -25,5 +25,5 @@ export const Pagination = (props: PaginationPropsType) => {
             })}
         </>
     )
-}
+})
 

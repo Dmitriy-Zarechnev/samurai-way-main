@@ -6,7 +6,7 @@ import {Pagination} from '../../../common/pagination/Pagination'
 import {NavLink} from 'react-router-dom'
 import {UsersListType} from '../../../../redux/reducers/users-reducer'
 
-// Типизация
+
 export type UsersPropsType = {
     items: UsersListType[]
     totalCount: number
@@ -21,7 +21,7 @@ export type UsersPropsType = {
     follow: (id: number) => void
 }
 
-export const Users = (props: UsersPropsType) => {
+export const Users = React.memo((props: UsersPropsType) => {
 
     return (
         <div className={S.users_lists}>
@@ -88,4 +88,4 @@ export const Users = (props: UsersPropsType) => {
             })}
         </div>
     )
-}
+})

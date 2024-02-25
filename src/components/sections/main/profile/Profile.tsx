@@ -5,7 +5,7 @@ import {FriendsSideBarContainer} from './friendsSideBar/FriendsSideBarContainer'
 import {ProfileInfoContainer} from './profileInfo/ProfileInfoContainer'
 
 
-export const Profile = () => {
+export const Profile = React.memo(() => {
     return (
         <section className={S.app_profile}>
             <ProfileInfoContainer/>
@@ -13,6 +13,6 @@ export const Profile = () => {
             <FriendsSideBarContainer/>
         </section>
     )
-}
+})
 
 

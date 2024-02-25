@@ -3,20 +3,19 @@ import {connect} from 'react-redux'
 import {AppRootState} from '../../../../redux/redux-store'
 import {Inputs, LogIn} from './LogIn'
 import {serverLogIn} from '../../../../redux/reducers/auth-reducer'
+import {getIsAuth, getIsServerError, getLogIn} from '../../../../redux/selectors/auth-selector'
 
-// Типизация
 export type LogInAPIComponentPropsType =
     LogInAPIComponentMapStateToProps &
     LogInAPIComponentMapDispatchToProps
 
 type LogInAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
-
 type LogInAPIComponentMapDispatchToProps = {
     serverLogIn: (email: string, password: string, rememberMe: boolean) => void
 }
 
 
-class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
+class LogInAPIComponent extends React.PureComponent<LogInAPIComponentPropsType> {
 
 
     //  -------- Первая авторизация ----------------
@@ -38,9 +37,9 @@ class LogInAPIComponent extends React.Component<LogInAPIComponentPropsType> {
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        logIn: state.auth.logIn,
-        isAuth: state.auth.isAuth,
-        isServerError: state.auth.isServerError
+        logIn: getLogIn(state),
+        isAuth: getIsAuth(state),
+        isServerError: getIsServerError(state)
     }
 }
 

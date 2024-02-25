@@ -9,7 +9,7 @@ import {goToPage} from '../../../../../redux/reducers/profile-reducer'
 import {getCurrentPageS, getPageSizeS} from '../../../../../redux/selectors/users-selectors'
 import {getUsers} from '../../../../../redux/reducers/users-reducer'
 
-// Типизация
+
 export type FriendsSideBarAPIComponentPropsType =
     FriendsSideBarAPIComponentMapDispatchToProps &
     FriendsSideBarAPIComponentMapStateToProps &
@@ -22,7 +22,7 @@ type FriendsSideBarAPIComponentMapDispatchToProps = {
     getUsers: (currentPage: number, pageSize: number) => void
 }
 
-class FriendsSideBarAPIComponent extends React.Component<FriendsSideBarAPIComponentPropsType> {
+class FriendsSideBarAPIComponent extends React.PureComponent<FriendsSideBarAPIComponentPropsType> {
 
     //  -------- Загрузка страницы пользователя при клике на ссылку ----------------
     componentDidMount() {
@@ -42,7 +42,7 @@ class FriendsSideBarAPIComponent extends React.Component<FriendsSideBarAPICompon
     }
 }
 
-let mapStateToProps = (state: AppRootState) => {
+const mapStateToProps = (state: AppRootState) => {
     return {
         // friendsList: state.friendsListData,
         friendsSuperList: friendsSuperSelector(state),

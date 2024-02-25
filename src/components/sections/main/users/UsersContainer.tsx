@@ -23,7 +23,7 @@ type UsersAPIComponentMapDispatchToProps = {
 }
 
 
-class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType> {
+class UsersAPIComponent extends React.PureComponent<UsersAPIComponentPropsType> {
 
 
     //  -------- Первая загрузка списка пользователей ----------------

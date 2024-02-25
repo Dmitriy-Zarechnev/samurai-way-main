@@ -14,7 +14,7 @@ type ProfileInfoPropsType = {
     updateStatus: (status: string) => void
 }
 
-export const ProfileInfo = (props: ProfileInfoPropsType) => {
+export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
     return (
         <>
             {props.profileInfo.userId
@@ -49,5 +49,5 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             }
         </>
     )
-}
+})
 

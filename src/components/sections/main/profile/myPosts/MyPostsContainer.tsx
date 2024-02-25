@@ -2,11 +2,12 @@ import {addPost} from '../../../../../redux/reducers/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
 import {AppRootState} from '../../../../../redux/redux-store'
+import {getPostsDataFromState} from '../../../../../redux/selectors/profile-selector'
 
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        posts: state.profilePage.postsData
+        posts: getPostsDataFromState(state)
     }
 }
 

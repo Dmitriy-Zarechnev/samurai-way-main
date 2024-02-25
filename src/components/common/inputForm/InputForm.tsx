@@ -11,8 +11,9 @@ type InputFormPropsType = {
     errors: FieldError | undefined,
 }
 
-export const InputForm = (props: InputFormPropsType) => {
+export const InputForm = React.memo((props: InputFormPropsType) => {
 
+    // Деструктуризация props
     const {
         value, type, defValue,
         placeholder, register, errors
@@ -34,5 +35,5 @@ export const InputForm = (props: InputFormPropsType) => {
             >{value} field is required</span>}
         </div>
     )
-}
+})
 

@@ -2,14 +2,13 @@ import React, {ChangeEvent, useEffect, useState} from 'react'
 import S from './ProfileStatus.module.css'
 
 
-// Типизация
 type ProfileStatusWithHooksPropsType = {
     status: string
     updateStatus: (status: string) => void
 }
 
 
-export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksPropsType) => {
+export const ProfileStatusWithHooks = React.memo((props: ProfileStatusWithHooksPropsType) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
     const [newStatus, setNewStatus] = useState<string>(props.status)
@@ -39,5 +38,5 @@ export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksPropsType) =
                 : <span onDoubleClick={activateEditMode}>{props.status || 'No status'}</span>}
         </div>
     )
-}
+})
 

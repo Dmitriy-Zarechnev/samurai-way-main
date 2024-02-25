@@ -2,7 +2,6 @@ import React, {ChangeEvent} from 'react'
 import S from './ProfileStatus.module.css'
 
 
-// Типизация
 type ProfileStatusPropsType = {
     status: string
     updateStatus: (status: string) => void
@@ -13,7 +12,7 @@ type StateType = {
     status: string
 }
 
-export class ProfileStatus extends React.Component<ProfileStatusPropsType, StateType> {
+export class ProfileStatus extends React.PureComponent<ProfileStatusPropsType, StateType> {
 
     state = {
         editMode: false,

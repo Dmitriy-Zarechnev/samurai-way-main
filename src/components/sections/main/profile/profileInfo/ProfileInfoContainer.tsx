@@ -5,8 +5,8 @@ import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
 import {compose} from 'redux'
+import {getId, getIsAuth, getProfileInfo, getStatusFromState} from '../../../../../redux/selectors/profile-selector'
 
-// Типизация
 type ProfileInfoAPIComponentPropsType =
     ProfileInfoAPIComponentMapStateToProps &
     ProfileInfoAPIComponentMapDispatchToProps &
@@ -20,7 +20,7 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
     updateStatus: (status: string) => void
 }
 
-class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPropsType> {
+class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponentPropsType> {
 
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
@@ -39,10 +39,10 @@ class ProfileInfoAPIComponent extends React.Component<ProfileInfoAPIComponentPro
 
 const mapStateToProps = (state: AppRootState) => {
     return {
-        profileInfo: state.profilePage.profileInfo,
-        status: state.profilePage.status,
-        userId: state.auth.id,
-        isAuth: state.auth.isAuth
+        profileInfo: getProfileInfo(state),
+        status: getStatusFromState(state),
+        userId: getId(state),
+        isAuth: getIsAuth(state)
     }
 }
 

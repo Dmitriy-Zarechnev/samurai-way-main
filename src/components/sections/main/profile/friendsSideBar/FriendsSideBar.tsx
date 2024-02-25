@@ -5,7 +5,7 @@ import {UsersListType} from '../../../../../redux/reducers/users-reducer'
 import {NavLink} from 'react-router-dom'
 import find from '../../../../../assets/images/find.webp'
 
-export const FriendsSideBar = (props: { friendsSuperList: Array<UsersListType> }) => {
+export const FriendsSideBar = React.memo((props: { friendsSuperList: Array<UsersListType> }) => {
     return (
         <ul className={S.friends_sidebar}>
             <h3 className={S.friends_sidebar__header}>My Friends</h3>
@@ -22,7 +22,7 @@ export const FriendsSideBar = (props: { friendsSuperList: Array<UsersListType> }
             }
         </ul>
     )
-}
+})
 
 
 
