@@ -56,11 +56,11 @@ type UpdateUserStatusActionType = ReturnType<typeof updateUserStatus>
 type DeletePostActionType = ReturnType<typeof deletePost>
 
 // *********** Константы названий экшенов ****************
-export const ADD_POST = 'ADD-POST'
-export const SET_USER_PROFILE = 'SET-USER-PROFILE'
-export const GET_USER_STATUS = 'GET-USER-STATUS'
-export const UPDATE_USER_STATUS = 'UPDATE-USER-STATUS'
-export const DELETE_POST = 'DELETE-POST'
+export const ADD_POST = '/profile/ADD-POST'
+export const SET_USER_PROFILE = '/profile/SET-USER-PROFILE'
+export const GET_USER_STATUS = '/profile/GET-USER-STATUS'
+export const UPDATE_USER_STATUS = '/profile/UPDATE-USER-STATUS'
+export const DELETE_POST = '/profile/DELETE-POST'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -166,39 +166,23 @@ export const deletePost = (postId: number) => {
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
-export const goToPage = (id: string) => {
+export const goToPage = (id: string) => async (dispatch: Dispatch<MyPostsActionsType>) => {
+    let userId = Number(id)
+    if (!userId) userId = 30743
 
-    return (dispatch: Dispatch<MyPostsActionsType>) => {
-        let userId = Number(id)
-        if (!userId) userId = 30743
-
-        profileAPI.userProfile(userId).then(data => {
-            dispatch(setUserProfile(data))
-        })
-    }
+    const response = await profileAPI.userProfile(userId)
+    dispatch(setUserProfile(response.data))
 }
 
 //  -------- Получение статуса пользователя ----------------
-export const getStatus = (id: number) => {
+export const getStatus = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
-    return (dispatch: Dispatch<MyPostsActionsType>) => {
-
-        profileAPI.getStatus(id).then(response => {
-
-            dispatch(getUserStatus(response.data))
-        })
-    }
+    const response = await profileAPI.getStatus(id)
+    dispatch(getUserStatus(response.data))
 }
 //  -------- Изменение статуса пользователя ----------------
-export const updateStatus = (status: string) => {
+export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
-    return (dispatch: Dispatch<MyPostsActionsType>) => {
-
-        profileAPI.updateStatus(status).then(response => {
-
-            if (response.data.resultCode === 0) {
-                dispatch(updateUserStatus(status))
-            }
-        })
-    }
+    const response = await profileAPI.updateStatus(status)
+    response.data.resultCode === 0 && dispatch(updateUserStatus(status))
 }

@@ -47,13 +47,13 @@ type ToggleIsFollowingInProgressActionType = ReturnType<typeof toggleFollowingIn
 
 
 // *********** Константы названий экшенов ****************
-export const FOLLOW_FRIEND = 'FOLLOW-FRIEND'
-export const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND'
-export const SET_USERS = 'SET-USERS'
-export const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
-export const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
-export const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
-export const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE-IS-FOLLOWING-IN-PROGRESS'
+export const FOLLOW_FRIEND = '/users/FOLLOW-FRIEND'
+export const UNFOLLOW_FRIEND = '/users/UNFOLLOW-FRIEND'
+export const SET_USERS = '/users/SET-USERS'
+export const SET_CURRENT_PAGE = '/users/SET-CURRENT-PAGE'
+export const SET_TOTAL_USERS_COUNT = '/users/SET-TOTAL-USERS-COUNT'
+export const TOGGLE_IS_FETCHING = '/users/TOGGLE-IS-FETCHING'
+export const TOGGLE_IS_FOLLOWING_IN_PROGRESS = '/users/TOGGLE-IS-FOLLOWING-IN-PROGRESS'
 
 
 // *********** Первоначальный стэйт для usersReducer ****************
@@ -141,58 +141,44 @@ export const toggleFollowingInProgress = (isFetching: boolean, userId: number) =
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Первая загрузка списка пользователей ----------------
-export const getUsers = (currentPage: number, pageSize: number) => {
+export const getUsers = (currentPage: number, pageSize: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+    dispatch(toggleIsFetching(true))
 
-    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-        dispatch(toggleIsFetching(true))
+    const response = await usersAPI.getUsers(currentPage, pageSize)
 
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        })
-    }
+    dispatch(toggleIsFetching(false))
+    dispatch(setUsers(response.data.items))
+    dispatch(setTotalUsersCount(response.data.totalCount))
 }
 
 //  -------- Изменение текущей страницы ----------------
-export const newPageGetUsers = (currentPage: number, pageSize: number) => {
+export const newPageGetUsers = (currentPage: number, pageSize: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+    dispatch(setCurrentPage(currentPage))
+    dispatch(toggleIsFetching(true))
 
-    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-        dispatch(setCurrentPage(currentPage))
-        dispatch(toggleIsFetching(true))
+    const response = await usersAPI.getUsers(currentPage, pageSize)
 
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false))
-            dispatch(setUsers(data.items))
-        })
-    }
+    dispatch(toggleIsFetching(false))
+    dispatch(setUsers(response.data.items))
 }
 
 //  -------- Отписка от дружбы ----------------
-export const unFollow = (id: number) => {
+export const unFollow = (id: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+    dispatch(toggleFollowingInProgress(true, id))
 
-    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-        dispatch(toggleFollowingInProgress(true, id))
-        followUnfollowAPI.unfollowUser(id).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(unfollowFriend(id))
-            }
-            dispatch(toggleFollowingInProgress(false, id))
-        })
-    }
+    const response = await followUnfollowAPI.unfollowUser(id)
+    response.data.resultCode === 0 && dispatch(unfollowFriend(id))
+
+    dispatch(toggleFollowingInProgress(false, id))
 }
 
 //  -------- Подписка для дружбы ----------------
-export const follow = (id: number) => {
+export const follow = (id: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+    dispatch(toggleFollowingInProgress(true, id))
 
-    return (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-        dispatch(toggleFollowingInProgress(true, id))
-        followUnfollowAPI.followUser(id).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(followFriend(id))
-            }
-            dispatch(toggleFollowingInProgress(false, id))
-        })
-    }
+    const response = await followUnfollowAPI.followUser(id)
+    response.data.resultCode === 0 && dispatch(followFriend(id))
+
+    dispatch(toggleFollowingInProgress(false, id))
 }
 

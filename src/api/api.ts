@@ -12,24 +12,24 @@ const instance = axios.create({
 // -------------- Получение списка users -------------------
 export const usersAPI = {
     getUsers(currentPage: number, pageSize: number) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
     }
 }
 
 // -------------- Follow and Unfollow -------------------
 export const followUnfollowAPI = {
     followUser(id: number) {
-        return instance.post(`follow/${id}`, {}).then(response => response.data)
+        return instance.post(`follow/${id}`, {})
     },
     unfollowUser(id: number) {
-        return instance.delete(`follow/${id}`).then(response => response.data)
+        return instance.delete(`follow/${id}`)
     }
 }
 
 // -------------- profileAPI -------------------
 export const profileAPI = {
     userProfile(userId: number) {
-        return instance.get(`profile/${userId}`).then(response => response.data)
+        return instance.get(`profile/${userId}`)
     },
     getStatus(userId: number) {
         return instance.get(`profile/status/${userId}`)
@@ -42,12 +42,12 @@ export const profileAPI = {
 // -------------- Auth -------------------
 export const authAPI = {
     authHeader() {
-        return instance.get(`auth/me`).then(response => response.data)
+        return instance.get(`auth/me`)
     },
     logIn(email: string, password: string, rememberMe: boolean) {
-        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => response.data)
+        return instance.post(`auth/login`, {email, password, rememberMe})
     },
     logOut() {
-        return instance.delete(`auth/login`).then(response => response.data)
+        return instance.delete(`auth/login`)
     }
 }

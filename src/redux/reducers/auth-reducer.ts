@@ -34,9 +34,9 @@ type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForAp
 type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
 
 // *********** Константы названий экшенов ****************
-const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA'
-const LOG_IN_SERVER = 'LOG-IN-SERVER'
-const SERVER_ERROR = 'SERVER-ERROR'
+const SET_AUTH_USER_DATA = '/auth/SET-AUTH-USER-DATA'
+const LOG_IN_SERVER = '/auth/LOG-IN-SERVER'
+const SERVER_ERROR = '/auth/SERVER-ERROR'
 
 
 // *********** Первоначальный стэйт для authReducer ****************
@@ -92,53 +92,45 @@ export const authReducer = (state: AuthPageInitialState = initialState, action: 
 export const setAuthUserData = (id: number | null, email: string, login: string, isAuth: boolean) => {
     return {type: SET_AUTH_USER_DATA, payload: {id, email, login, isAuth}} as const
 }
-
 export const logInServer = (logIn: LogInType) => {
     return {type: LOG_IN_SERVER, payload: {logIn}} as const
 }
-
 export const serverError = (message: string) => {
-    return {type: SERVER_ERROR, payload:{message}} as const
+    return {type: SERVER_ERROR, payload: {message}} as const
 }
 
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Проверка авторизации на сервере ----------------
-export const authMe = () => {
-
-    return (dispatch: Dispatch<AuthReducerActionsType>) => {
-        return authAPI.authHeader().then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(data.data.id, data.data.email, data.data.login, true))
-            }
-        })
+export const authMe = () => async (dispatch: Dispatch<AuthReducerActionsType>) => {
+    const response = await authAPI.authHeader()
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(
+            response.data.data.id,
+            response.data.data.email,
+            response.data.data.login,
+            true
+        ))
     }
 }
 
 //  -------- Логинизация на сервере ----------------
-export const serverLogIn = (email: string, password: string, rememberMe: boolean): ThunkType => {
-
-    return (dispatch: ThunkDispatchType) => {
-         authAPI.logIn(email, password, rememberMe).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(authMe())
-                if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
-            } else {
-                dispatch(serverError(data.messages[0]))
-            }
-        })
+export const serverLogIn = (email: string, password: string, rememberMe: boolean): ThunkType => async (dispatch: ThunkDispatchType) => {
+    const response = await authAPI.logIn(email, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(authMe())
+        if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
+    } else {
+        dispatch(serverError(response.data.messages[0]))
     }
 }
 
-//  -------- Вылогинизация на сервере ----------------
-export const serverLogOut = () => {
 
-    return (dispatch: Dispatch<AuthReducerActionsType>) => {
-        authAPI.logOut().then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(null, '', '', false))
-            }
-        })
+//  -------- Вылогинизация на сервере ----------------
+export const serverLogOut = () => async (dispatch: Dispatch<AuthReducerActionsType>) => {
+    const response = await authAPI.logOut()
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, '', '', false))
     }
 }
 

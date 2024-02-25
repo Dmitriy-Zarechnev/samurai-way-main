@@ -1,9 +1,8 @@
-// Типизация
 import {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {AppRootState, CommonActionsTypeForApp} from '../redux-store'
 import {authMe} from './auth-reducer'
 
-
+// Типизация
 export type AppReducerActionsType =
     InitializedSuccessActionType
 
@@ -19,7 +18,7 @@ type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForAp
 type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
 
 // *********** Константы названий экшенов ****************
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS'
+const INITIALIZED_SUCCESS = '/app/INITIALIZED-SUCCESS'
 
 
 // *********** Первоначальный стэйт для authReducer ****************
@@ -52,11 +51,7 @@ export const initializedSuccess = () => {
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Инициализация на сайте ----------------
 
-export const initializeApp = (): ThunkType => {
-
-    return (dispatch: ThunkDispatchType) => {
-        dispatch(authMe()).then(() => {
-            dispatch(initializedSuccess())
-        })
-    }
+export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType) => {
+    await dispatch(authMe())
+    dispatch(initializedSuccess())
 }

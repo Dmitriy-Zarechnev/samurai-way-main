@@ -10,7 +10,7 @@ type SendNewMessageActionType = ReturnType<typeof sendNewMessage>
 
 
 // *********** Константы названий экшенов ****************
-export const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
+export const SEND_NEW_MESSAGE = '/messages/SEND-NEW-MESSAGE'
 
 
 // *********** Первоначальный стэйт для messagesReducer ****************
