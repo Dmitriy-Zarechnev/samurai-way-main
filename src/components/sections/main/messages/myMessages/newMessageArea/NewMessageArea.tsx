@@ -8,7 +8,7 @@ export type NewMessageAreaPropsType = {
     sendNewMessage: (message: string) => void
 }
 
-export const NewMessageArea = (props: NewMessageAreaPropsType) => {
+export const NewMessageArea = React.memo((props: NewMessageAreaPropsType) => {
 
     const {
         register,
@@ -28,7 +28,7 @@ export const NewMessageArea = (props: NewMessageAreaPropsType) => {
             <Button name={'Add New Message'}/>
         </form>
     )
-}
+})
 
 
 

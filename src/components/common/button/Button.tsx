@@ -1,7 +1,6 @@
 import React from 'react'
 import S from './Button.module.css'
 
-// Типизация
 type ButtonPropsType = {
     name: string
     onClick?: () => void
@@ -9,7 +8,7 @@ type ButtonPropsType = {
     additionalClass?: string
 }
 
-export const Button = (props: ButtonPropsType) => {
+export const Button = React.memo((props: ButtonPropsType) => {
     return (
         <button
             disabled={props.disabled}
@@ -18,7 +17,7 @@ export const Button = (props: ButtonPropsType) => {
             {props.name}
         </button>
     )
-}
+})
 
 
 

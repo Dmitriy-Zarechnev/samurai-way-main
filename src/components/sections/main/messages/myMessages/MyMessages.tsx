@@ -5,7 +5,7 @@ import {NewMessageArea} from './newMessageArea/NewMessageArea'
 import {MyMessagesPropsType} from './MyMessagesContainer'
 
 
-export const MyMessages = (props: MyMessagesPropsType) => {
+export const MyMessages = React.memo((props: MyMessagesPropsType) => {
     return (
         <div className={S.my_messages}>
             <h3 className={S.my_messages__header}>Messages</h3>
@@ -13,7 +13,7 @@ export const MyMessages = (props: MyMessagesPropsType) => {
             <NewMessageArea sendNewMessage={props.sendNewMessage}/>
         </div>
     )
-}
+})
 
 
 

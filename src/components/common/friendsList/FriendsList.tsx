@@ -4,9 +4,12 @@ import {NavLink} from 'react-router-dom'
 import fox from '../../../assets/images/white-fox.webp'
 import {UsersListType} from '../../../redux/reducers/users-reducer'
 
+type FriendsListPropsType = {
+    friendsList: Array<UsersListType>,
+    navlink: string
+}
 
-
-export const FriendsList = (props: { friendsList: Array<UsersListType>, navlink: string }) => {
+export const FriendsList = React.memo((props: FriendsListPropsType) => {
     return (
         <div className={S.friends_lists}>
             {props.friendsList.map((el) => {
@@ -17,7 +20,7 @@ export const FriendsList = (props: { friendsList: Array<UsersListType>, navlink:
                         <NavLink
                             to={`/${props.navlink}/${el.id}`}
                             className={S.link}>
-                            <img src={el.photos.small?el.photos.small: fox}
+                            <img src={el.photos.small ? el.photos.small : fox}
                                  alt={`${el.name} - avatar`}
                                  className={S.img}/>
                         </NavLink>
@@ -32,5 +35,5 @@ export const FriendsList = (props: { friendsList: Array<UsersListType>, navlink:
             })}
         </div>
     )
-}
+})
 

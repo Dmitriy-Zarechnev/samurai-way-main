@@ -8,7 +8,7 @@ type TextAreaFormPropsType = {
     errors: FieldError | undefined
 }
 
-export const TextAreaForm = (props: TextAreaFormPropsType) => {
+export const TextAreaForm = React.memo((props: TextAreaFormPropsType) => {
     return (
         <div>
             <label className={S.label} htmlFor={props.value}>New {props.value}</label>
@@ -23,5 +23,5 @@ export const TextAreaForm = (props: TextAreaFormPropsType) => {
                 </span>}
         </div>
     )
-}
+})
 

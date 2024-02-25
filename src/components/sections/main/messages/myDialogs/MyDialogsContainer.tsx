@@ -4,7 +4,7 @@ import {AppRootState} from '../../../../../redux/redux-store'
 import {friendsSuperSelector} from '../../../../../redux/selectors/friendlist-selector'
 
 
-let mapStateToProps = (state: AppRootState) => {
+const mapStateToProps = (state: AppRootState) => {
     return {
         friendsSuperList: friendsSuperSelector(state)
     }

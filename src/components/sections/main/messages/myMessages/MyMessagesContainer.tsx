@@ -5,6 +5,7 @@ import {sendNewMessage} from '../../../../../redux/reducers/messages-reducer'
 import {AppRootState} from '../../../../../redux/redux-store'
 import {withAuthRedirect} from '../../../../../hoc/withAuthRedirect'
 import {compose} from 'redux'
+import {getMessageData} from '../../../../../redux/selectors/message-selector'
 
 
 export type MyMessagesPropsType =
@@ -18,9 +19,9 @@ type MyMessagesMapDispatchToProps = {
 }
 
 
-let mapStateToProps = (state: AppRootState) => {
+const mapStateToProps = (state: AppRootState) => {
     return {
-        messagesData: state.messagesPage.messagesData
+        messagesData: getMessageData(state)
     }
 }
 
