@@ -6,6 +6,7 @@ import {Preloader} from '../../../common/preloader/Preloader'
 import {AppRootState} from '../../../../redux/redux-store'
 import {compose} from 'redux'
 import {getCurrentPageS, getIsFetchingS, getIsFollowingInProgressS, getPageSizeS, getTotalCountS, getUsersS} from '../../../../redux/selectors/users-selectors'
+import {onPaginationHelper} from '../../../../utils/pagination-helper'
 
 
 // Типизация
@@ -37,30 +38,10 @@ class UsersAPIComponent extends React.PureComponent<UsersAPIComponentPropsType> 
     }
 
     // ----- Изменение списка пагинации при переключении -------
-    onPagination = () => {
-        let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize)
-        let pages = []
-
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i)
-        }
-
-        let curPg = this.props.currentPage
-        let curPF = ((curPg - 5) < 0) ? 0 : curPg - 5
-        let curPL = curPg + 5
-
-        let pagStart = pages.slice(0, 3)
-        let pagCenter = pages.slice(curPF, curPL)
-        let pagEnd = pages.slice(pages.length - 3)
-
-        if (curPg <= 7) {
-            pagStart = []
-        }
-        if (curPg >= pages.length - 7) {
-            pagEnd = []
-        }
-        return {pagStart, pagCenter, pagEnd}
+    onPagination(){
+        return onPaginationHelper(this.props.totalCount, this.props.pageSize, this.props.currentPage)
     }
+
 
     render() {
         const {pagStart, pagCenter, pagEnd} = this.onPagination()
