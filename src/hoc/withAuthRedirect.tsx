@@ -2,11 +2,12 @@ import React from 'react'
 import {AppRootState} from '../redux/redux-store'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
+import {getIsAuth} from '../redux/selectors/auth-selector'
 
 
-let mapStateToPropsForRedirect = (state: AppRootState) => {
+const mapStateToPropsForRedirect = (state: AppRootState) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: getIsAuth(state)
     }
 }
 type mapStateToPropsForRedirectPropsType = ReturnType<typeof mapStateToPropsForRedirect>
@@ -14,10 +15,10 @@ type mapStateToPropsForRedirectPropsType = ReturnType<typeof mapStateToPropsForR
 
 // ---- HOC - используется чтобы добавить свойство redirect
 export const withAuthRedirect = (Component: React.ComponentType<any>) => {
-    class RedirectComponent extends React.Component<mapStateToPropsForRedirectPropsType> {
+    class RedirectComponent extends React.PureComponent<mapStateToPropsForRedirectPropsType> {
         render() {
             if (!this.props.isAuth) return <Redirect to={'/login'}/>
-            return <Component  />
+            return <Component/>
         }
     }
 

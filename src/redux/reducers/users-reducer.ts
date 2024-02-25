@@ -1,5 +1,6 @@
 import {followUnfollowAPI, usersAPI} from '../../api/api'
 import {Dispatch} from 'redux'
+import {updateObjectInArray} from '../../utils/object-helpers'
 
 
 // Типизация
@@ -75,17 +76,15 @@ export const usersReducer = (state: UsersInitialState = initialState, action: Us
         case FOLLOW_FRIEND:
             return {
                 ...state,
-                items: state.items.map(u => {
-                    return u.id === action.payload.userID ? {...u, followed: true} : u
-                })
+                items: updateObjectInArray(state.items, action.payload.userID,
+                    'id', {followed: true})
             }
 
         case UNFOLLOW_FRIEND:
             return {
                 ...state,
-                items: state.items.map(u => {
-                    return u.id === action.payload.userID ? {...u, followed: false} : u
-                })
+                items: updateObjectInArray(state.items, action.payload.userID,
+                    'id', {followed: false})
             }
 
         case SET_USERS:
@@ -141,44 +140,58 @@ export const toggleFollowingInProgress = (isFetching: boolean, userId: number) =
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Первая загрузка списка пользователей ----------------
-export const getUsers = (currentPage: number, pageSize: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-    dispatch(toggleIsFetching(true))
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+        dispatch(toggleIsFetching(true))
 
-    const response = await usersAPI.getUsers(currentPage, pageSize)
+        const response = await usersAPI.getUsers(currentPage, pageSize)
 
-    dispatch(toggleIsFetching(false))
-    dispatch(setUsers(response.data.items))
-    dispatch(setTotalUsersCount(response.data.totalCount))
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(response.data.items))
+        dispatch(setTotalUsersCount(response.data.totalCount))
+    }
+}
+//  -------- Изменение текущей страницы ----------------
+export const newPageGetUsers = (currentPage: number, pageSize: number) => {
+    return async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+        dispatch(setCurrentPage(currentPage))
+        dispatch(toggleIsFetching(true))
+
+        const response = await usersAPI.getUsers(currentPage, pageSize)
+
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(response.data.items))
+    }
 }
 
-//  -------- Изменение текущей страницы ----------------
-export const newPageGetUsers = (currentPage: number, pageSize: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-    dispatch(setCurrentPage(currentPage))
-    dispatch(toggleIsFetching(true))
 
-    const response = await usersAPI.getUsers(currentPage, pageSize)
+//  -------- Вспомогательная функция для дружбы ----------------
+const followUnfollow = async (dispatch: Dispatch<UsersAPIComponentActionsType>,
+                              id: number,
+                              apiMethod: (id: number) => Promise<any>,
+                              actionCreator: (id: number) => UsersAPIComponentActionsType) => {
 
-    dispatch(toggleIsFetching(false))
-    dispatch(setUsers(response.data.items))
+    dispatch(toggleFollowingInProgress(true, id))
+    const response = await apiMethod(id)
+    response.data.resultCode === 0 && dispatch(actionCreator(id))
+
+    dispatch(toggleFollowingInProgress(false, id))
 }
 
 //  -------- Отписка от дружбы ----------------
-export const unFollow = (id: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-    dispatch(toggleFollowingInProgress(true, id))
+export const unFollow = (id: number) => {
+    return async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+        let apiMethod = followUnfollowAPI.unfollowUser.bind(followUnfollowAPI)
 
-    const response = await followUnfollowAPI.unfollowUser(id)
-    response.data.resultCode === 0 && dispatch(unfollowFriend(id))
-
-    dispatch(toggleFollowingInProgress(false, id))
+        await followUnfollow(dispatch, id, apiMethod, unfollowFriend)
+    }
 }
 
 //  -------- Подписка для дружбы ----------------
-export const follow = (id: number) => async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
-    dispatch(toggleFollowingInProgress(true, id))
+export const follow = (id: number) => {
+    return async (dispatch: Dispatch<UsersAPIComponentActionsType>) => {
+        let apiMethod = followUnfollowAPI.followUser.bind(followUnfollowAPI)
 
-    const response = await followUnfollowAPI.followUser(id)
-    response.data.resultCode === 0 && dispatch(followFriend(id))
-
-    dispatch(toggleFollowingInProgress(false, id))
+        await followUnfollow(dispatch, id, apiMethod, followFriend)
+    }
 }
-
