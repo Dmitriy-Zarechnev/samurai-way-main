@@ -1,4 +1,4 @@
-import {addPost} from '../../../../../redux/reducers/profile-reducer'
+import {addPost, deletePost} from '../../../../../redux/reducers/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
 import {AppRootState} from '../../../../../redux/redux-store'
@@ -11,5 +11,5 @@ const mapStateToProps = (state: AppRootState) => {
     }
 }
 
-export const MyPostsContainer = connect(mapStateToProps, {addPost})(MyPosts)
+export const MyPostsContainer = connect(mapStateToProps, {addPost, deletePost})(MyPosts)
 
