@@ -2,7 +2,6 @@ import React from 'react'
 import S from './Pagination.module.css'
 
 
-
 type PaginationPropsType = {
     currentArray: Array<number>
     onPageChanged: (currentPage: number) => void
