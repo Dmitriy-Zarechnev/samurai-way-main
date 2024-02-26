@@ -3,7 +3,7 @@ import S from './Users.module.css'
 import {Pagination} from '../../../common/pagination/Pagination'
 import {UsersListType} from '../../../../redux/reducers/users-reducer'
 import {User} from './user/User'
-import {Paginator} from '../../../common/pagination/Paginator'
+
 
 
 type UsersPropsType = {
@@ -24,12 +24,6 @@ export const Users = React.memo((props: UsersPropsType) => {
 
     return (
         <div className={S.users_lists}>
-            <Paginator totalCount={props.totalCount}
-
-                       onPageChanged={props.onPageChanged}
-                       currentPage={props.currentPage}
-                       pageSize={props.pageSize}
-                       portionSize={10}/>
             <div className={S.users_lists__pagination}>
                 <Pagination
                     currentArray={props.pagStart}

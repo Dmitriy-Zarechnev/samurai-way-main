@@ -4,7 +4,7 @@ import {MyDialogsContainer} from './myDialogs/MyDialogsContainer'
 import {MyMessagesContainer} from './myMessages/MyMessagesContainer'
 
 
-export const Messages = React.memo(() => {
+ export const Messages = React.memo(() => {
     return (
         <section className={S.messages}>
             <MyDialogsContainer/>
@@ -12,7 +12,6 @@ export const Messages = React.memo(() => {
         </section>
     )
 })
-
 
 
 
