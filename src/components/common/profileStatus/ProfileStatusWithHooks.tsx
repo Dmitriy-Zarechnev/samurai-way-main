@@ -13,6 +13,7 @@ export const ProfileStatusWithHooks = React.memo((props: ProfileStatusWithHooksP
     const [editMode, setEditMode] = useState<boolean>(false)
     const [newStatus, setNewStatus] = useState<string>(props.status)
 
+
     useEffect(() => {
         setNewStatus(props.status)
     }, [props.status])
