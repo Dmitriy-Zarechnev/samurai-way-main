@@ -5,7 +5,6 @@ import {UsersListType} from '../../../../redux/reducers/users-reducer'
 import {User} from './user/User'
 
 
-
 type UsersPropsType = {
     items: UsersListType[]
     totalCount: number
