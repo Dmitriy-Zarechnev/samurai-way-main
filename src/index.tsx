@@ -4,15 +4,15 @@ import store from './redux/redux-store'
 import React from 'react'
 import {Provider} from 'react-redux'
 import {AppConnect} from './App'
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
 
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter>
         <Provider store={store}>
             <AppConnect/>
         </Provider>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('root')
 )
 

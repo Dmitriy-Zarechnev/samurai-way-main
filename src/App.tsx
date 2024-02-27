@@ -34,6 +34,7 @@ class App extends React.PureComponent<AppPropsType> {
         // Показываем preloader  до полной загрузки
         if (!this.props.initialized) return <Preloader isFetching={!this.props.initialized}/>
 
+
         // Показываем основные компоненты после полной загрузки
         return (
             <div className={S.app_body}>
@@ -51,6 +52,7 @@ const mapStateToProps = (state: AppRootState) => {
         initialized: getInitialized(state)
     }
 }
+
 
 
 export const AppConnect =
