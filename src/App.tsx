@@ -20,9 +20,6 @@ type AppMapDispatchToProps = {
     initializeApp: () => void
 }
 
-
-
-
 class App extends React.PureComponent<AppPropsType> {
 
     //  -------- Авторизация на сервере ----------------
@@ -33,7 +30,6 @@ class App extends React.PureComponent<AppPropsType> {
     render() {
         // Показываем preloader  до полной загрузки
         if (!this.props.initialized) return <Preloader isFetching={!this.props.initialized}/>
-
 
         // Показываем основные компоненты после полной загрузки
         return (
