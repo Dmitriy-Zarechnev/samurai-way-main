@@ -22,11 +22,31 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
 
 class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponentPropsType> {
 
+    //  -------- Метод общий для компоненты  ----------------
+    refreshProfile() {
+        // let userId = this.props.match.params.userId
+        // if(!userId){
+        //     userId=this.props.userId.toString()
+        //     if(!userId){
+        //         this.props.history.push('/login')
+        //     }
+        // }
+
+        this.props.goToPage(this.props.match.params.userId)
+        this.props.getStatus(+this.props.match.params.userId)
+    }
+
+
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
-        this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus(30743)
+        this.refreshProfile()
     }
+
+    //  -------- Загрузка страницы пользователя при изменении  ----------------
+    // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
+    //     this.refreshProfile()
+    // }
+
 
     render() {
         return (

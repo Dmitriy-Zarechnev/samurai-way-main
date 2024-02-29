@@ -20,7 +20,7 @@ export const FriendsList = React.memo((props: FriendsListPropsType) => {
                         <NavLink
                             to={`/${props.navlink}/${el.id}`}
                             className={S.link}>
-                            <img src={el.photos.small ? el.photos.small : fox}
+                            <img src={el.photos.small || fox}
                                  alt={`${el.name} - avatar`}
                                  className={S.img}/>
                         </NavLink>

@@ -36,7 +36,7 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                             </div>
                         </div>
                         <img className={S.profile__img}
-                             src={props.profileInfo.photos.large ? props.profileInfo.photos.large : sam}
+                             src={props.profileInfo.photos.large || sam}
                              alt={`${props.profileInfo.fullName} - avatar should be here`}
                         />
                     </div>
