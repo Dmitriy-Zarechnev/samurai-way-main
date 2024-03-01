@@ -1,3 +1,8 @@
-.profile_info__text {
+.outer_span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.inner_span {
     font-size: 20px;
 }

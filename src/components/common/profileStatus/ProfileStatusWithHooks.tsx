@@ -33,10 +33,17 @@ export const ProfileStatusWithHooks = React.memo((props: ProfileStatusWithHooksP
     }
 
     return (
-        <div className={S.profile_info__text}>
+        <div>
             {editMode
                 ? <input onChange={onStatusChange} value={newStatus} onBlur={deactivateEditMode} autoFocus/>
-                : <span onDoubleClick={activateEditMode}>{props.status || 'No status'}</span>}
+                : <span className={S.outer_span}
+                        onDoubleClick={activateEditMode}
+                >
+                    Status: <span className={S.inner_span}>
+                    {props.status || 'No status'}
+                </span>
+            </span>
+            }
         </div>
     )
 })

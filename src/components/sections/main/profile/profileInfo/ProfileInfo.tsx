@@ -33,16 +33,14 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                             <p className={S.profile__full_name}>
                                 {props.profileInfo.fullName}
                             </p>
-                            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                            <ProfileStatusWithHooks status={props.status}
+                                                    updateStatus={props.updateStatus}/>
 
-                            <div className={S.profile__work_box}>
-                                <p className={S.profile_work__text}>
-                                    {props.profileInfo.lookingForAJobDescription}
-                                </p>
-                                <span className={S.profile_work__text}>
-                                    {props.profileInfo.lookingForAJob ? '🔍' : '🐱‍👤'}
-                                </span>
-                            </div>
+                            <p className={S.profile_work__text}>
+                                {props.profileInfo.lookingForAJob
+                                    ? `${props.profileInfo.lookingForAJobDescription}😜`
+                                    : 'I am not looking a new job 😎'}
+                            </p>
                         </div>
                         <div className={S.profile__right}>
                             <div>
@@ -51,7 +49,10 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                                      alt={`${props.profileInfo.fullName} - avatar should be here`}
                                 />
                                 <label htmlFor="image" className={S.btn_Input}>Your Avatar</label>
-                                {props.isOwner && <input id={'image'} className={S.fileInput} type="file" onChange={mainPhotoSelected}/>}
+                                {props.isOwner && <input id={'image'}
+                                                         className={S.fileInput}
+                                                         type="file"
+                                                         onChange={mainPhotoSelected}/>}
                             </div>
                             <span className={S.fail_message}>{props.failMessage}</span>
                         </div>
