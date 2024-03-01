@@ -16,20 +16,6 @@
     margin: 30px auto;
 }
 
-.checkBox {
-    align-self: flex-start;
-    margin-bottom: 5px;
-}
-
-.inputCheck {
-    margin-right: 5px;
-}
-
-.labelCheck {
-    font-size: 18px;
-    text-transform: capitalize;
-}
-
 /*Локальные стили для Button*/
 .formWrapper button {
     width: 100%;

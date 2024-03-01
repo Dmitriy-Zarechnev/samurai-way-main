@@ -21,15 +21,15 @@ export type  ProfileInfoType = {
     photos: PhotosType
 }
 
-type Contacts = {
+export type Contacts = {
     facebook: string
-    website: string | null
+    website: string
     vk: string
     twitter: string
     instagram: string
-    youtube: string | null
+    youtube: string
     github: string
-    mainLink: string | null
+    mainLink: string
 }
 
 export type PhotosType = {
@@ -78,13 +78,13 @@ const initialState: ProfilePagePropsType = {
         aboutMe: '',
         contacts: {
             facebook: '',
-            website: null,
+            website: '',
             vk: '',
             twitter: '',
             instagram: '',
-            youtube: null,
+            youtube: '',
             github: '',
-            mainLink: null
+            mainLink: ''
         },
         lookingForAJob: false,
         lookingForAJobDescription: '',

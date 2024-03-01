@@ -10,13 +10,13 @@ beforeEach(() => {
             aboutMe: '',
             contacts: {
                 facebook: '',
-                website: null,
+                website: '',
                 vk: '',
                 twitter: '',
                 instagram: '',
-                youtube: null,
+                youtube: '',
                 github: '',
-                mainLink: null
+                mainLink: ''
             },
             lookingForAJob: false,
             lookingForAJobDescription: '',
@@ -62,13 +62,13 @@ test('profile reducer should update profileInfo', () => {
         aboutMe: 'i am not alcoholic',
         contacts: {
             facebook: '',
-            website: null,
+            website: '',
             vk: 'http://hello',
             twitter: '',
             instagram: '',
-            youtube: null,
+            youtube: '',
             github: '',
-            mainLink: null
+            mainLink: ''
         },
         lookingForAJob: true,
         lookingForAJobDescription: '',

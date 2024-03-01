@@ -10,21 +10,27 @@ type ProfileInfoPropsType = {
     updateStatus: (status: string) => void,
     isOwner: boolean,
     savePhoto: (file: File) => void,
-    failMessage: string
+    failMessage: string,
+    onSubmitProfileDataForm: (data: ProfileInfoType) => void
 }
 
 export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
-
     const [editMode, setEditMode] = useState(false)
 
     const goToEditMode = () => {
         setEditMode(true)
     }
 
+    const closeEditMode = () => {
+        setEditMode(false)
+    }
+
     return (
         props.profileInfo.userId
             ? editMode
-                ? <ProfileDataForm profileInfo={props.profileInfo}/>
+                ? <ProfileDataForm profileInfo={props.profileInfo}
+                                   onSubmitProfileDataForm={props.onSubmitProfileDataForm}
+                                   closeEditMode={closeEditMode}/>
                 : <ProfileData profileInfo={props.profileInfo}
                                status={props.status}
                                updateStatus={props.updateStatus}

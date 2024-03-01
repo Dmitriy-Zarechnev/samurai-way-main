@@ -5,6 +5,7 @@ import {LogInType} from '../../../../redux/reducers/auth-reducer'
 import {InputForm} from '../../../common/inputForm/InputForm'
 import {Button} from '../../../common/button/Button'
 import {Redirect} from 'react-router-dom'
+import {CheckInputForm} from '../../../common/checkInputForm/CheckInputForm'
 
 export type Inputs = {
     LogIn: string
@@ -56,15 +57,11 @@ export const LogIn = React.memo((props: LogInPropsType) => {
                            defValue={props.logIn.password}
                 />
 
-                <div className={S.checkBox}>
-                    <input className={S.inputCheck}
-                           id={'Remember'}
-                           type={'checkbox'}
-                           defaultChecked={props.logIn.rememberMe}
-                           {...register('Remember')}
-                    />
-                    <label className={S.labelCheck} htmlFor={'remember'}>Remember Me</label>
-                </div>
+                <CheckInputForm id={'Remember'}
+                                name={'Remember Me'}
+                                value={'Remember'}
+                                register={register}
+                                devChecked={props.logIn.rememberMe}/>
 
                 <Button name={'Sing In'}/>
                 {props.isServerError && <p className={S.errorText}>{props.isServerError}</p>}

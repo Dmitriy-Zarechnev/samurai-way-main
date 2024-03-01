@@ -6,6 +6,7 @@ type ButtonPropsType = {
     onClick?: () => void
     disabled?: boolean
     additionalClass?: string
+    type?: 'submit' | 'reset'
 }
 
 export const Button = React.memo((props: ButtonPropsType) => {
@@ -13,7 +14,8 @@ export const Button = React.memo((props: ButtonPropsType) => {
         <button
             disabled={props.disabled}
             onClick={props.onClick}
-            className={`${S.button} ${props.additionalClass}`}>
+            className={`${S.button} ${props.additionalClass}`}
+            type={props.type}>
             {props.name}
         </button>
     )

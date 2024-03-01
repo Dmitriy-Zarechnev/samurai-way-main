@@ -45,6 +45,12 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
         this.props.getStatus(+this.props.match.params.userId)
     }
 
+    //  -------- Первая авторизация ----------------
+    onSubmitProfileDataForm = (data: ProfileInfoType) => {
+        console.log('hello')
+        console.log(data)
+    }
+
     //  -------- Загрузка страницы пользователя при изменении  ----------------
     // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
     //     this.props.goToPage(this.props.match.params.userId)
@@ -60,6 +66,7 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
                          isOwner={!this.props.match.params.userId}
                          savePhoto={this.props.savePhoto}
                          failMessage={this.props.failMessage}
+                         onSubmitProfileDataForm={this.onSubmitProfileDataForm}
             />)
     }
 }
