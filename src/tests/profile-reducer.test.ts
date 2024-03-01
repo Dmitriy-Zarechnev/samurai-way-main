@@ -1,5 +1,6 @@
-import {addPost, deletePost, ProfilePagePropsType, profileReducer, setUserProfile} from '../redux/reducers/profile-reducer'
+import {addPost, deletePost, failUpdateYourPhoto, getUserStatus, PhotosType, ProfilePagePropsType, profileReducer, setUserProfile, updateUserStatus, updateYourPhoto} from '../redux/reducers/profile-reducer'
 import img1 from '../assets/images/PostDefault.jpg'
+import testImg from '../assets/images/testImg.jpg'
 
 let startState: ProfilePagePropsType
 
@@ -37,7 +38,8 @@ beforeEach(() => {
             {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
             {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
         ],
-        status: ''
+        status: '',
+        failMessage: ''
     }
 })
 
@@ -86,6 +88,26 @@ test('profile reducer should update profileInfo', () => {
 })
 
 
+test('status should be changed', () => {
+
+    const newStatus = 'Hello'
+
+    const newState = profileReducer(startState, getUserStatus(newStatus))
+
+    expect(newState.status).toBe(newStatus)
+})
+
+
+test('status should be updated', () => {
+
+    const newStatus = 'Welcome'
+
+    const newState = profileReducer(startState, updateUserStatus(newStatus))
+
+    expect(newState.status).toBe(newStatus)
+})
+
+
 test('profile reducer should reduce the postsData length by one', () => {
 
     const postId = 2
@@ -93,4 +115,25 @@ test('profile reducer should reduce the postsData length by one', () => {
 
     expect(newState.postsData.length).toBe(startState.postsData.length - 1)
     expect(newState.postsData[1].id).toBe(3)
+})
+
+
+test('profile photo should be changed', () => {
+
+    const newPhoto: PhotosType = {
+        large: testImg,
+        small: testImg
+    }
+    const newState = profileReducer(startState, updateYourPhoto(newPhoto))
+
+    expect(newState.profileInfo.photos.large).toBe(testImg)
+})
+
+
+test('failMessage should be changed', () => {
+
+    const newFailMessage = 'Hello'
+    const newState = profileReducer(startState, failUpdateYourPhoto(newFailMessage))
+
+    expect(newState.failMessage).toBe('Hello')
 })

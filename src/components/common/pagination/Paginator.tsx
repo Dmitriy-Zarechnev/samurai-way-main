@@ -29,7 +29,6 @@ export const Paginator = React.memo((props: PaginatorPropsType) => {
             {portionNumber > 1 &&
                 <button onClick={() => setPortionNumber(portionNumber - 1)}>PREV</button>}
 
-
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map(p => {
@@ -45,7 +44,6 @@ export const Paginator = React.memo((props: PaginatorPropsType) => {
                 })}
             {portionCount > portionNumber &&
                 <button onClick={() => setPortionNumber(portionNumber + 1)}>NEXT</button>}
-
         </div>
     )
 })

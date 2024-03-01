@@ -8,6 +8,7 @@ export type ProfilePagePropsType = {
     profileInfo: ProfileInfoType
     postsData: PostsDataType[]
     status: string
+    failMessage: string
 }
 
 export type  ProfileInfoType = {
@@ -17,10 +18,7 @@ export type  ProfileInfoType = {
     lookingForAJobDescription: string
     fullName: string
     userId: number | null
-    photos: {
-        small: string
-        large: string
-    }
+    photos: PhotosType
 }
 
 type Contacts = {
@@ -32,6 +30,11 @@ type Contacts = {
     youtube: string | null
     github: string
     mainLink: string | null
+}
+
+export type PhotosType = {
+    small: string
+    large: string
 }
 
 export type PostsDataType = {
@@ -48,7 +51,8 @@ export type MyPostsActionsType =
     getUserStatusActionType |
     UpdateUserStatusActionType |
     DeletePostActionType |
-    UpdateYourPhotoActionType
+    UpdateYourPhotoActionType |
+    FailUpdateYourPhotoActionType
 
 type AddPostActionType = ReturnType<typeof addPost>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
@@ -56,6 +60,7 @@ type getUserStatusActionType = ReturnType<typeof getUserStatus>
 type UpdateUserStatusActionType = ReturnType<typeof updateUserStatus>
 type DeletePostActionType = ReturnType<typeof deletePost>
 type UpdateYourPhotoActionType = ReturnType<typeof updateYourPhoto>
+type FailUpdateYourPhotoActionType = ReturnType<typeof failUpdateYourPhoto>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = '/profile/ADD-POST'
@@ -64,6 +69,7 @@ export const GET_USER_STATUS = '/profile/GET-USER-STATUS'
 export const UPDATE_USER_STATUS = '/profile/UPDATE-USER-STATUS'
 export const DELETE_POST = '/profile/DELETE-POST'
 export const UPDATE_YOUR_PHOTO = '/profile/UPDATE-YOUR-PHOTO'
+export const FAIL_UPDATE_YOUR_PHOTO = '/profile/FAIL-UPDATE-YOUR-PHOTO'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -100,7 +106,8 @@ const initialState: ProfilePagePropsType = {
         {id: 2, header: 'Process', src: img1, message: 'It is my second post', likesCount: 40},
         {id: 3, header: 'End', src: img1, message: 'It is my third post', likesCount: 52}
     ],
-    status: ''
+    status: '',
+    failMessage: ''
 }
 
 
@@ -143,17 +150,20 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 postsData: state.postsData.filter(el => el.id !== action.payload.postId)
             }
 
-        // case UPDATE_YOUR_PHOTO:
-        //     return {
-        //         ...state,
-        //         profileInfo: {
-        //             ...state.profileInfo,
-        //             photos: {
-        //                 ...state.profileInfo.photos,
-        //                 large: action.payload.file
-        //             }
-        //         }
-        //     }
+        case UPDATE_YOUR_PHOTO:
+            return {
+                ...state,
+                profileInfo: {
+                    ...state.profileInfo,
+                    photos: action.payload.photos
+                }
+            }
+
+        case FAIL_UPDATE_YOUR_PHOTO:
+            return {
+                ...state,
+                failMessage: action.payload.failMessage
+            }
 
         default:
             return state
@@ -177,14 +187,17 @@ export const updateUserStatus = (status: string) => {
 export const deletePost = (postId: number) => {
     return {type: DELETE_POST, payload: {postId}} as const
 }
-export const updateYourPhoto = (file: File) => {
-    return {type: UPDATE_YOUR_PHOTO, payload: {file}} as const
+export const updateYourPhoto = (photos: PhotosType) => {
+    return {type: UPDATE_YOUR_PHOTO, payload: {photos}} as const
+}
+export const failUpdateYourPhoto = (failMessage: string) => {
+    return {type: FAIL_UPDATE_YOUR_PHOTO, payload: {failMessage}} as const
 }
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
-export const goToPage = (id: string) => async (dispatch: Dispatch<MyPostsActionsType>) => {
-    let userId = Number(id)
+export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
+    let userId = id
     if (!userId) userId = 30743
 
     const response = await profileAPI.userProfile(userId)
@@ -208,5 +221,9 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPost
 export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.savePhoto(file)
-    response.data.resultCode === 0 && dispatch(updateYourPhoto(file))
+    response.data.resultCode === 0 && dispatch(updateYourPhoto(response.data.data.photos))
+
+    response.data.resultCode === 1 && dispatch(failUpdateYourPhoto(response.data.messages))
+    debugger
+
 }

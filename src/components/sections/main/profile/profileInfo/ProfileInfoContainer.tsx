@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {getStatus, goToPage, ProfileInfoType, setUserProfile, updateStatus} from '../../../../../redux/reducers/profile-reducer'
+import {getStatus, goToPage, ProfileInfoType, savePhoto, setUserProfile, updateStatus} from '../../../../../redux/reducers/profile-reducer'
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
@@ -15,7 +15,7 @@ type ProfileInfoAPIComponentPropsType =
 type ProfileInfoAPIComponentMapStateToProps = ReturnType<typeof mapStateToProps>
 type ProfileInfoAPIComponentMapDispatchToProps = {
     setUserProfile: (profileInfo: ProfileInfoType) => void
-    goToPage: (id: string) => void
+    goToPage: (id: number) => void
     getStatus: (userId: number | null) => void
     updateStatus: (status: string) => void
     savePhoto: (file: File) => void
@@ -41,7 +41,7 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         // this.refreshProfile()
-        this.props.goToPage(this.props.match.params.userId)
+        this.props.goToPage(+this.props.match.params.userId)
         this.props.getStatus(+this.props.match.params.userId)
     }
 
