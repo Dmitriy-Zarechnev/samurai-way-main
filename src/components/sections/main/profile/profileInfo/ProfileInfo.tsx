@@ -45,11 +45,14 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                             </div>
                         </div>
                         <div className={S.profile__right}>
-                            <img className={S.profile__img}
-                                 src={props.profileInfo.photos.large || sam}
-                                 alt={`${props.profileInfo.fullName} - avatar should be here`}
-                            />
-                            {props.isOwner && <input type="file" onChange={mainPhotoSelected}/>}
+                            <div>
+                                <img className={S.profile__img}
+                                     src={props.profileInfo.photos.large || sam}
+                                     alt={`${props.profileInfo.fullName} - avatar should be here`}
+                                />
+                                <label htmlFor="image" className={S.btn_Input}>Your Avatar</label>
+                                {props.isOwner && <input id={'image'} className={S.fileInput} type="file" onChange={mainPhotoSelected}/>}
+                            </div>
                             <span className={S.fail_message}>{props.failMessage}</span>
                         </div>
                     </div>

@@ -202,6 +202,9 @@ export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActions
 
     const response = await profileAPI.userProfile(userId)
     dispatch(setUserProfile(response.data))
+    /* Сообщение с ошибкой загрузки аватара занули,
+     при загрузке нового пользователя */
+    dispatch(failUpdateYourPhoto(''))
 }
 
 //  -------- Получение статуса пользователя ----------------

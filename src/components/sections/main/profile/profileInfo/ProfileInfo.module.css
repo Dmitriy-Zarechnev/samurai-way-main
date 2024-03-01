@@ -3,7 +3,6 @@
 .profile {
     height: 300px;
     overflow: auto;
-    margin-bottom: 10px;
     grid-area: PI;
     padding: 10px;
 }
@@ -52,10 +51,47 @@
     margin: 0 auto 5px auto;
 }
 
+
+/* Стили для инпута File */
+
+.btn_Input {
+    background-color: var(--secondary-bg);
+    color: var(--secondary-text);
+    font-weight: 400;
+    padding: 5px 5px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+
+
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btn_Input:hover {
+    background-color: var(--secondary-text);
+    color: var(--secondary-bg);
+}
+
+.btn_Input:active {
+    transform: scale(0.96);
+}
+
+.fileInput {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+
 .fail_message {
     color: var(--error-main);
     font-weight: 600;
+    max-width: 200px;
 }
+
 
 .profile__contacts {
     display: flex;
