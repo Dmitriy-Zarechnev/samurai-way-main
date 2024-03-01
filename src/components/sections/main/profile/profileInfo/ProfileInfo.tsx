@@ -13,7 +13,8 @@ type ProfileInfoPropsType = {
     status: string,
     updateStatus: (status: string) => void,
     isOwner: boolean,
-    savePhoto: (file: File) => void
+    savePhoto: (file: File) => void,
+    failMessage: string
 }
 
 export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
@@ -43,11 +44,14 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                                 </span>
                             </div>
                         </div>
-                        <img className={S.profile__img}
-                             src={props.profileInfo.photos.large || sam}
-                             alt={`${props.profileInfo.fullName} - avatar should be here`}
-                        />
-                        {props.isOwner && <input type="file" onChange={mainPhotoSelected}/>}
+                        <div className={S.profile__right}>
+                            <img className={S.profile__img}
+                                 src={props.profileInfo.photos.large || sam}
+                                 alt={`${props.profileInfo.fullName} - avatar should be here`}
+                            />
+                            {props.isOwner && <input type="file" onChange={mainPhotoSelected}/>}
+                            <span className={S.fail_message}>{props.failMessage}</span>
+                        </div>
                     </div>
                     <div className={S.profile__contacts}>
                         <Contacts href={props.profileInfo.contacts.vk} alt={'vk-logo'} src={vk}/>

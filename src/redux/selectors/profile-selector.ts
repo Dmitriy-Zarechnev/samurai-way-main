@@ -20,3 +20,7 @@ export const getIsAuth = (state: AppRootState) => {
 export const getPostsDataFromState = (state: AppRootState) => {
     return state.profilePage.postsData
 }
+
+export const getFailMessage = (state: AppRootState) => {
+    return state.profilePage.failMessage
+}

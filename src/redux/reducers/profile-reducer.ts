@@ -223,7 +223,5 @@ export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsAction
     const response = await profileAPI.savePhoto(file)
     response.data.resultCode === 0 && dispatch(updateYourPhoto(response.data.data.photos))
 
-    response.data.resultCode === 1 && dispatch(failUpdateYourPhoto(response.data.messages))
-    debugger
-
+    response.data.resultCode === 1 && dispatch(failUpdateYourPhoto(response.data.messages[0]))
 }
