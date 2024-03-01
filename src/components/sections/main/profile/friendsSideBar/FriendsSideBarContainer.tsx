@@ -5,7 +5,7 @@ import {friendsSuperSelector} from '../../../../../redux/selectors/friendlist-se
 import React from 'react'
 import {compose} from 'redux'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
-import {goToPage} from '../../../../../redux/reducers/profile-reducer'
+import {getStatus, goToPage} from '../../../../../redux/reducers/profile-reducer'
 import {getCurrentPageS, getPageSizeS} from '../../../../../redux/selectors/users-selectors'
 import {getUsers} from '../../../../../redux/reducers/users-reducer'
 
@@ -20,6 +20,7 @@ type FriendsSideBarAPIComponentMapStateToProps = ReturnType<typeof mapStateToPro
 type FriendsSideBarAPIComponentMapDispatchToProps = {
     goToPage: (id: string) => void
     getUsers: (currentPage: number, pageSize: number) => void
+    getStatus: (id: number) => void
 }
 
 class FriendsSideBarAPIComponent extends React.PureComponent<FriendsSideBarAPIComponentPropsType> {
@@ -32,6 +33,7 @@ class FriendsSideBarAPIComponent extends React.PureComponent<FriendsSideBarAPICo
     //  -------- Загрузка страницы пользователя при клике на ссылку ----------------
     componentDidUpdate() {
         this.props.goToPage(this.props.match.params.userId)
+        this.props.getStatus(+this.props.match.params.userId)
     }
 
 
@@ -53,6 +55,6 @@ const mapStateToProps = (state: AppRootState) => {
 
 export const FriendsSideBarContainer = compose<React.ComponentType>(
     withRouter,
-    connect(mapStateToProps, {goToPage, getUsers}))
+    connect(mapStateToProps, {goToPage, getUsers,getStatus}))
 (FriendsSideBarAPIComponent)
 

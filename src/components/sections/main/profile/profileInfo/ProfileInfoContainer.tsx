@@ -18,6 +18,7 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
     goToPage: (id: string) => void
     getStatus: (userId: number | null) => void
     updateStatus: (status: string) => void
+    savePhoto: (file: File) => void
 }
 
 class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponentPropsType> {
@@ -32,19 +33,22 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
         //     }
         // }
 
-        this.props.goToPage(this.props.match.params.userId)
-        this.props.getStatus(+this.props.match.params.userId)
+        // this.props.goToPage(this.props.match.params.userId)
+        // this.props.getStatus(+this.props.match.params.userId)
     }
 
 
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
-        this.refreshProfile()
+        // this.refreshProfile()
+        this.props.goToPage(this.props.match.params.userId)
+        this.props.getStatus(+this.props.match.params.userId)
     }
 
     //  -------- Загрузка страницы пользователя при изменении  ----------------
     // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
-    //     this.refreshProfile()
+    //     this.props.goToPage(this.props.match.params.userId)
+    //     this.props.getStatus(+this.props.match.params.userId)
     // }
 
 
@@ -53,6 +57,8 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
             <ProfileInfo profileInfo={this.props.profileInfo}
                          status={this.props.status}
                          updateStatus={this.props.updateStatus}
+                         isOwner={!this.props.match.params.userId}
+                         savePhoto={this.props.savePhoto}
             />)
     }
 }
@@ -73,7 +79,8 @@ export const ProfileInfoContainer = compose<React.ComponentType>(
             setUserProfile,
             goToPage,
             getStatus,
-            updateStatus
+            updateStatus,
+            savePhoto
         }),
     withRouter
 )(ProfileInfoAPIComponent)

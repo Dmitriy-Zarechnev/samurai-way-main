@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import S from './ProfileInfo.module.css'
 import {Preloader} from '../../../../common/preloader/Preloader'
 import git from '../../../../../assets/images/GitHubContacts.svg'
@@ -11,10 +11,18 @@ import {ProfileStatusWithHooks} from '../../../../common/profileStatus/ProfileSt
 type ProfileInfoPropsType = {
     profileInfo: ProfileInfoType,
     status: string,
-    updateStatus: (status: string) => void
+    updateStatus: (status: string) => void,
+    isOwner: boolean,
+    savePhoto: (file: File) => void
 }
 
 export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
+
+
+    const mainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        e.target.files && props.savePhoto(e.target.files[0])
+    }
+
     return (
         <>
             {props.profileInfo.userId
@@ -39,6 +47,7 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                              src={props.profileInfo.photos.large || sam}
                              alt={`${props.profileInfo.fullName} - avatar should be here`}
                         />
+                        {props.isOwner && <input type="file" onChange={mainPhotoSelected}/>}
                     </div>
                     <div className={S.profile__contacts}>
                         <Contacts href={props.profileInfo.contacts.vk} alt={'vk-logo'} src={vk}/>

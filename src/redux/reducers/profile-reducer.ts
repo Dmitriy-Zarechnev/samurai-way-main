@@ -47,13 +47,15 @@ export type MyPostsActionsType =
     SetUserProfileActionType |
     getUserStatusActionType |
     UpdateUserStatusActionType |
-    DeletePostActionType
+    DeletePostActionType |
+    UpdateYourPhotoActionType
 
 type AddPostActionType = ReturnType<typeof addPost>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
 type getUserStatusActionType = ReturnType<typeof getUserStatus>
 type UpdateUserStatusActionType = ReturnType<typeof updateUserStatus>
 type DeletePostActionType = ReturnType<typeof deletePost>
+type UpdateYourPhotoActionType = ReturnType<typeof updateYourPhoto>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = '/profile/ADD-POST'
@@ -61,6 +63,7 @@ export const SET_USER_PROFILE = '/profile/SET-USER-PROFILE'
 export const GET_USER_STATUS = '/profile/GET-USER-STATUS'
 export const UPDATE_USER_STATUS = '/profile/UPDATE-USER-STATUS'
 export const DELETE_POST = '/profile/DELETE-POST'
+export const UPDATE_YOUR_PHOTO = '/profile/UPDATE-YOUR-PHOTO'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -140,6 +143,18 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 postsData: state.postsData.filter(el => el.id !== action.payload.postId)
             }
 
+        // case UPDATE_YOUR_PHOTO:
+        //     return {
+        //         ...state,
+        //         profileInfo: {
+        //             ...state.profileInfo,
+        //             photos: {
+        //                 ...state.profileInfo.photos,
+        //                 large: action.payload.file
+        //             }
+        //         }
+        //     }
+
         default:
             return state
     }
@@ -162,7 +177,9 @@ export const updateUserStatus = (status: string) => {
 export const deletePost = (postId: number) => {
     return {type: DELETE_POST, payload: {postId}} as const
 }
-
+export const updateYourPhoto = (file: File) => {
+    return {type: UPDATE_YOUR_PHOTO, payload: {file}} as const
+}
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
@@ -185,4 +202,11 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPost
 
     const response = await profileAPI.updateStatus(status)
     response.data.resultCode === 0 && dispatch(updateUserStatus(status))
+}
+
+//  -------- Загрузка фото пользователя ----------------
+export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsActionsType>) => {
+
+    const response = await profileAPI.savePhoto(file)
+    response.data.resultCode === 0 && dispatch(updateYourPhoto(file))
 }
