@@ -13,6 +13,10 @@ export const getIsServerError = (state: AppRootState) => {
     return state.auth.isServerError
 }
 
+export const getCaptchaUrlFromState= (state: AppRootState) => {
+    return state.auth.captchaUrl
+}
+
 // ---- Селекторы для страницы Header ------
 export const getLogIn = (state: AppRootState) => {
     return state.auth.login

@@ -7,10 +7,12 @@ import {Button} from '../../../common/button/Button'
 import {Redirect} from 'react-router-dom'
 import {CheckInputForm} from '../../../common/checkInputForm/CheckInputForm'
 
+
 export type Inputs = {
     LogIn: string
     Password: string
     Remember: boolean
+    captchaUrl: string
 }
 
 type LogInPropsType = {
@@ -18,6 +20,7 @@ type LogInPropsType = {
     logIn: LogInType
     isAuth: boolean
     isServerError: string
+    captchaUrl: string
 }
 
 
@@ -32,6 +35,7 @@ export const LogIn = React.memo((props: LogInPropsType) => {
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         props.onSubmitForm(data)
+
         reset()
     }
 
@@ -62,7 +66,16 @@ export const LogIn = React.memo((props: LogInPropsType) => {
                                 value={'Remember'}
                                 register={register}
                                 devChecked={props.logIn.rememberMe}
-                addBoxClass={S.checkBoxAdd}/>
+                                addBoxClass={S.checkBoxAdd}/>
+
+                {props.captchaUrl && <img src={props.captchaUrl} alt={'CaptchaPicture'}/>}
+                {props.captchaUrl && <InputForm
+                    type={'text'}
+                    errors={errors.captchaUrl}
+                    value={'captchaUrl'}
+                    register={register}
+                    defValue={''}/>
+                }
 
                 <Button name={'Sing In'}/>
                 {props.isServerError && <p className={S.errorText}>{props.isServerError}</p>}

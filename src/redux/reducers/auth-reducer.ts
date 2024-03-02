@@ -1,5 +1,4 @@
-import {authAPI} from '../../api/api'
-import {Dispatch} from 'redux'
+import {authAPI, securityAPI} from '../../api/api'
 import {ThunkDispatchType, ThunkType} from '../redux-store'
 
 
@@ -7,20 +6,23 @@ import {ThunkDispatchType, ThunkType} from '../redux-store'
 export type AuthReducerActionsType =
     SetAuthUserDataActionType |
     LogInServerActionType |
-    ServerErrorActionType
+    ServerErrorActionType |
+    GetCaptchaUrlSuccessActionType
 
 type SetAuthUserDataActionType = ReturnType<typeof setAuthUserData>
 type LogInServerActionType = ReturnType<typeof logInServer>
 type ServerErrorActionType = ReturnType<typeof serverError>
+type GetCaptchaUrlSuccessActionType = ReturnType<typeof getCaptchaUrlSuccess>
 
 export type AuthPageInitialState = {
-    id: number|null
+    id: number | null
     email: string
     login: string
     isAuth: boolean
     isFetching: boolean
     logIn: LogInType
     isServerError: string
+    captchaUrl: string
 }
 
 export type LogInType = {
@@ -34,6 +36,7 @@ export type LogInType = {
 const SET_AUTH_USER_DATA = '/auth/SET-AUTH-USER-DATA'
 const LOG_IN_SERVER = '/auth/LOG-IN-SERVER'
 const SERVER_ERROR = '/auth/SERVER-ERROR'
+const GET_CAPTCHA_URL_SUCCESS = '/auth/GET-CAPTCHA-URL-SUCCESS'
 
 
 // *********** Первоначальный стэйт для authReducer ****************
@@ -48,7 +51,8 @@ const initialState: AuthPageInitialState = {
         password: '',
         rememberMe: false
     },
-    isServerError: ''
+    isServerError: '',
+    captchaUrl: ''
 }
 
 
@@ -79,6 +83,12 @@ export const authReducer = (state: AuthPageInitialState = initialState, action: 
                 isServerError: action.payload.message
             }
 
+        case GET_CAPTCHA_URL_SUCCESS:
+            return {
+                ...state,
+                captchaUrl: action.payload.url
+            }
+
         default:
             return state
     }
@@ -95,13 +105,17 @@ export const logInServer = (logIn: LogInType) => {
 export const serverError = (message: string) => {
     return {type: SERVER_ERROR, payload: {message}} as const
 }
-
+export const getCaptchaUrlSuccess = (url: string) => {
+    return {type: GET_CAPTCHA_URL_SUCCESS, payload: {url}} as const
+}
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Проверка авторизации на сервере ----------------
-export const authMe = () => async (dispatch: Dispatch<AuthReducerActionsType>) => {
+export const authMe = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     const response = await authAPI.authHeader()
     if (response.data.resultCode === 0) {
+
+        // Прошла проверка на авторизацию и данные обновились
         dispatch(setAuthUserData(
             response.data.data.id,
             response.data.data.email,
@@ -112,22 +126,41 @@ export const authMe = () => async (dispatch: Dispatch<AuthReducerActionsType>) =
 }
 
 //  -------- Логинизация на сервере ----------------
-export const serverLogIn = (email: string, password: string, rememberMe: boolean): ThunkType => async (dispatch: ThunkDispatchType) => {
-    const response = await authAPI.logIn(email, password, rememberMe)
-    if (response.data.resultCode === 0) {
-        dispatch(authMe())
-        if (rememberMe) dispatch(logInServer({email, password, rememberMe}))
-    } else {
-        dispatch(serverError(response.data.messages[0]))
+export const serverLogIn = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType =>
+    async (dispatch: ThunkDispatchType) => {
+        const response = await authAPI.logIn(email, password, rememberMe,captcha)
+        if (response.data.resultCode === 0) {
+
+            // Успешная авторизация на сайте
+            dispatch(authMe())
+            rememberMe && dispatch(logInServer({email, password, rememberMe}))
+        } else {
+            if (response.data.resultCode === 10) {
+
+                // Запросили captcha при коде 10
+                dispatch(getCaptchaUrl())
+            }
+
+            // Неудачная авторизация на сайте
+            dispatch(serverError(response.data.messages[0]))
+        }
     }
-}
 
 
 //  -------- Вылогинизация на сервере ----------------
-export const serverLogOut = () => async (dispatch: Dispatch<AuthReducerActionsType>) => {
+export const serverLogOut = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     const response = await authAPI.logOut()
-    if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, '', '', false))
-    }
+
+    // Произошла успешная вылогинизация на сайте
+    response.data.resultCode === 0 && dispatch(setAuthUserData(null, '', '', false))
 }
 
+
+//  -------- Запрос Captcha URL на сервере ----------------
+export const getCaptchaUrl = (): ThunkType => async (dispatch: ThunkDispatchType) => {
+    const response = await securityAPI.getCaptchaUrl()
+
+    // Получили URL с сервера и задиспатчили в state
+    const captchaUrl = response.data.url
+    dispatch(getCaptchaUrlSuccess(captchaUrl))
+}

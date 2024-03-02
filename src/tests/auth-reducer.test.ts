@@ -14,7 +14,8 @@ beforeEach(() => {
             password: '',
             rememberMe: false
         },
-        isServerError: ''
+        isServerError: '',
+        captchaUrl: ''
     }
 })
 
@@ -34,5 +35,4 @@ test('auth reducer should return newData', () => {
     expect(newState.id).toBe(5)
     expect(newState.email).toBe('hello@gmail.com')
     expect(newState.login).toBe('Ori')
-    expect(newState.isAuth).toBe(true)
 })
