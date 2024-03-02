@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/samurai-way-main/static/css/main.b3215281.css",
-    "main.js": "/samurai-way-main/static/js/main.d576bf1d.js",
+    "main.css": "/samurai-way-main/static/css/main.5515283e.css",
+    "main.js": "/samurai-way-main/static/js/main.faf542a9.js",
     "static/media/FriendDefault.webp": "/samurai-way-main/static/media/FriendDefault.9af99c41e332253c34d9.webp",
     "static/media/PostDefault.jpg": "/samurai-way-main/static/media/PostDefault.8f05e15bbdb43a701cc8.jpg",
     "static/media/NewPostDefault.jpg": "/samurai-way-main/static/media/NewPostDefault.fce368f3e808791881c4.jpg",
     "static/media/AvatarDefault.webp": "/samurai-way-main/static/media/AvatarDefault.1b3c9885d88a88ae058f.webp",
     "static/media/UserDefault.jpg": "/samurai-way-main/static/media/UserDefault.f7a2d3501fb22e0e28c9.jpg",
     "static/media/FindFriends.webp": "/samurai-way-main/static/media/FindFriends.1597e3b0dd98a8e74487.webp",
+    "static/media/sprite_svg.svg": "/samurai-way-main/static/media/sprite_svg.3accc89094de06411e9c6eb008e4fda1.svg",
     "static/media/Loader.svg": "/samurai-way-main/static/media/Loader.3e3fcce66d904323defb27e9422e9daf.svg",
-    "static/media/GitHubContacts.svg": "/samurai-way-main/static/media/GitHubContacts.2b3150a9fb22d2a78c8d85960c0b466a.svg",
-    "static/media/MainLogo.svg": "/samurai-way-main/static/media/MainLogo.6fc2842489cf2cc9a4c1935d61f5bf16.svg",
-    "static/media/VKContacts.svg": "/samurai-way-main/static/media/VKContacts.e4811d2c8cdfd3a366057dc92f82547a.svg",
     "index.html": "/samurai-way-main/index.html",
-    "main.b3215281.css.map": "/samurai-way-main/static/css/main.b3215281.css.map",
-    "main.d576bf1d.js.map": "/samurai-way-main/static/js/main.d576bf1d.js.map"
+    "main.5515283e.css.map": "/samurai-way-main/static/css/main.5515283e.css.map",
+    "main.faf542a9.js.map": "/samurai-way-main/static/js/main.faf542a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3215281.css",
-    "static/js/main.d576bf1d.js"
+    "static/css/main.5515283e.css",
+    "static/js/main.faf542a9.js"
   ]
 }
