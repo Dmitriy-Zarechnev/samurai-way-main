@@ -19,10 +19,6 @@ class LogInAPIComponent extends React.PureComponent<LogInAPIComponentPropsType> 
 
 
     //  -------- Первая авторизация ----------------
-    componentDidUpdate(prevProps: Readonly<LogInAPIComponentPropsType>, prevState: Readonly<{}>) {
-
-    }
-
     onSubmitForm = (data: Inputs) => {
         this.props.serverLogIn(data.LogIn, data.Password, data.Remember, data.captchaUrl)
 
