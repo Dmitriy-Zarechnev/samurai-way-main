@@ -10,7 +10,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-
+    margin-bottom: 10px;
 }
 
 .contacts_header {
@@ -19,6 +19,7 @@
     color: var(--secondary-bg);
     text-align: center;
     text-decoration: underline;
+    margin-bottom: 10px;
 }
 
 /* Локальные стили для кнопки*/

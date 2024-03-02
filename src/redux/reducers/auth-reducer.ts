@@ -1,7 +1,6 @@
 import {authAPI} from '../../api/api'
 import {Dispatch} from 'redux'
-import {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {AppRootState, CommonActionsTypeForApp} from '../redux-store'
+import {ThunkDispatchType, ThunkType} from '../redux-store'
 
 
 // Типизация
@@ -15,7 +14,7 @@ type LogInServerActionType = ReturnType<typeof logInServer>
 type ServerErrorActionType = ReturnType<typeof serverError>
 
 export type AuthPageInitialState = {
-    id: number | null
+    id: number|null
     email: string
     login: string
     isAuth: boolean
@@ -30,8 +29,6 @@ export type LogInType = {
     rememberMe: boolean
 }
 
-type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForApp>
-type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
 
 // *********** Константы названий экшенов ****************
 const SET_AUTH_USER_DATA = '/auth/SET-AUTH-USER-DATA'

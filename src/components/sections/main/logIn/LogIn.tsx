@@ -61,7 +61,8 @@ export const LogIn = React.memo((props: LogInPropsType) => {
                                 name={'Remember Me'}
                                 value={'Remember'}
                                 register={register}
-                                devChecked={props.logIn.rememberMe}/>
+                                devChecked={props.logIn.rememberMe}
+                addBoxClass={S.checkBoxAdd}/>
 
                 <Button name={'Sing In'}/>
                 {props.isServerError && <p className={S.errorText}>{props.isServerError}</p>}

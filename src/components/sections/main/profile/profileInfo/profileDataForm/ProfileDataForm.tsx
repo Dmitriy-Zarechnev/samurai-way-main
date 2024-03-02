@@ -63,69 +63,16 @@ export const ProfileDataForm = React.memo((props: ProfileDataFormPropsType) => {
             <div>
                 <h3 className={S.contacts_header}>Contacts</h3>
                 <div className={S.info_wrapper}>
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.facebook'}
-                        id={'facebook'}
-                        defValue={props.profileInfo.contacts.facebook}
-                        name={'Facebook'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.website'}
-                        id={'website'}
-                        defValue={props.profileInfo.contacts.website}
-                        name={'Website'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.vk'}
-                        id={'vk'}
-                        defValue={props.profileInfo.contacts.vk}
-                        name={'VK'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.twitter'}
-                        id={'twitter'}
-                        defValue={props.profileInfo.contacts.twitter}
-                        name={'Twitter'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.instagram'}
-                        id={'instagram'}
-                        defValue={props.profileInfo.contacts.instagram}
-                        name={'Instagram'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.youtube'}
-                        id={'youtube'}
-                        defValue={props.profileInfo.contacts.youtube}
-                        name={'Youtube'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.github'}
-                        id={'github'}
-                        defValue={props.profileInfo.contacts.github}
-                        name={'Github'}
-                    />
-
-                    <ProfileInputForm
-                        register={register}
-                        value={'contacts.mainLink'}
-                        id={'mainLink'}
-                        defValue={props.profileInfo.contacts.mainLink}
-                        name={'MainLink'}
-                    />
+                    {Object.entries(props.profileInfo.contacts).map(([key, value]) => (
+                        <ProfileInputForm
+                            key={key}
+                            register={register}
+                            value={`contacts.${key}`}
+                            id={key}
+                            defValue={value}
+                            name={key.charAt(0).toUpperCase() + key.slice(1)}
+                        />
+                    ))}
                 </div>
             </div>
             <Button name={'Save'}/>

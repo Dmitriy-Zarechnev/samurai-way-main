@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {ProfileInfo} from './ProfileInfo'
-import {getStatus, goToPage, ProfileInfoType, savePhoto, setUserProfile, updateStatus} from '../../../../../redux/reducers/profile-reducer'
+import {getStatus, goToPage, ProfileInfoType, savePhoto, saveProfile, setUserProfile, updateStatus} from '../../../../../redux/reducers/profile-reducer'
 import React from 'react'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {AppRootState} from '../../../../../redux/redux-store'
@@ -19,6 +19,7 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
     getStatus: (userId: number | null) => void
     updateStatus: (status: string) => void
     savePhoto: (file: File) => void
+    saveProfile: (data: ProfileInfoType) => void
 }
 
 class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponentPropsType> {
@@ -45,17 +46,17 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
         this.props.getStatus(+this.props.match.params.userId)
     }
 
-    //  -------- Отправка после редактирования Profile ----------------
+    // //  -------- Отправка после редактирования Profile ----------------
     onSubmitProfileDataForm = (data: ProfileInfoType) => {
-        console.log('hello')
-        console.log(data)
+        this.props.saveProfile(data)
     }
 
     //  -------- Загрузка страницы пользователя при изменении  ----------------
-    // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
+    componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
+
     //     this.props.goToPage(this.props.match.params.userId)
     //     this.props.getStatus(+this.props.match.params.userId)
-    // }
+     }
 
 
     render() {
@@ -89,7 +90,8 @@ export const ProfileInfoContainer = compose<React.ComponentType>(
             goToPage,
             getStatus,
             updateStatus,
-            savePhoto
+            savePhoto,
+            saveProfile
         }),
     withRouter
 )(ProfileInfoAPIComponent)

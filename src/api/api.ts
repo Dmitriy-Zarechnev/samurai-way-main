@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {ProfileInfoType} from '../redux/reducers/profile-reducer'
 
 // ---------- Instance - хранит объект с общими настройками запроса ----------------
 const instance = axios.create({
@@ -40,11 +41,14 @@ export const profileAPI = {
     savePhoto(file: File) {
         const formData = new FormData()
         formData.append('image', file)
-        return instance.put(`profile/photo`,formData, {
+        return instance.put(`profile/photo`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    saveProfile(data: ProfileInfoType) {
+        return instance.put('profile', data)
     }
 }
 

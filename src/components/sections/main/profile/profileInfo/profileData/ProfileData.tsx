@@ -63,15 +63,14 @@ export const ProfileData = React.memo((props: ProfileDataPropsType) => {
                     <span className={S.fail_message}>{props.failMessage}</span>
                 </div>
             </div>
+
             <div className={S.profile__contacts}>
-                {props.profileInfo.contacts.facebook && <Contacts href={props.profileInfo.contacts.facebook} iconId={'faceBook'}/>}
-                {props.profileInfo.contacts.website && <Contacts href={props.profileInfo.contacts.website} iconId={'website'}/>}
-                {props.profileInfo.contacts.vk && <Contacts href={props.profileInfo.contacts.vk} iconId={'VK'}/>}
-                {props.profileInfo.contacts.twitter && <Contacts href={props.profileInfo.contacts.twitter} iconId={'twitter'}/>}
-                {props.profileInfo.contacts.instagram && <Contacts href={props.profileInfo.contacts.instagram} iconId={'instagram'}/>}
-                {props.profileInfo.contacts.youtube && <Contacts href={props.profileInfo.contacts.youtube} iconId={'youtube'}/>}
-                {props.profileInfo.contacts.github && <Contacts href={props.profileInfo.contacts.github} iconId={'gitHub'}/>}
-                {props.profileInfo.contacts.mainLink && <Contacts href={props.profileInfo.contacts.mainLink} iconId={'mainLink'}/>}
+                {Object.entries(props.profileInfo.contacts).map(([key, value]) => {
+                    if (value) {
+                        return <Contacts key={key} href={value} iconId={key}/>
+                    }
+                    return null
+                })}
             </div>
         </div>
     )

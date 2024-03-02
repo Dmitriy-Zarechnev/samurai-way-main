@@ -4,7 +4,7 @@ import {messagesReducer, MyMessagesActionsType} from './reducers/messages-reduce
 import {friendslistReducer} from './reducers/friendslist-reducer'
 import {UsersAPIComponentActionsType, usersReducer} from './reducers/users-reducer'
 import {authReducer, AuthReducerActionsType} from './reducers/auth-reducer'
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {appReducer, AppReducerActionsType} from './reducers/app-reducer'
 
 
@@ -28,6 +28,8 @@ export type CommonActionsTypeForApp =
     UsersAPIComponentActionsType |
     AppReducerActionsType
 
+export type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForApp>
+export type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 

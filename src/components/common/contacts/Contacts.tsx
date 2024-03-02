@@ -9,7 +9,7 @@ type ContactsPropsType = {
 
 export const Contacts = React.memo((props: ContactsPropsType) => {
     return (
-        <a href={props.href}>
+        <a href={props.href} target={'_blank'}>
             <Icon iconId={props.iconId}/>
         </a>
     )

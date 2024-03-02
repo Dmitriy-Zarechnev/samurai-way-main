@@ -2,6 +2,7 @@ import img2 from '../../assets/images/NewPostDefault.jpg'
 import img1 from '../../assets/images/PostDefault.jpg'
 import {profileAPI} from '../../api/api'
 import {Dispatch} from 'redux'
+import {ThunkDispatchType, ThunkType} from '../redux-store'
 
 // Типизация
 export type ProfilePagePropsType = {
@@ -165,6 +166,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 failMessage: action.payload.failMessage
             }
 
+
         default:
             return state
     }
@@ -191,6 +193,10 @@ export const updateYourPhoto = (photos: PhotosType) => {
     return {type: UPDATE_YOUR_PHOTO, payload: {photos}} as const
 }
 export const failUpdateYourPhoto = (failMessage: string) => {
+    return {type: FAIL_UPDATE_YOUR_PHOTO, payload: {failMessage}} as const
+}
+
+export const updateYourProfile = (failMessage: string) => {
     return {type: FAIL_UPDATE_YOUR_PHOTO, payload: {failMessage}} as const
 }
 
@@ -224,7 +230,21 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPost
 export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.savePhoto(file)
+    // Заменили фото profile после ответа от сервера
     response.data.resultCode === 0 && dispatch(updateYourPhoto(response.data.data.photos))
 
+    // Вывели сообщение об ошибке с сервера
     response.data.resultCode === 1 && dispatch(failUpdateYourPhoto(response.data.messages[0]))
+}
+
+//  -------- Загрузка исправленных данных пользователя ----------------
+export const saveProfile = (data: ProfileInfoType): ThunkType => async (dispatch: ThunkDispatchType, getState) => {
+    // Узнали свой id
+    const userId = getState().auth.id
+    if (userId !== null) {
+        const response = await profileAPI.saveProfile(data)
+
+        // Получили новые данные profile с сервера
+        response.data.resultCode === 0 && dispatch(goToPage(userId))
+    }
 }
