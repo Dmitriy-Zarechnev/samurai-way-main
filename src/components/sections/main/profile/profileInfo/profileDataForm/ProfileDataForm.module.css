@@ -32,3 +32,8 @@
     align-self: center;
 }
 
+.failMessage {
+    color: var(--error-main);
+    margin-top: 5px;
+    display: block;
+}

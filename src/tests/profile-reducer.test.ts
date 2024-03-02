@@ -1,4 +1,4 @@
-import {addPost, deletePost, failUpdateYourPhoto, getUserStatus, PhotosType, ProfilePagePropsType, profileReducer, setUserProfile, updateUserStatus, updateYourPhoto} from '../redux/reducers/profile-reducer'
+import {addPost, deletePost, failUpdate, getUserStatus, PhotosType, ProfilePagePropsType, profileReducer, setUserProfile, updateUserStatus, updateYourPhoto} from '../redux/reducers/profile-reducer'
 import img1 from '../assets/images/PostDefault.jpg'
 import testImg from '../assets/images/testImg.jpg'
 
@@ -133,7 +133,7 @@ test('profile photo should be changed', () => {
 test('failMessage should be changed', () => {
 
     const newFailMessage = 'Hello'
-    const newState = profileReducer(startState, failUpdateYourPhoto(newFailMessage))
+    const newState = profileReducer(startState, failUpdate(newFailMessage))
 
     expect(newState.failMessage).toBe('Hello')
 })

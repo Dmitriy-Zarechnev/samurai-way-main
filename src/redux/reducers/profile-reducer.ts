@@ -53,7 +53,7 @@ export type MyPostsActionsType =
     UpdateUserStatusActionType |
     DeletePostActionType |
     UpdateYourPhotoActionType |
-    FailUpdateYourPhotoActionType
+    FailUpdateActionType
 
 type AddPostActionType = ReturnType<typeof addPost>
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>
@@ -61,7 +61,7 @@ type getUserStatusActionType = ReturnType<typeof getUserStatus>
 type UpdateUserStatusActionType = ReturnType<typeof updateUserStatus>
 type DeletePostActionType = ReturnType<typeof deletePost>
 type UpdateYourPhotoActionType = ReturnType<typeof updateYourPhoto>
-type FailUpdateYourPhotoActionType = ReturnType<typeof failUpdateYourPhoto>
+type FailUpdateActionType = ReturnType<typeof failUpdate>
 
 // *********** Константы названий экшенов ****************
 export const ADD_POST = '/profile/ADD-POST'
@@ -70,7 +70,7 @@ export const GET_USER_STATUS = '/profile/GET-USER-STATUS'
 export const UPDATE_USER_STATUS = '/profile/UPDATE-USER-STATUS'
 export const DELETE_POST = '/profile/DELETE-POST'
 export const UPDATE_YOUR_PHOTO = '/profile/UPDATE-YOUR-PHOTO'
-export const FAIL_UPDATE_YOUR_PHOTO = '/profile/FAIL-UPDATE-YOUR-PHOTO'
+export const FAIL_UPDATE = '/profile/FAIL-UPDATE'
 
 
 // *********** Первоначальный стэйт для profileReducer ****************
@@ -160,7 +160,7 @@ export const profileReducer = (state: ProfilePagePropsType = initialState, actio
                 }
             }
 
-        case FAIL_UPDATE_YOUR_PHOTO:
+        case FAIL_UPDATE:
             return {
                 ...state,
                 failMessage: action.payload.failMessage
@@ -192,39 +192,45 @@ export const deletePost = (postId: number) => {
 export const updateYourPhoto = (photos: PhotosType) => {
     return {type: UPDATE_YOUR_PHOTO, payload: {photos}} as const
 }
-export const failUpdateYourPhoto = (failMessage: string) => {
-    return {type: FAIL_UPDATE_YOUR_PHOTO, payload: {failMessage}} as const
+export const failUpdate = (failMessage: string) => {
+    return {type: FAIL_UPDATE, payload: {failMessage}} as const
 }
 
-export const updateYourProfile = (failMessage: string) => {
-    return {type: FAIL_UPDATE_YOUR_PHOTO, payload: {failMessage}} as const
-}
 
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
 export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
     let userId = id
+    // Получили данные profile с сервера при пустом url
     if (!userId) userId = 30743
 
     const response = await profileAPI.userProfile(userId)
+    // Получили данные profile с сервера
     dispatch(setUserProfile(response.data))
+
     /* Сообщение с ошибкой загрузки аватара занули,
      при загрузке нового пользователя */
-    dispatch(failUpdateYourPhoto(''))
+    dispatch(failUpdate(''))
 }
+
 
 //  -------- Получение статуса пользователя ----------------
 export const getStatus = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.getStatus(id)
+    // Получили status с сервера
     dispatch(getUserStatus(response.data))
 }
+
+
 //  -------- Изменение статуса пользователя ----------------
 export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.updateStatus(status)
+    // Заменили status после ответа с сервера
     response.data.resultCode === 0 && dispatch(updateUserStatus(status))
 }
+
 
 //  -------- Загрузка фото пользователя ----------------
 export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsActionsType>) => {
@@ -234,8 +240,9 @@ export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsAction
     response.data.resultCode === 0 && dispatch(updateYourPhoto(response.data.data.photos))
 
     // Вывели сообщение об ошибке с сервера
-    response.data.resultCode === 1 && dispatch(failUpdateYourPhoto(response.data.messages[0]))
+    response.data.resultCode === 1 && dispatch(failUpdate(response.data.messages[0]))
 }
+
 
 //  -------- Загрузка исправленных данных пользователя ----------------
 export const saveProfile = (data: ProfileInfoType): ThunkType => async (dispatch: ThunkDispatchType, getState) => {
@@ -243,8 +250,10 @@ export const saveProfile = (data: ProfileInfoType): ThunkType => async (dispatch
     const userId = getState().auth.id
     if (userId !== null) {
         const response = await profileAPI.saveProfile(data)
-
         // Получили новые данные profile с сервера
         response.data.resultCode === 0 && dispatch(goToPage(userId))
+
+        // Вывели сообщение об ошибке с сервера
+        response.data.resultCode === 1 && dispatch(failUpdate(response.data.messages[0]))
     }
 }

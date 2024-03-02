@@ -52,8 +52,8 @@ export const ProfileData = React.memo((props: ProfileDataPropsType) => {
                         />
 
                         {props.isOwner && <>
-                            <label htmlFor="image" className={S.btn_Input}>Your Avatar</label>
-                            <input id={'image'}
+                            <label htmlFor="addImage" className={S.btn_Input}>Your Avatar</label>
+                            <input id={'addImage'}
                                    className={S.fileInput}
                                    type="file"
                                    onChange={mainPhotoSelected}/>
@@ -63,7 +63,6 @@ export const ProfileData = React.memo((props: ProfileDataPropsType) => {
                     <span className={S.fail_message}>{props.failMessage}</span>
                 </div>
             </div>
-
             <div className={S.profile__contacts}>
                 {Object.entries(props.profileInfo.contacts).map(([key, value]) => {
                     if (value) {

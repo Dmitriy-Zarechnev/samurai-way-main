@@ -22,7 +22,9 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
     }
 
     const closeEditMode = () => {
-        setEditMode(false)
+        if (props.failMessage !== '') {
+            setEditMode(false)
+        }
     }
 
     return (
@@ -30,7 +32,9 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
             ? editMode
                 ? <ProfileDataForm profileInfo={props.profileInfo}
                                    onSubmitProfileDataForm={props.onSubmitProfileDataForm}
-                                   closeEditMode={closeEditMode}/>
+                                   closeEditMode={closeEditMode}
+                                   failMessage={props.failMessage}
+                />
                 : <ProfileData profileInfo={props.profileInfo}
                                status={props.status}
                                updateStatus={props.updateStatus}

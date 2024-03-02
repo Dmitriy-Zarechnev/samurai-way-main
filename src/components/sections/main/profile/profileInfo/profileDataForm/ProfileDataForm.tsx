@@ -10,7 +10,8 @@ import {CheckInputForm} from '../../../../../common/checkInputForm/CheckInputFor
 type ProfileDataFormPropsType = {
     profileInfo: ProfileInfoType,
     onSubmitProfileDataForm: (data: ProfileInfoType) => void,
-    closeEditMode: () => void
+    closeEditMode: () => void,
+    failMessage: string,
 }
 
 export const ProfileDataForm = React.memo((props: ProfileDataFormPropsType) => {
@@ -76,6 +77,7 @@ export const ProfileDataForm = React.memo((props: ProfileDataFormPropsType) => {
                 </div>
             </div>
             <Button name={'Save'}/>
+            <span className={S.failMessage}>{props.failMessage||''}</span>
         </form>
     )
 })

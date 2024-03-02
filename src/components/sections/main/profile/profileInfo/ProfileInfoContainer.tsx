@@ -52,11 +52,11 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
     }
 
     //  -------- Загрузка страницы пользователя при изменении  ----------------
-    componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
-
-    //     this.props.goToPage(this.props.match.params.userId)
-    //     this.props.getStatus(+this.props.match.params.userId)
-     }
+    // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
+    //
+    // //     this.props.goToPage(this.props.match.params.userId)
+    // //     this.props.getStatus(+this.props.match.params.userId)
+    //  }
 
 
     render() {
