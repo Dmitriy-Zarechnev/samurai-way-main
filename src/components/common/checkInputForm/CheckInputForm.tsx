@@ -7,13 +7,14 @@ type CheckInputFormPropsType = {
     devChecked: boolean,
     value: string,
     id: string,
-    name: string
+    name: string,
+    addBoxClass?:string
 }
 
 
 export const CheckInputForm = React.memo((props: CheckInputFormPropsType) => {
     return (
-        <div className={S.checkBox}>
+        <div className={`${S.checkBox} ${props.addBoxClass}`}>
             <input className={S.inputCheck}
                    id={props.id}
                    type={'checkbox'}

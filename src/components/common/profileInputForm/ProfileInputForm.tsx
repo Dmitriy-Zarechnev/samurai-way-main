@@ -15,15 +15,15 @@ type ProfileInputFormPropsType = {
 export const ProfileInputForm = React.memo((props: ProfileInputFormPropsType) => {
     return (
         <div className={S.box}>
-            <input className={`${S.input}${props.addInputClass}`}
+            <label className={`${S.label} ${props.addLabelClass}`}
+                   htmlFor={props.id}>
+                {props.name}
+            </label>
+            <input className={`${S.input} ${props.addInputClass}`}
                    id={props.id}
                    defaultValue={props.defValue}
                    {...props.register(props.value)}
             />
-            <label className={`${S.label}${props.addLabelClass}`}
-                   htmlFor={props.id}>
-                {props.name}
-            </label>
         </div>
     )
 })

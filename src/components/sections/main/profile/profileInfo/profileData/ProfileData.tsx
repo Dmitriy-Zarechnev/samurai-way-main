@@ -3,8 +3,6 @@ import S from './ProfileData.module.css'
 import {ProfileStatusWithHooks} from '../../../../../common/profileStatus/ProfileStatusWithHooks'
 import sam from '../../../../../../assets/images/AvatarDefault.webp'
 import {Contacts} from '../../../../../common/contacts/Contacts'
-import vk from '../../../../../../assets/images/VKContacts.svg'
-import git from '../../../../../../assets/images/GitHubContacts.svg'
 import {ProfileInfoType} from '../../../../../../redux/reducers/profile-reducer'
 import {Button} from '../../../../../common/button/Button'
 
@@ -52,18 +50,28 @@ export const ProfileData = React.memo((props: ProfileDataPropsType) => {
                              src={props.profileInfo.photos.large || sam}
                              alt={`${props.profileInfo.fullName} - avatar should be here`}
                         />
-                        <label htmlFor="image" className={S.btn_Input}>Your Avatar</label>
-                        {props.isOwner && <input id={'image'}
-                                                 className={S.fileInput}
-                                                 type="file"
-                                                 onChange={mainPhotoSelected}/>}
+
+                        {props.isOwner && <>
+                            <label htmlFor="image" className={S.btn_Input}>Your Avatar</label>
+                            <input id={'image'}
+                                   className={S.fileInput}
+                                   type="file"
+                                   onChange={mainPhotoSelected}/>
+                        </>
+                        }
                     </div>
                     <span className={S.fail_message}>{props.failMessage}</span>
                 </div>
             </div>
             <div className={S.profile__contacts}>
-                <Contacts href={props.profileInfo.contacts.vk} alt={'vk-logo'} src={vk}/>
-                <Contacts href={props.profileInfo.contacts.github} alt={'git-logo'} src={git}/>
+                {props.profileInfo.contacts.facebook && <Contacts href={props.profileInfo.contacts.facebook} iconId={'faceBook'}/>}
+                {props.profileInfo.contacts.website && <Contacts href={props.profileInfo.contacts.website} iconId={'website'}/>}
+                {props.profileInfo.contacts.vk && <Contacts href={props.profileInfo.contacts.vk} iconId={'VK'}/>}
+                {props.profileInfo.contacts.twitter && <Contacts href={props.profileInfo.contacts.twitter} iconId={'twitter'}/>}
+                {props.profileInfo.contacts.instagram && <Contacts href={props.profileInfo.contacts.instagram} iconId={'instagram'}/>}
+                {props.profileInfo.contacts.youtube && <Contacts href={props.profileInfo.contacts.youtube} iconId={'youtube'}/>}
+                {props.profileInfo.contacts.github && <Contacts href={props.profileInfo.contacts.github} iconId={'gitHub'}/>}
+                {props.profileInfo.contacts.mainLink && <Contacts href={props.profileInfo.contacts.mainLink} iconId={'mainLink'}/>}
             </div>
         </div>
     )
