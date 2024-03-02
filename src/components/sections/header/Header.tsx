@@ -1,8 +1,8 @@
 import React from 'react'
-import logo from '../../../assets/images/MainLogo.svg'
 import S from './Header.module.css'
 import {NavLink} from 'react-router-dom'
 import {Button} from '../../common/button/Button'
+import {Icon} from '../../common/icon/Icon'
 
 
 type HeaderPropsType = {
@@ -17,8 +17,7 @@ export const Header = React.memo((props: HeaderPropsType) => {
 
     return (
         <header className={S.app_header}>
-
-            <img src={logo} alt={'main_logo'}/>
+            <Icon iconId={'logo'} height={'50px'} width={'50px'} viewBox={'0 0 32 32'}/>
 
             <div className={S.login_block}>
                 {props.isAuth

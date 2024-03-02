@@ -45,7 +45,7 @@ class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponen
         this.props.getStatus(+this.props.match.params.userId)
     }
 
-    //  -------- Первая авторизация ----------------
+    //  -------- Отправка после редактирования Profile ----------------
     onSubmitProfileDataForm = (data: ProfileInfoType) => {
         console.log('hello')
         console.log(data)
