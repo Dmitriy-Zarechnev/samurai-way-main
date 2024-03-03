@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom'
 import {Button} from '../../common/button/Button'
 import {Icon} from '../../common/icon/Icon'
 
-
 type HeaderPropsType = {
     id: number | null
     email: string

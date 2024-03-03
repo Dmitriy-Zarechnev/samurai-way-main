@@ -22,13 +22,24 @@ type AppMapDispatchToProps = {
 
 class App extends React.PureComponent<AppPropsType> {
 
+    // Вывели все промисы, которые не выполнились
+    catchAllErrors = (promiseRejectionEvent: PromiseRejectionEvent) => {
+        alert(promiseRejectionEvent)
+    }
+
     //  -------- Авторизация на сервере ----------------
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener('unhandledrejection', this.catchAllErrors)
+    }
+
+    //  -------- Удалили подписку ----------------
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllErrors)
     }
 
     render() {
-        // Показываем preloader  до полной загрузки
+        // Показываем preloader до полной загрузки
         if (!this.props.initialized) return <Preloader isFetching={!this.props.initialized}/>
 
         // Показываем основные компоненты после полной загрузки
@@ -48,7 +59,6 @@ const mapStateToProps = (state: AppRootState) => {
         initialized: getInitialized(state)
     }
 }
-
 
 
 export const AppConnect =

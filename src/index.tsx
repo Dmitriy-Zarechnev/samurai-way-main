@@ -16,7 +16,8 @@ ReactDOM.render(
     document.getElementById('root')
 )
 
-
+// Provider - записывает store в контекст
+// HashRouter - знеобходим для работы router-dom
 
 
 

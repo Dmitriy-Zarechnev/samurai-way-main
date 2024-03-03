@@ -1,3 +1,5 @@
+// РАсчеты для пагинации страниц в USERS
+
 export const onPaginationHelper = (totalCount: number, pageSize: number, currentPage: number) => {
     let pagesCount = Math.ceil(totalCount / pageSize)
     let pages = []

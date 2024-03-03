@@ -13,9 +13,11 @@ import {LogInContainer} from './logIn/LogInContainer'
 export const Main = React.memo(() => {
     return (
         <div className={S.app_main}>
+            {/* Стартовая страница при пустом url*/}
             <Route exact path="/" render={() =>
                 <Profile/>}/>
 
+            {/* Переход по страницам */}
             <Route path="/profile/:userId?" render={() =>
                 <Profile/>}/>
 
@@ -25,11 +27,12 @@ export const Main = React.memo(() => {
             <Route path="/news" render={() => <News/>}/>
             <Route path="/music" render={() => <Music/>}/>
             <Route path="/users" render={() => <UsersContainer/>}/>
+            <Route path="/settings" render={() => <Settings/>}/>
 
             <Route path="/login" render={() => <LogInContainer/>}/>
 
-
-            <Route path="/settings" render={() => <Settings/>}/>
+            {/* Страница с ошибкой */}
+            <Route path="/*" render={() => <div>404</div>}/>
         </div>
     )
 })

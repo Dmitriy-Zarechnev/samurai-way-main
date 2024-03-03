@@ -5,7 +5,7 @@ import {serverLogOut} from '../../../redux/reducers/auth-reducer'
 import {AppRootState} from '../../../redux/redux-store'
 import {getEmail, getId, getIsAuth, getLogIn} from '../../../redux/selectors/auth-selector'
 
-
+// Типизация
 type HeaderAPIContainerPropsType =
     HeaderAPIComponentMapStateToProps &
     HeaderAPIComponentMapDispatchToProps

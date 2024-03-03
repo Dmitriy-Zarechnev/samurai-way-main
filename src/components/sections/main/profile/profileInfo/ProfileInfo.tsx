@@ -33,8 +33,7 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                 ? <ProfileDataForm profileInfo={props.profileInfo}
                                    onSubmitProfileDataForm={props.onSubmitProfileDataForm}
                                    closeEditMode={closeEditMode}
-                                   failMessage={props.failMessage}
-                />
+                                   failMessage={props.failMessage}/>
                 : <ProfileData profileInfo={props.profileInfo}
                                status={props.status}
                                updateStatus={props.updateStatus}
