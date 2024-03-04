@@ -218,6 +218,7 @@ export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActions
 export const getStatus = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.getStatus(id)
+
     // Получили status с сервера
     dispatch(getUserStatus(response.data))
 }
@@ -226,16 +227,22 @@ export const getStatus = (id: number) => async (dispatch: Dispatch<MyPostsAction
 //  -------- Изменение статуса пользователя ----------------
 export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
-    const response = await profileAPI.updateStatus(status)
-    // Заменили status после ответа с сервера
-    response.data.resultCode === 0 && dispatch(updateUserStatus(status))
-}
+    try {
+        const response = await profileAPI.updateStatus(status)
+
+        // Заменили status после ответа с сервера
+        response.data.resultCode === 0 && dispatch(updateUserStatus(status))
+    } catch (error) {
+        // Диспатчить ошибки можно
+    }
+2}
 
 
 //  -------- Загрузка фото пользователя ----------------
 export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsActionsType>) => {
 
     const response = await profileAPI.savePhoto(file)
+
     // Заменили фото profile после ответа от сервера
     response.data.resultCode === 0 && dispatch(updateYourPhoto(response.data.data.photos))
 
@@ -248,8 +255,10 @@ export const savePhoto = (file: File) => async (dispatch: Dispatch<MyPostsAction
 export const saveProfile = (data: ProfileInfoType): ThunkType => async (dispatch: ThunkDispatchType, getState) => {
     // Узнали свой id
     const userId = getState().auth.id
+
     if (userId !== null) {
         const response = await profileAPI.saveProfile(data)
+
         // Получили новые данные profile с сервера
         response.data.resultCode === 0 && dispatch(goToPage(userId))
 

@@ -24,12 +24,14 @@ class App extends React.PureComponent<AppPropsType> {
 
     // Вывели все промисы, которые не выполнились
     catchAllErrors = (promiseRejectionEvent: PromiseRejectionEvent) => {
-        alert(promiseRejectionEvent)
+        console.log(promiseRejectionEvent)
     }
 
     //  -------- Авторизация на сервере ----------------
     componentDidMount() {
         this.props.initializeApp()
+
+        // Добавили подписку на ошибки
         window.addEventListener('unhandledrejection', this.catchAllErrors)
     }
 
