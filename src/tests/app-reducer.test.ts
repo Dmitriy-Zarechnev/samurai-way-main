@@ -1,8 +1,5 @@
 import {AppInitialState, appReducer, initializedSuccess} from '../redux/reducers/app-reducer'
 
-
-
-
 test('app reducer should return initialized === true', () => {
 
     const state: AppInitialState = {

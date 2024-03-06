@@ -200,11 +200,7 @@ export const failUpdate = (failMessage: string) => {
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
 export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
-   // let userId = id
     // Получили данные profile с сервера при пустом url
-
-    // if (!userId) userId = 30743
-
     const response = await profileAPI.userProfile(id)
 
     // Получили данные profile с сервера

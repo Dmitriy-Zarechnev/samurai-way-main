@@ -1,5 +1,4 @@
-import {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {AppRootState, CommonActionsTypeForApp} from '../redux-store'
+import {ThunkDispatchType, ThunkType} from '../redux-store'
 import {authMe} from './auth-reducer'
 
 // Типизация
@@ -14,8 +13,6 @@ export type AppInitialState = {
 
 }
 
-type ThunkType = ThunkAction<void, AppRootState, unknown, CommonActionsTypeForApp>
-type ThunkDispatchType = ThunkDispatch<AppRootState, unknown, CommonActionsTypeForApp>
 
 // *********** Константы названий экшенов ****************
 const INITIALIZED_SUCCESS = '/app/INITIALIZED-SUCCESS'
