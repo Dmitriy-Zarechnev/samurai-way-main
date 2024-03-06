@@ -24,40 +24,22 @@ type ProfileInfoAPIComponentMapDispatchToProps = {
 
 class ProfileInfoAPIComponent extends React.PureComponent<ProfileInfoAPIComponentPropsType> {
 
-    //  -------- Метод общий для компоненты  ----------------
-    refreshProfile() {
-        // let userId = this.props.match.params.userId
-        // if(!userId){
-        //     userId=this.props.userId.toString()
-        //     if(!userId){
-        //         this.props.history.push('/login')
-        //     }
-        // }
-
-        // this.props.goToPage(this.props.match.params.userId)
-        // this.props.getStatus(+this.props.match.params.userId)
-    }
-
-
     //  -------- Загрузка страницы пользователя ----------------
     componentDidMount() {
         // this.refreshProfile()
-        this.props.goToPage(+this.props.match.params.userId)
-        this.props.getStatus(+this.props.match.params.userId)
+        let userId = Number(this.props.match.params.userId)
+        if (!userId) {
+            userId = 30743
+        }
+
+        this.props.goToPage(userId)
+        this.props.getStatus(userId)
     }
 
     // //  -------- Отправка после редактирования Profile ----------------
     onSubmitProfileDataForm = (data: ProfileInfoType) => {
         this.props.saveProfile(data)
     }
-
-    //  -------- Загрузка страницы пользователя при изменении  ----------------
-    // componentDidUpdate(prevProps: Readonly<ProfileInfoAPIComponentPropsType>, prevState: Readonly<{}>) {
-    //
-    // //     this.props.goToPage(this.props.match.params.userId)
-    // //     this.props.getStatus(+this.props.match.params.userId)
-    //  }
-
 
     render() {
         return (

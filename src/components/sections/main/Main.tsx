@@ -8,7 +8,6 @@ import S from './Main.module.css'
 import {UsersContainer} from './users/UsersContainer'
 import {Profile} from './profile/Profile'
 import {LogInContainer} from './logIn/LogInContainer'
-import {Error} from '../../common/error/Error'
 import {StartPage} from '../../common/startPage/StartPage'
 
 
@@ -34,7 +33,7 @@ export const Main = React.memo(() => {
             <Route path="/login" render={() => <LogInContainer/>}/>
 
             {/* Страница с ошибкой */}
-            <Route path="/*" render={() => <Error/>}/>
+            {/*<Route path="/*" render={() => <Error/>}/>*/}
         </div>
     )
 })

@@ -200,11 +200,13 @@ export const failUpdate = (failMessage: string) => {
 // *********** Thunk - санки необходимые для общения с DAL ****************
 //  -------- Загрузка страницы пользователя ----------------
 export const goToPage = (id: number) => async (dispatch: Dispatch<MyPostsActionsType>) => {
-    let userId = id
+   // let userId = id
     // Получили данные profile с сервера при пустом url
-    if (!userId) userId = 30743
 
-    const response = await profileAPI.userProfile(userId)
+    // if (!userId) userId = 30743
+
+    const response = await profileAPI.userProfile(id)
+
     // Получили данные profile с сервера
     dispatch(setUserProfile(response.data))
 
@@ -221,6 +223,7 @@ export const getStatus = (id: number) => async (dispatch: Dispatch<MyPostsAction
 
     // Получили status с сервера
     dispatch(getUserStatus(response.data))
+
 }
 
 
@@ -232,6 +235,7 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPost
 
         // Заменили status после ответа с сервера
         response.data.resultCode === 0 && dispatch(updateUserStatus(status))
+
     } catch (error) {
         // Диспатчить ошибки можно
     }
