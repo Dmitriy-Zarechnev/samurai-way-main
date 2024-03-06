@@ -235,7 +235,7 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch<MyPost
     } catch (error) {
         // Диспатчить ошибки можно
     }
-2}
+}
 
 
 //  -------- Загрузка фото пользователя ----------------
